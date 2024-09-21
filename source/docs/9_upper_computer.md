@@ -14,7 +14,7 @@
 
 2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_1/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
 
-<img src="../_static/media/chapter_9/section_1/image3.png" style="width:5.76389in;height:1.61181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_1/image3.png" style="width:5.76389in;height:1.61181in" />
 
 **采用命令行形式启动**
 
@@ -34,7 +34,7 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 
 普通模式主要用来控制舵机、调节偏差以及位置校准，界面如下图所示：
 
-<img src="../_static/media/chapter_9/section_1/image6.png" style="width:5.51181in;height:2.80255in" alt="G:\360MoveData\Users\Admin\Desktop\3.png3" />
+<img class="common_img" src="../_static/media/chapter_9/section_1/image6.png" style="width:5.51181in;height:2.80255in" alt="G:\360MoveData\Users\Admin\Desktop\3.png3" />
 
 1.  **语言选项**
 
@@ -44,7 +44,7 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 
 此区域的舵机图标对应了机械臂上的5个舵机，调整对应滑杆数值即可调整舵机的转动位置，我们以1号舵机的图标进行说明。
 
-<img src="../_static/media/chapter_9/section_1/image7.png" style="width:1.1811in;height:1.06099in" alt="6" />
+<img class="common_img" src="../_static/media/chapter_9/section_1/image7.png" style="width:1.1811in;height:1.06099in" alt="6" />
 
 |  |  |
 |:--:|:--:|
@@ -57,7 +57,7 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 
 逆运动学操控区域可用于校准机械爪的夹取位置。在机械臂使用的过程中，若发现夹取的位置不准确，可调节此区域的位置信息，使夹取位置变得更加准确。
 
-<img src="../_static/media/chapter_9/section_1/image11.png" style="width:1.9685in;height:2.63137in" alt="8" />
+<img class="common_img" src="../_static/media/chapter_9/section_1/image11.png" style="width:1.9685in;height:2.63137in" alt="8" />
 
 <table class="docutils-nobg" border="1">
 <colgroup>
@@ -233,7 +233,7 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 
 <img src="../_static/media/chapter_9/section_1/image48.png" style="width:5.76389in;height:2.93125in" />
 
-摄像头工具使用方法和请参考"**[AI视觉项目课程\ 1. 单个颜色识别\ 增加新的识别颜色]()**"章节步骤。
+摄像头工具使用方法和请参考"**[AI视觉项目课程\ 1. 单个颜色识别\ 增加新的识别颜色](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#anchor_1_4_2)**"章节步骤。
 
 ## 2. 动作组调用及导入
 
@@ -245,25 +245,25 @@ ArmPi mini在出厂时就已内置部分动作组文件，文件位于目录"**/
 
 ### 2.1 通过上位机调用动作组
 
-1)  安装VNC，远程连接ArmPi mini的系统桌面。如需了解具体操作步骤，可查看目录"**第1章 学前先看\第4课 远程桌面工具安装与连接**"下的文档。
+1)  安装VNC，远程连接ArmPi mini的系统桌面。如需了解具体操作步骤，可查看目录"**[学前先看\ 4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"下的文档。
 
 2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_2/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"**Execute**"，即可进入上位机界面。
 
-<img src="../_static/media/chapter_9/section_2/image3.png" style="width:5.76389in;height:1.61181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image3.png" style="width:5.76389in;height:1.61181in" />
 
 3)  点击"**打开动作组**"按钮，选择想要执行的动作组，并点击"**Open**"按键。
 
-<img src="../_static/media/chapter_9/section_2/image4.png" style="width:5.51181in;height:1.58931in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image4.png" style="width:5.51181in;height:1.58931in" />
 
-<img src="../_static/media/chapter_9/section_2/image5.png" style="width:5.76736in;height:4.17153in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image5.png" style="width:5.76736in;height:4.17153in" />
 
 4)  动作详情列表处会显示该动作组的舵机数值。
 
-<img src="../_static/media/chapter_9/section_2/image6.png" style="width:5.51181in;height:1.20907in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image6.png" style="width:5.51181in;height:1.20907in" />
 
 5)  点击"**运行**"按钮，即可运行当前动作详情列表内的所有动作，若想重复当前动作组，可勾选"**循环**"选项。
 
-<img src="../_static/media/chapter_9/section_2/image7.png" style="width:5.51181in;height:1.58931in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image7.png" style="width:5.51181in;height:1.58931in" />
 
 ### 2.2 导入动作组
 
@@ -280,35 +280,35 @@ ArmPi mini在出厂时就已内置部分动作组文件，文件位于目录"**/
 
 2)  将存放了动作组文件的U盘插入树莓派主板的任意一个USB接口。
 
-<img src="../_static/media/chapter_9/section_2/image8.png" style="width:5.51181in;height:2.58403in" alt="IMG_20220929_153058(1)" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image8.png" style="width:5.51181in;height:2.58403in" alt="IMG_20220929_153058(1)" />
 
 3)  当VNC端的系统出现下图所示弹窗，点击"**确定**"按键即可。
 
-<img src="../_static/media/chapter_9/section_2/image10.png" style="width:3.14961in;height:3.22012in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image10.png" style="width:3.14961in;height:3.22012in" />
 
 4)  通过复制粘贴的形式将动作组文件复制到系统桌面。
 
-<img src="../_static/media/chapter_9/section_2/image11.png" style="width:1.52083in;height:2.4375in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image11.png" style="width:1.52083in;height:2.4375in" />
 
 5)  点击系统状态栏的图标<img src="../_static/media/chapter_9/section_2/image12.png" style="width:0.31458in;height:0.275in" />，打开文件管理器。
 
 6)  进入目录"**/home/pi/ArmPi_mini/action_groups**"，将导入的动作组文件移动到此目录下。
 
-<img src="../_static/media/chapter_9/section_2/image13.png" style="width:5.7625in;height:1.17222in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image13.png" style="width:5.7625in;height:1.17222in" />
 
 6)  双击系统桌面图标<img src="../_static/media/chapter_9/section_2/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
 
-<img src="../_static/media/chapter_9/section_2/image3.png" style="width:5.76389in;height:1.61181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image3.png" style="width:5.76389in;height:1.61181in" />
 
 7)  点击上位机界面的"**打开动作组**"按键，选择前面导入的动作组文件，并点击"**Open**"按键。
 
-<img src="../_static/media/chapter_9/section_2/image4.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image4.png" style="width:5.76389in;height:1.66181in" />
 
-<img src="../_static/media/chapter_9/section_2/image14.png" style="width:5.7625in;height:3.49097in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image14.png" style="width:5.7625in;height:3.49097in" />
 
 8)  动作详情列表处可以查看到导入动作组的各舵机数值和运行时间。
 
-<img src="../_static/media/chapter_9/section_2/image15.png" style="width:5.76389in;height:1.85625in" />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image15.png" style="width:5.76389in;height:1.85625in" />
 
 ## 3. 动作编辑教学
 
@@ -324,109 +324,111 @@ ArmPi mini在出厂时就已内置部分动作组文件，文件位于目录"**/
 
 1)  双击系统桌面图标<img src="../_static/media/chapter_9/section_3/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"**Execute**"，即可进入上位机界面。
 
-<img src="../_static/media/chapter_9/section_3/image3.png" style="width:5.76389in;height:1.61181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image3.png" style="width:5.76389in;height:1.61181in" />
 
 2)  点击"**打开动作文件**"按键，选择"**start**"动作组后，点击"**Open**"按键，将此动作设置为动作组的第一个动作。
 
-<img src="../_static/media/chapter_9/section_3/image4.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image4.png" style="width:5.76389in;height:1.66181in" />
 
-<img src="../_static/media/chapter_9/section_3/image5.png" style="width:5.76389in;height:4.20556in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image5.png" style="width:5.76389in;height:4.20556in" />
 
 3)  双击动作详情列表中1号动作前面的三角按键，令ArmPi mini同步为此动作状态。
 
-<img src="../_static/media/chapter_9/section_3/image6.png" style="width:5.51181in;height:0.34241in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image6.png" style="width:5.51181in;height:0.34241in" />
 
 4)  滑动4、5号舵机的滑杆，使机械臂向下移向色块。
 
-<img src="../_static/media/chapter_9/section_3/image7.png" style="width:4.33071in;height:5.06594in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image7.png" style="width:4.33071in;height:5.06594in" />
 
 5)  时间设为800ms，点击"**添加动作**"，即可得到第2个动作。
 
-<img src="../_static/media/chapter_9/section_3/image8.png" style="width:5.76389in;height:2.45833in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image8.png" style="width:5.76389in;height:2.45833in" />
 
 6)  为了使整套动作更加连贯流畅，我们每设置一个动作之后，就添加一个过渡动作。在上一个动作基础上，将时间修改为200ms，再次点击"**添加动作**"，即可得到第3个动作。
 
-<img src="../_static/media/chapter_9/section_3/image9.png" style="width:5.76389in;height:2.42708in" alt="G:\360MoveData\Users\Admin\Desktop\28.png28" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image9.png" style="width:5.76389in;height:2.42708in" alt="G:\360MoveData\Users\Admin\Desktop\28.png28" />
 
 7)  接下来，我们让机械爪张开，准备夹取色块，这里需要滑动1号舵机的滑杆。
 
-<img src="../_static/media/chapter_9/section_3/image10.png" style="width:4.33071in;height:4.88941in" alt="30" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image10.png" style="width:4.33071in;height:4.88941in" alt="30" />
 
 8)  时间设为300ms，点击"**添加动作**"，即可得到4号动作。
 
-<img src="../_static/media/chapter_9/section_3/image11.png" style="width:5.51181in;height:2.37533in" alt="G:\360MoveData\Users\Admin\Desktop\31.png31" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image11.png" style="width:5.51181in;height:2.37533in" alt="G:\360MoveData\Users\Admin\Desktop\31.png31" />
 
 9)  再添加一个过渡动作，时间设置为100ms，点击"**添加动作**"，就得到了5号动作。
 
-<img src="../_static/media/chapter_9/section_3/image12.png" style="width:5.51181in;height:2.21115in" alt="G:\360MoveData\Users\Admin\Desktop\32.png32" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image12.png" style="width:5.51181in;height:2.21115in" alt="G:\360MoveData\Users\Admin\Desktop\32.png32" />
 
 10) 然后滑动1号舵机滑杆，使机械爪闭合。
 
-<img src="../_static/media/chapter_9/section_3/image13.png" style="width:4.33071in;height:5.08735in" alt="G:\360MoveData\Users\Admin\Desktop\35.png35" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image13.png" style="width:4.33071in;height:5.08735in" alt="G:\360MoveData\Users\Admin\Desktop\35.png35" />
 
 11) 时间为200ms，然后点击"**添加动作**"，得到6号动作。
 
-<img src="../_static/media/chapter_9/section_3/image14.png" style="width:5.51181in;height:2.37454in" alt="G:\360MoveData\Users\Admin\Desktop\45.png45" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image14.png" style="width:5.51181in;height:2.37454in" alt="G:\360MoveData\Users\Admin\Desktop\45.png45" />
 
 12) 再让机械臂夹取色块抬高，拖动的是4、5号舵机的滑杆。
 
-<img src="../_static/media/chapter_9/section_3/image15.png" style="width:4.33071in;height:5.03437in" alt="G:\360MoveData\Users\Admin\Desktop\46.png46" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image15.png" style="width:4.33071in;height:5.03437in" alt="G:\360MoveData\Users\Admin\Desktop\46.png46" />
 
 13) 时间设置为1000ms，最后点击"**添加动作**"，就得到了7号动作。
 
-<img src="../_static/media/chapter_9/section_3/image16.png" style="width:5.51181in;height:2.32729in" alt="G:\360MoveData\Users\Admin\Desktop\47.png47" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image16.png" style="width:5.51181in;height:2.32729in" alt="G:\360MoveData\Users\Admin\Desktop\47.png47" />
 
 14) 再将时间设为100ms，添加一个过渡动作。
 
-<img src="../_static/media/chapter_9/section_3/image17.png" style="width:5.51181in;height:2.37293in" alt="G:\360MoveData\Users\Admin\Desktop\48.png48" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image17.png" style="width:5.51181in;height:2.37293in" alt="G:\360MoveData\Users\Admin\Desktop\48.png48" />
 
 15) 接下来让机械臂转向右侧，调整的6号舵机的数值滑杆。
 
-<img src="../_static/media/chapter_9/section_3/image18.png" style="width:4.33071in;height:5.06814in" alt="G:\360MoveData\Users\Admin\Desktop\49.png49" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image18.png" style="width:4.33071in;height:5.06814in" alt="G:\360MoveData\Users\Admin\Desktop\49.png49" />
 
 16) 时间设置为800ms，点击"**添加动作**"，得到9号动作。
 
-<img src="../_static/media/chapter_9/section_3/image19.png" style="width:5.51181in;height:2.39128in" alt="G:\360MoveData\Users\Admin\Desktop\52.png52" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image19.png" style="width:5.51181in;height:2.39128in" alt="G:\360MoveData\Users\Admin\Desktop\52.png52" />
 
 17) 添加一个过渡动作，时间设为300ms，就得到了10号动作。
 
-<img src="../_static/media/chapter_9/section_3/image20.png" style="width:5.51181in;height:2.70503in" alt="G:\360MoveData\Users\Admin\Desktop\53.png53" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image20.png" style="width:5.51181in;height:2.70503in" alt="G:\360MoveData\Users\Admin\Desktop\53.png53" />
 
 18) 滑动4、5号舵机的滑杆，使机械臂放下色块。
 
-<img src="../_static/media/chapter_9/section_3/image21.png" style="width:4.33071in;height:5.0052in" alt="G:\360MoveData\Users\Admin\Desktop\54.png54" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image21.png" style="width:4.33071in;height:5.0052in" alt="G:\360MoveData\Users\Admin\Desktop\54.png54" />
 
 19) 时间设为1000ms，点击"**添加动作**"，得到11号动作。
 
-<img src="../_static/media/chapter_9/section_3/image22.png" style="width:5.51181in;height:2.70876in" alt="G:\360MoveData\Users\Admin\Desktop\56.png56" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image22.png" style="width:5.51181in;height:2.70876in" alt="G:\360MoveData\Users\Admin\Desktop\56.png56" />
 
 20) 现在，需要将色块放下，滑动1号舵机的滑杆，即可让机械爪松开。
 
-<img src="../_static/media/chapter_9/section_3/image23.png" style="width:4.33071in;height:5.09346in" alt="G:\360MoveData\Users\Admin\Desktop\58.png58" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image23.png" style="width:4.33071in;height:5.09346in" alt="G:\360MoveData\Users\Admin\Desktop\58.png58" />
 
 21) 时间设为300ms，最后点击"**添加动作**"，就得到了12号动作。
 
-<img src="../_static/media/chapter_9/section_3/image24.png" style="width:5.51181in;height:2.71274in" alt="G:\360MoveData\Users\Admin\Desktop\57.png57" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image24.png" style="width:5.51181in;height:2.71274in" alt="G:\360MoveData\Users\Admin\Desktop\57.png57" />
 
 22) 将机械爪闭合并稍微抬高，调节的是1号和4号舵机。
 
-<img src="../_static/media/chapter_9/section_3/image25.png" style="width:4.33071in;height:5.03221in" alt="G:\360MoveData\Users\Admin\Desktop\59.png59" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image25.png" style="width:4.33071in;height:5.03221in" alt="G:\360MoveData\Users\Admin\Desktop\59.png59" />
 
 23) 时间设为400ms，再点击"**添加动作**"，就得到了13号动作。
 
-<img src="../_static/media/chapter_9/section_3/image26.png" style="width:5.51181in;height:2.72469in" alt="G:\360MoveData\Users\Admin\Desktop\60.png60" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image26.png" style="width:5.51181in;height:2.72469in" alt="G:\360MoveData\Users\Admin\Desktop\60.png60" />
 
 24) 最后，使机械臂回到初始姿态。点击1号动作的" "按钮，运行1号动作。 再将时间设置为1000ms，点击"**添加动作**"，即可得到14号动作。
 
-<img src="../_static/media/chapter_9/section_3/image27.png" style="width:5.51181in;height:2.70945in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image27.png" style="width:5.51181in;height:2.70945in" />
 
 ### 3.2 动作保存
 
-**注意：命名动作组时，尽量使用数字或者英文来命名，切勿使用空格键，以免导致后期调试出现保存不成功的情况，空格建议使用下划线"-"来代替。**
+:::{Note}
+命名动作组时，尽量使用数字或者英文来命名，切勿使用空格键，以免导致后期调试出现保存不成功的情况，空格建议使用下划线"-"来代替。
+:::
 
 为了便于后期的调试和管理，可将动作保存起来。单击"**保存动作文件**"按钮，这里以"**4"**为例进行命名，单击"**Save**"。
 
-<img src="../_static/media/chapter_9/section_3/image28.png" style="width:5.76181in;height:3.13472in" />
+<img class="common_img" src="../_static/media/chapter_9/section_3/image28.png" style="width:5.76181in;height:3.13472in" />
 
 ## 4. 串联动作文件
 
@@ -438,43 +440,43 @@ ArmPi mini在出厂时就已内置部分动作组文件，文件位于目录"**/
 
 2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_4/image1.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
 
-<img src="../_static/media/chapter_9/section_4/image2.png" style="width:5.76389in;height:1.61181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image2.png" style="width:5.76389in;height:1.61181in" />
 
 3)  点击"**串联动作文件**"按键。
 
-<img src="../_static/media/chapter_9/section_4/image3.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image3.png" style="width:5.76389in;height:1.66181in" />
 
 4)  选择动作组"**1.d6a**"，并点击"**Open**"按键。
 
-<img src="../_static/media/chapter_9/section_4/image4.png" style="width:5.76458in;height:4.20139in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image4.png" style="width:5.76458in;height:4.20139in" />
 
 此时，可以在动作详情列表中看到"**1.d6a**"动作组的动作参数。
 
-<img src="../_static/media/chapter_9/section_4/image5.png" style="width:5.76389in;height:1.26458in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image5.png" style="width:5.76389in;height:1.26458in" />
 
 5)  再次点击"**串联动作文件**"，选择"**3**"号动作组，点击"**Open**"。
 
-<img src="../_static/media/chapter_9/section_4/image3.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image3.png" style="width:5.76389in;height:1.66181in" />
 
-<img src="../_static/media/chapter_9/section_4/image6.png" style="width:5.7625in;height:4.17292in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image6.png" style="width:5.7625in;height:4.17292in" />
 
 此时，动作详情列表中，"**3.d6a**"动作组的动作参数衔接在了"**1.d6a**"动作组的后面。
 
-<img src="../_static/media/chapter_9/section_4/image7.png" style="width:5.76389in;height:1.64306in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image7.png" style="width:5.76389in;height:1.64306in" />
 
 6)  选中动作详情列表中的第一个动作后，点击"**运行**"按键，令ArmPi mini运行一次串联后的动作组。
 
-<img src="../_static/media/chapter_9/section_4/image8.png" style="width:5.76389in;height:1.64306in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image8.png" style="width:5.76389in;height:1.64306in" />
 
-<img src="../_static/media/chapter_9/section_4/image9.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image9.png" style="width:5.76389in;height:1.66181in" />
 
 ### 4.2 保存串联所得动作组
 
 点击"**保存动作文件**"按钮，保存串联所得动作组，以便后期进行调试。此处命名为"**Hiwonder**"。
 
-<img src="../_static/media/chapter_9/section_4/image10.png" style="width:5.76389in;height:1.66181in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image10.png" style="width:5.76389in;height:1.66181in" />
 
-<img src="../_static/media/chapter_9/section_4/image11.png" style="width:5.76389in;height:4.13472in" />
+<img class="common_img" src="../_static/media/chapter_9/section_4/image11.png" style="width:5.76389in;height:4.13472in" />
 
 :::{Note}
 建议使用数字或英文命名动作组，建议使用下划线"-"来代替空格键，以免后期调试出现保存不成功的情况。

@@ -75,15 +75,11 @@ python3 color_recognition.py
 cd ArmPi_mini/functions/
 ```
 
-<img src="../_static/media/chapter_8/section_1/image7.png" style="width:5.76667in;height:0.60556in" />
-
 2)  然后再输入指令打开程序文件的指令，按下回车。
 
 ```commandline
 sudo vim color_recognition.py
 ```
-
-<img src="../_static/media/chapter_8/section_1/image11.png" style="width:5.76597in;height:0.37431in" />
 
 3)  按下键盘上的"**i**"键，进入到编辑模式。
 
@@ -108,6 +104,8 @@ python3 color_recognition.py
 ```
 
 <img src="../_static/media/chapter_8/section_1/image9.png" style="width:5.76528in;height:0.97361in" />
+
+<p id="anchor_1_4_2"></p>
 
 - #### 1.4.2 增加新的识别颜色
 
@@ -190,7 +188,7 @@ sudo vim lab_config.yaml
 
 根据实现的效果，梳理程序的过程逻辑，如下图所示：
 
-<img src="../_static/media/chapter_8/section_1/image63.png" style="width:5.76389in;height:6.06528in" alt="未命名文件 (1)" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image63.png" alt="未命名文件 (1)" />
 
 - #### 1.5.1 导入功能库
 
@@ -319,7 +317,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 本节课可以通过摄像头进行颜色识别控制机械臂点头和摇头。实现分为颜色识别和识别后的执行反馈两部分。
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**第7章 OpenCV视觉基础课程**"进行详细学习)。
+首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程](https://docs.hiwonder.com/projects/General_basic_courses/en/latest/docs/4_ros_basics_course.html)**"进行详细学习)。
 
 接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
 
@@ -337,7 +335,9 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 ### 2.2 玩法开启及关闭步骤
 
-<img src="../_static/media/chapter_8/section_2/image3.png" style="width:0.31528in;height:0.31528in" />指令输入需严格区分大小写及空格。
+:::{Note}
+指令输入需严格区分大小写及空格。
+:::
 
 1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
 
@@ -463,8 +463,6 @@ cd ArmPi_mini/yaml/
 sudo vim lab_config.yaml
 ```
 
-<img src="../_static/media/chapter_8/section_2/image21.png" style="width:5.76597in;height:1.44514in" />
-
 9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
 
 <img src="../_static/media/chapter_8/section_2/image22.jpeg" style="width:5.75972in;height:2.02292in" alt="26" />
@@ -526,7 +524,7 @@ sudo vim lab_config.yaml
 
 根据实现的效果，梳理程序的过程逻辑，如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image34.png" style="width:4.59097in;height:3.38889in" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image34.png"/>
 
 - #### 2.5.1 导入功能库
 
@@ -759,8 +757,6 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 ```commandline
 cd ArmPi_mini/functions
 ```
-
-<img src="../_static/media/chapter_8/section_3/image5.png" style="width:5.76528in;height:1.43333in" />
 
 3)  输入玩法执行指令，并按下回车,玩法启动。
 
@@ -1077,8 +1073,6 @@ python3 color_tracking.py
 :::{Note}
 cd MasterPi/functions/
 :::
-
-<img src="../_static/media/chapter_8/section_4/image5.png" style="width:5.76528in;height:1.43333in" />
 
 2)  然后输入指令，按下回车，打开程序文件。
 
@@ -2117,7 +2111,9 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 ### 7.2 玩法开启及关闭
 
-<img src="../_static/media/chapter_8/section_7/image1.png" style="width:0.31528in;height:0.31528in" />指令的输入需严格区分大小写及空格。
+:::{Note}
+指令的输入需严格区分大小写及空格。
+:::
 
 1)  将机器人开机，然后通过VNC远程连接树莓派桌面。关于VNC的安装及连接，可参考"**第1章** **学前先看\第4课** **远程桌面工具安装与连接**"。
 
@@ -2143,7 +2139,9 @@ python3 face_detect.py
 
 ### 7.3 实现效果
 
-<img src="../_static/media/chapter_8/section_7/image1.png" style="width:0.31528in;height:0.31528in" />本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
+:::{Note}
+本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
+:::
 
 玩法开启后，摄像头云台将进行左右转动。当识别到人脸后，云台会停止转动，此时机器人将执行招手动作。
 
@@ -2235,9 +2233,11 @@ python3 face_detect.py
 
 ### 8.2 玩法开启及关闭
 
-<img src="../_static/media/chapter_8/section_8/image1.png" style="width:0.31528in;height:0.31528in" />指令的输入需严格区分大小写及空格。
+:::{Note}
+指令的输入需严格区分大小写及空格。
+:::
 
-1)  将机器人开机，然后通过VNC远程连接树莓派桌面。关于VNC的安装及连接，可参考"**[学前先看\4. 远程桌面工具安装与连接]()**"。
+1)  将机器人开机，然后通过VNC远程连接树莓派桌面。关于VNC的安装及连接，可参考"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"。
 
 2)  在树莓派的桌面单击左上角的图标<img src="../_static/media/chapter_8/section_8/image2.png" style="width:0.31458in;height:0.27361in" />，或按住快捷键Ctrl+Alt+T，打开LX终端。
 
@@ -2261,7 +2261,9 @@ python3 face_recognition.py
 
 ### 8.3 实现效果
 
-<img src="../_static/media/chapter_8/section_8/image1.png" style="width:0.31528in;height:0.31528in" />本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
+:::{Note}
+本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
+:::
 
 玩法开启后，摄像头云台将进行左右转动。当识别到人脸后，云台会停止转动，此时机器人将执行招手动作。
 
