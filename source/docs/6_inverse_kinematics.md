@@ -135,8 +135,6 @@ vim arm_move_IK_demo.py
 python3 arm_move_IK_demo.py
 ```
 
-<img src="../_static/media/chapter_6/section_3/image10.png" style="width:5.7625in;height:0.28472in" />
-
 ### 3.5 代码分析
 
 该程序的源代码位于： **/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_demo.py**
