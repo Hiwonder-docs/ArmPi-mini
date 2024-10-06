@@ -6,7 +6,7 @@
 
 机器人运动学分为正向运动学和逆向运动学，正向运动学即给定机械臂各关节角度，计算机器人末端位置；逆向运动学即已知机器人末端的位置，计算机械臂对应位置的全部关节角度。（**末端位置指机械爪的顶部，图中框出的位置**）
 
-<img src="../_static/media/chapter_6/section_1/image1.png" style="width:4.05347in;height:5.24028in" />
+<img src="../_static/media/chapter_6/section_1/image1.png"  />
 
 在实际应用中，使用正运动学控制机械臂，并不能直接知道机械臂末端要到达的位置。因此，我们通常使用逆运动学控制，给定机械臂末端位置计算出关节角度。
 
@@ -30,7 +30,7 @@
 
 详细计算过程见代码路径：**ArmPi_mini\ArmIK\ArmMoveIK.py**
 
-<img src="../_static/media/chapter_6/section_1/image2.png" style="width:5.76389in;height:5.44097in" />
+<img src="../_static/media/chapter_6/section_1/image2.png"  />
 
 ## 2. 建立机械臂坐标系
 
@@ -38,13 +38,13 @@
 
 描述空间位置、速度和加速度，大部分都是用笛卡尔坐标系，也就是大家熟知由三个互相垂直的坐标轴所组成的坐标系。当我们说绕某一个轴旋转多少角度时，正方向的确定使用右手定则，如下图：
 
-<img src="../_static/media/chapter_6/section_2/image1.png" style="width:1.37795in;height:1.37795in" alt="坐标系1" />
+<img class="common_img" src="../_static/media/chapter_6/section_2/image1.png" style="width:1.37795in;height:1.37795in" alt="loading" />
 
 ### 2.3 建立空间坐标系
 
 要描述一个物体的运动，就必须先建立一个坐标系，ArmPi mini机械臂使用的是X、Y、Z三轴坐标系（单位：mm），以机械臂底座中心点为坐标系的原点(0,0,0)，如下图所示：
 
-<img src="../_static/media/chapter_6/section_2/image2.png" style="width:3.93701in;height:3.61341in" alt="27.132-01" />
+<img src="../_static/media/chapter_6/section_2/image2.png"  alt="loading" />
 
 :::{Note}
 机械臂控制时，Z轴坐标必须大于0。
@@ -115,19 +115,17 @@ vim arm_move_IK_demo.py
 
 4)  找到下图所示代码：
 
-<img src="../_static/media/chapter_6/section_3/image6.png" style="width:5.76319in;height:0.60208in" />
+<img src="../_static/media/chapter_6/section_3/image6.png"  />
 
 5)  按下键盘上的"**I**"键，进入编辑模式。
 
-<img src="../_static/media/chapter_6/section_3/image7.png" style="width:5.76597in;height:0.92153in" />
+<img src="../_static/media/chapter_6/section_3/image7.png"  />
 
 6)  将"**(0, 6, 22)**"修改为"**(4, 6 , 18)**"，如下图所示：
 
-<img src="../_static/media/chapter_6/section_3/image8.png" style="width:5.76111in;height:0.35208in" />
+<img src="../_static/media/chapter_6/section_3/image8.png"  />
 
 7)  修改完成后，按下键盘的"**Esc**"键，输入指令，按下回车，保存并退出文件。
-
-<img src="../_static/media/chapter_6/section_3/image9.png" style="width:5.76181in;height:1.20694in" />
 
 8)  输入指令，并按下回车，开启玩法。即可查看修改后的玩法效果
     
@@ -139,17 +137,17 @@ python3 arm_move_IK_demo.py
 
 该程序的源代码位于： **/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_demo.py**
 
-<img src="../_static/media/chapter_6/section_3/image11.png" style="width:5.76389in;height:4.96528in" />
+<img src="../_static/media/chapter_6/section_3/image11.png"  />
 
 - #### 导入相关库
 
-<img src="../_static/media/chapter_6/section_3/image12.png" style="width:5.76389in;height:0.80972in" />
+<img src="../_static/media/chapter_6/section_3/image12.png"  />
 
 "sys"是最常用的和Python解释器交互的库；"time"是处理时间的库；"ArmIK"是处理逆运动学计算的库。
 
 如需调用功能库里的函数，可以使用代码"**功能库名.函数名（参数，参数...）**"，如：
 
-<img src="../_static/media/chapter_6/section_3/image13.png" style="width:5.76389in;height:0.19097in" />
+<img src="../_static/media/chapter_6/section_3/image13.png"  />
 
 上图所示代码的作用是调用"time"库中的sleep()函数，此函数用于延时。
 
@@ -159,13 +157,13 @@ Python中有一些内置的库，用户可以直接导入调用，如time、cv2�
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_6/section_3/image14.png" style="width:5.76389in;height:0.38333in" />
+<img src="../_static/media/chapter_6/section_3/image14.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
 - #### 控制机械臂
 
-<img src="../_static/media/chapter_6/section_3/image15.png" style="width:5.76389in;height:1.17847in" />
+<img src="../_static/media/chapter_6/section_3/image15.png"  />
 
 使用AK.setPitchRangeMoving()函数控制机械臂移动，该函数是逆运动学库中的函数，以代码"**AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500)**"为例：
 
@@ -193,7 +191,7 @@ Python中有一些内置的库，用户可以直接导入调用，如time、cv2�
 指令的输入需严格区分大小写，另外可按键盘"Tab"键进行关键词补齐。
 :::
 
-1)  启动机械臂，参考"**第1章 学前先看\第4课 远程桌面工具安装与连接**"通过VNC Viewer远程连接到树莓派系统桌面。
+1)  启动机械臂，参考"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"通过VNC Viewer远程连接到树莓派系统桌面。
 
 2)  单击系统桌面左上角的图标<img src="../_static/media/chapter_6/section_4/image1.png" style="width:0.31458in;height:0.27361in" />，或使用快捷键"**Ctrl+Alt+T**"，打开LX终端。
 
@@ -203,15 +201,11 @@ Python中有一些内置的库，用户可以直接导入调用，如time、cv2�
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-<img src="../_static/media/chapter_6/section_4/image2.png" style="width:5.76528in;height:0.37708in" />
-
 4)  输入指令，并按下回车，开启玩法。
 
 ```commandline
 python3 arm_move_IK_triaxial.py
 ```
-
-<img src="../_static/media/chapter_6/section_4/image3.png" style="width:5.76667in;height:0.42153in" />
 
 5)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
 
@@ -231,61 +225,51 @@ python3 arm_move_IK_triaxial.py
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-<img src="../_static/media/chapter_6/section_4/image2.png" style="width:5.76528in;height:0.37708in" />
-
 3)  输入指令，并按下回车，打开程序文件。
 
 ```commandline
 vim arm_move_IK_triaxial.py
 ```
 
-<img src="../_static/media/chapter_6/section_4/image4.png" style="width:5.76458in;height:0.49028in" />
-
 4)  找到下图所示代码：
 
-<img src="../_static/media/chapter_6/section_4/image5.png" style="width:5.76528in;height:1.14583in" />
+<img src="../_static/media/chapter_6/section_4/image5.png"  />
 
 5)  按下键盘上的"**I**"键，进入编辑模式。
 
-<img src="../_static/media/chapter_6/section_4/image6.png" style="width:5.76597in;height:0.92153in" />
+<img src="../_static/media/chapter_6/section_4/image6.png"  />
 
 6)  将"**1000**"修改为"**1500**"，如下图所示：
 
-<img src="../_static/media/chapter_6/section_4/image7.png" style="width:5.75972in;height:1.24861in" />
+<img src="../_static/media/chapter_6/section_4/image7.png"  />
 
 7)  修改完成后，按下键盘的"**Esc**"键，输入指令，按下回车，保存并退出文件。
 
-:::{Note}
+```commandline
 :wq
-:::
-
-<img src="../_static/media/chapter_6/section_4/image8.png" style="width:5.76181in;height:1.20694in" />
+```
 
 8)  输入指令，并按下回车，开启玩法。即可查看修改后的玩法效果。
 
-:::{Note}
+```commandline
 python3 arm_move_IK_triaxial.py
-:::
-
-<img src="../_static/media/chapter_6/section_4/image3.png" style="width:5.76667in;height:0.42153in" />
+```
 
 ### 4.5 代码分析
 
-该程序的源代码位于：
+该程序的源代码位于：**/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_triaxial.py**
 
-**/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_triaxial.py**
-
-<img src="../_static/media/chapter_6/section_4/image9.png" style="width:5.76042in;height:5.61806in" />
+<img src="../_static/media/chapter_6/section_4/image9.png"  />
 
 - #### 导入相关库
 
-<img src="../_static/media/chapter_6/section_4/image10.png" style="width:5.7625in;height:0.79167in" />
+<img src="../_static/media/chapter_6/section_4/image10.png"  />
 
 "sys"是最常用的和Python解释器交互的库；"time"是处理时间的库；"ArmIK"是处理逆运动学计算的库。
 
 如需调用功能库里的函数，可以使用代码"**功能库名.函数名（参数，参数...）**"，如：
 
-<img src="../_static/media/chapter_6/section_4/image11.png" style="width:5.76389in;height:0.19097in" />
+<img src="../_static/media/chapter_6/section_4/image11.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数。sleep()的作用是延时。
 
@@ -297,13 +281,13 @@ Python中有一些内置的库，用户可以直接导入调用，如time、cv2�
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_6/section_4/image12.png" style="width:5.76389in;height:0.38333in" />
+<img src="../_static/media/chapter_6/section_4/image12.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
 - #### 控制机械臂
 
-<img src="../_static/media/chapter_6/section_4/image13.png" style="width:5.76389in;height:2.19514in" />
+<img src="../_static/media/chapter_6/section_4/image13.png"  />
 
 使用AK.setPitchRangeMoving()函数控制机械臂移动，该函数是逆运动学库中的函数，以代码"**AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500)**"为例：
 

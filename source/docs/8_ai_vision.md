@@ -8,7 +8,7 @@
 
 颜色识别的实现分为颜色识别和识别后的执行反馈两部分。
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往教程资料中 "**第7章 OpenCV基础课程**"进行详细学习)。
+首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往教程资料中 "**[OpenCV基础课程]()**"进行详细学习)。
 
 接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
 
@@ -30,9 +30,9 @@
 指令输入需严格区分大小写及空格，关键字可以使用"Tab"键进行补齐。
 :::
 
-1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_1/image3.png" style="width:5.75486in;height:3.24722in" />
+<img src="../_static/media/chapter_8/section_1/image3.png"  />
 
 2)  点击系统桌面左上角的图标<img src="../_static/media/chapter_8/section_1/image5.png" style="width:0.31458in;height:0.27361in" />，或按下快捷键"**Ctrl+Alt+T**"打开LX终端。
 
@@ -63,6 +63,8 @@ python3 color_recognition.py
 
 ### 1.4 功能延伸
 
+<p id="anchor_1_4_1"></p>
+
 - #### 1.4.1 更换默认识别颜色
 
 颜色识别程序内置了三种颜色：红色、绿色以及蓝色，其中默认识别到红色，蜂鸣器发出滴滴响声，并在回传画面中圈出，打印 "Color：red"。
@@ -83,27 +85,25 @@ sudo vim color_recognition.py
 
 3)  按下键盘上的"**i**"键，进入到编辑模式。
 
-<img src="../_static/media/chapter_8/section_1/image13.png" style="width:5.76528in;height:2.13611in" />
+<img src="../_static/media/chapter_8/section_1/image13.png"  />
 
 4)  找到下图红框代码。
 
-<img src="../_static/media/chapter_8/section_1/image15.png" style="width:5.76389in;height:2.97639in" />
+<img src="../_static/media/chapter_8/section_1/image15.png"  />
 
 5)  将颜色参数修改为下图所示。
 
-<img src="../_static/media/chapter_8/section_1/image18.png" style="width:5.76597in;height:1.91389in" />
+<img src="../_static/media/chapter_8/section_1/image18.png"  />
 
 6)  保存修改的内容。按下"**Esc**"键，然后依次输入"**:wq**"（注意wq前为冒号：），回车即可保存并退出。
 
-<img src="../_static/media/chapter_8/section_1/image19.png" style="width:5.76597in;height:1.81597in" />
+<img src="../_static/media/chapter_8/section_1/image19.png"  />
 
 7)  输入开启颜色识别玩法的指令，按下回车。
 
 ```commandline
 python3 color_recognition.py
 ```
-
-<img src="../_static/media/chapter_8/section_1/image9.png" style="width:5.76528in;height:0.97361in" />
 
 <p id="anchor_1_4_2"></p>
 
@@ -113,29 +113,29 @@ python3 color_recognition.py
 
 1.  双击系统桌面上位机图标，然后弹出的提示框内直接选择"**执行**"即可。
 
-<img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="9" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image23.jpeg" style="width:5.76806in;height:1.0125in" alt="10" />
+<img src="../_static/media/chapter_8/section_1/image23.jpeg"  alt="loading" />
 
 2.  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
 
-<img src="../_static/media/chapter_8/section_1/image24.jpeg" style="width:5.76806in;height:3.06736in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_1/image24.jpeg"  alt="loading" />
 
 3.  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
 
-<img src="../_static/media/chapter_8/section_1/image25.jpeg" style="width:5.76389in;height:3.06458in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_1/image25.jpeg"  alt="loading" />
 
 4.  然后点击颜色选框的下拉按钮，选择"**purple**"。
 
-<img src="../_static/media/chapter_8/section_1/image26.jpeg" style="width:5.76389in;height:3.07708in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\22.jpg22" />
+<img src="../_static/media/chapter_8/section_1/image26.jpeg"  alt="loading" />
 
 5.  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
 
-<img src="../_static/media/chapter_8/section_1/image27.jpeg" style="width:5.76389in;height:3.06597in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\23.jpg23" />
+<img src="../_static/media/chapter_8/section_1/image27.jpeg"  alt="loading" />
 
 6.  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
 
-<img src="../_static/media/chapter_8/section_1/image28.jpeg" style="width:5.76389in;height:3.05in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\24.jpg24" />
+<img src="../_static/media/chapter_8/section_1/image28.jpeg"  alt="loading" />
 
 7.  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入进入到程序代码的目录。
 
@@ -151,13 +151,13 @@ sudo vim lab_config.yaml
 
 9.  打开颜色阈值程序文件后，即可查看紫色阈值参数。
 
-<img src="../_static/media/chapter_8/section_1/image33.jpeg" style="width:5.75972in;height:2.02292in" alt="26" />
+<img src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
 
-10. 再按照"**4.1 更换默认识别颜色**"1—2步骤，打开程序文件并按下"i"键进入编辑模式。
+10. 再按照"**[更换默认识别颜色](#anchor_1_4_1)**"1—2步骤，打开程序文件并按下"i"键进入编辑模式。
 
 11. 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_1/image34.png" style="width:5.76597in;height:2.38403in" />
+<img src="../_static/media/chapter_8/section_1/image34.png"  />
 
 12. 手动输入添加"**’purple’: (255, 255, 114),**"和"**’purple’**"，如下图所示：
 
@@ -167,16 +167,14 @@ sudo vim lab_config.yaml
 
 13. 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_1/image40.png" style="width:5.76458in;height:2.22083in" />
+<img src="../_static/media/chapter_8/section_1/image40.png"  />
 
 14. 手动输入添加框中内容，如下图所示：
 
-<img src="../_static/media/chapter_8/section_1/image42.png" style="width:5.76458in;height:2.11806in" />
+<img src="../_static/media/chapter_8/section_1/image42.png"  />
 
 
 15. 保存修改的内容。按下"**Esc**"键，然后依次输入"**:wq**"（注意wq前为冒号：），回车即可保存并退出。
-
-<img src="../_static/media/chapter_8/section_1/image19.png" style="width:5.76597in;height:1.81597in" />
 
 16. 参照"**[1.2 玩法开启及关闭步骤](#anchor_1_2)**"再次启动该玩法，将紫色物品放置到摄像头前，可在回传画面中看到将紫色圈出。用户也可参照"**4.1 更换默认识别颜色**"将默认识别颜色改为紫色。
 
@@ -188,13 +186,15 @@ sudo vim lab_config.yaml
 
 根据实现的效果，梳理程序的过程逻辑，如下图所示：
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image63.png" alt="未命名文件 (1)" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image63.png" alt="loading" />
 
 - #### 1.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_1/image64.png" style="width:5.76667in;height:1.45833in" />
+<img src="../_static/media/chapter_8/section_1/image64.png"  />
 
-导入opencv、时间、数学、线程相关的库。我们如果想要调用功能库里的函数，就可以使用"功能库名+函数名（参数，参数...）"如：<img src="../_static/media/chapter_8/section_1/image66.png" style="width:5.7625in;height:0.22639in" />
+导入opencv、时间、数学、线程相关的库。我们如果想要调用功能库里的函数，就可以使用"功能库名+函数名（参数，参数...）"如：
+
+<img src="../_static/media/chapter_8/section_1/image66.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -205,11 +205,11 @@ sudo vim lab_config.yaml
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_1/image69.png" style="width:5.7625in;height:0.60764in" />
+<img src="../_static/media/chapter_8/section_1/image69.png"  />
 
 **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_1/image71.png" style="width:5.76458in;height:0.19375in" />
+<img src="../_static/media/chapter_8/section_1/image71.png"  />
 
 当玩法启动时，获取视频流并存储在"cap"中。
 
@@ -217,17 +217,17 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，调用run()函数进行图像处理。
 
-<img src="../_static/media/chapter_8/section_1/image73.png" style="width:5.76528in;height:0.56389in" />
+<img src="../_static/media/chapter_8/section_1/image73.png"  />
 
 1)  函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
 2)  函数run()进行图像处理。
 
-<img src="../_static/media/chapter_8/section_1/image75.png" style="width:5.76389in;height:2.20278in" />
+<img src="../_static/media/chapter_8/section_1/image75.png"  />
 
 - 对图片大小进行缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_1/image77.png" style="width:5.76389in;height:0.17431in" />
+<img src="../_static/media/chapter_8/section_1/image77.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -241,7 +241,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_1/image79.png" style="width:5.76042in;height:0.17778in" />
+<img src="../_static/media/chapter_8/section_1/image79.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -251,7 +251,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_1/image81.png" style="width:5.76806in;height:0.18194in" />
+<img src="../_static/media/chapter_8/section_1/image81.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -261,7 +261,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_1/image83.png" style="width:5.76111in;height:1.03194in" />
+<img src="../_static/media/chapter_8/section_1/image83.png"  />
 
 第一个参数"**frame_lab**"是输入图像；
 
@@ -271,7 +271,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
 
-<img src="../_static/media/chapter_8/section_1/image85.png" style="width:5.75903in;height:0.55347in" />
+<img src="../_static/media/chapter_8/section_1/image85.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -285,7 +285,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_1/image88.png" style="width:5.76597in;height:0.30139in" />
+<img src="../_static/media/chapter_8/section_1/image88.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -295,15 +295,15 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_1/image89.png" style="width:5.75972in;height:1.07917in" />
+<img src="../_static/media/chapter_8/section_1/image89.png"  />
 
 - 通过判断语句得到图像中面积最大的颜色。
 
-<img src="../_static/media/chapter_8/section_1/image91.png" style="width:5.7625in;height:4.83958in" />
+<img src="../_static/media/chapter_8/section_1/image91.png"  />
 
 **显示回传画面**
 
-<img src="../_static/media/chapter_8/section_1/image93.png" style="width:5.76111in;height:0.81389in" />
+<img src="../_static/media/chapter_8/section_1/image93.png"  />
 
 函数cv2.resize()的作用是把处理好的图像缩放到合适的大小。
 
@@ -339,9 +339,9 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 指令输入需严格区分大小写及空格。
 :::
 
-1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_2/image4.png" style="width:5.76111in;height:3.24444in" />
+<img src="../_static/media/chapter_8/section_2/image4.png"  />
 
 2)  输入玩法程序目录所在的指令，并按下回车。
 
@@ -393,7 +393,7 @@ sudo vim color_detect.py
 
 3)  找到下图所示代码：
 
-<img src="../_static/media/chapter_8/section_2/image8.png" style="width:5.76597in;height:2.06042in" />
+<img src="../_static/media/chapter_8/section_2/image8.png"  />
 
 :::{Note}
 在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
@@ -401,11 +401,11 @@ sudo vim color_detect.py
 
 4)  按下键盘上的"**i**"键，进入到编辑模式。
 
-<img src="../_static/media/chapter_8/section_2/image9.png" style="width:5.76597in;height:3.66389in" />
+<img src="../_static/media/chapter_8/section_2/image9.png"  />
 
 5)  将"**detect_color == 'red'**"中的"red"换成"**green**"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image10.png" style="width:5.76597in;height:2.45208in" />
+<img src="../_static/media/chapter_8/section_2/image10.png"  />
 
 6)  接下来，保存我们修改的内容。按下"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
 
@@ -413,7 +413,7 @@ sudo vim color_detect.py
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_2/image11.png" style="width:5.76597in;height:3.69792in" />
+<img src="../_static/media/chapter_8/section_2/image11.png"  />
 
 7)  再次输入指令，按下回车，即可开启颜色识别的玩法。
 
@@ -421,7 +421,7 @@ sudo vim color_detect.py
 python3 color_detect.py
 ```
 
-<img src="../_static/media/chapter_8/section_2/image12.png" style="width:5.76597in;height:1.86806in" />
+<img src="../_static/media/chapter_8/section_2/image12.png"  />
 
 - ### 2.4.2 增加新的识别颜色
 
@@ -429,27 +429,27 @@ python3 color_detect.py
 
 1)  双击系统桌面<img src="../_static/media/chapter_8/section_2/image13.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
 
-<img src="../_static/media/chapter_8/section_2/image14.png" style="width:4.52083in;height:1.33333in" />
+<img src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
 
 2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
 
-<img src="../_static/media/chapter_8/section_2/image15.jpeg" style="width:5.76389in;height:3.06528in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_2/image15.jpeg"  alt="loading" />
 
 3)  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
 
-<img src="../_static/media/chapter_8/section_2/image16.jpeg" style="width:5.76389in;height:3.06458in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_2/image16.jpeg"  alt="loading" />
 
 4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
 
-<img src="../_static/media/chapter_8/section_2/image17.jpeg" style="width:5.76389in;height:3.07708in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\22.jpg22" />
+<img src="../_static/media/chapter_8/section_2/image17.jpeg"  alt="loading" />
 
 5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
 
-<img src="../_static/media/chapter_8/section_2/image18.jpeg" style="width:5.76389in;height:3.06597in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\23.jpg23" />
+<img src="../_static/media/chapter_8/section_2/image18.jpeg"  alt="loading" />
 
 6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
 
-<img src="../_static/media/chapter_8/section_2/image19.jpeg" style="width:5.76389in;height:3.05in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\24.jpg24" />
+<img src="../_static/media/chapter_8/section_2/image19.jpeg"  alt="loading" />
 
 7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
 
@@ -465,56 +465,53 @@ sudo vim lab_config.yaml
 
 9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
 
-<img src="../_static/media/chapter_8/section_2/image22.jpeg" style="width:5.75972in;height:2.02292in" alt="26" />
+<img src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
 
 10) 再按照"[2.4 功能延伸\ 更换默认识别颜色](#anchor_2_4_1)"1—2步骤，打开程序文件并按下"i"键进入编辑模式。
 
 11) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_2/image24.png" style="width:5.76528in;height:3.7in" />
+<img src="../_static/media/chapter_8/section_2/image24.png"  />
 
 12) 手动输入添加"**'purple': (128, 0, 128)**"和"**'purple'"（ (128, 0, 128)** 为紫色的RGB值，此处需要调换RGB的顺序为BGR；因此，紫色的数值还是（128, 0,128），颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）。
 
 如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image25.png" style="width:5.76458in;height:1.29306in" />
+<img src="../_static/media/chapter_8/section_2/image25.png"  />
 
-<img src="../_static/media/chapter_8/section_2/image26.png" style="width:5.76389in;height:1.97778in" />
+<img src="../_static/media/chapter_8/section_2/image26.png"  />
 
 13) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_2/image27.png" style="width:5.76597in;height:2.95694in" />
+<img src="../_static/media/chapter_8/section_2/image27.png"  />
 
 14) 手动输入添加框中内容，设置扩展板上的灯，亮紫色。（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image28.png" style="width:5.76389in;height:2.75903in" />
+<img src="../_static/media/chapter_8/section_2/image28.png"  />
 
 15) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_2/image29.png" style="width:5.76597in;height:2.08611in" />
+<img src="../_static/media/chapter_8/section_2/image29.png"  />
 
 16) 手动输入添加框中内容，紫色面积最大时，令color=4。如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image30.png" style="width:5.76528in;height:2.17778in" />
+<img src="../_static/media/chapter_8/section_2/image30.png"  />
 
 17) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_2/image31.png" style="width:5.76597in;height:2.93333in" />
+<img src="../_static/media/chapter_8/section_2/image31.png"  />
 
 18) 手动输入添加框中内容，如下图所示：
 
-<img src="../_static/media/chapter_8/section_2/image32.png" style="width:5.76597in;height:3.01181in" />
+<img src="../_static/media/chapter_8/section_2/image32.png"  />
 
 19) 保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
-
 
 ```commandline
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_2/image33.png" style="width:5.76528in;height:3.6375in" />
-
-20) 参照本文档"[22 玩法开启及关闭步骤](#anchor_2_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂将执行"摇头"动作。如果需要执行"**点头**"动作，参照"[2.4 功能延伸\ 更换默认识别颜色](#anchor_2_4_1))"将默认识别颜色改为紫色即可。
+20) 参照本文档"[2.2 玩法开启及关闭步骤](#anchor_2_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂将执行"摇头"动作。如果需要执行"**点头**"动作，参照"[2.4 功能延伸\ 更换默认识别颜色](#anchor_2_4_1))"将默认识别颜色改为紫色即可。
 
 21) 如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
 
@@ -528,11 +525,11 @@ sudo vim lab_config.yaml
 
 - #### 2.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_2/image35.png" style="width:5.76528in;height:0.97361in" />
+<img src="../_static/media/chapter_8/section_2/image35.png"  />
 
-<img src="../_static/media/chapter_8/section_2/image36.png" style="width:5.76736in;height:0.71181in" />
+<img src="../_static/media/chapter_8/section_2/image36.png"  />
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：<img src="../_static/media/chapter_8/section_2/image37.png" style="width:5.76389in;height:0.20764in" />
+导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：<img src="../_static/media/chapter_8/section_2/image37.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -542,7 +539,7 @@ sudo vim lab_config.yaml
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_8/section_2/image38.png" style="width:5.76389in;height:0.57986in" />
+<img src="../_static/media/chapter_8/section_2/image38.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
@@ -550,11 +547,11 @@ sudo vim lab_config.yaml
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_2/image39.png" style="width:5.76597in;height:1.49028in" />
+<img src="../_static/media/chapter_8/section_2/image39.png"  />
 
 1. **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_2/image40.png" style="width:5.76111in;height:1.85139in" />
+<img src="../_static/media/chapter_8/section_2/image40.png"  />
 
 打开摄像头图像并保存到"**cap**"。
 
@@ -566,7 +563,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，"**ret**"的值为True。
 
-<img src="../_static/media/chapter_8/section_2/image41.png" style="width:5.76389in;height:0.52917in" />
+<img src="../_static/media/chapter_8/section_2/image41.png"  />
 
 函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
@@ -574,7 +571,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 3. **窗口显示图像**
 
-<img src="../_static/media/chapter_8/section_2/image42.png" style="width:5.76667in;height:0.73403in" />
+<img src="../_static/media/chapter_8/section_2/image42.png"  />
 
 函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
 
@@ -586,13 +583,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - #### 2.5.4 图像处理分析
 
-<img src="../_static/media/chapter_8/section_2/image43.png" style="width:5.76528in;height:3.64514in" />
+<img src="../_static/media/chapter_8/section_2/image43.png"  />
 
 1. **图像缩放处理**
 
 对图片大小缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_2/image44.png" style="width:5.7625in;height:0.21875in" />
+<img src="../_static/media/chapter_8/section_2/image44.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -606,7 +603,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_2/image45.png" style="width:5.76528in;height:0.1875in" />
+<img src="../_static/media/chapter_8/section_2/image45.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -618,7 +615,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_2/image46.png" style="width:5.76389in;height:0.28472in" />
+<img src="../_static/media/chapter_8/section_2/image46.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -630,7 +627,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_2/image47.png" style="width:5.76319in;height:0.64861in" />
+<img src="../_static/media/chapter_8/section_2/image47.png"  />
 
 第一个参数"**frame_lab**"是输入图像；
 
@@ -642,7 +639,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
 
-<img src="../_static/media/chapter_8/section_2/image48.png" style="width:5.76111in;height:0.17292in" />
+<img src="../_static/media/chapter_8/section_2/image48.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -656,7 +653,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_2/image49.png" style="width:5.76389in;height:0.10833in" />
+<img src="../_static/media/chapter_8/section_2/image49.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -666,19 +663,19 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_2/image50.png" style="width:5.75833in;height:0.58472in" />
+<img src="../_static/media/chapter_8/section_2/image50.png"  />
 
 7. **获取位置信息**
 
 采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。
 
-<img src="../_static/media/chapter_8/section_2/image51.png" style="width:5.76528in;height:0.56944in" />
+<img src="../_static/media/chapter_8/section_2/image51.png"  />
 
 8. **判断最大颜色**
 
 通过判断语句得到图像中面积最大的颜色。
 
-<img src="../_static/media/chapter_8/section_2/image52.png" style="width:5.76042in;height:3.47847in" />
+<img src="../_static/media/chapter_8/section_2/image52.png"  />
 
 - #### 2.5.5 机械臂执行反馈
 
@@ -686,17 +683,17 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
 
-<img src="../_static/media/chapter_8/section_2/image53.png" style="width:5.76042in;height:3.66528in" />
+<img src="../_static/media/chapter_8/section_2/image53.png"  />
 
 1. **点亮RGB灯**
 
 根据识别的颜色，RGB灯颜色与识别的颜色一致。
 
-<img src="../_static/media/chapter_8/section_2/image54.png" style="width:5.76667in;height:1.36528in" />
+<img src="../_static/media/chapter_8/section_2/image54.png"  />
 
 2. **驱动蜂鸣器**
 
-<img src="../_static/media/chapter_8/section_2/image55.png" style="width:5.76181in;height:0.14931in" />
+<img src="../_static/media/chapter_8/section_2/image55.png"  />
 
 board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
 
@@ -704,7 +701,7 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 判断识别的颜色与设定颜色是否一致，执行点头或者摇头的动作。
 
-<img src="../_static/media/chapter_8/section_2/image56.png" style="width:5.76736in;height:2.80833in" />
+<img src="../_static/media/chapter_8/section_2/image56.png"  />
 
 使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
 
@@ -748,9 +745,9 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 指令的输入需严格区分大小写，另外可按键盘"**Tab**"键进行关键词补齐。
 :::
 
-1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\ 4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_3/image4.png" style="width:5.76111in;height:3.24444in" />
+<img src="../_static/media/chapter_8/section_3/image4.png"  />
 
 2)  输入玩法程序目录所在的指令，按下回车。
 
@@ -770,7 +767,7 @@ python3 position_detection.py
 
 回传画面中圈出红色物品，并在终端打印物中心坐标的X、Y的值。
 
-<img src="../_static/media/chapter_8/section_3/image7.png" style="width:3.53958in;height:3.17361in" />
+<img class="common_img" src="../_static/media/chapter_8/section_3/image7.png"  />
 
 ### 3.4 修改检测颜色
 
@@ -788,13 +785,11 @@ cd ArmPi_mini/functions/
 sudo vim position_detection.py
 ```
 
-<img src="../_static/media/chapter_8/section_3/image8.png" style="width:5.76319in;height:1.73403in" />
-
 3)  找到下图所示代码：
 
-<img src="../_static/media/chapter_8/section_3/image9.png" style="width:5.7625in;height:3.67569in" />
+<img src="../_static/media/chapter_8/section_3/image9.png"  />
 
-<img src="../_static/media/chapter_8/section_3/image10.png" style="width:5.7625in;height:3.025in" />
+<img src="../_static/media/chapter_8/section_3/image10.png"  />
 
 :::{Note}
 在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
@@ -802,13 +797,13 @@ sudo vim position_detection.py
 
 4)  按一下键盘的"**i**"键，当出现"**Insert**"字样即表示进入编辑模式。
 
-<img src="../_static/media/chapter_8/section_3/image11.png" style="width:5.7625in;height:3.67014in" />
+<img src="../_static/media/chapter_8/section_3/image11.png"  />
 
 5)  将"**\_\_target_color = ('red',)**"中的"**red**"都修改为"**blue**"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_3/image12.png" style="width:5.7625in;height:1.52778in" />
+<img src="../_static/media/chapter_8/section_3/image12.png"  />
 
-<img src="../_static/media/chapter_8/section_3/image13.png" style="width:5.7625in;height:3.10833in" />
+<img src="../_static/media/chapter_8/section_3/image13.png"  />
 
 :::{Note}
 这里修改的颜色必须是机械臂内已经有的颜色。
@@ -820,15 +815,11 @@ sudo vim position_detection.py
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_3/image14.png" style="width:5.76181in;height:1.3875in" />
-
 7)  再次输入指令，按下回车，即可开启颜色识别的玩法。
 
 ```commandline
 python3 position_detection.py
 ```
-
-<img src="../_static/media/chapter_8/section_3/image15.png" style="width:5.7625in;height:1.98125in" />
 
 ### 3.5 代码分析
 
@@ -836,15 +827,17 @@ python3 position_detection.py
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
-<img src="../_static/media/chapter_8/section_3/image16.png" style="width:4.47917in;height:3.25in" />
+<img class="common_img" src="../_static/media/chapter_8/section_3/image16.png" style="width:4.47917in;height:3.25in" />
 
 - #### 3.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_3/image17.png" style="width:5.76389in;height:1.04653in" />
+<img src="../_static/media/chapter_8/section_3/image17.png"  />
 
-<img src="../_static/media/chapter_8/section_3/image18.png" style="width:5.76597in;height:0.91458in" />
+<img src="../_static/media/chapter_8/section_3/image18.png"  />
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：<img src="../_static/media/chapter_8/section_3/image19.png" style="width:5.76389in;height:0.26736in" />
+导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
+
+<img src="../_static/media/chapter_8/section_3/image19.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -854,7 +847,7 @@ python3 position_detection.py
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_8/section_3/image20.png" style="width:5.76319in;height:0.49444in" />
+<img src="../_static/media/chapter_8/section_3/image20.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
@@ -862,11 +855,11 @@ python3 position_detection.py
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_3/image21.png" style="width:5.76667in;height:1.25903in" />
+<img src="../_static/media/chapter_8/section_3/image21.png"  />
 
 1. **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_3/image22.png" style="width:5.76319in;height:1.88542in" />
+<img src="../_static/media/chapter_8/section_3/image22.png"  />
 
 打开摄像头图像并保存到"**cap**"。
 
@@ -878,7 +871,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，"**ret**"的值为True。
 
-<img src="../_static/media/chapter_8/section_3/image23.png" style="width:5.76597in;height:0.49306in" />
+<img src="../_static/media/chapter_8/section_3/image23.png"  />
 
 函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
@@ -886,7 +879,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 3. **窗口显示图像**
 
-<img src="../_static/media/chapter_8/section_3/image24.png" style="width:5.76389in;height:0.82014in" />
+<img src="../_static/media/chapter_8/section_3/image24.png"  />
 
 函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
 
@@ -898,13 +891,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - #### 3.5.4 图像处理
 
-<img src="../_static/media/chapter_8/section_3/image25.png" style="width:5.76111in;height:2.49514in" />
+<img src="../_static/media/chapter_8/section_3/image25.png"  />
 
 1. **图像缩放处理**
 
 对图片大小缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_3/image26.png" style="width:5.69792in;height:0.21875in" />
+<img src="../_static/media/chapter_8/section_3/image26.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -916,7 +909,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_3/image27.png" style="width:5.76181in;height:0.17361in" />
+<img src="../_static/media/chapter_8/section_3/image27.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -928,7 +921,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_3/image28.png" style="width:5.76181in;height:0.15903in" />
+<img src="../_static/media/chapter_8/section_3/image28.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -940,7 +933,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_3/image29.png" style="width:5.76389in;height:0.60278in" />
+<img src="../_static/media/chapter_8/section_3/image29.png"  />
 
 第一个参数"**frame_lab**"是输入图像；
 
@@ -952,7 +945,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
 
-<img src="../_static/media/chapter_8/section_3/image30.png" style="width:5.76181in;height:0.18125in" />
+<img src="../_static/media/chapter_8/section_3/image30.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -966,7 +959,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_3/image31.png" style="width:5.76042in;height:0.11042in" />
+<img src="../_static/media/chapter_8/section_3/image31.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -976,7 +969,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_3/image32.png" style="width:5.76111in;height:0.23403in" />
+<img src="../_static/media/chapter_8/section_3/image32.png"  />
 
 7. **获取位置信息**
 
@@ -984,7 +977,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 前面将图像下进行了缩放，这里使用Misc.map()把中心坐标和半径映射到实际大小。
 
-<img src="../_static/media/chapter_8/section_3/image33.png" style="width:5.75625in;height:0.675in" />
+<img src="../_static/media/chapter_8/section_3/image33.png"  />
 
 最后在终端和画面显示中心坐标。
 
@@ -994,7 +987,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 本节课可以通过摄像头进行颜色识别并读取目标位置，控制机械臂跟随目标移动而移动。实现可分为颜色识别和追踪两部分。
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**第7章 OpenCV视觉基础课程**"进行详细学习)。
+首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程]()**"进行详细学习)。
 
 接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
 
@@ -1016,9 +1009,9 @@ PID算法是应用最为广泛的一种自动控制器。在过程控制中，�
 指令的输入需严格区分大小写，另外可按键盘"**Tab**"键进行关键词补齐。
 :::
 
-1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_4/image4.png" style="width:5.76111in;height:3.24444in" />
+<img src="../_static/media/chapter_8/section_4/image4.png"  />
 
 2)  输入玩法程序目录所在的指令，按下回车。
 
@@ -1046,21 +1039,21 @@ python3 color_tracking.py
 
 1)  双击系统桌面<img src="../_static/media/chapter_8/section_4/image7.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
 
-<img src="../_static/media/chapter_8/section_4/image8.png" style="width:5.76389in;height:1.7in" />
+<img src="../_static/media/chapter_8/section_4/image8.png"  />
 
 2)  进入界面后，点击"**摄像头工具**"。
 
-<img src="../_static/media/chapter_8/section_4/image9.png" style="width:5.76458in;height:3.13472in" alt="10" />
+<img src="../_static/media/chapter_8/section_4/image9.png"  alt="loading" />
 
 3)  再点击"**连接**"按钮，连接成功后，在界面右下角的颜色选项栏中选择"**red**"。
 
-<img src="../_static/media/chapter_8/section_4/image10.jpeg" style="width:5.76806in;height:3.07292in" alt="G:\gongzuo\MasterPi\图片素材\5.目标追踪\1.jpg1" />
+<img src="../_static/media/chapter_8/section_4/image10.jpeg"  alt="loading" />
 
 4)  若在弹出的界面中未出现回传画面，说明摄像头未连接成功，需检查一下摄像头连接线是否连接好。
 
 下图界面右侧是实时回传画面，左侧是需要被采集的颜色。将摄像头对准红色色块，然后拖动下方的六个滑杆，使得左侧画面中红色色块的区域全部变为白色，其它区域为黑色。接着点击"**保存**"按钮保存数据。
 
-<img src="../_static/media/chapter_8/section_4/image11.jpeg" style="width:5.76806in;height:3.08333in" alt="G:\gongzuo\MasterPi\图片素材\5.目标追踪\2.jpg2" />
+<img src="../_static/media/chapter_8/section_4/image11.jpeg"  alt="loading" />
 
 <span id="anchor_4_4_2" class="anchor"></span>
 
@@ -1070,23 +1063,21 @@ python3 color_tracking.py
 
 1)  如需修改追踪的颜色，输入指令，按下回车，切换至源码程序路径下。
 
-:::{Note}
+```commandline
 cd MasterPi/functions/
-:::
+```
 
 2)  然后输入指令，按下回车，打开程序文件。
 
-:::{Note}
+```commandline
 sudo vim color_tracking.py
-:::
-
-<img src="../_static/media/chapter_8/section_4/image12.png" style="width:5.76597in;height:1.51667in" />
+```
 
 3)  找到下图所示代码：
 
-<img src="../_static/media/chapter_8/section_4/image13.png" style="width:5.76597in;height:3.67917in" />
+<img src="../_static/media/chapter_8/section_4/image13.png"  />
 
-<img src="../_static/media/chapter_8/section_4/image14.png" style="width:5.76597in;height:2.43681in" />
+<img src="../_static/media/chapter_8/section_4/image14.png"  />
 
 :::{Note}
 在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
@@ -1094,13 +1085,13 @@ sudo vim color_tracking.py
 
 4)  按一下键盘的"**i**"键，当出现"**Insert**"字样即表示进入编辑模式。
 
-<img src="../_static/media/chapter_8/section_4/image15.png" style="width:5.76597in;height:3.69792in" />
+<img src="../_static/media/chapter_8/section_4/image15.png"  />
 
 5)  将"**\_\_target_color = ('red',)**"中的"**red**"都修改为"**blue**"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_4/image16.png" style="width:5.76597in;height:2.08403in" />
+<img src="../_static/media/chapter_8/section_4/image16.png"  />
 
-<img src="../_static/media/chapter_8/section_4/image17.png" style="width:5.76528in;height:1.37431in" />
+<img src="../_static/media/chapter_8/section_4/image17.png"  />
 
 :::{Note}
 这里修改的颜色必须是下图颜色选项栏里出现的颜色，如想修改成其他颜色，可参照本文档"[4.4 功能延伸\ 增加新的识别颜色](#anchor_4_4_3)"步骤添加新的识别颜色。
@@ -1108,9 +1099,9 @@ sudo vim color_tracking.py
 
 6)  修改完成后，按下键盘上的"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车，即可保存并退出。
 
-    **:wq**
-
-<img src="../_static/media/chapter_8/section_4/image18.png" style="width:5.76597in;height:2.06597in" />
+```commandline
+:wq
+```
 
 <span id="anchor_4_4_3" class="anchor"></span>
 
@@ -1120,30 +1111,30 @@ sudo vim color_tracking.py
 
 1)  双击系统桌面上位机图标，然后弹出的提示框内直接选择"**Execute**"即可。
 
-<figure>
-<img src="../_static/media/chapter_8/section_4/image8.png" style="width:5.76389in;height:1.7in" />
-<figcaption aria-hidden="true"><p><img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" /></p></figcaption>
-</figure>
+<img src="../_static/media/chapter_8/section_4/image8.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />
+
 
 2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
 
-<img src="../_static/media/chapter_8/section_4/image20.jpeg" style="width:5.76389in;height:3.06528in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_4/image20.jpeg"  alt="loading" />
 
 3)  点击"**新增**"，然后为新增颜色命名（这里以"purple"为例），再点击"**OK**"。
 
-<img src="../_static/media/chapter_8/section_4/image21.jpeg" style="width:5.76389in;height:3.06458in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_4/image21.jpeg"  alt="loading" />
 
 4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
 
-<img src="../_static/media/chapter_8/section_4/image22.jpeg" style="width:5.76389in;height:3.07708in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\22.jpg22" />
+<img src="../_static/media/chapter_8/section_4/image22.jpeg"  alt="loading" />
 
 5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
 
-<img src="../_static/media/chapter_8/section_4/image23.jpeg" style="width:5.76389in;height:3.06597in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\23.jpg23" />
+<img src="../_static/media/chapter_8/section_4/image23.jpeg"  alt="loading" />
 
 6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
 
-<img src="../_static/media/chapter_8/section_4/image24.jpeg" style="width:5.76389in;height:3.05in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\24.jpg24" />
+<img src="../_static/media/chapter_8/section_4/image24.jpeg"  alt="loading" />
 
 7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
 
@@ -1159,41 +1150,41 @@ sudo vim lab_config.yaml
 
 9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
 
-<img src="../_static/media/chapter_8/section_4/image27.jpeg" style="width:5.75972in;height:2.02292in" alt="26" />
+<img src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
 
 10) 再按照本文档"[4.4 功能延伸\ 修改追踪颜色](#anchor_4_4_2)"1—2步骤，打开程序文件并按下"**i**"键进入编辑模式。
 
 11) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_4/image29.png" style="width:5.76528in;height:2.88681in" />
+<img src="../_static/media/chapter_8/section_4/image29.png"  />
 
 12) 手动输入添加"**'purple’: (255, 255, 114)**"，将"**’red’**"改为"**’purple’**"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_4/image30.png" style="width:5.7625in;height:3.10069in" />
+<img src="../_static/media/chapter_8/section_4/image30.png"  />
 
 (255, 255, 114)为第9步查看的紫色阈值参数的max
 
 13) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_4/image31.png" style="width:5.76181in;height:3.25069in" />
+<img src="../_static/media/chapter_8/section_4/image31.png"  />
 
 14) 手动输入添加框中内容，（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
 
-<img src="../_static/media/chapter_8/section_4/image32.png" style="width:5.7625in;height:1.67639in" />
+<img src="../_static/media/chapter_8/section_4/image32.png"  />
 
 15) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_4/image33.png" style="width:5.76181in;height:2.17222in" />
+<img src="../_static/media/chapter_8/section_4/image33.png"  />
 
 16) 将"**’red’**"修改为"**'purple'**"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_4/image34.png" style="width:5.7625in;height:2.15972in" />
+<img src="../_static/media/chapter_8/section_4/image34.png"  />
 
 17) 保存我们修改的内容。按下"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
 
-    **:wq**
-
-<img src="../_static/media/chapter_8/section_4/image35.png" style="width:5.76597in;height:3.69792in" />
+```commandline
+:wq
+```
 
 18) 参照本文档"[4.2 玩法开启及关闭步骤](#anchor_4_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂追踪目标移动。如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
 
@@ -1203,7 +1194,7 @@ sudo vim lab_config.yaml
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
-<img src="../_static/media/chapter_8/section_4/image36.png" style="width:3.57639in;height:1.94167in" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image36.png"  />
 
 通过摄像头获取图像信息，再进行图像处理，即对图像进行二值化处理。同时为了降低干扰，令图像更平滑，对图像进行腐蚀和膨胀处理。
 
@@ -1211,13 +1202,13 @@ sudo vim lab_config.yaml
 
 - #### 4.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_4/image37.png" style="width:5.76458in;height:1.67083in" />
+<img src="../_static/media/chapter_8/section_4/image37.png"  />
 
-<img src="../_static/media/chapter_8/section_4/image38.png" style="width:5.76528in;height:0.84097in" />
+<img src="../_static/media/chapter_8/section_4/image38.png"  />
 
 导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
 
-<img src="../_static/media/chapter_8/section_4/image39.png" style="width:5.76389in;height:0.275in" />
+<img src="../_static/media/chapter_8/section_4/image39.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -1227,7 +1218,7 @@ sudo vim lab_config.yaml
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_8/section_4/image40.png" style="width:5.76389in;height:0.80069in" />
+<img src="../_static/media/chapter_8/section_4/image40.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
@@ -1235,11 +1226,11 @@ sudo vim lab_config.yaml
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_4/image41.png" style="width:5.76389in;height:1.37153in" />
+<img src="../_static/media/chapter_8/section_4/image41.png"  />
 
 1. **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_4/image42.png" style="width:5.76597in;height:1.55833in" />
+<img src="../_static/media/chapter_8/section_4/image42.png"  />
 
 打开摄像头图像并保存到"**cap**"。
 
@@ -1251,7 +1242,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，"**ret**"的值为True。
 
-<img src="../_static/media/chapter_8/section_4/image43.png" style="width:5.76181in;height:0.41667in" />
+<img src="../_static/media/chapter_8/section_4/image43.png"  />
 
 函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
@@ -1259,7 +1250,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 3. **窗口显示图像**
 
-<img src="../_static/media/chapter_8/section_4/image44.png" style="width:5.76597in;height:0.78611in" />
+<img src="../_static/media/chapter_8/section_4/image44.png"  />
 
 函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
 
@@ -1273,13 +1264,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - #### 4.5.4 图像处理分析
 
-<img src="../_static/media/chapter_8/section_4/image45.png" style="width:5.75694in;height:3.21806in" />
+<img src="../_static/media/chapter_8/section_4/image45.png"  />
 
 1. **图像缩放处理**
 
 对图片大小缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_4/image46.png" style="width:5.76528in;height:0.16806in" />
+<img src="../_static/media/chapter_8/section_4/image46.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -1293,7 +1284,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_4/image47.png" style="width:5.76319in;height:0.2in" />
+<img src="../_static/media/chapter_8/section_4/image47.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -1305,7 +1296,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_4/image48.png" style="width:5.76597in;height:0.20278in" />
+<img src="../_static/media/chapter_8/section_4/image48.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -1317,7 +1308,9 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_4/image49.png" style="width:5.76389in;height:0.59861in" /> 第一个参数"**frame_lab**"是输入图像；
+<img src="../_static/media/chapter_8/section_4/image49.png"  /> 
+
+第一个参数"**frame_lab**"是输入图像；
 
 第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
 
@@ -1327,7 +1320,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数
 
-<img src="../_static/media/chapter_8/section_4/image50.png" style="width:5.76389in;height:0.19097in" />
+<img src="../_static/media/chapter_8/section_4/image50.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -1341,7 +1334,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_4/image51.png" style="width:5.76389in;height:0.19722in" />
+<img src="../_static/media/chapter_8/section_4/image51.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -1351,13 +1344,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_4/image52.png" style="width:5.75833in;height:0.26875in" />
+<img src="../_static/media/chapter_8/section_4/image52.png"  />
 
 7. **获取位置信息**
 
 采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。
 
-<img src="../_static/media/chapter_8/section_4/image53.png" style="width:5.76667in;height:0.45764in" />
+<img src="../_static/media/chapter_8/section_4/image53.png"  />
 
 - #### 4.5.5 机械臂追踪
 
@@ -1365,11 +1358,11 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 PID算法是应用最为广泛的一种自动控制器。在过程控制中，按误差的比例（P）、积分（I）和微分（D）进行控制。
 
-<img src="../_static/media/chapter_8/section_4/image54.png" style="width:5.76319in;height:1.45208in" />
+<img src="../_static/media/chapter_8/section_4/image54.png"  />
 
 利用逆运动学求解，如果有解就控制机械臂追踪。
 
-<img src="../_static/media/chapter_8/section_4/image55.png" style="width:5.76181in;height:0.63819in" />
+<img src="../_static/media/chapter_8/section_4/image55.png"  />
 
 函数AK.setPitchRange()是逆运动学求解，以代码"**AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90)**"为例：
 
@@ -1417,9 +1410,9 @@ PID算法是应用最为广泛的一种自动控制器。在过程控制中，�
 指令的输入需严格区分大小写及空格。
 :::
 
-1)  将设备开机，并参照课程资料的"**第1章 学前先看\第4课 远程桌面工具安装与连接**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_5/image4.png" style="width:5.76111in;height:3.24444in" />
+<img src="../_static/media/chapter_8/section_5/image4.png"  />
 
 2)  输入玩法程序目录所在的指令，并按下回车。
 
@@ -1445,7 +1438,7 @@ python3 color_sorting.py
 
 机械臂坐标系如下所示（以机械臂为第一视角）：
 
-<img src="../_static/media/chapter_8/section_5/image7.png" style="width:4.07986in;height:3.90903in" alt="27.132-01" />
+<img src="../_static/media/chapter_8/section_5/image7.png"  alt="loading" />
 
 色块放置的位置与坐标参数的对应变化关系见下表：
 
@@ -1478,7 +1471,7 @@ sudo vim color_sorting.py
 
 3)  找到下图所示代码：
 
-<img src="../_static/media/chapter_8/section_5/image9.png" style="width:5.76597in;height:3.67986in" />
+<img src="../_static/media/chapter_8/section_5/image9.png"  />
 
 :::{Note}
 在键盘输入代码位置序号后，按下"**Shift+G**"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
@@ -1486,15 +1479,15 @@ sudo vim color_sorting.py
 
 4)  按下键盘上的"i"键，当界面左下角出现"插入"字样时，表示已经进入到编辑模式。
 
-<img src="../_static/media/chapter_8/section_5/image10.png" style="width:5.76597in;height:3.70278in" />
+<img src="../_static/media/chapter_8/section_5/image10.png"  />
 
 5)  在"**'red': (-11,16,2)**"中，"**-11**"是X轴参数，"**16**"是Y轴参数，"**2**"是Z轴参数。我们将"**-12**"改为"**0**"，保持Y轴和Z轴参数不变，让色块放置到前方。修改如下图所示：
 
-<img src="../_static/media/chapter_8/section_5/image11.png" style="width:5.76597in;height:1.68611in" />
+<img src="../_static/media/chapter_8/section_5/image11.png"  />
 
 6)  然后，再找到下列代码，并将其注释（在代码前面添加"#"）。
 
-<img src="../_static/media/chapter_8/section_5/image12.png" style="width:5.76597in;height:2.325in" />
+<img src="../_static/media/chapter_8/section_5/image12.png"  />
 
 7)  接下来，保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
 
@@ -1502,19 +1495,15 @@ sudo vim color_sorting.py
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_5/image13.png" style="width:5.76597in;height:1.11181in" />
-
 8)  再次输入指令，按下回车，即可开启颜色分拣的玩法。
 
 ```commandline
 python3 color_sorting.py
 ```
 
-<img src="../_static/media/chapter_8/section_5/image14.png" style="width:5.76597in;height:1.72639in" />
-
 ### 5.5 代码分析
 
-该程序的源代码位于：/home/pi/ArmPi_mini/functions/color_sorting.py
+该程序的源代码位于：**/home/pi/ArmPi_mini/functions/color_sorting.py**
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
@@ -1524,13 +1513,13 @@ python3 color_sorting.py
 
 - #### 5.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_5/image16.png" style="width:5.75903in;height:1.07292in" />
+<img src="../_static/media/chapter_8/section_5/image16.png"  />
 
-<img src="../_static/media/chapter_8/section_5/image17.png" style="width:5.76389in;height:1.03958in" />
+<img src="../_static/media/chapter_8/section_5/image17.png"  />
 
 导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
 
-<img src="../_static/media/chapter_8/section_5/image18.png" style="width:5.76389in;height:0.26806in" />
+<img src="../_static/media/chapter_8/section_5/image18.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -1540,7 +1529,7 @@ python3 color_sorting.py
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_8/section_5/image19.png" style="width:5.39583in;height:0.32292in" />
+<img src="../_static/media/chapter_8/section_5/image19.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
@@ -1548,11 +1537,11 @@ python3 color_sorting.py
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置。这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_5/image20.png" style="width:5.76667in;height:1.13611in" />
+<img src="../_static/media/chapter_8/section_5/image20.png"  />
 
 1. **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_5/image21.png" style="width:5.76181in;height:1.93472in" />
+<img src="../_static/media/chapter_8/section_5/image21.png"  />
 
 打开摄像头图像并保存到"**cap**"。
 
@@ -1564,7 +1553,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，"**ret**"的值为True。
 
-<img src="../_static/media/chapter_8/section_5/image22.png" style="width:5.76597in;height:0.48125in" />
+<img src="../_static/media/chapter_8/section_5/image22.png"  />
 
 函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
@@ -1572,7 +1561,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 3. **窗口显示图像**
 
-<img src="../_static/media/chapter_8/section_5/image23.png" style="width:5.76597in;height:1.12778in" />
+<img src="../_static/media/chapter_8/section_5/image23.png"  />
 
 
 函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
@@ -1585,13 +1574,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - #### 5.5.4 图像处理分析
 
-<img src="../_static/media/chapter_8/section_5/image24.png" style="width:5.76181in;height:3.38542in" />
+<img src="../_static/media/chapter_8/section_5/image24.png"  />
 
 1. **图像缩放处理**
 
 对图片大小缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_5/image25.png" style="width:5.76042in;height:0.24653in" />
+<img src="../_static/media/chapter_8/section_5/image25.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -1605,7 +1594,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_5/image26.png" style="width:5.76319in;height:0.19167in" />
+<img src="../_static/media/chapter_8/section_5/image26.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -1617,7 +1606,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_5/image27.png" style="width:5.76111in;height:0.15833in" />
+<img src="../_static/media/chapter_8/section_5/image27.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -1629,7 +1618,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_5/image28.png" style="width:5.76806in;height:0.64722in" />
+<img src="../_static/media/chapter_8/section_5/image28.png"  />
 
 第一个参数"**frame_lab**"是输入图像；
 
@@ -1641,7 +1630,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
 
-<img src="../_static/media/chapter_8/section_5/image29.png" style="width:5.76389in;height:0.20208in" />
+<img src="../_static/media/chapter_8/section_5/image29.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -1655,7 +1644,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_5/image30.png" style="width:5.76736in;height:0.11389in" />
+<img src="../_static/media/chapter_8/section_5/image30.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -1665,33 +1654,37 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_5/image31.png" style="width:5.76181in;height:0.55972in" />
+<img src="../_static/media/chapter_8/section_5/image31.png"  />
 
 7. **获取位置信息**
 
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<img src="../_static/media/chapter_8/section_5/image32.png" style="width:5.76111in;height:0.56042in" />
+采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<
+
+img src="../_static/media/chapter_8/section_5/image32.png"  />
 
 8. **判断最大颜色**
 
 通过判断语句得到图像中面积最大的颜色。
 
-<img src="../_static/media/chapter_8/section_5/image33.png" style="width:5.76528in;height:3.00903in" />
+<img src="../_static/media/chapter_8/section_5/image33.png"  />
 
 - #### 5.5.5 机械臂执行反馈
 
 机械臂移动函数move()作为子线程运行，当识别到颜色后，就会执行move()函数。
 
-主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。<img src="../_static/media/chapter_8/section_5/image34.png" style="width:5.76458in;height:4.02083in" />
+主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
+
+<img src="../_static/media/chapter_8/section_5/image34.png"  />
 
 1. **点亮RGB灯**
 
 根据识别的颜色，RGB灯颜色与识别的颜色一致。
 
-<img src="../_static/media/chapter_8/section_5/image35.png" style="width:5.76458in;height:1.20486in" />
+<img src="../_static/media/chapter_8/section_5/image35.png"  />
 
 2. **驱动蜂鸣器**
 
-<img src="../_static/media/chapter_8/section_5/image36.png" style="width:5.76667in;height:0.13264in" />
+<img src="../_static/media/chapter_8/section_5/image36.png"  />
 
 board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
 
@@ -1699,7 +1692,7 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 判断识别颜色，将色块夹到对应的位置。
 
-<img src="../_static/media/chapter_8/section_5/image37.png" style="width:5.75764in;height:2.95764in" />
+<img src="../_static/media/chapter_8/section_5/image37.png"  />
 
 使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
 
@@ -1729,7 +1722,7 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 本节课通过摄像头进行颜色识别，然后控制机械臂将色块夹取再叠放到指定的区域，完成码垛。整个过程包括三个部分：**识别、夹取、码垛**。
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**第7章 OpenCV视觉基础课程**"课程进行详细学习)。
+首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"课程进行详细学习)。
 
 接着通过颜色阈值对方框中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
 
@@ -1745,17 +1738,19 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 夹取和码垛都是通过逆运动学AK.setPitchRangeMoving()函数来计算目标位置处的舵机角度，再控制机械臂到目标位置。
 
-关于逆运动学的这个部分可以前往"**[机械臂逆运动学基础课程\1. 什么是逆运动学]()**"课程进行详细学习。
+关于逆运动学的这个部分可以前往"**[机械臂逆运动学基础课程\1. 什么是逆运动学](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/6_inverse_kinematics.html#id2)**"课程进行详细学习。
 
 <p id="anchor_6_2"></p>
 
 ### 6.2 玩法开启及关闭步骤
 
-<img src="../_static/media/chapter_8/section_6/image3.png" style="width:0.31528in;height:0.31528in" />指令的输入需严格区分大小写及空格。
+:::{Note}
+指令的输入需严格区分大小写及空格。
+:::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接]()**"内容，通过VNC远程连接工具连接。
+1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
 
-<img src="../_static/media/chapter_8/section_6/image4.png" style="width:5.76111in;height:3.24444in" />
+<img src="../_static/media/chapter_8/section_6/image4.png"  />
 
 2)  输入玩法程序目录所在的指令，按下回车。
 
@@ -1781,27 +1776,27 @@ python3 color_palletizing.py
 
 1)  双击系统桌面<img src="../_static/media/chapter_8/section_6/image7.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
 
-<img src="../_static/media/chapter_8/section_6/image8.png" style="width:5.76389in;height:1.7in" />
+<img src="../_static/media/chapter_8/section_6/image8.png"  />
 
 2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
 
-<img src="../_static/media/chapter_8/section_6/image9.jpeg" style="width:5.76389in;height:3.06528in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image9.jpeg"  alt="loading" />
 
 3)  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
 
-<img src="../_static/media/chapter_8/section_6/image10.jpeg" style="width:5.76389in;height:3.06458in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\17.jpg17" />
+<img src="../_static/media/chapter_8/section_6/image10.jpeg"  alt="loading" />
 
 4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
 
-<img src="../_static/media/chapter_8/section_6/image11.jpeg" style="width:5.76389in;height:3.07708in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\22.jpg22" />
+<img src="../_static/media/chapter_8/section_6/image11.jpeg"  alt="loading" />
 
 5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
 
-<img src="../_static/media/chapter_8/section_6/image12.jpeg" style="width:5.76389in;height:3.06597in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\23.jpg23" />
+<img src="../_static/media/chapter_8/section_6/image12.jpeg"  alt="loading" />
 
 6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
 
-<img src="../_static/media/chapter_8/section_6/image13.jpeg" style="width:5.76389in;height:3.05in" alt="G:\gongzuo\MasterPi\图片素材\3.颜色识别\24.jpg24" />
+<img src="../_static/media/chapter_8/section_6/image13.jpeg"  alt="loading" />
 
 7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
 
@@ -1809,19 +1804,15 @@ python3 color_palletizing.py
 cd ArmPi_mini/yaml/
 ```
 
-<img src="../_static/media/chapter_8/section_6/image14.png" style="width:5.76528in;height:1.19792in" />
-
 8)  再输入指令，按下回车，打开程序文件。
 
 ```commandline
 sudo vim lab_config.yaml
 ```
 
-<img src="../_static/media/chapter_8/section_6/image15.png" style="width:5.76597in;height:1.44514in" />
-
 9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
 
-<img src="../_static/media/chapter_8/section_6/image16.png" style="width:4.07292in;height:3.3125in" />
+<img src="../_static/media/chapter_8/section_6/image16.png"  />
 
 10) 输入指令，按下回车，切换至源码程序路径下。
 
@@ -1829,61 +1820,57 @@ sudo vim lab_config.yaml
 cd ArmPi_mini/functions/
 ```
 
-<img src="../_static/media/chapter_8/section_6/image17.png" style="width:5.7625in;height:1.68611in" />
-
 11) 然后输入指令，按下回车，打开程序文件。
 
 ```commandline
 sudo vim color_palletizing.py
 ```
 
-<img src="../_static/media/chapter_8/section_6/image18.png" style="width:5.7625in;height:1.60347in" />
-
 12) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_6/image19.png" style="width:5.7625in;height:3.69028in" />
+<img src="../_static/media/chapter_8/section_6/image19.png"  />
 
 13) 按下键盘的"**i**"键，进入可编辑模式。
 
-<img src="../_static/media/chapter_8/section_6/image20.png" style="width:5.7625in;height:3.66806in" />
+<img src="../_static/media/chapter_8/section_6/image20.png"  />
 
 14) 手动输入添加"'purple': (255, 255, 114)"和"'purple'"，如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image21.png" style="width:5.7625in;height:3.67569in" />
+<img src="../_static/media/chapter_8/section_6/image21.png"  />
 
 (255, 255, 114)为第9步查看的紫色阈值参数的max。
 
 15) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_6/image22.png" style="width:5.7625in;height:3.68542in" />
+<img src="../_static/media/chapter_8/section_6/image22.png"  />
 
 16) 手动输入添加框中内容，（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image23.png" style="width:5.7625in;height:1.77708in" />
+<img src="../_static/media/chapter_8/section_6/image23.png"  />
 
 17) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_6/image24.png" style="width:5.7625in;height:2.43958in" />
+<img src="../_static/media/chapter_8/section_6/image24.png"  />
 
 18) 手动输入添加框中内容，如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image25.png" style="width:5.76319in;height:1.90833in" />
+<img src="../_static/media/chapter_8/section_6/image25.png"  />
 
 19) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_6/image26.png" style="width:5.76319in;height:2.21111in" />
+<img src="../_static/media/chapter_8/section_6/image26.png"  />
 
 20) 手动输入添加框中内容，如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image27.png" style="width:5.7625in;height:2.74167in" />
+<img src="../_static/media/chapter_8/section_6/image27.png"  />
 
 21) 接着找到如下图所示代码。
 
-<img src="../_static/media/chapter_8/section_6/image28.png" style="width:5.7625in;height:2.16736in" />
+<img src="../_static/media/chapter_8/section_6/image28.png"  />
 
 22) 手动输入添加框中内容，如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image29.png" style="width:5.7625in;height:2.57153in" />
+<img src="../_static/media/chapter_8/section_6/image29.png"  />
 
 23) 保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
 
@@ -1891,29 +1878,27 @@ sudo vim color_palletizing.py
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_6/image30.png" style="width:5.7625in;height:1.24792in" />
-
 24) 参照本文档"[6.2 玩法开启及关闭步骤](#anchor_6_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂会夹取紫色物品。
 
 25) 如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
 
 ### 6.5 代码分析
 
-该程序的源代码位于：/home/pi/ArmPi_mini/functions/color_palletizing.py
+该程序的源代码位于：**/home/pi/ArmPi_mini/functions/color_palletizing.py**
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
-<img src="../_static/media/chapter_8/section_6/image31.png" style="width:4.04167in;height:2.33958in" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image31.png"  />
 
 - #### 6.5.1 导入功能库
 
-<img src="../_static/media/chapter_8/section_6/image32.png" style="width:5.76528in;height:1.20972in" />
+<img src="../_static/media/chapter_8/section_6/image32.png"  />
 
-<img src="../_static/media/chapter_8/section_6/image33.png" style="width:5.7625in;height:0.88194in" />
+<img src="../_static/media/chapter_8/section_6/image33.png"  />
 
 导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
 
-<img src="../_static/media/chapter_8/section_6/image34.png" style="width:5.76389in;height:0.25069in" />
+<img src="../_static/media/chapter_8/section_6/image34.png"  />
 
 就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
 
@@ -1923,7 +1908,7 @@ sudo vim color_palletizing.py
 
 我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
 
-<img src="../_static/media/chapter_8/section_6/image35.png" style="width:5.76389in;height:0.68819in" />
+<img src="../_static/media/chapter_8/section_6/image35.png"  />
 
 进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
 
@@ -1931,11 +1916,11 @@ sudo vim color_palletizing.py
 
 python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
 
-<img src="../_static/media/chapter_8/section_6/image36.png" style="width:5.76458in;height:1.26319in" />
+<img src="../_static/media/chapter_8/section_6/image36.png"  />
 
 1. **读取摄像头图像**
 
-<img src="../_static/media/chapter_8/section_6/image37.png" style="width:5.76458in;height:1.90208in" />
+<img src="../_static/media/chapter_8/section_6/image37.png"  />
 
 打开摄像头图像并保存到"**cap**"。
 
@@ -1947,7 +1932,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 读取到图像时，"**ret**"的值为True。
 
-<img src="../_static/media/chapter_8/section_6/image38.png" style="width:5.76389in;height:0.61181in" />
+<img src="../_static/media/chapter_8/section_6/image38.png"  />
 
 函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
 
@@ -1955,7 +1940,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 3. **窗口显示图像**
 
-<img src="../_static/media/chapter_8/section_6/image39.png" style="width:5.76667in;height:0.8in" />
+<img src="../_static/media/chapter_8/section_6/image39.png"  />
 
 <span id="_5.4 图像处理分析" class="anchor"></span>函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
 
@@ -1965,13 +1950,13 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 - #### 6.5.4 图像处理分析
 
-<img src="../_static/media/chapter_8/section_6/image40.png" style="width:5.76458in;height:3.80833in" />
+<img src="../_static/media/chapter_8/section_6/image40.png"  />
 
 1. **图像缩放处理**
 
 对图片大小缩放，方便处理。
 
-<img src="../_static/media/chapter_8/section_6/image41.png" style="width:5.76458in;height:0.13194in" />
+<img src="../_static/media/chapter_8/section_6/image41.png"  />
 
 第一个参数"**img_copy**"是输入图像。
 
@@ -1985,7 +1970,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
 
-<img src="../_static/media/chapter_8/section_6/image42.png" style="width:5.76667in;height:0.20903in" />
+<img src="../_static/media/chapter_8/section_6/image42.png"  />
 
 第一个参数"**frame_resize**"是输入图像。
 
@@ -1997,7 +1982,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
 
-<img src="../_static/media/chapter_8/section_6/image43.png" style="width:5.76736in;height:0.32361in" />
+<img src="../_static/media/chapter_8/section_6/image43.png"  />
 
 第一个参数"**frame_gb**"是输入图像。
 
@@ -2009,7 +1994,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 采用cv2库中的inRange()函数对图像进行二值化处理。
 
-<img src="../_static/media/chapter_8/section_6/image44.png" style="width:5.76181in;height:0.63542in" />
+<img src="../_static/media/chapter_8/section_6/image44.png"  />
 
 第一个参数"**frame_lab**"是输入图像；
 
@@ -2021,7 +2006,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数
 
-<img src="../_static/media/chapter_8/section_6/image45.png" style="width:5.76667in;height:0.18264in" />
+<img src="../_static/media/chapter_8/section_6/image45.png"  />
 
 第一个参数"**frame_mask**"是输入图像。
 
@@ -2035,7 +2020,7 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
 
-<img src="../_static/media/chapter_8/section_6/image46.png" style="width:5.75833in;height:0.11944in" />
+<img src="../_static/media/chapter_8/section_6/image46.png"  />
 
 第一个参数"**closed**"是输入图像；
 
@@ -2045,33 +2030,35 @@ python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数
 
 在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
 
-<img src="../_static/media/chapter_8/section_6/image47.png" style="width:5.76528in;height:0.71528in" />
+<img src="../_static/media/chapter_8/section_6/image47.png"  />
 
 7. **获取位置信息**
 
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<img src="../_static/media/chapter_8/section_6/image48.png" style="width:5.75764in;height:0.46528in" />
+采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<img src="../_static/media/chapter_8/section_6/image48.png"  />
 
 8. **判断最大颜色**
 
 通过判断语句得到图像中面积最大的颜色。
 
-<img src="../_static/media/chapter_8/section_6/image49.png" style="width:5.76181in;height:3.43125in" />
+<img src="../_static/media/chapter_8/section_6/image49.png"  />
 
 - #### 6.5.5 机械臂执行反馈
 
 机械臂移动函数move()作为子线程运行，当识别到颜色后，就会执行move()函数。
 
-主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。<img src="../_static/media/chapter_8/section_6/image50.png" style="width:5.76458in;height:3.36597in" />
+主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
+
+<img src="../_static/media/chapter_8/section_6/image50.png"  />
 
 1. **点亮RGB灯**
 
 根据识别的颜色，RGB灯颜色与识别的颜色一致。
 
-<img src="../_static/media/chapter_8/section_6/image51.png" style="width:5.76458in;height:1.42708in" />
+<img src="../_static/media/chapter_8/section_6/image51.png"  />
 
 2. **驱动蜂鸣器**
 
-<img src="../_static/media/chapter_8/section_6/image52.png" style="width:5.7625in;height:0.19722in" />
+<img src="../_static/media/chapter_8/section_6/image52.png"  />
 
 board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
 
@@ -2079,7 +2066,7 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 
 判断识别颜色，将色块夹到对应的位置码垛。
 
-<img src="../_static/media/chapter_8/section_6/image53.png" style="width:5.76181in;height:2.69236in" />
+<img src="../_static/media/chapter_8/section_6/image53.png"  />
 
 使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
 
@@ -2125,15 +2112,11 @@ board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将�
 cd ArmPi_mini/functions
 ```
 
-<img src="../_static/media/chapter_8/section_7/image4.png" style="width:5.76667in;height:0.60556in" />
-
 4)  输入指令，然后按下回车键将玩法启动。
 
 ```commandline
 python3 face_detect.py
 ```
-
-<img src="../_static/media/chapter_8/section_7/image6.png" style="width:5.76597in;height:0.90278in" />
 
 5)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。如果关闭失败，可多次按下。
 
@@ -2149,7 +2132,7 @@ python3 face_detect.py
 
 该程序的源代码位于：**/home/pi/ArmPi_mini/functions/face_detect.py**
 
-<img src="../_static/media/chapter_8/section_7/image12.png" style="width:5.76736in;height:2.04931in" />
+<img src="../_static/media/chapter_8/section_7/image12.png"  />
 
 - #### 7.4.1 导入参数模块
 
@@ -2169,7 +2152,7 @@ python3 face_detect.py
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
-<img src="../_static/media/chapter_8/section_7/image14.png" style="width:5.42708in;height:2.19792in" alt="IMG_256" />
+<img class="common_img" src="../_static/media/chapter_8/section_7/image14.png"  alt="loading" />
 
 通过摄像头获取图像信息，再进行图像处理，即对图像进行颜色空间转化，方便进行人脸检测。
 
@@ -2179,7 +2162,7 @@ python3 face_detect.py
 
 从程序文件梳理得到程序逻辑流程图如下图所示。
 
-<img src="../_static/media/chapter_8/section_7/image17.png" style="width:5.24931in;height:4.04306in" alt="IMG_256" />
+<img src="../_static/media/chapter_8/section_7/image17.png"  alt="loading" />
 
 从上图得到，程序的逻辑流程主要为图像处理与人脸识别，以下的文档内容将依照上述程序逻辑流程图进行编写。
 
@@ -2187,17 +2170,17 @@ python3 face_detect.py
 
 - **导入功能库**
 
-  在初始化的这一步，首先就需要将功能库导入进来，方便后续程序的调用，关于导入进来的内容。可以前往4.1导入参数模块进行查看。
+在初始化的这一步，首先就需要将功能库导入进来，方便后续程序的调用，关于导入进来的内容。可以前往4.1导入参数模块进行查看。
 
-<img src="../_static/media/chapter_8/section_7/image18.png" style="width:5.76319in;height:1.40069in" />
+<img src="../_static/media/chapter_8/section_7/image18.png"  />
 
 - **设定初始状态**
 
 设置初始状态，这里就包括了舵机的初始位置、人脸识别模块、最小人脸置信度等。
 
-<img src="../_static/media/chapter_8/section_7/image21.png" style="width:5.76389in;height:0.56319in" />
+<img src="../_static/media/chapter_8/section_7/image21.png"  />
 
-<img src="../_static/media/chapter_8/section_7/image24.png" style="width:5.75833in;height:0.66389in" />
+<img src="../_static/media/chapter_8/section_7/image24.png"  />
 
 2. **图像处理**
 
@@ -2205,19 +2188,19 @@ python3 face_detect.py
 
 将BGR图像转换为RGB图像
 
-<img src="../_static/media/chapter_8/section_7/image27.png" style="width:5.76597in;height:0.37778in" />
+<img src="../_static/media/chapter_8/section_7/image27.png"  />
 
 - **使用mediapipe人脸模型识别**
 
 进行人脸检测，并在检测到的人脸位置绘制矩形框。然后，根据判断人脸中心的位置是否在画面中心，如果是则将start_greet设置为True,用来执行动作组。
 
-<img src="../_static/media/chapter_8/section_7/image30.png" style="width:5.76389in;height:3.42917in" />
+<img src="../_static/media/chapter_8/section_7/image30.png"  />
 
 3. **人脸识别**
 
 如果识别到人脸，则驱动蜂鸣器发出响声。
 
-<img src="../_static/media/chapter_8/section_7/image33.png" style="width:5.76458in;height:1.15486in" />
+<img src="../_static/media/chapter_8/section_7/image33.png"  />
 
 ## 8. 人脸识别
 
@@ -2247,17 +2230,13 @@ python3 face_detect.py
 cd ArmPi_mini/functions/
 ```
 
-<img src="../_static/media/chapter_8/section_8/image4.png" style="width:5.76667in;height:0.60556in" />
-
 4)  输入指令，然后按下回车键将玩法启动。
 
 ```commandline
 python3 face_recognition.py
 ```
 
-<img src="../_static/media/chapter_8/section_8/image7.png" style="width:5.76597in;height:1.03819in" />
-
-6)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。如果关闭失败，可多次按下。
+5)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。如果关闭失败，可多次按下。
 
 ### 8.3 实现效果
 
@@ -2271,7 +2250,7 @@ python3 face_recognition.py
 
 该程序的源代码位于：**/home/pi/ArmPi_mini/functions/face_recgonition.py**
 
-<img src="../_static/media/chapter_8/section_8/image14.png" style="width:5.75764in;height:1.81111in" />
+<img src="../_static/media/chapter_8/section_8/image14.png"  />
 
 - #### 8.4.1 导入参数模块
 
@@ -2290,7 +2269,7 @@ python3 face_recognition.py
 
 根据实现效果，梳理该玩法的实现逻辑如下图所示：
 
-<img src="../_static/media/chapter_8/section_8/image16.png" style="width:4.83958in;height:1.41667in" />
+<img src="../_static/media/chapter_8/section_8/image16.png"  />
 
 通过摄像头获取图像信息，再进行图像处理，即对图像进行颜色空间转化，方便进行人脸检测。
 
@@ -2300,7 +2279,7 @@ python3 face_recognition.py
 
 从程序文件梳理得到程序逻辑流程图如下图所示。
 
-<img src="../_static/media/chapter_8/section_8/image17.png" style="width:5.03542in;height:3.67986in" />
+<img src="../_static/media/chapter_8/section_8/image17.png"  />
 
 从上图得到，程序的逻辑流程主要为图像处理与人脸识别，以下的文档内容将依照上述程序逻辑流程图进行编写。
 
@@ -2310,15 +2289,15 @@ python3 face_recognition.py
 
 在初始化的这一步，首先就需要将功能库导入进来，方便后续程序的调用，关于导入进来的内容。可以前往4.1导入参数模块进行查看。
 
-<img src="../_static/media/chapter_8/section_8/image18.png" style="width:5.76667in;height:1.65833in" />
+<img src="../_static/media/chapter_8/section_8/image18.png"  />
 
 - **设定初始状态**
 
 设置初始状态，这里就包括了舵机的初始位置、人脸识别模块、最小人脸置信度等。
 
-<img src="../_static/media/chapter_8/section_8/image21.png" style="width:5.76806in;height:0.54514in" />
+<img src="../_static/media/chapter_8/section_8/image21.png"  />
 
-<img src="../_static/media/chapter_8/section_8/image23.png" style="width:5.76597in;height:0.59306in" />
+<img src="../_static/media/chapter_8/section_8/image23.png"  />
 
 2. **图像处理**
 
@@ -2326,20 +2305,20 @@ python3 face_recognition.py
 
 将BGR图像转换为RGB图像
 
-<img src="../_static/media/chapter_8/section_8/image25.png" style="width:5.7625in;height:0.24167in" />
+<img src="../_static/media/chapter_8/section_8/image25.png"  />
 
 - **使用mediapipe人脸模型识别**
 
 进行人脸检测，并在检测到的人脸位置绘制矩形框。然后，根据判断人脸中心的位置是否在画面中心，如果是则将start_greet设置为True,用来执行动作组。
 
-<img src="../_static/media/chapter_8/section_8/image28.png" style="width:5.75903in;height:3.94861in" />
+<img src="../_static/media/chapter_8/section_8/image28.png"  />
 
 3. **人脸识别**
 
 如果识别到人脸，使用board.pwm_servo_set_position函数对伺服电机设置PWM（脉冲宽度调制）从而实现上下挥手动作组。
 
-<img src="../_static/media/chapter_8/section_8/image31.png" style="width:5.75903in;height:1.64167in" />
+<img src="../_static/media/chapter_8/section_8/image31.png"  />
 
 如果没有识别到人脸，控制云台舵机左右转动来寻找人脸。
 
-<img src="../_static/media/chapter_8/section_8/image34.png" style="width:5.76181in;height:1.31597in" />
+<img src="../_static/media/chapter_8/section_8/image34.png"  />

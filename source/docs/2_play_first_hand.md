@@ -4,6 +4,8 @@
 本节课为通用课程，演示一致适用于其他树莓派系列产品
 :::
 
+<p id="anchor_1"></p>
+
 ## 1. 手机APP的安装与连接
 
 用户可以使用手机APP"**WonderPi**"来控制ArmPi mini机械臂。本节课会讲解如何安装APP并用其连接机械臂。
@@ -21,7 +23,7 @@
 
 ### 1.2 设备开机
 
-打开树莓派扩展板电源开关，启动ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**第1章 学前先看\第3课 设备充电及首次开机**"下的文档。
+打开树莓派扩展板电源开关，启动ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**[学前先看\3. 设备充电及首次开机](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id5)**"下的文档。
 
 ### 1.3 APP连接
 
@@ -31,17 +33,17 @@ ArmPi mini机械臂启动成功后会进入AP直连模式并生成一个以"HW"�
 
 1)  打开手机APP"**WonderPi**"，依次点击"**初级套件**"、"**ArmPi Mini**"。
 
-<img src="../_static/media/chapter_2/section_1/image5.jpeg" style="width:5.76389in;height:2.66042in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\初级套件.jpg初级套件" />
+<img src="../_static/media/chapter_2/section_1/image5.jpeg"  alt="loading" />
 
 2)  点击界面右下角的"**+**"按钮，选择"**直连模式**"。
 
-<img src="../_static/media/chapter_2/section_1/image6.jpeg" style="width:5.76389in;height:2.66042in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\选择直连.jpg选择直连" />
+<img src="../_static/media/chapter_2/section_1/image6.jpeg"  alt="loading" />
 
 3)  点击"**去连接设备热点**"按键，前往设置界面，连接机械臂生成的热点。
 
-<img src="../_static/media/chapter_2/section_1/image7.jpeg" style="width:5.76389in;height:2.66042in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\4.jpg4" />
+<img src="../_static/media/chapter_2/section_1/image7.jpeg"  alt="loading" />
 
-<img src="../_static/media/chapter_2/section_1/image8.jpeg" style="width:3.54331in;height:2.97513in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\5.jpg5" />
+<img class="common_img" src="../_static/media/chapter_2/section_1/image8.jpeg" style="width:3.54331in;height:2.97513in" alt="loading" />
 
 :::{Note}
 iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则可能会搜索不到设备。若出现搜索不到设备的情况，可点击APP界面右上方的刷新图标<img src="../_static/media/chapter_2/section_1/image9.png" style="width:0.23622in;height:0.23622in" />。
@@ -49,7 +51,7 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 4)  连接热点后，返回手机APP，APP将自动连接设备。稍等片刻，当搜索到下图所示图标时，即为连接成功。
 
-<img src="../_static/media/chapter_2/section_1/image10.jpeg" style="width:5.76389in;height:2.66042in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\6.jpg6" />
+<img src="../_static/media/chapter_2/section_1/image10.jpeg"  alt="loading" />
 
 :::{Note}
 若出现"网络不可用，是否继续连接"的提示弹窗，单击"保持连接"按键即可。
@@ -57,7 +59,7 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 5)  点击上图的机械臂图标即可进入玩法模式选择界面，如下图所示：
 
-<img src="../_static/media/chapter_2/section_1/image11.jpeg" style="width:5.76389in;height:2.65903in" alt="7" />
+<img src="../_static/media/chapter_2/section_1/image11.jpeg"  alt="loading" />
 
 如需了解各个玩法模式的具体使用方法，可查看目录"**第1章 学前先看\第3课 设备充电及首次开机**"下的文档。
 
@@ -73,13 +75,13 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  安装手机APP"**WonderPi**"，并用其连接机械臂。
 
-如需了解具体操作步骤，可查看目录"**第2章 上手试玩\第1课 手机APP的安装与连接**"下的文档。
+如需了解具体操作步骤，可查看目录"**[1. 手机APP的安装与连接](#anchor_1)**"下的文档。
 
 ### 2.2 开始试玩
 
 手机APP提供了5种玩法模式，分别是机体遥控、颜色识别、颜色追踪、目标追踪和智能码垛。
 
-<img src="../_static/media/chapter_2/section_2/image1.jpeg" style="width:5.76389in;height:2.66042in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\7.jpg7" />
+<img src="../_static/media/chapter_2/section_2/image1.jpeg"  alt="loading" />
 
 下表是对各个玩法模式的简单说明：
 
@@ -111,7 +113,7 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  界面右侧是摄像头回传画面显示区域。
 
-<img src="../_static/media/chapter_2/section_2/image10.jpeg" style="width:5.76389in;height:2.6625in" />
+<img src="../_static/media/chapter_2/section_2/image10.jpeg"  />
 
 - **导航栏功能说明**
 
@@ -160,21 +162,21 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 <td style="text-align: center;"><strong>对应功能</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image14.jpeg" style="width:1.5748in;height:0.36557in" alt="13" /></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="18" />朝"<strong>闭合</strong>"或"<strong>松开</strong>"端拖动，即可控制机械爪闭合或张开。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="19" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="20" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image14.jpeg" style="width:1.5748in;height:0.36557in" alt="loading" /></td>
+<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>闭合</strong>"或"<strong>松开</strong>"端拖动，即可控制机械爪闭合或张开。</p>
+<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><p><img src="../_static/media/chapter_2/section_2/image18.jpeg" style="width:1.5748in;height:0.37811in" alt="14" /></p>
-<p><img src="../_static/media/chapter_2/section_2/image19.jpeg" style="width:1.5748in;height:0.38034in" alt="15" /></p>
-<p><img src="../_static/media/chapter_2/section_2/image20.jpeg" style="width:1.5748in;height:0.36684in" alt="16" /></p></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="18" />朝"<strong>向后</strong>"或"<strong>向前</strong>"端拖动，即可控制对应ID编号的舵机向后或向前转动。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="19" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="20" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: center;"><p><img src="../_static/media/chapter_2/section_2/image18.jpeg" style="width:1.5748in;height:0.37811in" alt="loading" /></p>
+<p><img src="../_static/media/chapter_2/section_2/image19.jpeg" style="width:1.5748in;height:0.38034in" alt="loading" /></p>
+<p><img src="../_static/media/chapter_2/section_2/image20.jpeg" style="width:1.5748in;height:0.36684in" alt="loading" /></p></td>
+<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>向后</strong>"或"<strong>向前</strong>"端拖动，即可控制对应ID编号的舵机向后或向前转动。</p>
+<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image21.jpeg" style="width:1.5748in;height:0.38574in" alt="17" /></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="18" />朝"<strong>左转</strong>"或"<strong>右转</strong>"端拖动，即可控制6号舵机左转或右转。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="19" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="20" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image21.jpeg" style="width:1.5748in;height:0.38574in" alt="loading" /></td>
+<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>左转</strong>"或"<strong>右转</strong>"端拖动，即可控制6号舵机左转或右转。</p>
+<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image22.jpeg" style="width:1.57431in;height:0.99236in" /></td>
@@ -196,15 +198,15 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  界面右侧是摄像头回传画面显示区域。
 
-<img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:5.51181in;height:2.54342in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\11.jpg11" />
+<img src="../_static/media/chapter_2/section_2/image23.jpeg"  alt="loading" />
 
 - **界面功能说明**
 
 | **图标** | **功能说明** |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="21" /> | 开启/关闭玩法。 |
+| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="loading" /> | 开启/关闭玩法。 |
 | <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\11.jpg11" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
 
 - **操作说明与实现效果**
 
@@ -228,15 +230,15 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  界面右侧是摄像头回传画面显示区域。
 
-<img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:5.51181in;height:2.75458in" alt="颜色分拣2" />
+<img src="../_static/media/chapter_2/section_2/image26.jpeg"  alt="loading" />
 
 - **界面功能说明**
 
 | **图标** | **功能说明** |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.1811in;height:0.28422in" alt="颜色分拣2" /> | 开启/关闭玩法。 |
+| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.1811in;height:0.28422in" alt="loading" /> | 开启/关闭玩法。 |
 | <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.5748in;height:0.98604in" alt="颜色分拣2" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.5748in;height:0.98604in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
 
 - **操作说明与实现效果**
 
@@ -259,7 +261,7 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  界面右侧是摄像头回传画面显示区域。
 
-<img src="../_static/media/chapter_2/section_2/image27.jpeg" style="width:5.76389in;height:2.65903in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\9.jpg9" />
+<img src="../_static/media/chapter_2/section_2/image27.jpeg"  alt="loading" />
 
 - **界面功能说明**
 
@@ -274,20 +276,20 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 <td style="text-align: center;"><strong>功能说明</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image28.jpeg" style="width:1.1811in;height:0.27587in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\22.jpg22" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image28.jpeg" style="width:1.1811in;height:0.27587in" alt="loading" /></td>
 <td style="text-align: left;">开启/关闭玩法。</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image29.jpeg" style="width:0.7874in;height:1.10977in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\23.jpg23" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image29.jpeg" style="width:0.7874in;height:1.10977in" alt="loading" /></td>
 <td style="text-align: left;"><p>选择目标追踪颜色。</p>
 <p>"R"为红色（Red），"G"为绿色（Green），"B"为蓝色（Blue）。</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image30.jpeg" style="width:0.7874in;height:0.71739in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\24.jpg24" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image30.jpeg" style="width:0.7874in;height:0.71739in" alt="loading" /></td>
 <td style="text-align: left;">显示当前追踪的颜色。</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image27.jpeg" style="width:1.5748in;height:1.00459in" alt="Y:\ArmPi mini\2.图片素材\手机APP试玩\9.jpg9" /></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image27.jpeg" style="width:1.5748in;height:1.00459in" alt="loading" /></td>
 <td style="text-align: left;">显示摄像头回传的实时画面。</td>
 </tr>
 </tbody>
@@ -315,15 +317,15 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 2.  界面中间是摄像头回传画面显示区域。
 
-<img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:5.76389in;height:2.71667in" alt="智能码垛" />
+<img src="../_static/media/chapter_2/section_2/image31.jpeg"  alt="loading" />
 
 - **界面功能说明**
 
 | **图标** | **功能说明** |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image32.jpeg" style="width:1.1811in;height:0.30725in" alt="G:\360MoveData\Users\Admin\Desktop\1.jpg1" /> | 开启/关闭玩法。 |
+| <img src="../_static/media/chapter_2/section_2/image32.jpeg" style="width:1.1811in;height:0.30725in" alt="loading" /> | 开启/关闭玩法。 |
 | <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:1.5748in;height:0.98365in" alt="智能码垛" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:1.5748in;height:0.98365in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
 
 - **操作说明与实现效果**
 
@@ -339,15 +341,15 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 ### 3.1 准备工作
 
-安装手机APP"**WonderPi**"，并用其连接ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**第2章 上手试玩\第1课 手机APP的安装与连接**"下的文档。
+安装手机APP"**WonderPi**"，并用其连接ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**[1. 手机APP的安装与连接](#anchor_1)**"下的文档。
 
 ### 3.2 界面介绍
 
 进入玩法模式选择界面后，点击下图所示按键，即可进入颜色阈值调节界面。
 
-<img src="../_static/media/chapter_2/section_3/image2.png" style="width:5.76389in;height:2.66528in" />
+<img src="../_static/media/chapter_2/section_3/image2.png"  />
 
-<img src="../_static/media/chapter_2/section_3/image3.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image3.png"  />
 
 下表是颜色阈值调节界面的功能说明：
 
@@ -416,32 +418,34 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 
 1.  进入颜色阈值调节界面，选择需要调节阈值的颜色，此处以红色为例。
 
-<img src="../_static/media/chapter_2/section_3/image19.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image19.png"  />
 
 2.  将红色物体放置在摄像头的视野范围内，将L、A、B分量的最小值都调为"**0**"，最大值都调为"**255**"。
 
-<img src="../_static/media/chapter_2/section_3/image20.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image20.png"  />
 
 3.  点击"**操作说明**"按键，查看颜色阈值的调节方法。
 
-<img src="../_static/media/chapter_2/section_3/image21.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image21.png"  />
 
-<img src="../_static/media/chapter_2/section_3/image22.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image22.png"  />
 
-**注意：如需关闭操作说明窗口，点击"好的"即可。**
+:::{Note}
+如需关闭操作说明窗口，点击"好的"即可。
+:::
 
 4.  由LAB颜色空间分布图可知，红色靠近"**+a**"，即需要优先调整A分量。
 
-<img src="../_static/media/chapter_2/section_3/image23.png" style="width:3.93701in;height:3.43683in" />
+<img class="common_img" src="../_static/media/chapter_2/section_3/image23.png" style="width:3.93701in;height:3.43683in" />
 
 5.  "**a_max**"的数值保持不变，增大"**a_min**"的数值，直至处理后图像中的红色物体区域显示为白色，其余部分显示为黑色。
 
-<img src="../_static/media/chapter_2/section_3/image24.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image24.png"  />
 
 6.  根据所处环境来调整L分量和B分量。若红色物体在环境下颜色偏浅，增大亮度的最小值(**L_min**)；在环境下颜色偏深，则减小亮度的最大值(**L_max**)。若红色物体在环境下偏暖色调，增大色度的最小值(**b_min**)；在环境下偏冷色调，减小色度的最大值(**b_max**)。
 
-<img src="../_static/media/chapter_2/section_3/image25.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image25.png"  />
 
 7.  完成阈值调节后，点击"**保存**"按键，保存调节好的阈值范围。
 
-<img src="../_static/media/chapter_2/section_3/image26.png" style="width:5.76389in;height:2.66319in" />
+<img src="../_static/media/chapter_2/section_3/image26.png"  />
