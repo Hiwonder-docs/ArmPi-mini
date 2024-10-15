@@ -374,9 +374,9 @@ ArmPi mini在组装过程中，若因机械臂摔落使舵机主轴偏移产生�
 
 将机械臂放置在机械臂放置区域，将色块放置在夹取区域；
 
-启动颜色分拣玩法时，机械臂会将色块从夹取区域放置到分拣区（颜色分拣玩法可前往："**[上手试玩\ 2. 手机APP试玩]()**"与"**[AI视觉项目课程\ 5. 颜色分拣]()**"进行学习）；
+启动颜色分拣玩法时，机械臂会将色块从夹取区域放置到分拣区（颜色分拣玩法可前往："**[上手试玩\ 2. 手机APP试玩](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/2_play_first_hand.html#id5)**"与"**[AI视觉项目课程\ 5. 颜色分拣](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#id48)**"进行学习）；
 
-启动智能码垛玩法时，机械臂将色块从夹取区放置到码垛区（智能码垛玩法可前往"**[上手试玩\ 2. 手机APP试玩]()**"与"**[AI视觉项目课程\ 6. 智能码垛]()**"进行学习）。
+启动智能码垛玩法时，机械臂将色块从夹取区放置到码垛区（智能码垛玩法可前往"**[上手试玩\ 2. 手机APP试玩](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/2_play_first_hand.html#id5)**"与"**[AI视觉项目课程\ 6. 智能码垛](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#id59)**"进行学习）。
 
 ### 6.2 地图铺设
 
