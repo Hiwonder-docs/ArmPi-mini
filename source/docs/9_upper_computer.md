@@ -1,60 +1,60 @@
-# 上位机动作编辑课程
+# 6.PC Software Learning
 
-## 1. 上位机界面介绍
+## 1. PC Software Interface Introduction
 
-上位机软件是系统自带的一款动作编辑软件，用户可以利用上位机来控制机械臂的舵机以完成动作编辑，还能用它来调节舵机偏差和颜色阈值。
+PC software is a system built-in software for programming robot action. You can use it to control the servo movement, adjust servo deviation and color threshold.
 
-这节课将介绍上位机软件的界面分布及功能使用。
+This lesson will introduction the layout and function of PC software.
 
-### 1.1 启动上位机
+### 1.1 Start PC Software
 
-**采用桌面图标启动（初学者推荐）**
+**1.1.1 Use Desktop Icon (for beginner)**
 
-1)  双击桌面上的ArmPi mini上位机的图标<img src="../_static/media/chapter_9/section_1/image2.png" style="width:0.31496in;height:0.31496in" />。
+(1) Double click<img src="../_static/media/chapter_9/section_1/image2.png" style="width: n;height: in" />to open PC software.
 
-2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_1/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
+(2) Click “Execute” in the pop-up window and open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/image3.png"  />
 
-**采用命令行形式启动**
+**1.1.2 Use Command Line**
 
-1)  点击桌面左上角的图标<img src="../_static/media/chapter_9/section_1/image4.png" style="width:0.31458in;height:0.27361in" />，打开终端。
+(1) Click on <img src="../_static/media/chapter_9/section_1/image4.png" style="width:0.31458in;height:0.27361in" /> to open command line terminal.
 
-2)  输入指令，并按下回车，即可打开上位机。
+(2) Enter the command and press “Enter” to start PC software.
 
 ```commandline
 python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 ```
 
-### 1.2 上位机界面分布
+### 1.2 Software Interface Layout
 
-上位机有两个功能界面，分别是普通模式界面和摄像头工具界面。
+PC software has two function interfaces including normal mode and camera tool.
 
-#### 普通模式
+**1.2.1 Normal Mode**
 
-普通模式主要用来控制舵机、调节偏差以及位置校准，界面如下图所示：
+Under normal mode, you can control servo, adjust deviation and calibrate position. The interface is shown below:
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/image6.png"  alt="loading" />
 
-1.  **语言选项**
+**(1) Language Option**
 
-用于切换上位机界面的显示语言，可切换为中文或英文（将同步"**摄像头工具**"界面的显示语言）。
+The language of PC software can be switched between Chinese and English. It will synchronize with the interface language of camera tool.
 
-2.  **舵机操控区域**
+**(2)  Servo Control Area**
 
-此区域的舵机图标对应了机械臂上的5个舵机，调整对应滑杆数值即可调整舵机的转动位置，我们以1号舵机的图标进行说明。
+The icons on servo control area correspond to five servos of robotic arm. You can rotate servo by dragging the corresponding slider. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/image7.png" style="width:1.1811in;height:1.06099in" alt="loading" />
 
-| **图标** | **功能说明** |
+| **Icon** | **Function** |
 |:--:|:--:|
-| <img src="../_static/media/chapter_9/section_1/image8.png" style="width:1.1811in;height:0.21984in" alt="loading" /> | 舵机ID编号，这里为1号舵机。 |
-| <img src="../_static/media/chapter_9/section_1/image9.png" style="width:1.1811in;height:0.63011in" alt="loading" /> | 舵机滑杆（大滑杆），用于调整舵机的角度位置，范围是500~2500，换算成角度为0°~180°，1500是中间值，也就是90°。 |
-| <img src="../_static/media/chapter_9/section_1/image10.png" style="width:1.1811in;height:0.27025in" alt="loading" /> | 偏差滑杆（小滑杆），用于调整舵机的偏差，范围是-150~150，换算成角度为-13°~13°。 |
+| <img src="../_static/media/chapter_9/section_1/image8.png" style="width:1.1811in;height:0.21984in" alt="loading" /> | Servo ID number. Here it refers to ID1 servo. |
+| <img src="../_static/media/chapter_9/section_1/image9.png" style="width:1.1811in;height:0.63011in" alt="loading" /> | Servo slider (big slider) is used to adjust servo angle. It ranges from 500 to 2500, corresponding to angles 0°-180°. The middle value of 1500 corresponding to 90 degrees. |
+| <img src="../_static/media/chapter_9/section_1/image10.png" style="width:1.1811in;height:0.27025in" alt="loading" /> | Deviation slider (small slider) is used to adjust servo deviation. It ranges from -150 to 150, corresponding to angle -13°-13°. |
 
-3.  **逆运动学操控区域**
+**(3) Inverse Kinematics Control Area** 
 
-逆运动学操控区域可用于校准机械爪的夹取位置。在机械臂使用的过程中，若发现夹取的位置不准确，可调节此区域的位置信息，使夹取位置变得更加准确。
+This area is mainly for calibrating the gripping position of robot arm. If the gripping position is incorrect during using robotic arm, you can adjust its position in this area.
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/image11.png" style="width:1.9685in;height:2.63137in" alt="loading" />
 
@@ -65,58 +65,58 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 </colgroup>
 <tbody>
 <tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>功能</strong></td>
+<td style="text-align: center;"><strong>Icon</strong></td>
+<td style="text-align: center;"><strong>Function</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image12.png" style="width:1.5748in;height:0.33461in" alt="loading" /></td>
-<td style="text-align: left;">（以机械臂为第一视角）用于控制机械爪在左右方向上移动。</td>
+<td style="text-align: left;">(Take robot as the first ) Used to control the gripper to move left or right.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image13.png" style="width:1.5748in;height:0.2699in" alt="loading" /></td>
-<td style="text-align: left;">（以机械臂为第一视角）用于控制机械爪在前后方向上移动。</td>
+<td style="text-align: left;">(Take robot as the first ) Used to control the gripper to move forward and backward.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image14.png" style="width:1.5748in;height:0.29717in" alt="loading" /></td>
-<td style="text-align: left;"><p>（以机械臂为第一视角）用于控制机械爪在上下方向上移动。</p>
-<p>注意：程序已设定Z轴的值为1cm，此时机械爪刚好在木块的两侧的中间位置，因此不建议修改此处数值。</p></td>
+<td style="text-align: left;"><p>Used to control the gripper to move up and down.</p>
+<p>Note: the program has set the z-axis value to 1cm and the gripper will be in the middle of the two sides of the block, so it is not commended to modify this value.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image15.png" style="width:1.5748in;height:0.34171in" alt="loading" /></td>
-<td style="text-align: left;">机械爪与X轴水平面的夹角，程序设定原因，无需进行修改。</td>
+<td style="text-align: left;">The angel between gripper and x axis. Due to the program settings, it does not need to modify.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image16.png" style="width:1.5748in;height:0.25772in" alt="loading" /></td>
-<td style="text-align: left;">机械爪从上一个位置移动到当前设置的坐标位置所用的时间。（仅作调整坐标时查看效果时用）</td>
+<td style="text-align: left;">The movement time used by the gripper to move from the previous position to the set coordinate value. (just for checking the running effect ) </td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image17.png" style="width:0.7874in;height:0.42323in" alt="loading" /></td>
-<td style="text-align: left;">读取当前机械爪的夹取位置信息。</td>
+<td style="text-align: left;">Read the current position information of gripper</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image18.png" style="width:0.7874in;height:0.39833in" alt="loading" /></td>
-<td style="text-align: left;">保存调整好的夹取位置坐标值。</td>
+<td style="text-align: left;">Save the adjusted position coordinate value</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image19.png" style="width:1.5748in;height:0.42589in" alt="loading" /></td>
-<td style="text-align: left;">控制机械爪移动到当前设置的坐标位置。</td>
+<td style="text-align: left;">Control robot to the set coordinate value.</td>
 </tr>
 </tbody>
 </table>
 
-4.  **动作详情列表**
+(4) Action Date List
 
-动作详情列表显示了当前动作组每个动作的执行时间，以及每个动作里各个舵机值。
+The action data list will display the running time of each action and the value of each servo.
 
-<img src="../_static/media/chapter_9/section_1/image20.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_9/section_1/image20.png"  alt="loading" />
 
-| **图标** | **功能说明** |
+| **Icon ** | Function |
 |:--:|:--:|
-| <img src="../_static/media/chapter_9/section_1/image21.png" style="width:0.98425in;height:0.27648in" alt="loading" /> | 动作编号。 |
-| <img src="../_static/media/chapter_9/section_1/image22.png" style="width:0.98425in;height:0.24528in" alt="loading" /> | 动作运行的时间，即执行该动作需所用的时间。 |
-| <img src="../_static/media/chapter_9/section_1/image23.png" style="width:0.98425in;height:0.33788in" alt="loading" /> | 该ID下对应的动作数值，双击下方数值<img src="../_static/media/chapter_9/section_1/image24.png" style="width:0.59583in;height:0.16667in" alt="loading" />可直接修改。 |
+| <img src="../_static/media/chapter_9/section_1/image21.png" style="width:0.98425in;height:0.27648in" alt="loading" /> | Action number |
+| <img src="../_static/media/chapter_9/section_1/image22.png" style="width:0.98425in;height:0.24528in" alt="loading" /> | Running time |
+| <img src="../_static/media/chapter_9/section_1/image23.png" style="width:0.98425in;height:0.33788in" alt="loading" /> | Double click the value<img src="../_static/media/chapter_9/section_1/image24.png" style="width:0.59583in;height:0.16667in" alt="loading" />under this ID to modify. |
 
-5.  **动作组设置区域**
+(5) Action Setting Area
 
 <table class="docutils-nobg" border="1">
 <colgroup>
@@ -125,356 +125,354 @@ python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 </colgroup>
 <tbody>
 <tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>功能说明</strong></td>
+<td style="text-align: center;"><strong>Icon</strong></td>
+<td style="text-align: center;"><strong>Function</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image25.png" style="width:1.37795in;height:0.30256in" alt="loading" /></td>
-<td style="text-align: left;">运行单个动作所需的时间，点击可进行修改。</td>
+<td style="text-align: left;">The time required to run a single action. You can click it to modify.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image26.png" style="width:1.37795in;height:0.2319in" alt="loading" /></td>
-<td style="text-align: left;">动作组运行所需的总时长。</td>
+<td style="text-align: left;">The total time for running an action group</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image27.png" style="width:0.98425in;height:0.58111in" alt="loading" /></td>
-<td style="text-align: left;">将当前舵机操控区域的舵机数值作为一个动作，添加至动作详情列表的最后一行。</td>
+<td style="text-align: left;">Add the current action in servo control area to the last line of the action data list.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image28.png" style="width:0.98425in;height:0.40138in" alt="loading" /></td>
-<td style="text-align: left;">删除动作详情列表里选中的动作。</td>
+<td style="text-align: left;">Delete all the selected actions in action data list</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image29.png" style="width:0.98425in;height:0.39835in" alt="loading" /></td>
-<td style="text-align: left;">删除动作详情列表里所有动作。</td>
+<td style="text-align: left;">Delete all the actions in action data list</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image30.png" style="width:0.98425in;height:0.41849in" alt="loading" /></td>
-<td style="text-align: left;"><p>替换动作详情列表中选中动作的数值。</p>
-<p>（舵机数值替换为舵机操控区域的当前舵机值，动作运行时间替换为"动作时间"内设定的时间）</p></td>
+<td style="text-align: left;"><p>Replace the value of the selected actions in action data list.</p>
+<p>(The value will be replaced with the current servo value in servo control area, and the running time will be replaced with the set running time.)</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image31.png" style="width:0.98425in;height:0.38262in" alt="loading" /></td>
-<td style="text-align: left;"><p>在选中的动作上面插入一行动作。</p>
-<p>（动作时间为"动作时间(ms)"的时间，角度数值为舵机操控区域的舵机值）</p></td>
+<td style="text-align: left;"><p>Insert a line of action in front of the selected action</p>
+<p> </p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image32.png" style="width:0.98425in;height:0.43031in" alt="loading" /></td>
-<td style="text-align: left;">将选中的动作与其上一行进行位置交换。</td>
+<td style="text-align: left;">Swap the selected action with its previous action</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image33.png" style="width:0.98425in;height:0.40737in" alt="loading" /></td>
-<td style="text-align: left;">将选中的动作与其下一行进行位置交换。</td>
+<td style="text-align: left;">Swap the selected action with its next action</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image34.png" style="width:0.59055in;height:1.01417in" alt="loading" /></td>
-<td style="text-align: left;"><p>单击该按钮后将会运行一次动作详情列表的动作。</p>
-<p>（如果勾选了"<strong>循环</strong>"，机械臂则重复运行动作）</p></td>
+<td style="text-align: left;"><p>Click on “Run” button to run the action group in action data list once.</p>
+<p>（If check"<strong>loop</strong>"robot arm will cyclically execute the action.）</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image35.png" style="width:1.1811in;height:0.50609in" alt="loading" /></td>
-<td style="text-align: left;"><p>单击后选择要打开的动作组即可将动作组数据加载到动作详情列表中。</p>
-<p>（动作组文件路径：/home/pi/ArmPi_mini/action_groups）</p></td>
+<td style="text-align: left;"><p>Click it to select and open the action group to load it to action data list.</p>
+<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups）</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image36.png" style="width:1.1811in;height:0.52113in" alt="loading" /></td>
-<td style="text-align: left;"><p>将此时动作详情列表里的动作保存到指定位置。</p>
-<p>（动作组文件路径：/home/pi/ArmPi_mini/action_groups）</p></td>
+<td style="text-align: left;"><p>Save the action group in action data list to the specific position.</p>
+<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups）</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image37.png" style="width:1.1811in;height:0.51694in" alt="loading" /></td>
-<td style="text-align: left;">打开一个动作组后，点击此按钮，继续打开另一个动作组文件，可将两个动作组文件串联成一个新的动作组。</td>
+<td style="text-align: left;">After opening an action group, click it and open another action group file. Then two action groups are integrated into a new action group.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image38.png" style="width:1.37795in;height:0.33203in" alt="loading" /></td>
-<td style="text-align: left;">可在上位机中显示已保存的动作组。</td>
+<td style="text-align: left;">Display the action group saved in PC software</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image39.png" style="width:0.7874in;height:0.49562in" alt="loading" /></td>
-<td style="text-align: left;">刷新动作组选择栏。</td>
+<td style="text-align: left;">Refresh the selection bar of the action group</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image40.png" style="width:1.1811in;height:0.40443in" alt="loading" /></td>
-<td style="text-align: left;">删除当前动作组文件。</td>
+<td style="text-align: left;">Delete the current action group file</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image41.png" style="width:1.1811in;height:0.46641in" alt="loading" /></td>
-<td style="text-align: left;">（<strong>慎点</strong>）删除所有动作组文件。</td>
+<td style="text-align: left;">（<strong>Caution</strong>）Delete all action group files</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image42.png" style="width:1.1811in;height:0.38845in" alt="loading" /></td>
-<td style="text-align: left;">执行动作组（选定序号）一次。</td>
+<td style="text-align: left;">Run the selected action group once</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image43.png" style="width:1.1811in;height:0.46673in" alt="loading" /></td>
-<td style="text-align: left;">停止正在运行的动作组。</td>
+<td style="text-align: left;">Stop running action group</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image44.png" style="width:0.7874in;height:0.34629in" alt="loading" /></td>
-<td style="text-align: left;">退出当前上位机操作界面。</td>
+<td style="text-align: left;">Exit PC software</td>
 </tr>
 </tbody>
 </table>
 
-6.  **偏差设置区域**
+(6) Deviation Setting Area
 
-| **图标** | **功能说明** |
+| **Icon** | Function |
 |:--:|:--:|
-| <img src="../_static/media/chapter_9/section_1/image45.png" style="width:1.37795in;height:0.49414in" alt="loading" /> | 单击后即可自动读取保存的偏差。 |
-| <img src="../_static/media/chapter_9/section_1/image46.png" style="width:1.37795in;height:0.48874in" alt="loading" /> | 单击后即可将通过上位机调整好的偏差保存到机械臂中。 |
-| <img src="../_static/media/chapter_9/section_1/image47.png" style="width:1.37795in;height:0.4806in" alt="loading" /> | 单击后即可将舵机操控区域的所有舵机恢复至1500位置。 |
+| <img src="../_static/media/chapter_9/section_1/image45.png" style="width:1.37795in;height:0.49414in" alt="loading" /> | Click to read the saved deviation automatically |
+| <img src="../_static/media/chapter_9/section_1/image46.png" style="width:1.37795in;height:0.48874in" alt="loading" /> | After clicking, the deviation adjusted by PC software can be saved to the robot arm |
+| <img src="../_static/media/chapter_9/section_1/image47.png" style="width:1.37795in;height:0.4806in" alt="loading" /> | Click it to restore all servos in servo control area to 1500 |
 
-#### 摄像头工具
+**1.2.2 Camera Tool**
 
-摄像头工具用于调节识别颜色的阈值，界面如下图所示：
+The camera tool is used to adjust the threshold of the recognized color, as the figure shown below.
 
 <img src="../_static/media/chapter_9/section_1/image48.png"  />
 
-摄像头工具使用方法和请参考"**[AI视觉项目课程\ 1. 单个颜色识别\ 增加新的识别颜色](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#anchor_1_4_2)**"章节步骤。
+Please refer to the contentin [AI Vision Learning\2.Color Recognition\Add Recognition Color]()
 
-## 2. 动作组调用及导入
+## 2. Import and Call Action
 
-ArmPi mini在出厂时就已内置部分动作组文件，文件位于目录"**/home/pi/ArmPi_mini/action_groups**"下，用户自己编辑的动作组也需保存到这个目录。
+ArmPi mini has built in action group files before shipping and the path of the files is “/home/pi/ArmPi_mini/action_groups”. The action group you edit can also be saved in this directory.
 
-<img src="../_static/media/chapter_9/section_2/image1.png"  />
+<img class="common_img" src="../_static/media/chapter_9/section_2/image1.png"  />
 
-本节课会讲解如何通过上位机调用动作组，以及如何将动作组导入ArmPi mini系统内。
+This lesson will tell you how to call action group and how to import it into the system of ArmPi mini.
 
-### 2.1 通过上位机调用动作组
+### 2.1 Call Action Group by PC Software
 
-1)  安装VNC，远程连接ArmPi mini的系统桌面。如需了解具体操作步骤，可查看目录"**[学前先看\ 4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"下的文档。
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_2/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"**Execute**"，即可进入上位机界面。
+(2) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />and click “Execute” in the pop-up window to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
-3)  点击"**打开动作组**"按钮，选择想要执行的动作组，并点击"**Open**"按键。
+(3) Click “Open action file” button to select the action group to be executed, and click “Open”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image4.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image5.png"  />
 
-4)  动作详情列表处会显示该动作组的舵机数值。
+(4) The servo values will be displayed in action data list.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image6.png"  />
 
-5)  点击"**运行**"按钮，即可运行当前动作详情列表内的所有动作，若想重复当前动作组，可勾选"**循环**"选项。
+(5) Click “Run” to run all the actions in action data list. You can click “Loop” to cyclically run this action group. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image7.png"  />
 
-### 2.2 导入动作组
+### 2.2 Import Action Group 
 
 :::{Note}
-1.  动作组文件必须以英文或数字命名，文件格式为"d6a"。
-2.  如需导出动作组，将U盘插入树莓派主板的任意一个USB接口，并将动作组文件复制到U盘即可。
-:::
+* The action group must be named in English or with numbers, and the file format is “d6a”.
 
-将外部动作组导入ArmPi mini的方式有两种，用户可以通过U盘将动作组文件传入ArmPi mini系统，也可以通过系统桌面快捷传输来导入动作组文件。本节以"**3.d6a**"动作组为例。
+* If want to export action group, you can a insert U disk into one of USB interfaces of Raspberry Pi and paste the action group file to the U disk.
 
-- 通过U盘导入动作组
+  :::
 
-1)  通过VNC远程连接ArmPi mini的系统桌面。
+There are two ways to import the external action group file to ArmPi mini. You can transfer action file to ArmPi mini system with a U disk, or use transfer tool to import action file to system desktop. This lesson will take “3.6a” action as example.
 
-2)  将存放了动作组文件的U盘插入树莓派主板的任意一个USB接口。
+**2.2.1 Use a U Disk**
+
+(1) Connect to ArmPi mini system desktop via VNC tool.
+
+(2) Insert the U disk with action group files into one of USB interfaces of Raspberry Pi.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image8.png"  alt="loading" />
 
-3)  当VNC端的系统出现下图所示弹窗，点击"**确定**"按键即可。
+(3) When the following pop-up window shows in VNC viewer, click “OK”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image10.png" style="width:3.14961in;height:3.22012in" />
 
-4)  通过复制粘贴的形式将动作组文件复制到系统桌面。
+(4) Paste the action group file to the system desktop.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image11.png" style="width:1.52083in;height:2.4375in" />
 
-5)  点击系统状态栏的图标<img src="../_static/media/chapter_9/section_2/image12.png" style="width:0.31458in;height:0.275in" />，打开文件管理器。
+(5) Click on<img src="../_static/media/chapter_9/section_2/image12.png" style="width:0.31458in;height:0.275in" />icon to open file manger.
 
-6)  进入目录"**/home/pi/ArmPi_mini/action_groups**"，将导入的动作组文件移动到此目录下。
+(6) Enter the directory “/home/pi/ArmPi_mini/action_groups”, and import the action file to this directory.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image13.png"  />
 
-7)  双击系统桌面图标<img src="../_static/media/chapter_9/section_2/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
+(7) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />icon and click “Execute” to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
-8)  点击上位机界面的"**打开动作组**"按键，选择前面导入的动作组文件，并点击"**Open**"按键。
+(8) Click “Open action group” button to select the imported action group file, and click “Open”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image4.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image14.png"  />
 
-9)  动作详情列表处可以查看到导入动作组的各舵机数值和运行时间。
+(9) You can view the servo values and running time of the imported action group in servo data list.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image15.png"  />
 
-## 3. 动作编辑教学
+## 3. Action Programming
 
 :::{Note}
-本节课所设置的动作参数仅供参考，用户可根据实际情况进行调整。
+All action parameters in this lesson is only for reference, please operate according to the actual situation.
 :::
 
-上位机具有编辑动作的功能，本节课会以创建一个动作组（**机械臂向下夹取木块，并将其放置在右侧**）为例，介绍动作编辑的方法。
+This lesson will use PC software to edit an action group. Robot Arm will grip down the block and place it on the right side for example. 
 
-### 3.1 动作编辑
+### 3.1 Edit Action
 
-**通过VNC远程连接ArmPi mini的系统桌面。**
+(1) Connect to ArmPi mini system desktop via VNC tool.
 
-1)  双击系统桌面图标<img src="../_static/media/chapter_9/section_3/image2.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"**Execute**"，即可进入上位机界面。
+(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:in;height:in" />icon, and click “Execute” to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image3.png"  />
 
-2)  点击"**打开动作文件**"按键，选择"**start**"动作组后，点击"**Open**"按键，将此动作设置为动作组的第一个动作。
+(3) Click “Open action file” and select “start” action group, and then click “Open” to set this action as the first action group.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image4.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image5.png"  />
 
-3)  双击动作详情列表中1号动作前面的三角按键，令ArmPi mini同步为此动作状态。
+(4) Double click the triangle button in front of No.1 action in action data list to synchronize the action status of ArmPi mini. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image6.png"  />
 
-4)  滑动4、5号舵机的滑杆，使机械臂向下移向色块。
-
-<img class="common_img" src="../_static/media/chapter_9/section_3/image7.png"  />
-
-5)  时间设为800ms，点击"**添加动作**"，即可得到第2个动作。
+(5) Set the running time to 800ms and click “Add action” to get No.2 action. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image8.png"  />
 
-6)  为了使整套动作更加连贯流畅，我们每设置一个动作之后，就添加一个过渡动作。在上一个动作基础上，将时间修改为200ms，再次点击"**添加动作**"，即可得到第3个动作。
+(6) To make the action group run smoother. After setting an action, we need to add a transition action and change the running time to 200ms. Then click “Add action” again to get No.3 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image9.png"  alt="loading" />
 
-7)  接下来，我们让机械爪张开，准备夹取色块，这里需要滑动1号舵机的滑杆。
+(7) Next, the gripper is controlled to grip the block. We need to drag the slider of No.1 servo.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image10.png"  alt="loading" />
 
-8)  时间设为300ms，点击"**添加动作**"，即可得到4号动作。
+(8) Set the running time to 800ms and click “Add action” to get No.4 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image11.png"  alt="loading" />
 
-9)  再添加一个过渡动作，时间设置为100ms，点击"**添加动作**"，就得到了5号动作。
+(9) Add a transition action and set the running time to 100ms. Then click “Add action” to get No.5 action. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image12.png"  alt="loading" />
 
-10) 然后滑动1号舵机滑杆，使机械爪闭合。
+(10) Then drag the slide of No.1 servo to control the gripper to close.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image13.png"  alt="loading" />
 
-11) 时间为200ms，然后点击"**添加动作**"，得到6号动作。
+(11) Set the running time to 200ms and click “Add action” to get No.6 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image14.png"  alt="loading" />
 
-12) 再让机械臂夹取色块抬高，拖动的是4、5号舵机的滑杆。
+(12) Then drag the slider of ID4 and ID5 servos to control the robot arm to grip and lift up the block.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image15.png"  alt="loading" />
 
-13) 时间设置为1000ms，最后点击"**添加动作**"，就得到了7号动作。
+(13) Set the running time to 1000ms and click “Add action” to get No.7 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image16.png"  alt="loading" />
 
-14) 再将时间设为100ms，添加一个过渡动作。
+(14) Set the running time to 100ms and click “Add action” to add a transition action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image17.png"  alt="loading" />
 
-15) 接下来让机械臂转向右侧，调整的6号舵机的数值滑杆。
+(15) Then drag the slider of ID6 servo to control the robot arm to rotate to the right.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image18.png"  alt="loading" />
 
-16) 时间设置为800ms，点击"**添加动作**"，得到9号动作。
+(16) Set the running time to 800ms and click “Add action” to get No.9 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image19.png"  alt="loading" />
 
-17) 添加一个过渡动作，时间设为300ms，就得到了10号动作。
+(17) Add a transition action. Set the running time to 300ms and click “Add action” to get No.10 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image20.png"  alt="loading" />
 
-18) 滑动4、5号舵机的滑杆，使机械臂放下色块。
+(18) Drag the slider of ID4 and ID5 servos to control the robot arm to put down the block.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image21.png"  alt="loading" />
 
-19) 时间设为1000ms，点击"**添加动作**"，得到11号动作。
+(19) Set the running time to 1000ms and click “add action” to get No.11 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image22.png"  alt="loading" />
 
-20) 现在，需要将色块放下，滑动1号舵机的滑杆，即可让机械爪松开。
+(20)  Now, drag the slider of ID1 servo to control the gripper to release the block. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image23.png"  alt="loading" />
 
-21) 时间设为300ms，最后点击"**添加动作**"，就得到了12号动作。
+(21) Set the running time to 300ms and click “Add action” to get No.12 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image24.png"  alt="loading" />
 
-22) 将机械爪闭合并稍微抬高，调节的是1号和4号舵机。
+(22) Drag the slider of ID1 and ID4 servos to control the gripper to close and lift up.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image25.png"  alt="loading" />
 
-23) 时间设为400ms，再点击"**添加动作**"，就得到了13号动作。
+(23) Set the running time to 400ms and click “Add action” to get No.13 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image26.png"  alt="loading" />
 
-24) 最后，使机械臂回到初始姿态。点击1号动作的" "按钮，运行1号动作。 再将时间设置为1000ms，点击"**添加动作**"，即可得到14号动作。
+(24) Finally, robot arm is controlled to return to the initial position. Click “ ” in front of No.1 action to run it and set the running time to 1000ms. Then click “Add action” to get No.14 action.<img class="common_img" src="../_static/media/chapter_9/section_3/image27.png"  />
 
-<img class="common_img" src="../_static/media/chapter_9/section_3/image27.png"  />
-
-### 3.2 动作保存
+### 3.2 Save Action
 
 :::{Note}
-命名动作组时，尽量使用数字或者英文来命名，切勿使用空格键，以免导致后期调试出现保存不成功的情况，空格建议使用下划线"-"来代替。
+ It is recommended to use English or numbers to name action group , and use underscore “_” instead of the space bar to avoid failure saving.
 :::
 
-为了便于后期的调试和管理，可将动作保存起来。单击"**保存动作文件**"按钮，这里以"**4"**为例进行命名，单击"**Save**"。
+To facilitate later debugging and management, it is recommended to save the action. Click "Save Action File", name the file and click “Save”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image28.png"  />
 
-## 4. 串联动作文件
+<img class="common_img" src="../_static/media/chapter_9/section_3/image29.png"  />
 
-本节课以串联动作组"**1.d6a**"和"**3.d6a**"为例，讲解如何将多个动作组串联在一起。
+## 4. Integrate Action Files
 
-### 4.1 串联多个动作组
+This lesson will integrate action group “1.d6a” and “3.d6a” to explain how to integrate action files.
 
-1)  通过VNC远程连接ArmPi mini的系统桌面。
+### 4.1 Integrate Action Groups
 
-2)  双击系统桌面图标<img src="../_static/media/chapter_9/section_4/image1.png" style="width:0.31496in;height:0.31496in" />，在弹出的提示框中点击"Execute"，即可进入上位机界面。
+(1) Connect to ArmPi mini system desktop via VNC.
+
+(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width: in;height: in" />icon, and click “Execute” to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image2.png"  />
 
-3)  点击"**串联动作文件**"按键。
+(3) Click “Integrate action file”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image3.png"  />
 
-4)  选择动作组"**1.d6a**"，并点击"**Open**"按键。
+(4) Select action group “1.d6a” and click “Open”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image4.png"  />
 
-此时，可以在动作详情列表中看到"**1.d6a**"动作组的动作参数。
+At this time, the parameters of action group “1.d6a” are displayed in action data list.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image5.png"  />
 
-5)  再次点击"**串联动作文件**"，选择"**3**"号动作组，点击"**Open**"。
+(5) Then click “Integrate action file” and select “3.d6a” action group. Then click “Open”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image3.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image6.png"  />
 
-此时，动作详情列表中，"**3.d6a**"动作组的动作参数衔接在了"**1.d6a**"动作组的后面。
+Now, the parameters of action group “1.d6a” is followed by that of action group “3.d6a”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image7.png"  />
 
-6)  选中动作详情列表中的第一个动作后，点击"**运行**"按键，令ArmPi mini运行一次串联后的动作组。
+(6) Select the first action in action data list, and click “run” to execute the integrated action group once.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image8.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image9.png"  />
 
-### 4.2 保存串联所得动作组
+### 4.2 Save Integrated Action Group
 
-点击"**保存动作文件**"按钮，保存串联所得动作组，以便后期进行调试。此处命名为"**Hiwonder**"。
+Click “Save action file” to save the integrated action group for later debugging. The new action group is named as “Hiwonder”.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image10.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image11.png"  />
 
 :::{Note}
-建议使用数字或英文命名动作组，建议使用下划线"_"来代替空格键，以免后期调试出现保存不成功的情况。
+ It is recommended to use English or numbers to name action group , and use underscore “_” instead of the space bar to avoid failure saving.
 :::

@@ -1,105 +1,99 @@
-# AI视觉项目课程
+# 5.AI Vision Learning
 
-## 1. 单个颜色识别
+## 1. Single Color Recognition
 
-本节通过摄像头来识别颜色,识别到红色小球时，蜂鸣器发出滴滴报警声，并在回传画面中圈出，打印 "Color：red"。
+In this section, the camera detects colors. When a red ball is recognized, the buzzer will emit a beep, and the red ball will be highlighted in the transmitted image with "Color: red" displayed.
 
-### 1.1 实现原理
+### 1.1 Program Description
 
-颜色识别的实现分为颜色识别和识别后的执行反馈两部分。
+The implementation of color recognition consists of two parts: color detection and execution feedback after recognition.
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往教程资料中 "**[OpenCV基础课程]()**"进行详细学习)。
+First, for the color detection part, Gaussian filtering is applied to the image to reduce noise. The Lab color space is then used to convert the color of the object (you can learn more about the Lab color space in the OpenCV Vision Basic Courseection of the tutorial materials). 
 
-接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
+Next, the object's color within the circle is recognized using color thresholding, followed by masking (masking involves using selected images, shapes, or objects to globally or locally obscure the image being processed). 
 
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用圆圈圈出。
+After performing morphological operations such as opening and closing on the object image, the object with the largest contour is circled. 
+Opening: The image undergoes erosion followed by dilation. This operation removes small objects, smooths shape boundaries, and preserves the area. It can eliminate small noise particles and separate connected objects.  
 
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
-
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
-
-在识别后对蜂鸣器进行设置，使小车根据不同颜色来做出对应的反馈。比如识别红色，蜂鸣器响一声。
-
-关于详细对应的反馈效果，可参考本文档[1.3 实现效果](#anchor_1_3)效果。
+Closing: The image undergoes dilation followed by erosion. This operation fills small holes within objects, connects nearby objects, closes broken contour lines, and smooths boundaries while preserving the area.
+After recognition, the servo and buzzer are set up to provide feedback based on the detected color. For example, when red is detected, the buzzer will emit a sound.
+For detailed feedback behavior, please refer to section 3. Function Implementation of this document.
 
 <p id="anchor_1_2"></p>
 
-### 1.2 玩法开启及关闭步骤
+### 1.2 Start and Close the Game
 
 :::{Note}
-指令输入需严格区分大小写及空格，关键字可以使用"Tab"键进行补齐。
+The input command is case-sensitive, and keywords can be auto-completed using the Tab key.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) The input command is case-sensitive, and keywords can be auto-completed using the Tab key.
 
-<img src="../_static/media/chapter_8/section_1/image3.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image3.png"  />
 
-2)  点击系统桌面左上角的图标<img src="../_static/media/chapter_8/section_1/image5.png" style="width:0.31458in;height:0.27361in" />，或按下快捷键"**Ctrl+Alt+T**"打开LX终端。
+(2) Click the icon <img src="../_static/media/chapter_8/section_1/image5.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut " Ctrl+Alt+T" to open the LX terminal.
 
-3)  输入指令，按下回车，则可定位到存放玩法程序的目录。
+(3) Execute the command to navigate to the directory where the program is located, then press Enter: 
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-4)  输入指令，然后按下回车键，玩法启动。
+(4) Enter the command and press Enter to start the program:
 
 ```commandline
 python3 color_recognition.py
 ```
 
-5)  如需关闭此玩法，只需要在LX终端界面中按下"Ctrl+c"。若关闭失败，可多次按下。
+(5) To close the program, simply press "Ctrl+C" in the LX terminal. If it does not close, press it multiple times.
 
-<p id="anchor_1_3"></p>
+### 1.3 Program Outcome
 
-### 1.3 实现效果
-
-玩法开启后，通过摄像头来识别颜色,识别到红色小球时，蜂鸣器发出滴滴报警声，并在回传画面中圈出，打印 "Color：red"
+After starting the game, the camera will be used to detect colors. When a red ball is recognized, the buzzer will emit a beep sound, and the ball will be circled in the transmitted image, with "Color: red" printed.
 
 :::{Note}
-1)  识别过程中，请尽量保证在光线充足环境下进行识别，避免因光线问题导致识别不准确。
-2)  识别过程中，摄像头视觉范围之内的背景中，不要出现与要识别颜色相近或相同的物体，避免误识别。
-:::
 
-### 1.4 功能延伸
+* During the recognition process, ensure the environment is well-lit to avoid inaccurate recognition due to poor lighting conditions.
+* Ensure that no objects with similar or matching colors to the target are present in the background within the camera’s visual range, as this may cause misrecognition.
+  :::
+
+### 1.4 Function Extensions
 
 <p id="anchor_1_4_1"></p>
 
-- #### 1.4.1 更换默认识别颜色
+**1.4.1 Changing the Default Recognized Color**
 
-颜色识别程序内置了三种颜色：红色、绿色以及蓝色，其中默认识别到红色，蜂鸣器发出滴滴响声，并在回传画面中圈出，打印 "Color：red"。
+The color recognition program is pre-configured to recognize three colors: red, green, and blue. By default, the program identifies red, triggering the buzzer to emit a beep and drawing a circle around the red ball in the transmitted image, displaying “Color: red.”
 
-**这里我们将识别颜色更换为绿色为例，具体修改步骤如下所示：**
+**To change the recognized color to green, follow these steps:**
 
-1)  输入指令切换到源码路径下的指令，按下回车。
+(1) Enter the following command and press Enter to navigate to the source code directory:
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-2)  然后再输入指令打开程序文件的指令，按下回车。
+(2) Then, enter the following command and press Enter to open the program file:
 
 ```commandline
 sudo vim color_recognition.py
 ```
 
-3)  按下键盘上的"**i**"键，进入到编辑模式。
+(3) Press the “i” key on the keyboard to enter edit mode.
 
-<img src="../_static/media/chapter_8/section_1/image13.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image13.png"  />
 
-4)  找到下图红框代码。
+(4) Replace “red” (highlighted in red in the image) with “green,” as shown in the image below:
 
-<img src="../_static/media/chapter_8/section_1/image15.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image15.png"  />
 
-5)  将颜色参数修改为下图所示。
+(5) Modify the color parameters as shown in the following figure:
 
-<img src="../_static/media/chapter_8/section_1/image18.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image18.png"  />
 
-6)  保存修改的内容。按下"**Esc**"键，然后依次输入"**:wq**"（注意wq前为冒号：），回车即可保存并退出。
+(6) To save your changes, press the “Esc” key, then type “:wq” (note the colon before "wq") and press Enter to save and exit.
 
-<img src="../_static/media/chapter_8/section_1/image19.png"  />
-
-7)  输入开启颜色识别玩法的指令，按下回车。
+(7) Enter the following command and press Enter to start the color recognition functionality: 
 
 ```commandline
 python3 color_recognition.py
@@ -107,997 +101,1541 @@ python3 color_recognition.py
 
 <p id="anchor_1_4_2"></p>
 
-- #### 1.4.2 增加新的识别颜色
+**1.4.2 Add new recognition color**
 
-除了内置三种识别的颜色，我们还可以设置其它可识别的颜色，**比如我们以紫色作为新增的识别颜色为例**，**具体的修改步骤如下：**
+In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
 
-1.  双击系统桌面上位机图标，然后弹出的提示框内直接选择"**执行**"即可。
+(1) Double click<img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />and select “Execute” in the pop-up window.
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image23.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image23.jpeg"  alt="loading" />
+(2) Then select “Camera Tool” and “Connect” in sequence.
 
-2.  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image24.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image24.jpeg"  alt="loading" />
+(3) Click “Add” and name the new color. Take “purple” as example. Then click “OK”.
 
-3.  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image25.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image25.jpeg"  alt="loading" />
+(4) Select “purple” in the drop-down list of the color selection.
 
-4.  然后点击颜色选框的下拉按钮，选择"**purple**"。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image26.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image26.jpeg"  alt="loading" />
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side. 
 
-5.  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image27.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image27.jpeg"  alt="loading" />
+(6) Finally, click “Save”.
 
-6.  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image28.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_1/image28.jpeg"  alt="loading" />
-
-7.  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入进入到程序代码的目录。
+(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
 
 ```commandline
 cd ArmPi_mini/yaml/
 ```
 
-8.  输入打开程序文件的指令，按下回车。
+(8) Enter command and press “Enter” to open program file.
 
 ```commandline
 sudo vim lab_config.yaml
 ```
 
-9.  打开颜色阈值程序文件后，即可查看紫色阈值参数。
+(9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
 
-10. 再按照"**[更换默认识别颜色](#anchor_1_4_1)**"1—2步骤，打开程序文件并按下"i"键进入编辑模式。
+(10) Find the following code.
 
-11. 接着找到如下图所示代码。
+<img class="common_img" src="../_static/media/chapter_8/section_1/image34.png"  />
 
-<img src="../_static/media/chapter_8/section_1/image34.png"  />
+(11) Enter “ ‘purple’: (255, 255, 114)” and “ ‘purple’ ”. The “(255, 255, 114)” is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
 
-12. 手动输入添加"**’purple’: (255, 255, 114),**"和"**’purple’**"，如下图所示：
+<img class="common_img" src="../_static/media/chapter_8/section_1/image36.png" style="width:5.76458in;height:2.39722in" />
 
-(255, 255, 114)为第9步查看的紫色阈值参数的max。
+(12) Find the following code.
 
-<img src="../_static/media/chapter_8/section_1/image36.png" style="width:5.76458in;height:2.39722in" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image40.png"  />
 
-13. 接着找到如下图所示代码。
+(13) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_1/image40.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image42.png"  />
 
-14. 手动输入添加框中内容，如下图所示：
+(14) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
 
-<img src="../_static/media/chapter_8/section_1/image42.png"  />
+(15) Then refer to the steps in “[1.2 Start and Close the Game]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[1.4.1 Change Default Recognition Color]()” to change the default color to purple. 
 
+(16) If you want to add other recognition colors, please refer to the operation steps above.
 
-15. 保存修改的内容。按下"**Esc**"键，然后依次输入"**:wq**"（注意wq前为冒号：），回车即可保存并退出。
+### 1.5 Program Analysis
 
-16. 参照"**[1.2 玩法开启及关闭步骤](#anchor_1_2)**"再次启动该玩法，将紫色物品放置到摄像头前，可在回传画面中看到将紫色圈出。用户也可参照"**4.1 更换默认识别颜色**"将默认识别颜色改为紫色。
+The source code of this program is saved in:[/home/pi/ArmPi_mini/functions/Color_recognition.py]()
 
-17. 如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
+**1.5.1 Import Function Library**
 
-### 1.5 程序分析
+{lineno-start=1}
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/Color_recognition.py**
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import common.yaml_handle as yaml_handle
+```
 
-根据实现的效果，梳理程序的过程逻辑，如下图所示：
+(1) Import Libraries for OpenCV, Time, Math, and Threading
+To use functions from a library, we can call them with the syntax:
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image63.png" alt="loading" />
+{lineno-start=179}
 
-- #### 1.5.1 导入功能库
+```
+            time.sleep(0.01)
+```
 
-<img src="../_static/media/chapter_8/section_1/image64.png"  />
+For example, to call the `sleep` function from the `time` library, we use: 
 
-导入opencv、时间、数学、线程相关的库。我们如果想要调用功能库里的函数，就可以使用"功能库名+函数名（参数，参数...）"如：
+In Python, several libraries like `time`, `cv2`, and `math` are built-in and can be directly imported and used. You can also create your own libraries, like the "yaml_handle" file-reading library mentioned above.
 
-<img src="../_static/media/chapter_8/section_1/image66.png"  />
+**1.5.2 Main Function Analysis**
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+In a Python program, `__name__ == '__main__'` indicates the main function of the program, where the program starts by reading an image.
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**yaml_handle**"文件读取库。
- 
+{lineno-start=156}
 
-- #### 1.5.2 主函数分析
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+```
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
+**(1) Image Processing**
 
-<img src="../_static/media/chapter_8/section_1/image69.png"  />
+Function run() for Image Processing]
 
-**读取摄像头图像**
+{lineno-start=82}
 
-<img src="../_static/media/chapter_8/section_1/image71.png"  />
+```
+def run(img):
+    global interval_time
+    global __isRunning, color_list
+    global detect_color, draw_color
+    
+    if not __isRunning:  # 检测是否开启玩法，没有开启则返回原图像(detect if the game is started, if no, return to original image)
+        return img
+    else:
+        img_copy = img.copy()
+        img_h, img_w = img.shape[:2]
+        
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+        
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-当玩法启动时，获取视频流并存储在"cap"中。
+**(2) Resizing the Image. The image size is resized to facilitate processing.**
 
-**进入图像处理**
+{lineno-start=93}
 
-读取到图像时，调用run()函数进行图像处理。
+```
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+```
 
-<img src="../_static/media/chapter_8/section_1/image73.png"  />
+The first parameter `"img"` is the input image.
 
-1)  函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+The second parameter `(320, 240)` specifies the output image size, which can be customized.
 
-2)  函数run()进行图像处理。
+The third parameter `interpolation=cv2.INTER_NEAREST` defines the interpolation method.  
 
-<img src="../_static/media/chapter_8/section_1/image75.png"  />
+`INTER_NEAREST`: Nearest-neighbor interpolation.  
 
-- 对图片大小进行缩放，方便处理。
+`INTER_LINEAR`: Bilinear interpolation (default if not specified).  
 
-<img src="../_static/media/chapter_8/section_1/image77.png"  />
+`INTER_CUBIC`: Bicubic interpolation over a 4x4 pixel neighborhood.  
 
-第一个参数"**img_copy**"是输入图像。
+`INTER_LANCZOS4`: Lanczos interpolation over an 8x8 pixel neighborhood.
 
-第二个参数"**size**"是输出图像的大小。大小可以自己设定。
+**(3) Gaussian Filtering**
 
-第三个参数"**interpolation=cv2.INTER_NEAREST**"是插值方式。INTER_NEAREST：最邻近插值。INTER_LINEAR：双线性插值，如果最后一个参数你不指定，将默认使用这种方法。INTER_CUBIC：4x4像素邻域内的双立方插值。INTER_LANCZOS4：8x8像素邻域内的Lanczos插值。
+To remove noise from the image, Gaussian filtering is applied. This filter smooths the image to improve feature visibility.
 
-- 高斯滤波
+{lineno-start=94}
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+```
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+```
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+The first argument `frame_resize` is the input image.
 
-<img src="../_static/media/chapter_8/section_1/image79.png"  />
+The second argument `(3, 3)` specifies the size of the Gaussian kernel.
 
-第一个参数"**frame_resize**"是输入图像。
+The third argument `3` is the standard deviation of the Gaussian kernel in the X direction.
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+{lineno-start=96}
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+````
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+````
 
-- 将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+The first parameter `"frame_gb"` is the image to be converted.
 
-<img src="../_static/media/chapter_8/section_1/image81.png"  />
+The second parameter `cv2.COLOR_BGR2LAB` converts the image from BGR format to LAB format. To convert to RGB, use `cv2.COLOR_BGR2RGB`.
 
-第一个参数"**frame_gb**"是输入图像。
+**(4) Convert the Image to a Binary Image**
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"**cv2.COLOR_BGR2RGB**"。
+The image is simplified by converting it to a binary image, containing only 0s and 1s, which reduces the data size and makes it easier to process. The `cv2.inRange()` function is used for thresholding.
 
-- 将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+{lineno-start=103}
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+```
+                frame_mask = cv2.inRange(frame_lab,
+                                             (lab_data[i]['min'][0],
+                                              lab_data[i]['min'][1],
+                                              lab_data[i]['min'][2]),
+                                             (lab_data[i]['max'][0],
+                                              lab_data[i]['max'][1],
+                                              lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+```
 
-<img src="../_static/media/chapter_8/section_1/image83.png"  />
+The first parameter `"frame_lab"` is the input image.
 
-第一个参数"**frame_lab**"是输入图像；
+The second parameter `(lab_data[i]['min'][0], lab_data[i]['min'][1], lab_data[i]['min'][2])` specifies the lower color threshold.
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+The third parameter `(lab_data[i]['max'][0], lab_data[i]['max'][1], lab_data[i]['max'][2])` specifies the upper color threshold.
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+**(5) Apply Morphological Operations (Opening and Closing)**
 
-- 为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
+To reduce interference and smooth the image, morphological operations are applied. Opening is erosion followed by dilation, and closing is dilation followed by erosion. The `cv2.morphologyEx()` function is used.
 
-<img src="../_static/media/chapter_8/section_1/image85.png"  />
+{lineno-start=110}
 
-第一个参数"**frame_mask**"是输入图像。
+```
+                opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
+The first parameter `"frame_mask"` is the input image.
 
-第三个参数"**np.ones((3, 3)**"是卷积核。
+The second parameter `cv2.MORPH_OPEN` specifies the morphological operation (options include `cv2.MORPH_ERODE`, `cv2.MORPH_DILATE`, `cv2.MORPH_OPEN`, `cv2.MORPH_CLOSE`).
 
-第四个参数"**np.uint8**"是应用次数。
+The third parameter `np.ones((6, 6))` specifies the convolution kernel.
 
-- 获取最大面积轮廓
+The fourth parameter `np.uint8` defines the number of iterations to apply.
 
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
+**(6) Find the Largest Contour**
 
-<img src="../_static/media/chapter_8/section_1/image88.png"  />
+After completing the image processing, the largest contour is found using the `cv2.findContours()` function.
 
-第一个参数"**closed**"是输入图像；
+{lineno-start=112}
 
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
+```
+                contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
 
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
+The first parameter `"closed"` is the input image.
 
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
+The second parameter `cv2.RETR_EXTERNAL` specifies the contour retrieval mode.
 
-<img src="../_static/media/chapter_8/section_1/image89.png"  />
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` specifies the contour approximation method.
 
-- 通过判断语句得到图像中面积最大的颜色。
+The largest contour is selected, and a minimum area threshold is set to ensure the target contour is valid only if its area exceeds this value.
 
-<img src="../_static/media/chapter_8/section_1/image91.png"  />
+{lineno-start=114}
 
-**显示回传画面**
+```
+                if areaMaxContour is not None:
+                    if area_max > max_area:  # 找最大面积(find the maximum area)
+                        max_area = area_max
+                        color_area_max = i
+                        areaMaxContour_max = areaMaxContour
+        if max_area > 2500:  # 有找到最大面积(the maximum area has been found)
+            rect = cv2.minAreaRect(areaMaxContour_max)
+            box = np.intp(cv2.boxPoints(rect))
+```
 
-<img src="../_static/media/chapter_8/section_1/image93.png"  />
+**(7) Find the Largest Contour**
 
-函数cv2.resize()的作用是把处理好的图像缩放到合适的大小。
+{lineno-start=119}
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+```
+        if max_area > 2500:  # 有找到最大面积(the maximum area has been found)
+            rect = cv2.minAreaRect(areaMaxContour_max)
+            box = np.intp(cv2.boxPoints(rect))
+            
+            cv2.drawContours(img, [box], -1, range_rgb[color_area_max], 2)
+            if color_area_max == 'red':  # 红色最大(red is the maximum)
+                color = 1
+            elif color_area_max == 'green':  # 绿色最大(green is the maximum)
+                color = 2
+            elif color_area_max == 'blue':  # 蓝色最大(blue is the maximum)
+                color = 3
+            else:
+                color = 0
+            color_list.append(color)
+            if len(color_list) == 3:  # 多次判断(multiple judgements)
+                # 取平均值(get mean)
+                color = int(round(np.mean(np.array(color_list))))
+                color_list = []
+                
+                if color == 1:
+                    if time.time() > interval_time:
+                        interval_time = time.time() + 3
+                        board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                        time.sleep(0.9)
+                        board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                    detect_color = 'red'
+                    draw_color = range_rgb["red"]
+                else:
+                    detect_color = 'None'
+                    draw_color = range_rgb["black"]
+        else:
+            draw_color = (0, 0, 0)
+            detect_color = "None"
+        cv2.putText(img, "Color: " + detect_color, (10, img.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.65, draw_color, 2) # 把检测到的颜色打印在画面上(print the detected color on the image)
+```
 
-函数cv2.waitKey()的作用是等待按键输入，参数"**1**"是延迟时间。
+**(8) Display the Transmitted Image**
 
-## 2. 颜色识别
+{lineno-start=173}
 
-### 2.1 实验原理
+```
+            frame_resize = cv2.resize(Frame, (320, 240))
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+```
 
-本节课可以通过摄像头进行颜色识别控制机械臂点头和摇头。实现分为颜色识别和识别后的执行反馈两部分。
+The function `cv2.imshow()` is used to display an image in a window. The first parameter `"frame"` is the name of the window, and the second parameter `"frame_resize"` is the content to be displayed. 
+It is important to include `cv2.waitKey()` after `cv2.imshow()`, as the image will not be displayed without it. 
+The function `cv2.waitKey()` waits for a key press, and the parameter `1` specifies the delay time in milliseconds.
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程](https://docs.hiwonder.com/projects/General_basic_courses/en/latest/docs/4_ros_basics_course.html)**"进行详细学习)。
+## 2. Color Recognition
 
-接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
+### 2.1 Program Description
 
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用圆圈圈出。
+The robotic arm can be controlled to nod and shake its head after recognizing color through the camera. This process has two parts including color recognition and recognition feedback.
 
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “[OpenCV Basic Lesson/ 3.Color Space Learning]()” to learn about Lab color space.
 
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
+Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
 
-然后在识别后对舵机、蜂鸣器和RGB彩灯进行设置，使机械臂根据不同颜色来做出对应的反馈。比如识别红色，将机械臂设置为"点头"，蜂鸣器响一声，RGB彩灯亮红色。
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
 
-关于详细对应的反馈效果，可参考本文档[2.3 功能实现](#anchor_2_3)。
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+
+After the color is recognized, set servo, buzzer and RGB light. Then robot arm will give different feedback according to the different recognized color. For example, if red is recognized, robot arm will nod, buzzer will make sound and RGB will emit red light.
+About the specific feedback effect, please refer to this part “[2.3 Project Outcome]()”.
 
 <p id="anchor_2_2"></p>
 
-### 2.2 玩法开启及关闭步骤
+### 2.2 Start and Close the Game
 
 :::{Note}
-指令输入需严格区分大小写及空格。
+The input command should be case sensitive.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-<img src="../_static/media/chapter_8/section_2/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image4.png"  />
 
-2)  输入玩法程序目录所在的指令，并按下回车。
+(2)  Enter the command to navigate to the directory where the demo program is located.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-3)  输入玩法执行指令，并按下回车,玩法启动。
+(3) Enter the command of running the program , and press “Enter” to start the game.
 
 ```commandline
 python3 color_detect.py
 ```
 
-4)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
+(4) To close the program, press “Ctrl+C” in the LX terminal interface. If the program cannot be closed successfully, repeat this operation until it exits.
 
-<p id="anchor_2_3"></p>
+### 2.3 Project Outcome
 
-### 2.3 功能实现
+Firstly, start game. After recognition, robot arm will give corresponding feedback according to the recognized color. The effect is shown in the following list.
 
-玩法开启后，在识别后，机械臂根据不同颜色做出对应的反馈，效果如下表所示：
+| **Object color** | Buzzer            | **RGB light** | **Action** | **Printed content** |
+| ---------------- | ----------------- | ------------- | ---------- | ------------------- |
+| Red              | Make a “Di” sound | Red           | Nod        | red                 |
+| Green            | Make a “Di” sound | Green         | Shake head | green               |
+| Blue             | Make a “Di” sound | Blue          | Shake head | blue                |
 
-| **物体颜色** | **蜂鸣器** | **RGB灯** | **执行动作** | **打印内容** |
-|--------------|------------|-----------|--------------|--------------|
-| 红色         | 响一声     | 红色      | **"点头"**   | red          |
-| 绿色         | 响一声     | 绿色      | **"摇头"**   | green        |
-| 蓝色         | 响一声     | 蓝色      | **"摇头"**   | blue         |
-
-### 2.4 功能延伸
+### 2.4 Function Extension
 
 <span id="anchor_2_4_1" class="anchor"></span>
 
-- ### 2.4.1 更换默认识别颜色
+**2.4.1 Change default recognition color**
 
-颜色识别程序内置了三种颜色：红色、绿色以及蓝色，其中默认识别到红色，机械臂便执行点头动作。
+There are three built-in recognition colors in program including red, green and blue. When recognizing red, the robot arm will nod.
 
-**这里我们将识别颜色更换为绿色为例，具体修改步骤如下所示：**
+Here take changing the default recognition color to green for example. The specific operation steps are as follow.
 
-1)  输入指令，按下回车，切换至源码程序路径下。
+(1) Enter command and press “Enter” to enter the source code directory.
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-2)  然后再输入指令，按下回车，即可打开程序文件。
+(2) Then enter command and and press “Enter” to open the program file.
 
 ```commandline
 sudo vim color_detect.py
 ```
 
-3)  找到下图所示代码：
+(3) Find the following code:
 
-<img src="../_static/media/chapter_8/section_2/image8.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image8.png"  />
 
 :::{Note}
-在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
+After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
 :::
 
-4)  按下键盘上的"**i**"键，进入到编辑模式。
+(4) Press “i” to enter the editing mode.
 
-<img src="../_static/media/chapter_8/section_2/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image9.png"  />
 
-5)  将"**detect_color == 'red'**"中的"red"换成"**green**"，如下图所示：
+(5)  Change “red” to “green” in “detect_color == 'red'”, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_2/image10.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image10.png"  />
 
-6)  接下来，保存我们修改的内容。按下"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
+(6) Then save the modified content. Press “Esc” and enter “:wq”, and press “Enter” to save and close the program file.
 
 ```commandline
 :wq
 ```
 
-<img src="../_static/media/chapter_8/section_2/image11.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image11.png"  />
 
-7)  再次输入指令，按下回车，即可开启颜色识别的玩法。
+(7) Enter command again, and press “Enter” to start game.
 
 ```commandline
 python3 color_detect.py
 ```
 
-<img src="../_static/media/chapter_8/section_2/image12.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image12.png"  />
 
-- ### 2.4.2 增加新的识别颜色
+**2.4.2 Add new recognition color**
 
-除了内置三种识别的颜色，我们还可以设置其它可识别的颜色，**比如我们以紫色作为新增的识别颜色为例，具体的修改步骤如下：**
+In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
 
-1)  双击系统桌面<img src="../_static/media/chapter_8/section_2/image13.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
+(1) Double click <img src="../_static/media/chapter_8/section_2/image13.png" style="width:in;height:in" />and select “Execute” in the pop-up window.
 
-<img src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
 
-2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
+(2) Then select “Camera Tool” and “Connect” in sequence.
 
-<img src="../_static/media/chapter_8/section_2/image15.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image15.png"  alt="loading" />
 
-3)  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
+(3) Click “Add” and name the new color. Take “purple” as example. Then click “OK”.
 
-<img src="../_static/media/chapter_8/section_2/image16.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image16.png"  alt="loading" />
 
-4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
+(4) Select “purple” in the drop-down list of the color selection.
 
-<img src="../_static/media/chapter_8/section_2/image17.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image17.png"  alt="loading" />
 
-5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side. 
 
-<img src="../_static/media/chapter_8/section_2/image18.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image18.png"  alt="loading" />
 
-6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
+(6) Finally, click “Save”.
 
-<img src="../_static/media/chapter_8/section_2/image19.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image19.png"  alt="loading" />
 
-7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
+(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
 
 ```commandline
 cd ArmPi_mini/yaml/
 ```
 
-8)  再输入指令，按下回车，打开程序文件。
+(8) Enter command and press “Enter” to open program file.
 
 ```commandline
 sudo vim lab_config.yaml
 ```
 
-9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
+(9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
 
-10) 再按照"[2.4 功能延伸\ 更换默认识别颜色](#anchor_2_4_1)"1—2步骤，打开程序文件并按下"i"键进入编辑模式。
+(10) Refer to the steps 1-2 in “4.1 Change default recognition color” to open the program file, and press “i” to enter the editing mode.
 
-11) 接着找到如下图所示代码。
+<img class="common_img" src="../_static/media/chapter_8/section_2/image24.png"  />
 
-<img src="../_static/media/chapter_8/section_2/image24.png"  />
+(12) Enter ` ‘purple’: (128, 0, 128)` and ` ‘purple’ `. The `(128, 0, 128)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
 
-12) 手动输入添加"**'purple': (128, 0, 128)**"和"**'purple'"（ (128, 0, 128)** 为紫色的RGB值，此处需要调换RGB的顺序为BGR；因此，紫色的数值还是（128, 0,128），颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）。
+<img class="common_img" src="../_static/media/chapter_8/section_2/image25.png"  />
 
-如下图所示：
+<img class="common_img" src="../_static/media/chapter_8/section_2/image26.png"  />
 
-<img src="../_static/media/chapter_8/section_2/image25.png"  />
+(13) Find the following code.
 
-<img src="../_static/media/chapter_8/section_2/image26.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image27.png"  />
 
-13) 接着找到如下图所示代码。
+(14) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_2/image27.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image28.png"  />
 
-14) 手动输入添加框中内容，设置扩展板上的灯，亮紫色。（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
+(15) Find the following code.
 
-<img src="../_static/media/chapter_8/section_2/image28.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image29.png"  />
 
-15) 接着找到如下图所示代码。
+(16) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_2/image29.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image30.png"  />
 
-16) 手动输入添加框中内容，紫色面积最大时，令color=4。如下图所示：
+(17) Find the following code.
 
-<img src="../_static/media/chapter_8/section_2/image30.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image31.png"  />
 
-17) 接着找到如下图所示代码。
+(18) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_2/image31.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image32.png"  />
 
-18) 手动输入添加框中内容，如下图所示：
-
-<img src="../_static/media/chapter_8/section_2/image32.png"  />
-
-19) 保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
+(19) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
 
 ```commandline
 :wq
 ```
 
-20) 参照本文档"[2.2 玩法开启及关闭步骤](#anchor_2_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂将执行"摇头"动作。如果需要执行"**点头**"动作，参照"[2.4 功能延伸\ 更换默认识别颜色](#anchor_2_4_1))"将默认识别颜色改为紫色即可。
+(20) Then refer to the steps in “[2.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[2.4.1 Change Default Recognition Color]()” to change the default color to purple. 
 
-21) 如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
+(21) If you want to add other recognition colors, please refer to the operation steps above.
 
-### 2.5 代码分析
+### 2.5 Program Analysis
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/color_detect.py**
+The source code of program is located in：[/home/pi/ArmPi_mini/functions/color_detect.py]()
 
-根据实现的效果，梳理程序的过程逻辑，如下图所示：
+**2.5.1 Import Function Library**
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image34.png"/>
+{lineno-start=1}
 
-- #### 2.5.1 导入功能库
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import numpy as np
+import common.misc as Misc
+import common.yaml_handle as yaml_handle
+```
 
-<img src="../_static/media/chapter_8/section_2/image35.png"  />
+{lineno-start=276}
 
-<img src="../_static/media/chapter_8/section_2/image36.png"  />
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：<img src="../_static/media/chapter_8/section_2/image37.png"  />
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use`library name+function name (parameter, parameter)`. For example,
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+{lineno-start=178}
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**common.yaml_handle**"文件读取库、"**kinematics.arm_move_ik**"逆运动学库等。
+```
+                time.sleep(1.5)  
+```
 
-- #### 2.5.2 实例化函数库
+Call `sleep` function in “time” library. The function “sleep ()” is used to delay.
 
-我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
+There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `common.yaml_handle` and “common.yaml_handle”.
 
-<img src="../_static/media/chapter_8/section_2/image38.png"  />
+**2.5.2 Instantiate Function Library**
 
-进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
+The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
-- #### 2.5.3 主函数分析
+{lineno-start=280}
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
+```
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+```
 
-<img src="../_static/media/chapter_8/section_2/image39.png"  />
+After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
 
-1. **读取摄像头图像**
+**2.5.3 Main Function Analysis**
 
-<img src="../_static/media/chapter_8/section_2/image40.png"  />
+The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
-打开摄像头图像并保存到"**cap**"。
+{lineno-start=276}
 
-函数cap.read()是读取摄像头图像，True：读取到图像"**ret**"的值，False：未读取到图像"**ret**"的值。
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+    
+    init()
+    start()
+```
 
-"**img**"是读取摄像头一帧的画面。
+**(1) Read the Captured Image** 
 
-2. **进入图像处理**
+{lineno-start=157}
 
-读取到图像时，"**ret**"的值为True。
+```
+    cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
+```
 
-<img src="../_static/media/chapter_8/section_2/image41.png"  />
+Capture the camera image and save it to `cap`.
 
-函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+The function `cap.read` is to read the captured image. True: the `ret` value of image is read. False: The value of image 'ret' was not read.
 
-函数run()进行图像处理。详细内容请看[图像处理分析](#anchor_2_5_4)。
+`img` is a frame of the camera that was read.
 
-3. **窗口显示图像**
+**(2) Enter Image Processing**
 
-<img src="../_static/media/chapter_8/section_2/image42.png"  />
+When the captured image is read, “ret” value is True.
 
-函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
+{lineno-start=290}
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+```
+        if ret:
+            frame = img.copy()
+            Frame = run(frame)  
+```
 
-函数cv2.waitKey()的作用是等待按键输入，参数"1"是延迟时间。
+The function img.copy() is used to copy the content of “img” to “frame”.
+The function run() is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
+
+**(3) Window Displays Image**
+
+{lineno-start=293}
+
+```
+            frame_resize = cv2.resize(Frame, (320, 240))
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+```
+
+The function `cv2.resize()` is used to scale the processed image to the appropriate size.
+
+The function `cv2.imshow()` is used to displa y the image in window. `frame` is the window name. `frame_resize`is the displayed content and must be followed by cv2.waitKey(). Otherwise, the content can not be displayed.
+
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter `1` refers to the delay time.
 
 <span id="anchor_2_5_4"></span>
 
-- #### 2.5.4 图像处理分析
+**2.5.4 Image Processing Analysis**
+
+{lineno-start=190}
 
-<img src="../_static/media/chapter_8/section_2/image43.png"  />
+```
+# 图像处理(image processing)
+def run(img):
+    global roi
+    global center_list
+    global __isRunning
+    global start_pick_up
+    global last_x, last_y
+    global detect_color, draw_color, color_list
+    
+    if not __isRunning:
+        return img
+    else:
+        img_copy = img.copy()
+        img_h, img_w = img.shape[:2]
 
-1. **图像缩放处理**
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+        
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 
-对图片大小缩放，方便处理。
+        color_area_max = None
+        max_area = 0
+        areaMaxContour_max = 0
+        if not start_pick_up:
+            for i in lab_data:
+                if i in __target_color:
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+                    areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+```
 
-<img src="../_static/media/chapter_8/section_2/image44.png"  />
+**(1) Image Resizing Process**
 
-第一个参数"**img_copy**"是输入图像。
+It is easy to zoom in and out the image.
 
-第二个参数"**size**"是输出图像的大小。大小可以自己设定。
+{lineno-start=205}
 
-第三个参数"**interpolation=cv2.INTER_NEAREST**"是插值方式。INTER_NEAREST：最邻近插值。INTER_LINEAR：双线性插值，如果最后一个参数你不指定，将默认使用这种方法。INTER_CUBIC：4x4像素邻域内的双立方插值。INTER_LANCZOS4：8x8像素邻域内的Lanczos插值。
+```
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+```
 
-2. **高斯滤波**
+The first parameter `img_copy` is the input image.
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+The second parameter `size` is the size of the output image.
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. `INTER_NEAREST` is the earest Neighbour Interpolation. INTER_LINEAR is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
 
-<img src="../_static/media/chapter_8/section_2/image45.png"  />
+INTER_CUBIC: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-第一个参数"**frame_resize**"是输入图像。
+**(2) Gaussian filter**
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+Gaussian filter is a linear filter hat also smooths an image and reduces noise, which is widely used in processing image to eliminate noise.
 
-3. **转换颜色空间**
+{lineno-start=206}
 
-将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+```
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+```
 
-<img src="../_static/media/chapter_8/section_2/image46.png"  />
+The first parameter `frame_resize` is the input image.
 
-第一个参数"**frame_gb**"是输入图像。
+The second parameter `(3, 3)` is the kernel size.
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"**cv2.COLOR_BGR2RGB**"。
+The third parameter`3` is the Gaussian kernel sigma value on x direction.
 
-4. **二值化处理**
+**(3) Covert to Color Space**
 
-将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+Use function `cv2.cvtColor()` to convert image to LAB space.
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+{lineno-start=208}
 
-<img src="../_static/media/chapter_8/section_2/image47.png"  />
+```
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-第一个参数"**frame_lab**"是输入图像；
+The first parameter `frame_gb` is the input image.
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+**(4) Thresholding Processing**
 
-5. **开运算和闭运算**
+Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 
-为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
+Use inRange() function in cv2 library is used to process image with thresholding method. 
 
-<img src="../_static/media/chapter_8/section_2/image48.png"  />
+{lineno-start=216}
 
-第一个参数"**frame_mask**"是输入图像。
+```
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+```
 
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
+The first parameter `frame_lab` is the input image.
 
-第三个参数"**np.ones((3, 3)**"是卷积核。
+The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['min'][2])` is the lower limit of color threshold.
 
-第四个参数"**np.uint8**"是应用次数。
+The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-6. **获取最大面积轮廓**
+**(5) Opening and Closing**
 
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function `cv2.morphologyEx()` is the morphology function.
 
-<img src="../_static/media/chapter_8/section_2/image49.png"  />
+{lineno-start=223}
 
-第一个参数"**closed**"是输入图像；
+```
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
+The first parameter `frame_make` is the input image.
 
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. `cv2.MORPH_ERODE (Erosion)`, `cv2.MORPH_DILATE(Dilation)`, `cv2.MORPH_OPEN (Opening)`, `cv2.MORPH_CLOSE (Closing)`.
 
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
+The third parameter `np.ones((3, 3)` is the convolution kernel.
 
-<img src="../_static/media/chapter_8/section_2/image50.png"  />
+The fourth parameter `np.uint8` is the application times.
 
-7. **获取位置信息**
+**(6) Find the Largest Contour** 
 
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。
+Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
-<img src="../_static/media/chapter_8/section_2/image51.png"  />
+{lineno-start=226}
 
-8. **判断最大颜色**
+```
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
 
-通过判断语句得到图像中面积最大的颜色。
+The first parameter `closed` is the input image.
 
-<img src="../_static/media/chapter_8/section_2/image52.png"  />
+The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
 
-- #### 2.5.5 机械臂执行反馈
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
 
-机械臂移动函数move()作为子线程运行，当识别到颜色后，就会执行move()函数。
+Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
 
-主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
+{lineno-start=227}
 
-<img src="../_static/media/chapter_8/section_2/image53.png"  />
+```
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+```
+
+**(7) Obtain Position Information**
+
+Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+
+{lineno-start=232}
+
+```
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+```
+
+**(8) Determine Maximum Color** 
+
+Use judgement statement to get the maximum color in a image.
+
+{lineno-start=239}
+
+```
+                if not start_pick_up:
+                    if color_area_max == 'red':  # 红色最大(red is the maximum)
+                        color = 1
+                    elif color_area_max == 'green':  # 绿色最大(green is the maximum)
+                        color = 2
+                    elif color_area_max == 'blue':  # 蓝色最大(blue is the maximum)
+                        color = 3
+                    else:
+                        color = 0
+                    color_list.append(color)
+                    if len(color_list) == 3:  # 多次判断(multiple judgements)
+                        # 取平均值(get mean)
+                        color = int(round(np.mean(np.array(color_list))))
+                        color_list = []
+                        start_pick_up = True
+                        if color == 1:
+                            detect_color = 'red'
+                            draw_color = range_rgb["red"]
+                        elif color == 2:
+                            detect_color = 'green'
+                            draw_color = range_rgb["green"]
+                        elif color == 3:
+                            detect_color = 'blue'
+                            draw_color = range_rgb["blue"]
+                        else:
+                            detect_color = 'None'
+                            draw_color = range_rgb["black"]
+            else:
+                if not start_pick_up:
+                    draw_color = (0, 0, 0)
+                    detect_color = "None"
+```
+
+**2.5.5 Execute Feedback**
+
+The robot arm movement function move() is executed as a child thread. When color is recognized, the move() function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
+
+{lineno-start=129}
+
+```
+# 机械臂移动函数(function for the robotic arm's movement)
+def move():
+    global _stop
+    global __isRunning
+    global detect_color
+    global start_pick_up
+    
+
+    while True:
+        if __isRunning:
+            if detect_color != 'None' and start_pick_up:  # 如果检测到方块没有移动一段时间后，开始夹取(if the block is detected no moving for a period, the robotic arm starts to grip)
+                set_rgb(detect_color)
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                
+                if detect_color == 'red' : # 识别到红色，机械臂点头(if red is detected, the robotic arm nods its head)
+                    for i in range(0,3):
+                        board.pwm_servo_set_position(0.2, [[3, 800]])
+                        time.sleep(0.2)
+                        board.pwm_servo_set_position(0.2, [[3, 600]])
+                        time.sleep(0.2)
+                        if not __isRunning:
+                            continue
+
+                    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)  # 回到初始位置(return to initial position)
+                    time.sleep(0.5)  
+                    detect_color = 'None'
+                    start_pick_up = False
+                    set_rgb(detect_color)
+                    
+                else: # 否则识别到其他颜色，绿色和蓝色，机械臂摇头(if green and blue are detected, it shakes its head)
+                    for i in range(0,3):
+                        board.pwm_servo_set_position(0.4, [[6, 1300]])
+                        time.sleep(0.3)
+                        board.pwm_servo_set_position(0.4, [[6, 1700]])
+                        time.sleep(0.3)
+                        if not __isRunning:
+                            continue
+
+                    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)  # 回到初始位置(return to initial position)
+                    time.sleep(0.5)
+                    detect_color = 'None'
+                    start_pick_up = False
+                    set_rgb(detect_color)
+            else:
+                time.sleep(0.01)
+        else:
+            if _stop:
+                _stop = False
+                initMove()  # 回到初始位置(return to initial position)
+                time.sleep(1.5)               
+            time.sleep(0.01)
+```
+
+(1) The RGB color is consistent with the recognized color.
 
-1. **点亮RGB灯**
+{lineno-start=68}
 
-根据识别的颜色，RGB灯颜色与识别的颜色一致。
+```
+#设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
+def set_rgb(color):
+    if color == "red":
+        board.set_rgb([[1, 255, 0, 0], [2, 255, 0, 0]])
+    elif color == "green":
+        board.set_rgb([[1, 0, 255, 0], [2, 0, 255, 0]])
+    elif color == "blue":
+        board.set_rgb([[1, 0, 0, 255], [2, 0, 0, 255]])
+    else:
+        board.set_rgb([[1, 0, 0, 0], [2, 0, 0, 0]])
+```
 
-<img src="../_static/media/chapter_8/section_2/image54.png"  />
+(2) Drive Buzzer
 
-2. **驱动蜂鸣器**
+{lineno-start=141}
 
-<img src="../_static/media/chapter_8/section_2/image55.png"  />
+```
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+```
 
-board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
+The code `board.set_buzzer(1900, 0.1, 0.9, 1)` calls a function called`set_buzzer()`, which sets the buzzer to sound for 0.1 seconds. This is used to control the sound effect and duration of the buzzer.
 
-3. **机械臂执行移动**
+(3) Movement Execution
 
-判断识别的颜色与设定颜色是否一致，执行点头或者摇头的动作。
+Determine whether the recognized color is the same as the set color, and then perform head nodding or shaking action.
 
-<img src="../_static/media/chapter_8/section_2/image56.png"  />
+{lineno-start=143}
 
-使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
+```
+                if detect_color == 'red' : # 识别到红色，机械臂点头(if red is detected, the robotic arm nods its head)
+                    for i in range(0,3):
+                        board.pwm_servo_set_position(0.2, [[3, 800]])
+                        time.sleep(0.2)
+                        board.pwm_servo_set_position(0.2, [[3, 600]])
+                        time.sleep(0.2)
+                        if not __isRunning:
+                            continue
 
-第一个参数："**0.4**"为动作持续时间，单位是秒。
+                    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)  # 回到初始位置(return to initial position)
+                    time.sleep(0.5)  
+                    detect_color = 'None'
+                    start_pick_up = False
+                    set_rgb(detect_color)
+                    
+                else: # 否则识别到其他颜色，绿色和蓝色，机械臂摇头(if green and blue are detected, it shakes its head)
+                    for i in range(0,3):
+                        board.pwm_servo_set_position(0.4, [[6, 1300]])
+                        time.sleep(0.3)
+                        board.pwm_servo_set_position(0.4, [[6, 1700]])
+                        time.sleep(0.3)
+                        if not __isRunning:
+                            continue
 
-第二个参数"**\[\[6,1300\]\]**"为舵机ID6和"1300"为脉冲宽度，取值范围为"500~2500"。
+                    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)  # 回到初始位置(return to initial position)
+                    time.sleep(0.5)
+                    detect_color = 'None'
+                    start_pick_up = False
+                    set_rgb(detect_color)
+            else:
+                time.sleep(0.01)
+```
 
-函数AK.setPitchRangeMoving()是逆运动学控制机械臂移动，以代码"**AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)**"为例：
+The Board.setPWMServoPulse() function is used to control a single servo. Take `Board.setPWMServoPulse(3, 800, 200)` for example.
 
-第一个参数"**(0, 6, 18)**"是机械臂末端坐标。0是X轴坐标,6是Y轴坐标，18是Z轴坐标。
+The first parameter `3` is the servo ID.
 
-第二个参数"**0**"是俯仰角。
+The second parameter `800` is the servo pulse.
 
-第三个参数"**-90**"是俯仰角范围最小值。
+The third parameter `200` is the running time and the unit is mm/s.
 
-第四个参数"**90**"是俯仰角范围最大值。
+The `AK.setPitchRangeMoving()` function uses the inverse kinematics to control robot arm to move. Take `AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)` for example.
 
-第五个参数"**500**"是运行时间，单位毫秒。
+The first parameter `(0, 6, 18)` is the coordinate of the end-effector. 0 represents x-axis value, 6 represents y-axis value and 18 represents z-axis value.
 
-## 3. 颜色位置检测
+The second parameter `0` is the pitch angle.
 
-### 3.1 实验原理
+The third parameter `-90` is the minimum pitch angle.
 
-本节课可以通过摄像头定位色块的位置，然后在终端打印出来。实现过程分为颜色识别和定位目标坐标两部分。
+The fourth parameter `90` is the maximum pitch angel.
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程]()**"进行详细学习)。
+The fifth parameter `500` is the running time and the unit is mm/s.
 
-接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
+## 3. Position Detection
 
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用圆圈圈出。
+### 3.1 Program Description
 
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
+The logic of color sorting is to locate block and print the location coordinate in terminal. This process includes color recognition and target position detection.
 
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “  [OpenCV Basic Lesson/3. Color Space Learning]()” to learn about Lab color space
 
-定位目标坐标部分，根据圈中物体的最小外接圆，得到它的圆心坐标，即为目标颜色的位置。
+Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
 
-### 3.2 玩法开启及关闭步骤
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+
+The second part is to detect the object position. According to the minimum enclosing circle of object, obtain its origin coordinate, e,i., the position of rge target color.
+
+### 3.2 Start and Close the Game
 
 :::{Note}
-指令的输入需严格区分大小写，另外可按键盘"**Tab**"键进行关键词补齐。
+The input command should be case sensitive, and “Tab” can be used to complement keywords.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\ 4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-<img src="../_static/media/chapter_8/section_3/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_3/image4.png"  />
 
-2)  输入玩法程序目录所在的指令，按下回车。
+(2) Enter command to navigate to the directory where the demo program is located.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-3)  输入玩法执行指令，并按下回车,玩法启动。
+(3) Enter command and press “Enter” to start game.
 
 ```commandline
 python3 position_detection.py
 ```
 
-4)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
+(4) If want to exit the game, press “Ctrl+C”. If fail to close, please try a few more times.
 
-### 3.3 功能实现
+### 3.3 Project Outcome
 
-回传画面中圈出红色物品，并在终端打印物中心坐标的X、Y的值。
+Circle the red object in the returned image, and print the values of x-axis and y-axis on terminal.
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image7.png"  />
 
-### 3.4 修改检测颜色
+### 3.4 Function Extension
 
-**默认追踪颜色为红色，本节以修改为蓝色为例进行说明：**
+The default tracking color is red. Here the default color will be changed to blue for example.
 
-1)  输入指令，按下回车，切换至源码程序路径下。
+(1) If you want to change the tracking color, enter command and press “Enter” to enter the source code directory.
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-2)  然后输入指令，按下回车，打开程序文件。
+(2) Then enter command and press “Enter” to open the program file.
 
 ```commandline
 sudo vim position_detection.py
 ```
 
-3)  找到下图所示代码：
+(3) Find the following code:
 
-<img src="../_static/media/chapter_8/section_3/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_3/image9.png"  />
 
-<img src="../_static/media/chapter_8/section_3/image10.png"  />
-
-:::{Note}
-在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
-:::
-
-4)  按一下键盘的"**i**"键，当出现"**Insert**"字样即表示进入编辑模式。
-
-<img src="../_static/media/chapter_8/section_3/image11.png"  />
-
-5)  将"**\_\_target_color = ('red',)**"中的"**red**"都修改为"**blue**"，如下图所示：
-
-<img src="../_static/media/chapter_8/section_3/image12.png"  />
-
-<img src="../_static/media/chapter_8/section_3/image13.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_3/image10.png"  />
 
 :::{Note}
-这里修改的颜色必须是机械臂内已经有的颜色。
+After entering the line number of the code, press “Shift+G” to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
 :::
 
-6)  修改完成后，按下键盘上的"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车，即可保存并退出。
+(4) Press “i”. When the word “Insert” appears, it means the program has entered the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image11.png"  />
+
+(5) Change “red” to “blue” in “__target_color = ('red',)”, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image12.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image13.png"  />
+
+:::{Note}
+Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
+:::
+
+(6) Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
 
 ```commandline
 :wq
 ```
 
-7)  再次输入指令，按下回车，即可开启颜色识别的玩法。
+(7)  Enter command “python3 position_detection.py” again, and press “Enter” to start game.
 
 ```commandline
 python3 position_detection.py
 ```
 
-### 3.5 代码分析
+### 3.5 Program Analysis
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/position_detection.py**
+The source code of program is located in: [/home/pi/ArmPi_mini/functions/position_detection.py]()
 
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
+**3.5.1 Import Function Library**
 
-<img class="common_img" src="../_static/media/chapter_8/section_3/image16.png" style="width:4.47917in;height:3.25in" />
+{lineno-start=1}
 
-- #### 3.5.1 导入功能库
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import numpy as np
+import common.misc as Misc
+import common.yaml_handle as yaml_handle
+```
 
-<img src="../_static/media/chapter_8/section_3/image17.png"  />
+{lineno-start=106}
 
-<img src="../_static/media/chapter_8/section_3/image18.png"  />
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If you want to call a function in the library, you can use “library name+function name (parameter, parameter)”. For example,
 
-<img src="../_static/media/chapter_8/section_3/image19.png"  />
+{lineno-start=131}
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+```
+            time.sleep(0.01)
+```
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**common.yaml_handle**"文件读取库、"**kinematics.arm_move_ik**"逆运动学库等。
+The `sleep` function in `time” library is called. The function “sleep ()” is used to delay.
+There are some built-in libraries in Python, so they can be called directly. For example, “time”, “cv2” and “math”. You can also write a new library like “yaml_handle” and “ArmIK.ArmMoveIK”.
 
-- #### 3.5.2 实例化函数库
+**3.5.2 Instantiate Function Library**
 
-我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
+The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
-<img src="../_static/media/chapter_8/section_3/image20.png"  />
+{lineno-start=110}
 
-进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
+```
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-- #### 3.5.3 主函数分析
+After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
+**3.5.3 Main Function Analysis**
 
-<img src="../_static/media/chapter_8/section_3/image21.png"  />
+The python program `__name__ == ’__main__:’` is the main function of program. Firstly, the function “init()” is called to initialize. The initialization in this program includes: return the robot arm to the initial position and read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
-1. **读取摄像头图像**
+{lineno-start=106}
 
-<img src="../_static/media/chapter_8/section_3/image22.png"  />
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+    
+    initMove()
+```
 
-打开摄像头图像并保存到"**cap**"。
+**(1) Read Captured Image** 
 
-函数cap.read()是读取摄像头图像，True：读取到图像"**ret**"的值，False：未读取到图像"**ret**"的值。
+{lineno-start=118}
 
-"**img**"是读取摄像头一帧的画面。
+```
+    cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
+    #cap = cv2.VideoCapture(0)
+    while True:
+        ret,img = cap.read()
+```
 
-2. **进入图像处理**
+Capture the camera image and save it to `cap`.
 
-读取到图像时，"**ret**"的值为True。
+The function `cap.read()` is to read the captured image. True: the “ret” value of image is read. False: The value of image `ret` was not read.
 
-<img src="../_static/media/chapter_8/section_3/image23.png"  />
+`img` is a frame of the camera that was read.
 
-函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+**(2) Enter Image Processing**
 
-函数run()进行图像处理。详细内容请看[3.5 代码分析\ 图像处理](#anchor_5_4)。
+When the capture image is read, “ret” value is True.
 
-3. **窗口显示图像**
+{lineno-start=122}
 
-<img src="../_static/media/chapter_8/section_3/image24.png"  />
+```
+        if ret:
+            frame = img.copy()
+            Frame = run(frame)
+```
 
-函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
+The function `img.copy()` is used to copy the content of “img” to “frame”.
+The function `run()` is used to process image. In “3.5.4 Image Processing Analysis” to check the detailed content.
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+**(3) Window Displays Image**
 
-函数cv2.waitKey()的作用是等待按键输入，参数"1"是延迟时间。
+{lineno-start=}
+
+```
+            frame_resize = cv2.resize(Frame, size)
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+```
+
+The function `cv2.resize()` is used to scale the processed image to the appropriate size.
+
+The function`cv2.imshow()` is used to display the image in window. `'’'frame` is the window name. “frame_resize” is the displayed content and must be followed by “cv2.waitKey()”. Otherwise, the content can not be displayed.
+
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
 
 <p id="anchor_5_4"></p>
 
-- #### 3.5.4 图像处理
+**3.5.4 Image Processing Analysis**
 
-<img src="../_static/media/chapter_8/section_3/image25.png"  />
+{lineno-start=64}
 
-1. **图像缩放处理**
+```
+# 图像处理及追踪控制(image processing and tracking control)
+def run(img):
+    global lab_data
+    global __isRunning
+   
+    img_copy = img.copy()
+    img_h, img_w = img.shape[:2]
+    
+    if not __isRunning:
+        return img
+     
+    area_max = 0
+    areaMaxContour = 0
+    frame_resize = cv2.resize(img_copy, size)
+    frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+    frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+        
+    for i in __target_color:
+        if i in lab_data:
+            detect_color = i
+            frame_mask = cv2.inRange(frame_lab,
+                                         (lab_data[detect_color]['min'][0],
+                                          lab_data[detect_color]['min'][1],
+                                          lab_data[detect_color]['min'][2]),
+                                         (lab_data[detect_color]['max'][0],
+                                          lab_data[detect_color]['max'][1],
+                                          lab_data[detect_color]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+            opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+            closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+            contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+            areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+    if area_max > 300:  # 有找到最大面积(the maximum area has been found)
+        (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour)  # 获取最小外接圆中心坐标和半径(get the center coordinate and radius of the minimum circumscribed circle)
+        center_x = int(Misc.map(center_x, 0, size[0], 0, img_w)) # 坐标和半径映射到实际显示大小(map the coordinate and the radius to actual size for displaying)
+        center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+        radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+        print('Center_x: ',center_x,' Center_y: ',center_y) # 打印中心坐标(print center coordinate)
+        cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[detect_color], 2) # 在画面标记出目标(mark the target on the image)
+        cv2.putText(img, 'X:'+str(center_x)+' Y:'+str(center_y), (center_x-65, center_y+100 ), cv2.FONT_HERSHEY_SIMPLEX, 0.65, range_rgb[detect_color], 2) # 在画面显示中心坐标
+                    
+    return img
+```
 
-对图片大小缩放，方便处理。
+**(1) Image Resizing Process**
 
-<img src="../_static/media/chapter_8/section_3/image26.png"  />
+It is easy to zoom in and out the image.
 
-第一个参数"**img_copy**"是输入图像。
+{lineno-start=77}
 
-第二个参数"**size**"是输出图像的大小。
+```
+    frame_resize = cv2.resize(img_copy, size)
+```
 
-2. **高斯滤波**
+The first parameter `img_copy` is the input image.
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+The second parameter `size` is the size of the output image.
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+**(2) Gaussian filter**
 
-<img src="../_static/media/chapter_8/section_3/image27.png"  />
+Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
+Gaussian filter is a linear filter smoothing an image and reducing noise, which is widely used in processing image to eliminate noise.
 
-第一个参数"**frame_resize**"是输入图像。
+{lineno-start=78}
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+```
+    frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+```
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+The first parameter `frame_resize` is the input image.
 
-3. **转换颜色空间**
+The second parameter `(3, 3)` is the kernel size.
 
-将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-<img src="../_static/media/chapter_8/section_3/image28.png"  />
+(3) Covert to Color Space
 
-第一个参数"**frame_gb**"是输入图像。
+Use function cv2.cvtColor() to convert image to LAB space.
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"**cv2.COLOR_BGR2RGB**"。
+{lineno-start=79}
 
-4. **二值化处理**
+```
+    frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+The first parameter `frame_gb` is the input image.
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+(4) Thresholding Processing
 
-<img src="../_static/media/chapter_8/section_3/image29.png"  />
+Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 
-第一个参数"**frame_lab**"是输入图像；
+The “inRange()” function in cv2 library is used to process image with thresholding method. 
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+{lineno-start=84}
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+```
+            frame_mask = cv2.inRange(frame_lab,
+                                         (lab_data[detect_color]['min'][0],
+                                          lab_data[detect_color]['min'][1],
+                                          lab_data[detect_color]['min'][2]),
+                                         (lab_data[detect_color]['max'][0],
+                                          lab_data[detect_color]['max'][1],
+                                          lab_data[detect_color]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+```
 
-5. **开运算和闭运算**
+The first parameter `frame_lab` is the input image.
 
-为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
+The second parameter`(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['min'][2])` is the lower limit of color threshold.
+The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-<img src="../_static/media/chapter_8/section_3/image30.png"  />
+(5) Opening and Closing Operations
 
-第一个参数"**frame_mask**"是输入图像。
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “v2.morphologyEx()” is the morphology function.
 
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
+{lineno-start=91}
 
-第三个参数"**np.ones((3, 3)**"是卷积核。
+```
+            opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+            closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-第四个参数"**np.uint8**"是应用次数。
+The first parameter `frame_mask` is the input image.
 
-6. **获取最大面积轮廓**
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. `cv2.MORPH_ERODE (Erosion)`, `cv2.MORPH_DILATE(Dilation)`, `cv2.MORPH_OPEN (Opening)`, and `cv2.MORPH_CLOSE (Closing)`.
 
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
+The third parameter `np.ones((3, 3)` is the convolution kernel.
 
-<img src="../_static/media/chapter_8/section_3/image31.png"  />
+The fourth parameter `np.uint8` is the application times.
 
-第一个参数"**closed**"是输入图像；
+(6) Find the Largest Contour 
 
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
+After completing the above processing, use the function “findContours()” in cv2 library to obtain the contour of the recognized target.
 
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
+{lineno-start=93}
 
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
+```
+            contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
 
-<img src="../_static/media/chapter_8/section_3/image32.png"  />
+The first parameter `closed` is the input image.
 
-7. **获取位置信息**
+The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
 
-采用cv2库中的cv2.minEnclosingCircle()函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
 
-前面将图像下进行了缩放，这里使用Misc.map()把中心坐标和半径映射到实际大小。
+Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
 
-<img src="../_static/media/chapter_8/section_3/image33.png"  />
+{lineno-start=94}
 
-最后在终端和画面显示中心坐标。
+```
+            areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+    if area_max > 300:  # 有找到最大面积(the maximum area has been found)
+```
 
-## 4. 目标追踪
+(7) Obtain Position Information
 
-### 4.1 实验原理
+Use function `cv2.minEnclosingCircle()` in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+The image was scaled, and now the center coordinates and radius are mapped to the actual size using `Misc.map()`.
 
-本节课可以通过摄像头进行颜色识别并读取目标位置，控制机械臂跟随目标移动而移动。实现可分为颜色识别和追踪两部分。
+{lineno-start=95}
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程]()**"进行详细学习)。
+```
+    if area_max > 300:  # 有找到最大面积(the maximum area has been found)
+        (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour)  # 获取最小外接圆中心坐标和半径(get the center coordinate and radius of the minimum circumscribed circle)
+        center_x = int(Misc.map(center_x, 0, size[0], 0, img_w)) # 坐标和半径映射到实际显示大小(map the coordinate and the radius to actual size for displaying)
+        center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+        radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+        print('Center_x: ',center_x,' Center_y: ',center_y) # 打印中心坐标(print center coordinate)
+        cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[detect_color], 2) # 在画面标记出目标(mark the target on the image)
+        cv2.putText(img, 'X:'+str(center_x)+' Y:'+str(center_y), (center_x-65, center_y+100 ), cv2.FONT_HERSHEY_SIMPLEX, 0.65, range_rgb[detect_color], 2) # 在画面显示中心坐标
+                    
+    return img
+```
 
-接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
+Finally, the center coordinates are displayed in terminal and image.
 
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用圆圈圈出。
+## 4. Target Tracking
 
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
+### 4.1 Program Description
 
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
+The logic of target tracking is to recognized color and read the target position, and then control robot arm to move with the target. This process includes color recognition and tracking.
 
-追踪部分使用PID算法，根据目标的画面像素坐标与画面中心坐标进行比较，减小两个坐标之间的距离，从而实现目标追踪。
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder [OpenCV Basic Lesson]()” to learn about Lab color space
 
-PID算法是应用最为广泛的一种自动控制器。在过程控制中，按误差的比例（P）、积分（I）和微分（D）进行控制。它具有原理简单，易于实现，适用面广，控制参数相互独立，参数的选定比较简单等优点。
+Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
+
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+The tracking part uses PID algorithm to reduce the distance between two coordinates based on the comparison of the target's screen pixel coordinates with the screen center coordinates to achieve target tracking.
+
+The PID algorithm is one of the most widely used automatic controllers. In this process, the control is carried out in proportional (P), integral (I) and differential (D) of the error.
 
 <p id="anchor_4_2"></p>
 
-### 4.2 玩法开启及关闭步骤
+### 4.2 Start and Close the Game
 
 :::{Note}
-指令的输入需严格区分大小写，另外可按键盘"**Tab**"键进行关键词补齐。
+ input command should be case sensitive, and “Tab” can be used to complement keywords.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
 
-<img src="../_static/media/chapter_8/section_4/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image4.png"  />
 
-2)  输入玩法程序目录所在的指令，按下回车。
+(2) Enter command to access to the directory of game program.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-3)  输入玩法执行指令，并按下回车,玩法启动。
+(3) Enter command and press “Enter” to start game.
 
 ```commandline
 python3 color_tracking.py
 ```
 
-4)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
+(4) If you want to exit the game, press “Ctrl+C”. If it fails to close, please try a few more times.
 
-### 4.3 功能实现
+### 4.3 Project Outcome
 
-程序默认的追踪颜色为红色，玩法开启后，机械臂将跟随红色木块的移动而转动。
+The default tracking color is red in program. After starting game, ArmPi mini will move with the red block. 
 
-### 4.4 功能延伸
+### 4.4 Function Extension
 
-- #### 4.4.1 调节颜色阈值
+**4.4.1 Adjust Color Threshold**
 
-在玩法体验的过程中，如识别物体颜色效果不佳，则需调节颜色阈值。本节以调节红色为例，其他颜色设置方法皆可参考，操作步骤如下：
+If the effect of color recognition is not good enough, you need to adjust the color threshold. Take adjusting red for example and other colors are set based on the same method. The operation steps are as follow:
 
-1)  双击系统桌面<img src="../_static/media/chapter_8/section_4/image7.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
+(1) Double click<img src="../_static/media/chapter_8/section_4/image7.png" style="width: in;height: in" />icon and select “Execute” in the pop-up window.
 
-<img src="../_static/media/chapter_8/section_4/image8.png"  />
+(2) After entering the interface, click “Camera Tool”.
 
-2)  进入界面后，点击"**摄像头工具**"。
+<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
 
-<img src="../_static/media/chapter_8/section_4/image9.png"  alt="loading" />
+(3) Then click “Connect”, and then select “red” in the lower right corner. 
 
-3)  再点击"**连接**"按钮，连接成功后，在界面右下角的颜色选项栏中选择"**red**"。
+<img class="common_img" src="../_static/media/chapter_8/section_4/image9.png"  alt="loading" />
 
-<img src="../_static/media/chapter_8/section_4/image10.jpeg"  alt="loading" />
+(3) Then click “Connect”, and then select “red” in the lower right corner. 
 
-4)  若在弹出的界面中未出现回传画面，说明摄像头未连接成功，需检查一下摄像头连接线是否连接好。
+<img class="common_img" src="../_static/media/chapter_8/section_4/image10.png"  alt="loading" />
 
-下图界面右侧是实时回传画面，左侧是需要被采集的颜色。将摄像头对准红色色块，然后拖动下方的六个滑杆，使得左侧画面中红色色块的区域全部变为白色，其它区域为黑色。接着点击"**保存**"按钮保存数据。
+(4) If the returned image does not appear in interface, it means the camera fails to connect. At this time, check the camera whether is connected.
+The right side of the interface is the real-time returned image and the left side is the color to be recognized. Aim camera at the red block, and then drag the sliders until the red at the left side turns white and other colors turn black. Finally, click “Save”.
 
-<img src="../_static/media/chapter_8/section_4/image11.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image11.png"  alt="loading" />
 
 <span id="anchor_4_4_2" class="anchor"></span>
 
-- #### 4.4.2 修改追踪颜色
+**4.4.2 Modify Tracking Color**
 
-**默认追踪颜色为红色，本节以修改为蓝色为例进行说明：**
+The default tracking color is red. Here the default color will be changed to blue for example.
 
-1)  如需修改追踪的颜色，输入指令，按下回车，切换至源码程序路径下。
+(1) If want to change the tracking color, enter command “cd MasterPi/functions/” and press “Enter” to enter the source code directory.
 
 ```commandline
 cd MasterPi/functions/
 ```
 
-2)  然后输入指令，按下回车，打开程序文件。
+(2) Then enter command “sudo vim color_tracking.py” and press “Enter” to open the program file.
 
 ```commandline
 sudo vim color_tracking.py
 ```
 
-3)  找到下图所示代码：
+(3) Find the following code:
 
-<img src="../_static/media/chapter_8/section_4/image13.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image13.png"  />
 
-<img src="../_static/media/chapter_8/section_4/image14.png"  />
-
-:::{Note}
-在键盘输入代码位置序号后，按下"Shift+G"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
-:::
-
-4)  按一下键盘的"**i**"键，当出现"**Insert**"字样即表示进入编辑模式。
-
-<img src="../_static/media/chapter_8/section_4/image15.png"  />
-
-5)  将"**\_\_target_color = ('red',)**"中的"**red**"都修改为"**blue**"，如下图所示：
-
-<img src="../_static/media/chapter_8/section_4/image16.png"  />
-
-<img src="../_static/media/chapter_8/section_4/image17.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image14.png"  />
 
 :::{Note}
-这里修改的颜色必须是下图颜色选项栏里出现的颜色，如想修改成其他颜色，可参照本文档"[4.4 功能延伸\ 增加新的识别颜色](#anchor_4_4_3)"步骤添加新的识别颜色。
+After entering the line number of the code, press “Shift+G” to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
 :::
 
-6)  修改完成后，按下键盘上的"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车，即可保存并退出。
+(4) Press “i”. When the word “Insert” appears, it means the program has entered the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image15.png"  />
+
+(5) Change “red” to “blue” in “__target_color = ('red',)”, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image16.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image17.png"  />
+
+:::{Note}
+The color after modification must be one of the colors in color selection bar. If want to change to other colors, please refer to “4.3 Add Recognition Color” to add new recognition color.
+:::
+
+(6) After modifying, press “Esc”. Then input “:wq” and press “Enter” to save and close the file.
 
 ```commandline
 :wq
@@ -1105,1220 +1643,2136 @@ sudo vim color_tracking.py
 
 <span id="anchor_4_4_3" class="anchor"></span>
 
-- #### 4.4.3 增加新的识别颜色
+**4.4.3 Add Recognition Color**
 
-除了内置三种识别的颜色，我们还可以设置其它可识别的颜色，**比如我们以紫色作为新增的识别颜色为例，具体的修改步骤如下：**
+In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
 
-1)  双击系统桌面上位机图标，然后弹出的提示框内直接选择"**Execute**"即可。
+(1) Double click<img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />and select “Execute” in the pop-up window.
 
-<img src="../_static/media/chapter_8/section_4/image8.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
 
-<img class="common_img" src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />
+(2) Then select “Camera Tool” and “Connect” in sequence.
 
+<img class="common_img" src="../_static/media/chapter_8/section_4/image20.png"  alt="loading" />
 
-2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
+(3) Click “Add” and name the new color as “purple”. Then click “OK”.
 
-<img src="../_static/media/chapter_8/section_4/image20.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image21.png"  alt="loading" />
 
-3)  点击"**新增**"，然后为新增颜色命名（这里以"purple"为例），再点击"**OK**"。
+(4) Select “purple” in the drop-down list of the color selection bar.
 
-<img src="../_static/media/chapter_8/section_4/image21.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image22.png"  alt="loading" />
 
-4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side.
 
-<img src="../_static/media/chapter_8/section_4/image22.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image23.png"  alt="loading" />
 
-5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
+(6) Finally, click “Save”.
 
-<img src="../_static/media/chapter_8/section_4/image23.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image24.png"  alt="loading" />
 
-6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
-
-<img src="../_static/media/chapter_8/section_4/image24.jpeg"  alt="loading" />
-
-7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
+(7) Check whether the modified value is written into program. Enter command “cd ArmPi_mini/yaml/” and press “Enter” to access to the program directory.
 
 ```commandline
 cd ArmPi_mini/yaml/
 ```
 
-8)  再输入指令，按下回车，打开程序文件。
+(8) Enter command “sudo vim lab_config.yaml” and press “Enter” to open program file.
 
 ```commandline
 sudo vim lab_config.yaml
 ```
 
-9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
+(9) After opening the color threshold program file, you can check the threshold parameter of purple.
 
-<img src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
 
-10) 再按照本文档"[4.4 功能延伸\ 修改追踪颜色](#anchor_4_4_2)"1—2步骤，打开程序文件并按下"**i**"键进入编辑模式。
+(10) Refer to the steps 1-2 in “[4.4.2 Change Tracking Color]()” to open the program file, and press “i” to enter the editing mode.
 
-11) 接着找到如下图所示代码。
+(11) Find the following code.
 
-<img src="../_static/media/chapter_8/section_4/image29.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image29.png"  />
 
-12) 手动输入添加"**'purple’: (255, 255, 114)**"，将"**’red’**"改为"**’purple’**"，如下图所示：
+(12) Enter ` ‘purple’: (255, 255, 114)`, and change “red” to “purple”, as the figure shown below:
 
-<img src="../_static/media/chapter_8/section_4/image30.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image30.png"  />
 
-(255, 255, 114)为第9步查看的紫色阈值参数的max
+The parameter (255, 255, 114) is the maximum value of purple threshold parameter checked in step 9.
 
-13) 接着找到如下图所示代码。
+(13) Find the following code.
 
-<img src="../_static/media/chapter_8/section_4/image31.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image31.png"  />
 
-14) 手动输入添加框中内容，（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
+(14) Add the content in red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_4/image32.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image32.png"  />
 
-15) 接着找到如下图所示代码。
+(15) Find the following code.
 
-<img src="../_static/media/chapter_8/section_4/image33.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image33.png"  />
 
-16) 将"**’red’**"修改为"**'purple'**"，如下图所示：
+(16)  Change “red” to “purple”, as the figure shown below:
 
-<img src="../_static/media/chapter_8/section_4/image34.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image34.png"  />
 
-17) 保存我们修改的内容。按下"**Esc**"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
+(17) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
 
 ```commandline
 :wq
 ```
 
-18) 参照本文档"[4.2 玩法开启及关闭步骤](#anchor_4_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂追踪目标移动。如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
+(18) Then refer to the steps in “[4.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will track and move with the target. If you want to add other recognition colors, you can refer “[4.4.3 Add Recognition Color]()” to add new recognition color.
 
-### 4.5 代码分析
+### 4.5 Program Analysis
 
-该程序的源代码位于：**/home/pi/ArmPi_Mini/functions/color_tracking.py**
+The source code of program is located in :[/home/pi/ArmPi_Mini/functions/color_tracking.py]()
 
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
+**4.5.1 Import Function Library**
 
-<img class="common_img" src="../_static/media/chapter_8/section_4/image36.png"  />
+{lineno-start=1}
 
-通过摄像头获取图像信息，再进行图像处理，即对图像进行二值化处理。同时为了降低干扰，令图像更平滑，对图像进行腐蚀和膨胀处理。
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import numpy as np
+import common.pid as PID
+import common.misc as Misc
+import common.yaml_handle as yaml_handle
+```
 
-接着获取目标最大面积轮廓和最小外接圆，得到色块追踪区域，接着根据PID算法让机械臂转向色块位置。
+{lineno-start=246}
 
-- #### 4.5.1 导入功能库
+```
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-<img src="../_static/media/chapter_8/section_4/image37.png"  />
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
 
-<img src="../_static/media/chapter_8/section_4/image38.png"  />
+{lineno-start=270}
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
+```
+            time.sleep(0.01)
+```
 
-<img src="../_static/media/chapter_8/section_4/image39.png"  />
+Call `sleep` function in `time` library. The function `sleep ()` is used to delay.
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**common.yaml_handle**"文件读取库、"**kinematics.arm_move_ik**"逆运动学库等。
+**4.5.2 Instantiate Function Library**
 
-- #### 4.5.2 实例化函数库
+The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
-我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
+{lineno-start=249}
 
-<img src="../_static/media/chapter_8/section_4/image40.png"  />
+```
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
+After instantiating, you can directly call function when inputting the function like `AK.function name (parameter, parameter)`.
 
-- #### 4.5.2 主函数
+**4.5.2 Main Function Analysis**
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
+The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
-<img src="../_static/media/chapter_8/section_4/image41.png"  />
+{lineno-start=245}
 
-1. **读取摄像头图像**
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+    
+    init()
+```
 
-<img src="../_static/media/chapter_8/section_4/image42.png"  />
+**(1) Read Captured Image** 
 
-打开摄像头图像并保存到"**cap**"。
+{lineno-start=258}
 
-函数cap.read()是读取摄像头图像，True：读取到图像"**ret**"的值，False：未读取到图像"**ret**"的值。
+```
+    cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
+    while True:
+        ret,img = cap.read()
+```
 
-"**img**"是读取摄像头一帧的画面。
+Capture the camera image and save it to `cap`.
 
-2. **进入图像处理**
+The function cap.read is to read the captured image. True: the “ret” value of image is read. False: The value of image “ret” was not read.
 
-读取到图像时，"**ret**"的值为True。
+`img` is a frame of the camera that was read.
 
-<img src="../_static/media/chapter_8/section_4/image43.png"  />
+**(2) Enter Image Processing**
 
-函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+When the capture image is read, “ret” value is True.
 
-函数run()进行图像处理。详细内容请看[4.5 代码分析\ 图像处理分析](#anchor_4_5_4)。
+{lineno-start=261}
 
-3. **窗口显示图像**
+```
+        if ret:
+            frame = img.copy()
+            Frame = run(frame)  
+```
 
-<img src="../_static/media/chapter_8/section_4/image44.png"  />
+The function “img.copy()” is used to copy the content of “img” to “frame”.
 
-函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
+The function “run()” is used to process image. In “[4.5.4 Image Processing Analysis]()” to check the detailed content.
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+**(3) Window Displays Image**
 
-函数cv2.waitKey()的作用是等待按键输入，参数"1"是延迟时间。
+{lineno-start=264}
 
-主函数首先调用函数init()进行初始化配置。然后开始读取摄像头画面，进行图像处理。
+```
+            frame_resize = cv2.resize(Frame, (320, 240))
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+```
+
+The function`cv2.resize()` is used to scale the processed image to the appropriate size.
+
+The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. `frame_resize`is the displayed content and must be followed by “cv2.waitKey()”. Otherwise, the content can not be displayed.
+
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
+
+The main function will firstly call function `init()` to initialize. Then read and process the captured image. 
 
 <span id="anchor_4_5_4" class="anchor"></span>
 
-- #### 4.5.4 图像处理分析
+**4.5.4 Image Processing Analysis**
 
-<img src="../_static/media/chapter_8/section_4/image45.png"  />
+{lineno-start=145}
 
-1. **图像缩放处理**
+```
+# 图像处理及追踪控制(image processing and tracking control)
+def run(img):
+    global roi
+    global rect
+    global get_roi
+    global __isRunning
+    global detect_color
+    global start_pick_up
+    global img_h, img_w
+    global x_dis, y_dis, z_dis
+    
+    img_copy = img.copy()
+    img_h, img_w = img.shape[:2]
+    
+    if not __isRunning:
+        return img
+     
+    frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+    frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+    #如果检测到某个区域有识别到的物体，则一直检测该区域直到没有为止(if an object is detected in a certain area, keep detecting the area until no object is detected)
+    if get_roi and start_pick_up:
+        get_roi = False
+        frame_gb = getMaskROI(frame_gb, roi, size)    
+    
+    frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+    
+    area_max = 0
+    areaMaxContour = 0
+    if not start_pick_up:
+        for i in lab_data:
+            if i in __target_color:
+                detect_color = i
+                frame_mask = cv2.inRange(frame_lab,
+                                             (lab_data[detect_color]['min'][0],
+                                              lab_data[detect_color]['min'][1],
+                                              lab_data[detect_color]['min'][2]),
+                                             (lab_data[detect_color]['max'][0],
+                                              lab_data[detect_color]['max'][1],
+                                              lab_data[detect_color]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+                opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+                contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+                areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+```
 
-对图片大小缩放，方便处理。
+**(1) Image Resizing Process**
 
-<img src="../_static/media/chapter_8/section_4/image46.png"  />
+It is easy to zoom in and out the image.
 
-第一个参数"**img_copy**"是输入图像。
+{lineno-start=162}
 
-第二个参数"**size**"是输出图像的大小。大小可以自己设定。
+```
+    frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+```
 
-第三个参数"**interpolation=cv2.INTER_NEAREST**"是插值方式。INTER_NEAREST：最邻近插值。INTER_LINEAR：双线性插值，如果最后一个参数你不指定，将默认使用这种方法。INTER_CUBIC：4x4像素邻域内的双立方插值。INTER_LANCZOS4：8x8像素邻域内的Lanczos插值。
+The first parameter `img_copy` is the input image.
 
-2. **高斯滤波**
+The second parameter `size` is the size of the output image.
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. `INTER_NEAREST` is the nearest Neighbour Interpolation. `INTER_LINEAR` is the Bilinear Interpolation. If the last parameter is not modified, this method `INTER_LINEAR` will be used by default. 
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+`INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood.
 
-<img src="../_static/media/chapter_8/section_4/image47.png"  />
+`INTER_LANCZOS4`: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-第一个参数"**frame_resize**"是输入图像。
+**(2) Gaussian filter**
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
+Gaussian filter is a linear filter hat also smooths an image and reduces noise, which is widely used in processing image to eliminate noise.
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+{lineno-start=163}
 
-3. **转换颜色空间**
+```
+    frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)  
+```
 
-将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+The first parameter `frame_resize` is the input image.
 
-<img src="../_static/media/chapter_8/section_4/image48.png"  />
+The second parameter `(3, 3)` is the kernel size.
 
-第一个参数"**frame_gb**"是输入图像。
+The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"**cv2.COLOR_BGR2RGB**"。
+**(3) Covert to Color Space**
 
-4. **二值化处理**
+Use function “cv2.cvtColor()” to convert image to LAB space.
 
-将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+{lineno-start=169}
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+```
+    frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-<img src="../_static/media/chapter_8/section_4/image49.png"  /> 
+The first parameter `frame_gb` is the input image.
 
-第一个参数"**frame_lab**"是输入图像；
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is `cv2.COLOR_BGR2RGB`, BGR is converted to RGB.
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+**(4) Thresholding Processing**
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
+Use “inRange()” function in cv2 library is used to process image with thresholding method. 
 
-5. **开运算和闭运算**
+{lineno-start=177}
 
-为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数
+```
+                frame_mask = cv2.inRange(frame_lab,
+                                             (lab_data[detect_color]['min'][0],
+                                              lab_data[detect_color]['min'][1],
+                                              lab_data[detect_color]['min'][2]),
+                                             (lab_data[detect_color]['max'][0],
+                                              lab_data[detect_color]['max'][1],
+                                              lab_data[detect_color]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask) 
+```
 
-<img src="../_static/media/chapter_8/section_4/image50.png"  />
+The first parameter `frame_lab` is the input image.
 
-第一个参数"**frame_mask**"是输入图像。
+The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['min'][2])` is the lower limit of color threshold.
 
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
+The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-第三个参数"**np.ones((3, 3)**"是卷积核。
+**(5) Opening and Closing** 
 
-第四个参数"**np.uint8**"是应用次数。
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “cv2.morphologyEx()” is the morphology function.
 
-6. **获取最大面积轮廓**
+{lineno-start=}
 
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
+```
+                opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-<img src="../_static/media/chapter_8/section_4/image51.png"  />
+The first parameter `frame_make` is the input image.
 
-第一个参数"**closed**"是输入图像；
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. `cv2.MORPH_ERODE (Erosion)`, `cv2.MORPH_DILATE(Dilation)`, `cv2.MORPH_OPEN (Opening)`, and cv2.MORPH_CLOSE (Closing).
 
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
+The third parameter`np.ones((3, 3)` is the convolution kernel.
 
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
+The fourth parameter`np.uint8` is the application times. 
 
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
+**(6) Find the Largest Contour**
 
-<img src="../_static/media/chapter_8/section_4/image52.png"  />
+After completing the above processing, use the function “findContours()” in cv2 library to obtain the contour of the recognized target.
 
-7. **获取位置信息**
+{lineno-start=186}
 
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。
+```
+                contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
 
-<img src="../_static/media/chapter_8/section_4/image53.png"  />
+The first parameter `closed` is the input image.
 
-- #### 4.5.5 机械臂追踪
+The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
 
-机械臂追踪使用PID算法，让摄像头中心靠近目标中心坐标。
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
+Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
 
-PID算法是应用最为广泛的一种自动控制器。在过程控制中，按误差的比例（P）、积分（I）和微分（D）进行控制。
+**(7)  Obtain Position Information**
 
-<img src="../_static/media/chapter_8/section_4/image54.png"  />
+Use function “cv2.minEnclosingCircle” in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
-利用逆运动学求解，如果有解就控制机械臂追踪。
+{lineno-start=189}
 
-<img src="../_static/media/chapter_8/section_4/image55.png"  />
+```
+            (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour)  # 获取最小外接圆(get the minimum circumscribed circle)
+            center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+            center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+            radius = int(Misc.map(radius, 0, size[0], 0, img_w))   
+```
 
-函数AK.setPitchRange()是逆运动学求解，以代码"**AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90)**"为例：
+**4.5.5 Robot Arm Tracking**
 
-第一个参数"**(0, round(y_dis, 2), round(z_dis, 2))**"是目标中心坐标。0是X轴坐标,round(y_dis, 2)是Y轴坐标，round(z_dis, 2)是Z轴坐标。
+Robot arm uses PID algorithm to make camera close to the center coordinates of target. 
 
-第二个参数"**-90**"是俯仰角范围最小值。
+The PID algorithm is one of the most widely used automatic controllers. In this process, the control is carried out in proportional (P), integral (I) and differential (D) of the error.
 
-第三个参数"**90**"是俯仰角范围最大值。
+{lineno-start=199}
 
-函数board.pwm_servo_set_position是逆运动学控制机械臂移动，以代码"**board.pwm_servo_set_position(0.02, \[\[3, servo_data\['servo3'\]\],\[4, servo_data\['servo4'\]\],\[5, servo_data\['servo5'\]\],\[6, int(x_dis)\]\])**"为例：
+```
+            if __isRunning:
+                # 通过PID算法进行X轴追踪,根据目标的画面像素坐标与画面中心坐标比较进行追踪(Track the X-axis using PID algorithm, based on the comparison of the target's pixel coordinates with the center coordinates of the image.)
+                x_pid.SetPoint = img_w / 2.0  # 设定(set)
+                x_pid.update(center_x)  # 当前(current)
+                dx = x_pid.output
+                x_dis += int(dx)  # 输出(output)
+                # 两边限位(dual limit switches)
+                x_dis = 500 if x_dis < 500 else x_dis
+                x_dis = 2500 if x_dis > 2500 else x_dis
+                    
+                # 通过PID算法进行Y轴追踪,根据目标的画面像素面积和设定值比较进行追踪(Track the Y-axis using PID algorithm, based on the comparison of the target image's pixel area with the set value.)
+                y_pid.SetPoint = 80  # 设定(set)
+                if abs(radius - 80) < 10:
+                    radius = 80
+                else:
+                    if radius > 80:
+                        radius = radius * 0.85
+```
 
-第一个参数"**0.02**"是运行时间。
+Using inverse kinematics, if there is a solution, the robotic arm will be controlled to track target.
 
-第三个参数"**3**"是舵机id。后面的"**4**"、"**5**"、"**6**"都是舵机ID。
+{lineno-start=236}
 
-第四个参数"**servo_data\['servo3'\]**"是舵机脉冲。后面的"**servo_data\['servo4'\]**"、"**servo_data\['servo5'\]**"、"**servo_data\['servo6'\]**"都是舵机脉冲。
+```
+                target = AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90) # 逆运动学求解(inverse kinematics solution)
+                if target: # 如果有解，则按照求出的解驱动舵机(if there is a solution, the servo will be driven based on the calculated solution)
+                    servo_data = target[0]                  
+                    board.pwm_servo_set_position(0.02, [[3, servo_data['servo3']],
+                                                        [4, servo_data['servo4']],
+                                                        [5, servo_data['servo5']],
+                                                        [6, int(x_dis)]])
+```
 
-## 5. 颜色分拣
+The function `AK.setPitchRange()` uses the inverse kinematics to get solution.Take `AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90)` for example.
+
+The first parameter `(0, round(y_dis, 2), round(z_dis, 2))` is the center coordinates of the target. “0” is the x-axis coordinate. “round(y_dis, 2)” is the y-axis coordinate, and “round(z_dis, 2)” is the z-axis coordinate.
+
+The second parameter `-90` is the minimum pitch angle.
+
+The third parameter`90` is the maximum pitch angle.
+
+The function `board.pwm_servo_set_position` uses inverse kinematics to control the movement of the robotic arm. Take `board.pwm_servo_set_ position(0.02, [[3, servo_data['servo3']],[4, servo_data['servo4']],[5, servo_data ['servo5']],[6, int(x_dis)]])` for example.
+
+The first parameter `0.02` is the runtime.
+
+The third parameter `3`is the servo ID and the following `4`, `5` and `6` are all the servo ID numbers.
+
+The fourth parameter `servo_data['servo3']` is the servo pulse, and the following `servo_data['servo4']`, `servo_data['se rvo5']`, “and servo_data['servo6']” are all the servo pulses.
+
+## 5. Color Sorting
 
 :::{Note}
-学习本节玩法之前请确保机械臂按照"第1章 学前先看\第5课 偏差调试、第6课 位置校准"课程进行偏差调节、位置校准与地图铺设，否则会影响玩法的实现效果。
+Before starting color sorting, please make sure that ArmPi mini has been completely configured according to the content in “[Getting ready/Position Adjustment]()” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
 :::
 
-### 5.1 实验原理
+### 5.1 Project Description
 
-本节课可以通过摄像头进行颜色识别区分不同颜色，然后控制机械臂对色块分拣。实现分为颜色识别和分拣两部分。
+The logic of color sorting is to recognize and distinguish color, and then control robot arm to sort the colored blocks. This realization process includes color recognition and color sorting.
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. (You can refer to the content in folder “[OpenCV Basic Lesson/7.Color Space Learning]()” to learn about Lab color space)
+Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+The second part is color sorting. Firstly, robot arm uses the AK.setPitchRangeMoving() fucntion to calculate the servo angle at the target position. Next, control the gripper. Then pick the target color based on the recognized the recognized color and move them to the corresponding area one by one.
+Regarding the inverse kinematics, please refer to “5. Basic Motion Lesson/ Lesson 1 What is Inverse Kinematics”.
 
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"8.拓展课程\6.拓展课程之OpenCV基础课程\第3课 颜色空间学习"课程进行详细学习)。
-
-接着通过颜色阈值对圆圈中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
-
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用圆圈圈出。
-
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
-
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
-
-分拣部分，首先机械臂通过逆运动学AK.setPitchRangeMoving()函数来计算目标位置处的舵机角度，再控制机械爪闭合夹取目标，最后根据颜色识别结果夹住目标色块，并依次搬运到左侧对应的位置。
-
-关于逆运动学的这个部分可以前往"**第6章 机械臂逆运动学基础课程\第1课 什么是逆运动学**"课程进行详细学习。
-
-### 5.2 玩法开启及关闭步骤
+### 5.2 Start and Close the Game
 
 :::{Note}
-指令的输入需严格区分大小写及空格。
+The input command should be case sensitive.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-<img src="../_static/media/chapter_8/section_5/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image4.png"  />
 
-2)  输入玩法程序目录所在的指令，并按下回车。
+(2) Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
 
-```commandline
+(3) Enter command and press “Enter” to access to the directory of game program.
+
+```
 cd ArmPi_mini/functions
 ```
 
-3)  输入玩法执行指令，并按下回车,玩法启动。
+(4) Enter command and press “Enter” to start game.
 
-```commandline
+```
 python3 color_sorting.py
 ```
 
-4)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
 
-### 5.3 功能实现
 
-将红绿蓝方块分别放置到平整光滑的环境下，当机械臂识别到后会发出"滴"的一声，再手持被识别色块放置到机械臂爪子前方，机械臂将会夹住色块，并依次搬运到左侧对应位置。
+### 5.3 Project Outcome
 
-### 5.4 更换默认放置位置
+Place red, green and blue blocks on a flat and smooth surface. When the block is recognized, ArmPi mini will beep. Then position the recognized block in front of the gripper, and robot arm will grip the block and move it to the corresponding position in the left side.
 
-颜色分拣程序默认的效果是：将识别到的红、绿、蓝三种颜色方块夹取，放置到其左侧对应位置。如需调整色块放置的位置，须先了解机械臂的坐标系。
+### 5.4 Function Extension
 
-机械臂坐标系如下所示（以机械臂为第一视角）：
+The effect of color sorting in program defaults to recognize red, green and three blocks, and then pick and transport it to the corresponding position in the left side. If want to change the block placement position, you need to learn about the coordinate of robot arm. 
+The coordinate of robot arm is shown below (take robot arm as the first person view):
 
-<img src="../_static/media/chapter_8/section_5/image7.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image7.png"  alt="loading" />
 
-色块放置的位置与坐标参数的对应变化关系见下表：
+The corresponding relationship between placement position and coordinate parameter:
 
-| **坐标参数变化** | **色块位置变化**                |
-|------------------|---------------------------------|
-| x增大            | 色块位置往X轴方向移动（向右）   |
-| x减小            | 色块位置往X轴反方向移动（向左） |
-| y增大            | 色块位置往Y轴方向移动（向前）   |
-| y减小            | 色块位置往Y轴反方向移动（向后） |
-| z增大            | 色块位置往Z轴方向移动（向上）   |
-| z减小            | 色块位置往Z轴反方向移动（向下） |
+| Coordinate **Parameter** | **Block Position**                         |
+| ------------------------ | ------------------------------------------ |
+| x increases              | The block moves to the right along x axis. |
+| x decreases              | The block moves to the left along x axis.  |
+| y increases              | The block moves forward along y axis.      |
+| y decreases              | The block moves backward along y axis.     |
+| z increases              | The block moves up along y axis.           |
+| z decreases              | The block moves down along y axis.         |
 
 :::{Note}
-参数z数值必须大于0。
+The parameter z must be greater than 0.
 :::
 
-**我们这里将红色色块的放置位置修改为机械臂前方为例进行示范，其它色块的位置修改方法同理。具体修改步骤如下所示：**
+Here the program will be changed to place the block in front of robot arm. The method is applicable to change other color. The specific operation steps are as follow:
 
-1)  输入指令，按下回车，切换至源码程序路径下。
+(1) Enter command and press “Enter” to enter the source code directory.
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-2)  然后再输入指令，按下回车，即可打开程序文件。
+(2) Then enter command  and press “Enter” to open the program file.
 
 ```commandline
 sudo vim color_sorting.py
 ```
 
-3)  找到下图所示代码：
+(3) Find the following code:
 
-<img src="../_static/media/chapter_8/section_5/image9.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image9.png"  />
 
 :::{Note}
-在键盘输入代码位置序号后，按下"**Shift+G**"键，可直接跳转到对应位置。（图示代码位置序号仅供参考，请以实际为准。）
+ After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
 :::
 
-4)  按下键盘上的"i"键，当界面左下角出现"插入"字样时，表示已经进入到编辑模式。
+(4) Press “i” to enter the editing mode.
 
-<img src="../_static/media/chapter_8/section_5/image10.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image10.png"  />
 
-5)  在"**'red': (-11,16,2)**"中，"**-11**"是X轴参数，"**16**"是Y轴参数，"**2**"是Z轴参数。我们将"**-12**"改为"**0**"，保持Y轴和Z轴参数不变，让色块放置到前方。修改如下图所示：
+(5) In `'red': (-11,16,2)`, `-11` is the x-axis parameter, `16` is the y-axis parameter, and `2` is the z-axis parameter. Here change `-12` to `0` and keep the y-axis and z-axis parameters unchanged to make the block place in front of the robot, as the figure shown below:
 
-<img src="../_static/media/chapter_8/section_5/image11.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image11.png"  />
 
-6)  然后，再找到下列代码，并将其注释（在代码前面添加"#"）。
+(6) Then find and comment the following code. (Add “#” in front of the code.)
 
-<img src="../_static/media/chapter_8/section_5/image12.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_5/image12.png"  />
 
-7)  接下来，保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
+(7) Then save the modified content. Press “Esc” and enter “:wq”, and press “Enter” to save and close the program file.
 
 ```commandline
 :wq
 ```
 
-8)  再次输入指令，按下回车，即可开启颜色分拣的玩法。
+(8) Enter command “python3 color_sorting.py” again, and press “Enter” to start game.
 
 ```commandline
 python3 color_sorting.py
 ```
 
-### 5.5 代码分析
+### 5.5 Program Analysis
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/color_sorting.py**
+The source code of program is located in: [/home/pi/ArmPi_mini/functions/color_sorting.py]()
 
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
+**5.5.1 Import Function Library**
 
-<img src="../_static/media/chapter_8/section_5/image15.png" style="width:5.76597in;height:2.74028in" />
+{lineno-start=1}
 
-通过摄像头获取图像信息，再进行图像处理，即对图像进行二值化处理，为了降低干扰，令图像更平滑，对图像进行腐蚀和膨胀处理，然后获取目标最大面积轮廓，判断色块颜色之后打开蜂鸣器和RGB灯，并将面前的色块夹取并放置到相应位置上。
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import numpy as np
+import common.misc as Misc
+import common.yaml_handle as yaml_handle
+```
 
-- #### 5.5.1 导入功能库
+{lineno-start=332}
 
-<img src="../_static/media/chapter_8/section_5/image16.png"  />
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-<img src="../_static/media/chapter_8/section_5/image17.png"  />
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
+{lineno-start=171}
 
-<img src="../_static/media/chapter_8/section_5/image18.png"  />
+```
+                time.sleep(1) # 延时1秒(delay for 1s)
+```
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+The `sleep` function in `time` library is called. The function `sleep ()` is used to delay.
+There are some built-in libraries in Python, so they can be called directly. For example, “time”, “cv2” and “math”. You can also write a new library like “yaml_handle” and “ArmIK.ArmMoveIK”.
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**common.yaml_handle**"文件读取库、"**kinematics.arm_move_ik**"逆运动学库等。
+ **5.5.2 Instantiate Function Library**
 
-- #### 5.5.2 实例化函数库
+The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
-我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
+{lineno-start=336}
 
-<img src="../_static/media/chapter_8/section_5/image19.png"  />
+```
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+```
 
-进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
+After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
 
-- #### 5.5.3 主函数
+ **5.5.3 Main Function Analysis**
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置。这些都要在初始化内容中完成。
+The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
-<img src="../_static/media/chapter_8/section_5/image20.png"  />
+{lineno-start=332}
 
-1. **读取摄像头图像**
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+    
+    init()
+    start()
+```
 
-<img src="../_static/media/chapter_8/section_5/image21.png"  />
+**(1)  Read Captured Image** 
 
-打开摄像头图像并保存到"**cap**"。
+{lineno-start=343}
 
-函数cap.read()是读取摄像头图像，True：读取到图像"**ret**"的值，False：未读取到图像"**ret**"的值。
+```
+    cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
+    #cap = cv2.VideoCapture(0)
+    while True:
+        ret,img = cap.read()
+```
 
-"**img**"是读取摄像头一帧的画面。
+Capture the camera image and save it to `cap`.
 
-2. **进入图像处理**
+The function cap.read is to read the captured image. True: the “rat” value of image is read. False: The value of image`ret` was not read.
 
-读取到图像时，"**ret**"的值为True。
+`img` is a frame of the camera that was read.
 
-<img src="../_static/media/chapter_8/section_5/image22.png"  />
+**(2)  Window Displays Image**
 
-函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+When the capture image is read, “ret” value is True.
 
-函数run()进行图像处理。详细内容请看[5.5 代码分析\ 图像处理分析](#anchor_5_5_4)。
+{lineno-start=346}
 
-3. **窗口显示图像**
+```
+        if ret:
+            frame = img.copy()
+            Frame = run(frame) 
+```
 
-<img src="../_static/media/chapter_8/section_5/image23.png"  />
+The function img.copy() is used to copy the content of “img” to “frame”.
+The function run() is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
 
+**(3) Window Displays Image**
 
-函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
+{lineno-start=350}
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+```
+            frame_resize = cv2.resize(Frame, (320, 240))
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+        else:
+            time.sleep(0.01)
+    cv2.destroyAllWindows()
+```
 
-函数cv2.waitKey()的作用是等待按键输入，参数"1"是延迟时间。
+The function `cv2.resize()` is used to scale the processed image to the appropriate size.
+
+The function `cv2.imshow()` is used to displa y the image in window. `’frame’` is the window name. `frame_resize` is the displayed content and must be followed by cv2.waitKey(). Otherwise, the content can not be displayed.
+
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
 
 <p id="anchor_5_5_4"></p>
 
-- #### 5.5.4 图像处理分析
+**5.5.4 Image Process Analysis**
+
+{lineno-start=244}
+
+```
+# 图像处理(image processing)
+def run(img):
+    global unreachable
+    global __isRunning
+    global start_pick_up
+    global detect_color, draw_color, color_list
+    
+    if not __isRunning:
+        return img
+    else:
+        img_copy = img.copy()
+        img_h, img_w = img.shape[:2]
+
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+
+        color_area_max = None
+        max_area = 0
+        areaMaxContour_max = 0
+        if not start_pick_up:
+            for i in lab_data:
+                if i in __target_color:
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+                    closed[0:80, :] = 0
+                    closed[:, 0:120] = 0
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+                    areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+                
+                if not start_pick_up:
+                
+                    if color_area_max == 'red':  # 红色最大(red is the maximum)
+                        color = 1
+                    elif color_area_max == 'green':  # 绿色最大(green is the maximum)
+                        color = 2
+                    elif color_area_max == 'blue':  # 蓝色最大(blue is the maximum)
+                        color = 3
+```
 
-<img src="../_static/media/chapter_8/section_5/image24.png"  />
+**(1) Image Resizing Process**
 
-1. **图像缩放处理**
+It is easy to zoom in and out the image.
 
-对图片大小缩放，方便处理。
+{lineno-start=257}
 
-<img src="../_static/media/chapter_8/section_5/image25.png"  />
+```
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+```
 
-第一个参数"**img_copy**"是输入图像。
+The first parameter `img_copy` is the input image.
 
-第二个参数"**size**"是输出图像的大小。大小可以自己设定。
+The second parameter `size` is the size of the output image.
 
-第三个参数"**interpolation=cv2.INTER_NEAREST**"是插值方式。INTER_NEAREST：最邻近插值。INTER_LINEAR：双线性插值，如果最后一个参数你不指定，将默认使用这种方法。INTER_CUBIC：4x4像素邻域内的双立方插值。INTER_LANCZOS4：8x8像素邻域内的Lanczos插值。
+The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. 
 
-2. **高斯滤波**
+`INTER_NEAREST` is the earest Neighbour Interpolation. INTER_LINEAR is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+`INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+**(2) Gaussian filter**
 
-<img src="../_static/media/chapter_8/section_5/image26.png"  />
+Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 
-第一个参数"**frame_resize**"是输入图像。
+Gaussian filter is a linear filter hat also smooths an image and reduces noise, which is widely used in processing image to eliminate noise.
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+{lineno-start=257}
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+```
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+```
 
-3. **转换颜色空间**
+The first parameter `frame_resize` is the input image.
 
-将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+The second parameter `(3, 3)` is the kernel size.
 
-<img src="../_static/media/chapter_8/section_5/image27.png"  />
+The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-第一个参数"**frame_gb**"是输入图像。
+**(3) Covert to Color Space**
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"cv2.COLOR_BGR2RGB"。
+Use function cv2.cvtColor() to convert image to LAB space.
 
-4. **二值化处理**
+{lineno-start=259}
 
-将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+```
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+The first parameter `frame_gb` is the input image.
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. “cv2.COLOR_BGR2LAB” can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
 
-<img src="../_static/media/chapter_8/section_5/image28.png"  />
+**(4) Thresholding Processing**
 
-第一个参数"**frame_lab**"是输入图像；
+Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
+Use inRange() function in cv2 library is used to process image with thresholding method. 
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+{lineno-start=267}
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+```
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+```
 
-5. **开运算和闭运算**
+The first parameter `frame_lab` is the input image.
 
-为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数。
+The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['min'][2])` is the lower limit of color threshold.
 
-<img src="../_static/media/chapter_8/section_5/image29.png"  />
+The third parameter`(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-第一个参数"**frame_mask**"是输入图像。
+(5) Opening and Closing 
 
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function cv2.morphologyEx() is the morphology function.
 
-第三个参数"**np.ones((3, 3)**"是卷积核。
+{lineno-start=274}
 
-第四个参数"**np.uint8**"是应用次数。
+```
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-6. **获取最大面积轮廓**
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. cv2.MORPH_ERODE (Erosion), cv2.MORPH_DILATE(Dilation), cv2.MORPH_OPEN (Opening), cv2.MORPH_CLOSE (Closing).
 
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
+The third parameter `np.ones((3, 3)` is the convolution kernel.
 
-<img src="../_static/media/chapter_8/section_5/image30.png"  />
+The fourth parameter `np.uint8` is the application times.
 
-第一个参数"**closed**"是输入图像；
+(6) Find the Largest Contour 
 
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
+After completing the above processing, use fucntion findContours() in cv2 librart to obtain the contour of the recognized target.
 
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
+{lineno-start=278}
 
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
+```
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
 
-<img src="../_static/media/chapter_8/section_5/image31.png"  />
-
-7. **获取位置信息**
-
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<
-
-img src="../_static/media/chapter_8/section_5/image32.png"  />
-
-8. **判断最大颜色**
-
-通过判断语句得到图像中面积最大的颜色。
-
-<img src="../_static/media/chapter_8/section_5/image33.png"  />
-
-- #### 5.5.5 机械臂执行反馈
-
-机械臂移动函数move()作为子线程运行，当识别到颜色后，就会执行move()函数。
-
-主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
-
-<img src="../_static/media/chapter_8/section_5/image34.png"  />
-
-1. **点亮RGB灯**
-
-根据识别的颜色，RGB灯颜色与识别的颜色一致。
-
-<img src="../_static/media/chapter_8/section_5/image35.png"  />
-
-2. **驱动蜂鸣器**
-
-<img src="../_static/media/chapter_8/section_5/image36.png"  />
-
-board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
-
-3. **机械臂执行移动**
-
-判断识别颜色，将色块夹到对应的位置。
-
-<img src="../_static/media/chapter_8/section_5/image37.png"  />
-
-使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
-
-第一个参数："**0.4**"为动作持续时间，单位是秒。
-
-第二个参数"**\[\[1,1500\]\]**"为舵机ID1和"1500"为脉冲宽度，取值范围为"500~2500"。
-
-函数AK.setPitchRangeMoving()是逆运动学控制机械臂移动，以代码"**AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)**"为例：
-
-第一个参数"**(0, 6, 18)**"是机械臂末端坐标。0是X轴坐标,6是Y轴坐标，18是Z轴坐标。
-
-第二个参数"**0**"是俯仰角。
-
-第三个参数"**-90**"是俯仰角范围最小值。
-
-第四个参数"**90**"是俯仰角范围最大值。
-
-第五个参数"**500**"是运行时间，单位毫秒。
-
-## 6. 智能码垛
+The first parameter `closed` is the input image.
+
+The second parameter`cv2.RETR_EXTERNAL` is the contour retrieval method.
+
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
+
+Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
+
+{lineno-start=279}
+
+```
+                    areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+```
+
+(7) Obtain Position Information
+
+Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+
+{lineno-start=285}
+
+```
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+```
+
+(8) Determine Maximum Color 
+
+Use judgement statement to get the maximum color in a image.
+
+{lineno-start=292}
+
+```
+                if not start_pick_up:
+                
+                    if color_area_max == 'red':  # 红色最大(red is the maximum)
+                        color = 1
+                    elif color_area_max == 'green':  # 绿色最大(green is the maximum)
+                        color = 2
+                    elif color_area_max == 'blue':  # 蓝色最大(blue is the maximum)
+                        color = 3
+                    else:
+                        color = 0
+                    color_list.append(color)
+                    if len(color_list) == 3:  # 多次判断(multiple judgements)
+                        # 取平均值(get mean)
+                        color = int(round(np.mean(np.array(color_list))))
+                        color_list = []
+                        if color == 1:
+                            detect_color = 'red'
+                            draw_color = range_rgb["red"]
+                            start_pick_up = True
+                        elif color == 2:
+                            detect_color = 'green'
+                            draw_color = range_rgb["green"]
+                            start_pick_up = True
+                        elif color == 3:
+                            start_pick_up = True
+                            detect_color = 'blue'
+                            draw_color = range_rgb["blue"]
+                        else:
+                            start_pick_up = False
+                            detect_color = 'None'
+                            draw_color = range_rgb["black"]
+            else:
+                if not start_pick_up:
+                    draw_color = (0, 0, 0)
+                    detect_color = "None" 
+```
+
+**5.5.5 Execute Feedback**
+
+The robot arm movement function `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
+
+{lineno-start=138}
+
+```
+# 机械臂移动函数(function for the robotic arm's movement)
+def move():
+    global rect
+    global _stop
+    global unreachable
+    global __isRunning
+    global detect_color
+    global start_pick_up
+    
+    x = Coordinates_data['X']
+    y = Coordinates_data['Y']
+    z = Coordinates_data['Z']
+    #放置坐标(placing coordinate)
+    coordinate = {
+        'red':   (-11, 16, 2),
+        'green': (-11, 8,  1),
+        'blue':  (-11, 0, 0.5),
+        'capture': (x, y, z)
+    }
+    
+    while True:
+        if __isRunning:        
+            if detect_color != 'None' and start_pick_up: 
+                #移到目标位置，高度6cm, 通过返回的结果判断是否能到达指定位置(move to the target position with the height of 6cm, and determine if the specified position is reached based on the returned outcome)
+                #如果不给出运行时间参数，则自动计算，并通过结果返回(if the runtime parameter is not given, it calculates automatically and returns based on the outcome)
+                set_rgb(detect_color) # 设置扩展板上的RGB灯亮对应的颜色(set the RGB light on the expansion board to light corresponding color)
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                
+                board.pwm_servo_set_position(0.5, [[1, 2000]])# 张开爪子(open the gripper)
+                time.sleep(0.5)
+                if not __isRunning: # 检测是否停止玩法(detect if the game is stopped)
+                    continue
+                AK.setPitchRangeMoving((coordinate['capture']), -90,-90, 0, 1000) # 机械臂运行到夹取位置(robotic arm runs to the gripping position)
+                print("(coordinate['capture']):",(coordinate['capture']))
+                time.sleep(1) # 延时1秒(delay for 1s)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[1, 1500]])# 闭合爪子(close the gripper)
+                time.sleep(0.5)
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) # 抬起机械臂(uplift the robotic arm)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                # 先把机械臂转过去,根据不同颜色，转到不同位置(Rotate the robotic arm to the position first. Rotate to corresponding positions based on different colors.)
+                if detect_color == 'red': 
+                    board.pwm_servo_set_position(0.5, [[6, 1900]])
+                    time.sleep(0.5)
+                elif detect_color == 'green':
+                    board.pwm_servo_set_position(0.8, [[6, 2100]])
+                    time.sleep(0.8)
+                elif detect_color == 'blue':
+                    board.pwm_servo_set_position(1.5, [[6, 2500]])
+                    time.sleep(1.5)
+```
+
+(1)  RGB Light On
+
+The RGB color is consistent with the recognized color.
+
+{lineno-start=71}
+
+```
+#设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
+def set_rgb(color):
+    if color == "red":
+        board.set_rgb([[1, 255, 0, 0], [2, 255, 0, 0]])
+    elif color == "green":
+        board.set_rgb([[1, 0, 255, 0], [2, 0, 255, 0]])
+    elif color == "blue":
+        board.set_rgb([[1, 0, 0, 255], [2, 0, 0, 255]])
+    else:
+        board.set_rgb([[1, 0, 0, 0], [2, 0, 0, 0]])
+```
+
+(2)  Drive Buzzer
+
+{lineno-start=164}
+
+```
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+```
+
+The code `board.set_buzzer(1900, 0.1, 0.9, 1)` calls a function called `set_buzzer()`, which sets the buzzer to sound for 0.1 seconds. This is used to control the sound effect and duration of the buzzer.
+
+(3) Movement Execution
+
+Determine the recognized color and move it to the corresponding position.
+
+{lineno-start=158}
+
+```
+    while True:
+        if __isRunning:        
+            if detect_color != 'None' and start_pick_up: 
+                #移到目标位置，高度6cm, 通过返回的结果判断是否能到达指定位置(move to the target position with the height of 6cm, and determine if the specified position is reached based on the returned outcome)
+                #如果不给出运行时间参数，则自动计算，并通过结果返回(if the runtime parameter is not given, it calculates automatically and returns based on the outcome)
+                set_rgb(detect_color) # 设置扩展板上的RGB灯亮对应的颜色(set the RGB light on the expansion board to light corresponding color)
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                
+                board.pwm_servo_set_position(0.5, [[1, 2000]])# 张开爪子(open the gripper)
+                time.sleep(0.5)
+                if not __isRunning: # 检测是否停止玩法(detect if the game is stopped)
+                    continue
+                AK.setPitchRangeMoving((coordinate['capture']), -90,-90, 0, 1000) # 机械臂运行到夹取位置(robotic arm runs to the gripping position)
+                print("(coordinate['capture']):",(coordinate['capture']))
+                time.sleep(1) # 延时1秒(delay for 1s)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[1, 1500]])# 闭合爪子(close the gripper)
+                time.sleep(0.5)
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) # 抬起机械臂(uplift the robotic arm)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+```
+
+The function `board.pwm_servo_set_position()` controls a servo, and the parameters inside the parentheses have the following meanings:
+
+The first parameter`0.4` is the duration of the action in the unit of seconds.
+
+The second parameter `[[1,1500]]` is the servo ID1 and `1500` is the pulse width ranging from 500 to 2500.
+
+The function `AK.setPitchRangeMoving()` is the inverse kinematics control of the robotic arm. Take `AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)` as an example:
+
+The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. “0” is the X-axis coordinate, “6” is the Y-axis coordinate, and “18” is the Z-axis coordinate.
+
+The second parameter `0` is the pitch angle.
+
+The third parameter `-90` is the minimum pitch angle range.
+
+The fourth parameter `90` is the maximum pitch angle range.
+
+The fifth parameter `500` is runtime in the unit of milliseconds.
+
+## 6.  Intelligent Stacking
 
 :::{Note}
-学习本节玩法之前请确保机械臂按照"第1章 学前先看\第5课 偏差调试、第6课 位置校准"课程进行偏差调节、地图摆放、位置校准，否则会影响玩法的实现效果。
+Before starting intelligent stacking, please make sure that ArmPi mini has been completely configured according to the content in “Getting Ready/ Lesson 4 Deviation Adjustment/ Lesson 5 Position Adjustment” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
 :::
 
-### 6.1 实验原理
+### 6.1 Program Description
 
-本节课通过摄像头进行颜色识别，然后控制机械臂将色块夹取再叠放到指定的区域，完成码垛。整个过程包括三个部分：**识别、夹取、码垛**。
-
-首先颜色识别部分，先进行高斯滤波（对图像中进行减噪），通过Lab颜色空间来对物品的颜色进行转换(关于Lab颜色空间的这个部分可以前往"**[OpenCV视觉基础课程](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"课程进行详细学习)。
-
-接着通过颜色阈值对方框中的物体颜色进行识别，再对图像部分进行掩膜（掩膜是用选定的图像、图形或物体，对处理的图像进行全局或者局部遮挡）。
-
-然后经过对物品图片开闭运算处理后，最后将轮廓最大的物体用方框框出。
-
-开运算：先对图像腐蚀后膨胀。作用：用来消除小的物体，平滑形状边界，并且不改变其面积。可以去除小颗粒噪声，断开物体之间的粘连。
-
-闭运算：先对图像膨胀后腐蚀。作用：用来填充物体内的小空洞，连接邻近的物体，连接断开的轮廓线，平滑其边界的同时不改变面积。
-
-接下来会对放置色块的移动状态进行判断。若检测到色块已停止移动一段时间后，则机械臂便开始进入夹取流程。
-
-最后将色块放置到码垛区域，机械臂在放置时，都会在前一个色块放置位置的高度上进行叠加。当全部色块码垛完毕之后，机械臂便回到初始位置。
-
-夹取和码垛都是通过逆运动学AK.setPitchRangeMoving()函数来计算目标位置处的舵机角度，再控制机械臂到目标位置。
-
-关于逆运动学的这个部分可以前往"**[机械臂逆运动学基础课程\1. 什么是逆运动学](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/6_inverse_kinematics.html#id2)**"课程进行详细学习。
+The logic of intelligent stacking is to recognize color first, and control robot arm to grip the block and stack it in the specific area. This process has three parts including recognition, gripping, and stacking.
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “7.OpenCV Basic Lesson” to learn about Lab color space.
+Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+Then, determine the movement status of the placed block. If it detects that the block has stopped moving for a period of time, the robot arm starts gripping.
+Finally, the block is placed in the stacking area and robot arm will stack it on the previous block. When all the blocks are stacked, the robot arm returns to its initial position.
+Both gripping and stacking use inverse kinematics function “AK.setPitchRangeMoving()” to calculate the servo angle at the target position, and then control robot arm to move to the target position.
+About inverse kinematics, please refer to the content in “6.Basic Motion Lesson/ 6.1 What is Inverse Kinematics?” 
 
 <p id="anchor_6_2"></p>
 
-### 6.2 玩法开启及关闭步骤
+### 6.2 Start and Close the Game
 
 :::{Note}
-指令的输入需严格区分大小写及空格。
+The input command should be case sensitive, and “Tab” can be used to complement keywords.
 :::
 
-1)  将设备开机，并参照课程资料的"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"内容，通过VNC远程连接工具连接。
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
 
-<img src="../_static/media/chapter_8/section_6/image4.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image4.png"  />
 
-2)  输入玩法程序目录所在的指令，按下回车。
+(2) Enter command to access to the directory of game program.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-3)  输入玩法执行指令，并按下回车,玩法启动。
+(3) Enter command and press “Enter” to start game.
 
 ```commandline
 python3 color_palletizing.py
 ```
 
-4)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。若关闭失败，可多次按下。
+(4) If you want to exit the game, press “Ctrl+C”. If it fails to close, please try a few more times.
 
-### 6.3 功能实现
+### 6.3 Project Outcome
 
-玩法开启，机械臂识别到颜色方块，蜂鸣器滴一声后，将颜色方块夹起，然后叠放在码垛区。
+When the game is started and the block is recognized, the buzzer will make a “Di” sound and the robot arm will pick up the block, and then stack it in the stacking area. 
 
-### 6.4 增加新的识别颜色
+### 6.4 Function Extension
 
-除了内置三种识别的颜色，我们还可以设置其它可识别的颜色，比如我们以紫色作为新增的识别颜色为例，具体的修改步骤如下：
+In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
 
-1)  双击系统桌面<img src="../_static/media/chapter_8/section_6/image7.png" style="width:0.39375in;height:0.50208in" />图标，在弹出的界面中点击"**Execute**"。
+(1) Double click<img src="../_static/media/chapter_8/section_6/image7.png" style="width: in;height: in" />icon and select “Execute” in the pop-up window.
 
-<img src="../_static/media/chapter_8/section_6/image8.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image8.png"  />
 
-2)  在弹出的界面中依次选择"**摄像头工具**"、"**连接**"。
+(2) Then select “Camera Tool” and “Connect” in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_6/image9.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image9.png"  alt="loading" />
 
-3)  点击"**新增**"，然后为新增颜色命名（这里以"**purple**"为例），再点击"**OK**"。
+(3) Click “Add” and name the new color as “purple”. Then click “OK”.
 
-<img src="../_static/media/chapter_8/section_6/image10.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image10.png"  alt="loading" />
 
-4)  然后点击颜色选框的下拉按钮，选择"**purple**"。
+(4) Select “purple” in the drop-down list of the color selection bar.
 
-<img src="../_static/media/chapter_8/section_6/image11.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image11.png"  alt="loading" />
 
-5)  将摄像头对准紫色物体，拖动L、A、B应的滑杆，直到左侧画面里要识别的颜色区域变为白色，其他区域变成黑色。
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns black in the left side. 
 
-<img src="../_static/media/chapter_8/section_6/image12.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image12.png"  alt="loading" />
 
-6)  最后，再点击"**保存**"，保存一下调节好的颜色阈值。
+(6) Finally, click “Save”.
 
-<img src="../_static/media/chapter_8/section_6/image13.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image13.png"  alt="loading" />
 
-7)  修改完成后，我们可以检查一下修改的值是否成功被写入进去，输入指令，按下回车，进入到程序代码所在目录。
+(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
 
 ```commandline
 cd ArmPi_mini/yaml/
 ```
 
-8)  再输入指令，按下回车，打开程序文件。
+(8) Enter command and press “Enter” to open program file.
 
 ```commandline
 sudo vim lab_config.yaml
 ```
 
-9)  打开颜色阈值程序文件后，即可查看紫色阈值参数。
+(9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img src="../_static/media/chapter_8/section_6/image16.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image16.png"  />
 
-10) 输入指令，按下回车，切换至源码程序路径下。
+(10) Enter command and press “Enter” to enter the source code directory.
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-11) 然后输入指令，按下回车，打开程序文件。
+(11) Then enter command and press “Enter” to open the program file.
 
 ```commandline
 sudo vim color_palletizing.py
 ```
 
-12) 接着找到如下图所示代码。
+(12) Find the following code:
 
-<img src="../_static/media/chapter_8/section_6/image19.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image19.png"  />
 
-13) 按下键盘的"**i**"键，进入可编辑模式。
+(13) Input ` ‘purple’:(255, 255, 114) ` and `'purple'`, as the figure shown below:
 
-<img src="../_static/media/chapter_8/section_6/image20.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image21.png"  />
 
-14) 手动输入添加"'purple': (255, 255, 114)"和"'purple'"，如下图所示：
+The parameter (255, 255, 144) is the maximum value of purple threshold parameter 
 
-<img src="../_static/media/chapter_8/section_6/image21.png"  />
+(14) Find the following code.
 
-(255, 255, 114)为第9步查看的紫色阈值参数的max。
+<img class="common_img" src="../_static/media/chapter_8/section_6/image22.png"  />
 
-15) 接着找到如下图所示代码。
+(15) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_6/image22.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image23.png"  />
 
-16) 手动输入添加框中内容，（颜色的RGB值可以前往-\>[RGB颜色查询器](http://tools.jb51.net/static/colorpicker/)查询）如下图所示：
+(16) Find the following code.
 
-<img src="../_static/media/chapter_8/section_6/image23.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image24.png"  />
 
-17) 接着找到如下图所示代码。
+(17) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_6/image24.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image25.png"  />
 
-18) 手动输入添加框中内容，如下图所示：
+(18) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_6/image25.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image26.png"  />
 
-19) 接着找到如下图所示代码。
+(19) Find the following code.
 
-<img src="../_static/media/chapter_8/section_6/image26.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image27.png"  />
 
-20) 手动输入添加框中内容，如下图所示：
+(20) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_6/image27.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image28.png"  />
 
-21) 接着找到如下图所示代码。
+(21) Enter the content of the following red frame, as the figure shown below.
 
-<img src="../_static/media/chapter_8/section_6/image28.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image29.png"  />
 
-22) 手动输入添加框中内容，如下图所示：
-
-<img src="../_static/media/chapter_8/section_6/image29.png"  />
-
-23) 保存我们修改的内容。按下"Esc"键，然后依次输入指令（注意wq前为冒号：），回车即可保存并退出。
+(22) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
 
 ```commandline
 :wq
 ```
 
-24) 参照本文档"[6.2 玩法开启及关闭步骤](#anchor_6_2)"再次启动该玩法，将紫色物品放置到摄像头前，可看到机械臂会夹取紫色物品。
+(23) Then refer to the steps in “[6.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “4.1 Change default recognition color” to change the default color to purple. 
 
-25) 如果需要添加其他颜色作为可识别颜色，可参考前面步骤进行操作。
+(24) If you want to add other recognition colors, please refer to the operation steps above.
 
-### 6.5 代码分析
+### 6.5 Program Analysis
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/color_palletizing.py**
+The source code of program is located in:[/home/pi/ArmPi_mini/functions/color_palletizing.py]()
 
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
+6.5.1 Import Function Library
 
-<img class="common_img" src="../_static/media/chapter_8/section_6/image31.png"  />
+{lineno-start=1}
 
-- #### 6.5.1 导入功能库
+```
+#!/usr/bin/python3
+# coding=utf8
+import sys
+import cv2
+import time
+import math
+import threading
+import numpy as np
+import common.misc as Misc
+import common.yaml_handle as yaml_handle
+```
 
-<img src="../_static/media/chapter_8/section_6/image32.png"  />
+{lineno-start=333}
 
-<img src="../_static/media/chapter_8/section_6/image33.png"  />
+```
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-导入opencv、时间、数学、线程、逆运动学相关的库。我们如果想要调用功能库里的函数，就可以使用"**功能库名+函数名（参数，参数...）**"如：
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
 
-<img src="../_static/media/chapter_8/section_6/image34.png"  />
+{lineno-start=167}
 
-就是调用"**time**"库中的"**sleep**"函数，sleep()的作用是延时。
+```
+                time.sleep(1) # 延时1秒(delay for 1s)
+```
 
-在python中有一些已经内置的库，我们直接导入调用就可以，比如"**time**"、"**cv2**"、"**math**"等。我们也可以自己写一个库，比如上面的"**common.yaml_handle**"文件读取库、"**kinematics.arm_move_ik**"逆运动学库等。
+Call `sleep` function in `time` library. The function `sleep ()` is used to delay.
+There are some built-in libraries in Python, so they can be called directly. For example, “time”, `cv2`and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
-- #### 6.5.2 实例化函数库
+6.5.2 Instantiate Function Library
 
-我们有些函数库的名称太长，并且不容易记忆，为了方便调用函数，我们经常会对函数库进行实例化，如：
+The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
-<img src="../_static/media/chapter_8/section_6/image35.png"  />
+{lineno-start=336}
 
-进行实例化后，在使用ArmIK库中的函数，就可以像这样"**AK.函数名(参数,参数...)**"直接调用了，非常方便。
+```
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+```
 
-- #### 6.5.3 主函数
+After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
 
-python程序中"**\_\_name\_\_ == ’\_\_main\_\_:’**"就是程序的主函数。首先调用函数init()进行初始化配置。本程序中初始化包括：机械臂回到初始位置、读取颜色阈值文件。一般还有端口、外设、定时中断等配置，这些都要在初始化内容中完成。
+6.5.3 Main Function Analysis
 
-<img src="../_static/media/chapter_8/section_6/image36.png"  />
+The python program`__name__ ==  ’__main__:’`is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
-1. **读取摄像头图像**
+{lineno-start=332}
 
-<img src="../_static/media/chapter_8/section_6/image37.png"  />
+```
+if __name__ == '__main__':
+    from kinematics.arm_move_ik import *
+    from common.ros_robot_controller_sdk import Board
+    board = Board()
+    # 实例化逆运动学库(instantiate the inverse kinematics library)
+    AK = ArmIK()
+    AK.board = board
+    
+    init()
+```
+
+(1) Read the Captured Image 
+
+{lineno-start=343}
+
+```
+    cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
+    #cap = cv2.VideoCapture(0)
+    while True:
+        ret,img = cap.read()
+```
+
+Capture the camera image and save it to `cap`.
+
+The function `cap.read()` is to read the captured image. True: the “ret” value of image is read. False: The value of image 'ret' was not read.
+
+“img” is a frame of the camera that was read.
+
+(2) Enter Image Processing
+
+When the captured image is read, “ret” value is True.
+
+{lineno-start=347}
+
+```
+        if ret:
+            frame = img.copy()
+            Frame = run(frame)  
+```
+
+The function `img.copy()` is used to copy the content of `img` to `frame`.
+The function `run()` is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
+
+(3) Window Displays Image
+
+{lineno-start=350}
+
+```
+            frame_resize = cv2.resize(Frame, (320, 240))
+            cv2.imshow('frame', frame_resize)
+            key = cv2.waitKey(1)
+            if key == 27:
+                break
+```
+
+The function `cv2.resize()` is used to scale the processed image to the appropriate size.
+
+The function `cv2.imshow()` is used to display the image in window. `’frame’` is the window name. `frame_resize` is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
+
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter `1` refers to the delay time.
 
-打开摄像头图像并保存到"**cap**"。
+6.5.4  Image Processing Analysis
 
-函数cap.read()是读取摄像头图像，True：读取到图像"**ret**"的值，False：未读取到图像"**ret**"的值。
+{lineno-start=240}
 
-"**img**"是读取摄像头一帧的画面。
+```
+# 图像处理(image processing)
+def run(img):
+    global roi
+    global count
+    global get_roi
+    global center_list
+    global __isRunning
+    global start_pick_up
+    global detect_color, draw_color, color_list
+    
+    if not __isRunning:
+        return img
+    else:
+        img_copy = img.copy()
+        img_h, img_w = img.shape[:2]
 
-2. **进入图像处理**
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+        
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 
-读取到图像时，"**ret**"的值为True。
+        color_area_max = None
+        max_area = 0
+        areaMaxContour_max = 0
+        if not start_pick_up:
+            for i in lab_data:
+                if i in __target_color:
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+                    closed[0:80, :] = 0
+                    closed[:, 0:120] = 0
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+                    areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+```
 
-<img src="../_static/media/chapter_8/section_6/image38.png"  />
+(1) Image Resizing Process
 
-函数img.copy()的作用是将"**img**"的内容复制给"**frame**"。
+It is easy to zoom in and out the image.
 
-函数run()进行图像处理。详细内容请看[5.4 图像处理分析](#_5.4 图像处理分析)。
+{lineno-start=}
 
-3. **窗口显示图像**
+```
+        frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
+```
 
-<img src="../_static/media/chapter_8/section_6/image39.png"  />
+The first parameter `img_copy` is the input image.
 
-<span id="_5.4 图像处理分析" class="anchor"></span>函数cv2.resize()的作用是把处理好的图像缩放的合适大小。
+The second parameter`size` is the size of the output image.
 
-函数cv2.imshow()的作用是在窗口显示图像，"**’frame’**"是窗口名称、"**frame_resize**"是显示内容。后面一定要有cv2.waitKey()，否则无法显示。
+The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. 
 
-函数cv2.waitKey()的作用是等待按键输入，参数"1"是延迟时间。
+`INTER_NEAREST` is the earest Neighbour Interpolation. `INTER_LINEAR` is the Bilinear Interpolation. If the last parameter is not modified, this method `INTER_LINEAR` will be used by default. 
 
-- #### 6.5.4 图像处理分析
+`INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood. 
 
-<img src="../_static/media/chapter_8/section_6/image40.png"  />
+`INTER_LANCZOS4`: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-1. **图像缩放处理**
+(2) Gaussian filter
 
-对图片大小缩放，方便处理。
+Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
+Gaussian filter is a linear filter hat also smooths an image and reduces noise, which is widely used in processing image to eliminate noise.
 
-<img src="../_static/media/chapter_8/section_6/image41.png"  />
+{lineno-start=257}
 
-第一个参数"**img_copy**"是输入图像。
+```
+        frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
+```
 
-第二个参数"**size**"是输出图像的大小。大小可以自己设定。
+The first parameter `frame_resize` is the input image.
 
-第三个参数"**interpolation=cv2.INTER_NEAREST**"是插值方式。INTER_NEAREST：最邻近插值。INTER_LINEAR：双线性插值，如果最后一个参数你不指定，将默认使用这种方法。INTER_CUBIC：4x4像素邻域内的双立方插值。INTER_LANCZOS4：8x8像素邻域内的Lanczos插值。
+The second parameter `(3, 3)` is the kernel size.
 
-2. **高斯滤波**
+The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-图像中总是会混入噪声，影响图像的质量，让特征不明显。根据不同的噪声种类选择对应的滤波方法，常见的有：高斯滤波、中值滤波、均值滤波等。
+(3) Covert to Color Space
 
-高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。
+Use function `cv2.cvtColor()` to convert image to LAB space.
 
-<img src="../_static/media/chapter_8/section_6/image42.png"  />
+{lineno-start=259}
 
-第一个参数"**frame_resize**"是输入图像。
+```
+        frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
+```
 
-第二个参数"**(3, 3)**"是高斯内核大小。
+The first parameter `frame_gb` is the input image.
 
-第三个参数"**3**"是X方向上的高斯核标准偏差。
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is `cv2.COLOR_BGR2RGB` , BGR is converted to RGB.
 
-3. **转换颜色空间**
+(4) Threshold Processing
 
-将图像转换到LAB空间，其中函数cv2.cvtColor()是颜色空间转换函数。
+Threshold can be used to create binary images, only 0 and 1. The image can be small size for better processing.
+Use “inRange()” function in cv2 library is used to process image with threshold method. 
 
-<img src="../_static/media/chapter_8/section_6/image43.png"  />
+{lineno-start=267}
 
-第一个参数"**frame_gb**"是输入图像。
+```
+                    frame_mask = cv2.inRange(frame_lab,
+                                                 (lab_data[i]['min'][0],
+                                                  lab_data[i]['min'][1],
+                                                  lab_data[i]['min'][2]),
+                                                 (lab_data[i]['max'][0],
+                                                  lab_data[i]['max'][1],
+                                                  lab_data[i]['max'][2]))  #对原图像和掩模进行位运算(perform bitwise operation on the original image and the mask)
+```
 
-第二个参数"**cv2.COLOR_BGR2LAB**"是转换格式。"**cv2.COLOR_BGR2LAB**"是将BGR格式转换到LAB格式。如果要转换到RGB就可以使用"**cv2.COLOR_BGR2RGB**"。
+The first parameter `frame_lab` is the input image.
+The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i] ['min'][2])` is the lower limit of color threshold.
+The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i] ['max'][2])` is the upper limit of color threshold.
 
-4. **二值化处理**
+(5) Opening and Closing
 
-将图像转换成二值图像，只有0和1，图像变得简单并且数据量减小，更容易处理。
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “cv2.morphologyEx()” is the morphology function.
 
-采用cv2库中的inRange()函数对图像进行二值化处理。
+{lineno-start=274}
 
-<img src="../_static/media/chapter_8/section_6/image44.png"  />
+```
+                    opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
+                    closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
+```
 
-第一个参数"**frame_lab**"是输入图像；
+The first parameter `frame_make` is the input image.
 
-第二个参数"**(lab_data\[i\]\['min'\]\[0\],lab_data\[i\]\['min'\]\[1\],lab_data\[i\]\['min'\]\[2\])**"是颜色阈值下限；
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. `cv2.MORPH_ERODE (Erosion)`, `cv2.MORPH_DILATE(Dilation)`, `cv2.MORPH_OPEN (Opening)`, and `cv2.MORPH_CLOSE (Closing)`.
 
-第三个参数"**(lab_data\[i\]\['max'\]\[0\],lab_data\[i\]\['max'\]\[1\],lab_data\[i\]\['max'\]\[2\])**"是颜色阈值上限；
+The third parameter `np.ones((3, 3)` is the convolution kernel.
 
-5. **开运算和闭运算**
+The fourth parameter `np.uint8` is the application times.
 
-为了降低干扰，令图像更平滑，需要对图像进行开运算和闭运算，开运算是先腐蚀再膨胀，闭运算是先膨胀再腐蚀。函数cv2.morphologyEx()是形态学函数
+(6)  Find the Largest Contour 
 
-<img src="../_static/media/chapter_8/section_6/image45.png"  />
+After completing the above processing, use function `findContours()`in cv2 library to obtain the contour of the recognized target.
 
-第一个参数"**frame_mask**"是输入图像。
-
-第二个参数"**cv2.MORPH_OPEN**"是形态操作的类型。cv2.MORPH_ERODE（腐蚀）,cv2.MORPH_DILATE（膨胀）,cv2.MORPH_OPEN（开运算)，cv2.MORPH_CLOSE（闭运算）
-
-第三个参数"**np.ones((3, 3)**"是卷积核。
-
-第四个参数"**np.uint8**"是应用次数。
-
-6. **获取最大面积轮廓**
-
-完成上述的图像处理后，需要获取识别目标的轮廓，此处涉及cv2库中的findContours()函数。
-
-<img src="../_static/media/chapter_8/section_6/image46.png"  />
-
-第一个参数"**closed**"是输入图像；
-
-第二个参数"**cv2.RETR_EXTERNAL**"是轮廓的检索模式；
-
-第三个参数"**cv2.CHAIN_APPROX_NONE)\[-2\]**"是轮廓的近似方法。
-
-在获得的轮廓中寻找面积最大的轮廓，而为了避免干扰，需要设定一个最小值，仅当面积大于该值时，目标轮廓才有效。
-
-<img src="../_static/media/chapter_8/section_6/image47.png"  />
-
-7. **获取位置信息**
-
-采用cv2库中的cv2.minEnclosingCircle函数获取目标轮廓的最小外接圆，并得到最小外接圆的圆心坐标和半径。<img src="../_static/media/chapter_8/section_6/image48.png"  />
-
-8. **判断最大颜色**
-
-通过判断语句得到图像中面积最大的颜色。
-
-<img src="../_static/media/chapter_8/section_6/image49.png"  />
-
-- #### 6.5.5 机械臂执行反馈
-
-机械臂移动函数move()作为子线程运行，当识别到颜色后，就会执行move()函数。
-
-主要是对图像处理结果进行判断，再执行不同的反馈，包括了RGB灯、蜂鸣器、单个舵机的控制、多个舵机的控制。
-
-<img src="../_static/media/chapter_8/section_6/image50.png"  />
-
-1. **点亮RGB灯**
-
-根据识别的颜色，RGB灯颜色与识别的颜色一致。
-
-<img src="../_static/media/chapter_8/section_6/image51.png"  />
-
-2. **驱动蜂鸣器**
-
-<img src="../_static/media/chapter_8/section_6/image52.png"  />
-
-board.set_buzzer(1900, 0.1, 0.9, 1)：调用了一个函数 set_buzzer()，将蜂鸣器设置为响铃持续 0.1 秒。用于控制蜂鸣器的音响效果和持续时间。
-
-3. **机械臂执行移动**
-
-判断识别颜色，将色块夹到对应的位置码垛。
-
-<img src="../_static/media/chapter_8/section_6/image53.png"  />
-
-使用 board.pwm_servo_set_position函数进行舵机控制，括号内的参数含义如下：
-
-第一个参数："**0.4**"为动作持续时间，单位是秒。
-
-第二个参数"**\[\[6,1300\]\]**"为舵机ID6和"1300"为脉冲宽度，取值范围为"500~2500"。
-
-函数AK.setPitchRangeMoving()是逆运动学控制机械臂移动，以代码"**AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)**"为例：
-
-第一个参数"**(0, 6, 18)**"是机械臂末端坐标。0是X轴坐标,6是Y轴坐标，18是Z轴坐标。
-
-第二个参数"**0**"是俯仰角。
-
-第三个参数"**-90**"是俯仰角范围最小值。
-
-第四个参数"**90**"是俯仰角范围最大值。
-
-第五个参数"**500**"是运行时间，单位毫秒。
-
-## 7. 人脸检测
-
-### 7.1 玩法简要说明
-
-识别到人脸后，蜂鸣器发声滴滴报警，并在回传画面中圈出人脸。
-
-人工智能中最为一个广泛的应用当属图像识别，而图像识别中的人脸识别是最火热的应用，常常应用于门锁和手机人脸解锁等场景。
-
-本节我们训练好的人脸模型，首先进行缩放画面检测人脸。然后将识别到的人脸坐标转换为未缩放前的坐标，进而判断是否为最大的人脸，并将识别到的人脸框出，蜂鸣器发出滴滴声。
-
-### 7.2 玩法开启及关闭
+{lineno-start=278}
+
+```
+                    contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
+```
+
+The first parameter `closed` is the input image.
+
+The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
+
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
+
+Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
+
+{lineno-start=279}
+
+```
+                    areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
+                    if areaMaxContour is not None:
+                        if area_max > max_area:  # 找最大面积(find the maximum area)
+                            max_area = area_max
+                            color_area_max = i
+                            areaMaxContour_max = areaMaxContour
+            if max_area > 500:  # 有找到最大面积(the maximum area has been found)
+```
+
+(7) Obtain Position Information
+
+Use function “cv2.minEnclosingCircle” in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+
+{lineno-start=286}
+
+```
+                (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
+                center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
+                center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
+                radius = int(Misc.map(radius, 0, size[0], 0, img_w))
+                cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
+```
+
+(8) Determine Maximum Color 
+
+Use judgement statement to get the maximum color in a image.
+
+{lineno-start=292}
+
+```
+                if not start_pick_up:
+                    if color_area_max == 'red':  # 红色最大(red is the maximum)
+                        color = 1
+                    elif color_area_max == 'green':  # 绿色最大(green is the maximum)
+                        color = 2
+                    elif color_area_max == 'blue':  # 蓝色最大(blue is the maximum)
+                        color = 3
+                        color = 3
+                    else:
+                        color = 0
+                    color_list.append(color)
+                    if len(color_list) == 3:  # 多次判断(multiple judgements)
+                        # 取平均值(get mean)
+                        color = int(round(np.mean(np.array(color_list))))
+                        color_list = []
+                        if color == 1:
+                            detect_color = 'red'
+                            draw_color = range_rgb["red"]
+                            start_pick_up = True
+                        elif color == 2:
+                            detect_color = 'green'
+                            draw_color = range_rgb["green"]
+                            start_pick_up = True
+                        elif color == 3:
+                            start_pick_up = True
+                            detect_color = 'blue'
+                            draw_color = range_rgb["blue"]
+                        else:
+                            start_pick_up = False
+                            detect_color = 'None'
+                            draw_color = range_rgb["black"]
+```
+
+6.5.5 Execute Feedback
+
+The robot arm movement function `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determines the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
+
+{lineno-start=138}
+
+```
+# 机械臂移动函数(function for the robotic arm's movement)
+def move():
+    global _stop
+    global get_roi
+    global number
+    global __isRunning
+    global detect_color
+    global start_pick_up
+    
+    x = Coordinates_data['X']
+    y = Coordinates_data['Y']
+    z = Coordinates_data['Z']
+    
+    coordinate = {
+        'capture': (x, y, z),       # 夹取坐标(gripping coordinate)
+        'place': (12, 0, 0.5), # 放置坐标(placing coordinate)
+        }
+    
+    while True:
+        if __isRunning:
+            if detect_color != 'None' and start_pick_up:  # 如果检测到方块没有移动一段时间后，开始夹取(if the block is detected no moving for a period, the robotic arm starts to grip)
+                set_rgb(detect_color) # 设置扩展板上的RGB灯亮对应的颜色(set the RGB light on the expansion board to light corresponding color)
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                
+                board.pwm_servo_set_position(0.5, [[1, 2000]])# 张开爪子(open gripper)
+                time.sleep(0.6)
+                if not __isRunning: # 检测是否停止玩法(detect if the game is stopped)
+                    continue
+                AK.setPitchRangeMoving((coordinate['capture']), -90,-90, 90, 1000) # 机械臂运行到夹取位置(robotic arm runs to the gripping position)
+                time.sleep(1) # 延时1秒(delay for 1s)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[1, 1450]])# 闭合爪子(close the gripper)
+                time.sleep(0.6)
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) # 抬起机械臂(uplift the robotic arm)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[6, 1500]])# 先把机械臂转过去(rotate the robotic arm to the position first)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((coordinate['place'][0], coordinate['place'][1],12), -90,-90, 90, 800) # 机械臂运行到夹取位置上方(run the robotic arm to the top of the gripping position)
+                time.sleep(0.8)
+                if not __isRunning:
+                    continue
+```
+
+(1)  RGB Light On
+
+The RGB color is consistent with the recognized color.
+
+{lineno-start=71}
+
+```
+#设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
+def set_rgb(color):
+    if color == "red":
+        board.set_rgb([[1, 255, 0, 0], [2, 255, 0, 0]])
+    elif color == "green":
+        board.set_rgb([[1, 0, 255, 0], [2, 0, 255, 0]])
+    elif color == "blue":
+        board.set_rgb([[1, 0, 0, 255], [2, 0, 0, 255]])
+    else:
+        board.set_rgb([[1, 0, 0, 0], [2, 0, 0, 0]])
+```
+
+(2)  Drive Buzzer
+
+{lineno-start=160}
+
+```
+                board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+```
+
+The code `board.set_buzzer(1900, 0.1, 0.9, 1)` calls a function called `set_buzzer()`, which sets the buzzer to sound for 0.1 seconds. This is used to control the sound effect and duration of the buzzer.
+
+(3) Movement Execution
+
+Determine the recognized color to stack the block in the corresponding place.
+
+{lineno-start=162}
+
+```
+                board.pwm_servo_set_position(0.5, [[1, 2000]])# 张开爪子(open gripper)
+                time.sleep(0.6)
+                if not __isRunning: # 检测是否停止玩法(detect if the game is stopped)
+                    continue
+                AK.setPitchRangeMoving((coordinate['capture']), -90,-90, 90, 1000) # 机械臂运行到夹取位置(robotic arm runs to the gripping position)
+                time.sleep(1) # 延时1秒(delay for 1s)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[1, 1450]])# 闭合爪子(close the gripper)
+                time.sleep(0.6)
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) # 抬起机械臂(uplift the robotic arm)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[6, 1500]])# 先把机械臂转过去(rotate the robotic arm to the position first)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((coordinate['place'][0], coordinate['place'][1],12), -90,-90, 90, 800) # 机械臂运行到夹取位置上方(run the robotic arm to the top of the gripping position)
+                time.sleep(0.8)
+                if not __isRunning:
+                    continue
+                
+                AK.setPitchRangeMoving((coordinate['place'][0], coordinate['place'][1],(coordinate['place'][2]+number*3)), -90,-90, 90, 800) # 机械臂运行到放置位置,根据码垛的数量计算放置坐标的高度(robotic arm runs to the placing position, the height of the placing position is calculated based on numbers of the stacked blocks)
+                time.sleep(0.8)
+                if not __isRunning: 
+                    continue
+                board.pwm_servo_set_position(0.5, [[1, 1800]]) # 张开爪子,放下木块(open the gripper to put down the block)
+                time.sleep(0.6)
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((6, 0, 18), 0,-90, 90, 1500) # 抬起机械臂(uplift the robotic arm)
+                time.sleep(1.5)
+                if not __isRunning:
+                    continue
+                board.pwm_servo_set_position(0.5, [[6, 1500]])  # 机械臂转回中间(robotic arm returns to the middle)
+                time.sleep(1.5)
+                
+                if not __isRunning:
+                    continue
+                AK.setPitchRangeMoving((0, 8, 10), -90,-90, 90, 800) # 机械臂复位(reset the robotic arm)
+                time.sleep(0.8)
+```
+
+The function `board.pwm_servo_set_position()` controls a servo, and the parameters inside the parentheses have the following meanings:
+
+The first parameter `0.5` is the duration of the action in the unit of seconds.
+
+The second parameter `[[6,1500]]` is the servo ID 6 and `1500` is the pulse width ranging from 500 to 2500.
+
+The function `AK.setPitchRangeMoving()` is the inverse kinematics control of the robotic arm. 
+
+Take `AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)` as an example:
+
+The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. “0” is the X-axis coordinate, “6” is the Y-axis coordinate, and “18” is the Z-axis coordinate.
+
+The second parameter `0` is the pitch angle.
+
+The third parameter `-90` is the minimum pitch angle range.
+
+The fourth parameter `90` is the maximum pitch angle range.
+
+The fifth parameter  `500` is runtime in the unit of milliseconds.
+
+## 7. Face Detection
+
+### 7.1 Project Principle
+
+Upon detecting a face, the buzzer will beep to alarm. The detected face will be circled in the live camera feed.
+In artificial intelligence, one of the most widespread applications is image recognition, with facial recognition being the hottest application. It is commonly used in scenarios like door locks and phone facial unlocking.
+In this section, the trained face model is first zoomed to detect the face. Then the recognized face coordinates are converted to the coordinates before scaling. Judge whether it is the largest face, and frame the recognized face. Then, the buzzer beeps.
+
+### 7.2 Operation Steps
 
 :::{Note}
-指令的输入需严格区分大小写及空格。
+The input command should be case sensitive, and “Tab” can be used to complement keywords.
 :::
 
-1)  将机器人开机，然后通过VNC远程连接树莓派桌面。关于VNC的安装及连接，可参考"**第1章** **学前先看\第4课** **远程桌面工具安装与连接**"。
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-2)  在树莓派的桌面单击左上角的图标<img src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" />，或按住快捷键Ctrl+Alt+T，打开LX终端。
+(2) Click <img class="common_img" src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
 
-3)  输入指令，按下回车键则可定位到存放了玩法程序的目录。
+(3) Enter command “cd ArmPi_mini/functions” to navigate to the directory where the demo program is located.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-4)  输入指令，然后按下回车键将玩法启动。
+(4) Enter command “python3 face_detect.py”, and press “Enter” to start game.
 
 ```commandline
 python3 face_detect.py
 ```
 
-5)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。如果关闭失败，可多次按下。
+(5) If want to exit the game, press “Ctrl+C”. If fail to close, please try a few more times.
 
-### 7.3 实现效果
-
-:::{Note}
-本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
-:::
-
-玩法开启后，摄像头云台将进行左右转动。当识别到人脸后，云台会停止转动，此时机器人将执行招手动作。
-
-### 7.4 程序简要分析
-
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/face_detect.py**
-
-<img src="../_static/media/chapter_8/section_7/image12.png"  />
-
-- #### 7.4.1 导入参数模块
-
-| **导入模块** | **作用** |
-|----|----|
-| import sys | 导入了Python的sys模块，用于访问系统相关的功能和变量 |
-| import cv2 | 导入了OpenCV库，用于图像处理和计算机视觉相关的功能 |
-| import time | 导入了Python的time模块，用于时间相关的功能，例如延时操作 |
-| import numpy as np | numpy模块，为数组运算提供大量的数学函数库 |
-| import threading | 提供多线程运行的环境 |
-| import mediapipe as mp | 集成的机器学习视觉算法的工具库(包含人脸检测、人脸关键点、手势识别、头像分割和姿态识别等各种模型) |
-| Import yaml_handle | 包含一些与处理YAML格式文件相关的功能或工具 |
-| from common.ros_robot_controller_sdk import Board | 导入了board库，可以控制传感器，用于执行控制的操作 |
-
-
-- #### 7.4.2 功能逻辑
-
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
-
-<img class="common_img" src="../_static/media/chapter_8/section_7/image14.png"  alt="loading" />
-
-通过摄像头获取图像信息，再进行图像处理，即对图像进行颜色空间转化，方便进行人脸检测。
-
-接着使用mediapipe的人脸模型库对图像进行人脸检测，获取人脸检测结果并调用动作组进行反馈。
-
-- #### 7.4.3 程序逻辑及对应的代码分析
-
-从程序文件梳理得到程序逻辑流程图如下图所示。
-
-<img src="../_static/media/chapter_8/section_7/image17.png"  alt="loading" />
-
-从上图得到，程序的逻辑流程主要为图像处理与人脸识别，以下的文档内容将依照上述程序逻辑流程图进行编写。
-
-1. **初始化**
-
-- **导入功能库**
-
-在初始化的这一步，首先就需要将功能库导入进来，方便后续程序的调用，关于导入进来的内容。可以前往4.1导入参数模块进行查看。
-
-<img src="../_static/media/chapter_8/section_7/image18.png"  />
-
-- **设定初始状态**
-
-设置初始状态，这里就包括了舵机的初始位置、人脸识别模块、最小人脸置信度等。
-
-<img src="../_static/media/chapter_8/section_7/image21.png"  />
-
-<img src="../_static/media/chapter_8/section_7/image24.png"  />
-
-2. **图像处理**
-
-- **颜色空间转换**
-
-将BGR图像转换为RGB图像
-
-<img src="../_static/media/chapter_8/section_7/image27.png"  />
-
-- **使用mediapipe人脸模型识别**
-
-进行人脸检测，并在检测到的人脸位置绘制矩形框。然后，根据判断人脸中心的位置是否在画面中心，如果是则将start_greet设置为True,用来执行动作组。
-
-<img src="../_static/media/chapter_8/section_7/image30.png"  />
-
-3. **人脸识别**
-
-如果识别到人脸，则驱动蜂鸣器发出响声。
-
-<img src="../_static/media/chapter_8/section_7/image33.png"  />
-
-## 8. 人脸识别
-
-### 8.1 玩法简要说明
-
-未识别到人脸时，机械臂左右转动扫描，识别到人脸，爪子上下转动打个招呼。
-
-人工智能中最为一个广泛的应用当属图像识别，而图像识别中的人脸识别是最火热的应用，常常应用于门锁和手机人脸解锁等场景。
-
-本节我们训练好的人脸模型，首先进行缩放画面检测人脸。然后将识别到的人脸坐标转换为未缩放前的坐标，进而判断是否为最大的人脸，并将识别到的人脸框出。
-
-然后设定云台舵机进行左右转动来获取人脸，通过调用动作组让机器人来执行识别后的反馈。
-
-### 8.2 玩法开启及关闭
+### 7.3 Project Outcome
 
 :::{Note}
-指令的输入需严格区分大小写及空格。
+Please do not try the Facial Recognition game under strong light, such as sunlight. Strong light will affect the recognition performance, so it is recommended to play this game indoors. It’s better to set the distance between face and camera with 50-100cm.
 :::
 
-1)  将机器人开机，然后通过VNC远程连接树莓派桌面。关于VNC的安装及连接，可参考"**[学前先看\4. 远程桌面工具安装与连接](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id12)**"。
+After starting the facial recognition function, ArmPi mini’s pan-tilt camera will rotate left and right to detect face. It will stop when the face is recognized, and run the greeting action.
 
-2)  在树莓派的桌面单击左上角的图标<img src="../_static/media/chapter_8/section_8/image2.png" style="width:0.31458in;height:0.27361in" />，或按住快捷键Ctrl+Alt+T，打开LX终端。
+### 7.4 Program Analysis
 
-3)  输入指令，按下回车键则可定位到存放了玩法程序的目录。
+The source code of program is located in ：[/home/pi/ArmPi_mini/functions/face_detect.py]()
+
+**7.4.1 Import Parameter Module**
+
+| **Import Module**                                 | **Function**                                                 |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| import sys                                        | The Python “sys” module has been imported for accessing system-related functions and variables. |
+| import cv2                                        | The OpenCV library has been imported for image processing and computer vision-related functionalities. |
+| import time                                       | The Python “time” module has been imported for time-related functionalities, such as delay operations. |
+| import numpy as np                                | The numpy library has been imported. It offers a wide range of mathematical Functions for array operations. |
+| import threading                                  | Provides an environment for running multiple threads concurrently. |
+| import mediapipe as mp                            | The integrated tool library includes machine learning vision algorithms such as face detection, facial landmarks, gesture recognition, face segmentation, and posture recognition models. |
+| Import yaml_handle                                | Contains functionalities or tools related to processing YAML format files. |
+| from common.ros_robot_controller_sdk import Board | Import the board library to controlsensors and perform control operations. |
+
+**7.4.2 Function Logic**
+
+Capture image information through the camera, then process the image, specifically by performing color space conversion. That facilitates the face detection.
+Next, use mediapipe face model library to perform face detection, get face detection result, and call action group to perform feedback.
+
+**7.4.3 Program Logic and Related Code Analysis**
+
+(1)  Import function library
+
+In this step for initialization, the first task is to import the required libraries for subsequent program calls. For details on the imports, please refer to “[7.4.1 Import Parameter Module]()”.
+
+{lineno-start=3}
+
+```
+import sys
+import cv2
+import time
+import sys
+import numpy as np
+import threading
+import mediapipe as mp
+from common import yaml_handle
+from common.ros_robot_controller_sdk import Board
+```
+
+(2) Set initial state
+
+Set initial state, including the initial position of servo, face recognition module, the minimum face confidence, and etc.
+
+{lineno-start=40}
+
+```
+# 初始位置(initial position)
+def initMove():
+    board.pwm_servo_set_position(0.3, [[1, servo1]])
+    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90,1500)
+```
+
+{lineno-start=23}
+
+```
+# 导入人脸识别模块(import facial recognition module)
+Face = mp.solutions.face_detection
+# 自定义人脸识别方法，最小的人脸检测置信度0.5(Customize face recognition method, and the minimum face detection confidence is 0.5)
+faceDetection = Face.FaceDetection(min_detection_confidence=0.8)
+```
+
+(3) Covert Color Space
+
+Convert the BGR image to RGB image.
+
+{lineno-start=113}
+
+```
+    imgRGB = cv2.cvtColor(img_copy, cv2.COLOR_BGR2RGB) # 将BGR图像转为RGB图像(convert BGR image to RGB image)
+```
+
+(4)  Use mediapipe Face Model 
+
+Perform face detection. After the face is detected, highlight the detected face with a rectangle. Then, determine whether the center of the face is located at the center of the frame. If it is, set the variable "start_greet" to True. This enables the execution of the action group.
+
+{lineno-start=116}
+
+```
+    if results.detections:  # 如果检测不到人脸那就返回None(If no face is detected, return None)
+
+        for index, detection in enumerate(results.detections):  # 返回人脸索引index(第几张脸)，和关键点的坐标信息(Return the face index (which face) and the coordinate information of the keypoints)
+            scores = list(detection.score)
+            if scores and scores[0] > 0.7:
+                bboxC = detection.location_data.relative_bounding_box  # 设置一个边界框，接收所有的框的xywh及关键点信息(Set a bounding box to receive xywh and keypoint information for all received boxes)
+                
+                # 将边界框的坐标点,宽,高从比例坐标转换成像素坐标(Convert the coordinates' width and height of the bounding box from proportional coordinates to pixel coordinates)
+                bbox = (
+                    int(bboxC.xmin * img_w),
+                    int(bboxC.ymin * img_h),
+                    int(bboxC.width * img_w),
+                    int(bboxC.height * img_h)
+                )
+                
+                cv2.rectangle(img, bbox, (0, 255, 0), 2)  # 在每一帧图像上绘制矩形框(draw a rectangle on each frame of the image)
+                
+                # 获取识别框的信息, xy为左上角坐标点(Get information about the recognition box, where xy is the coordinates of the upper left corner)
+                x, y, w, h = bbox
+                center_x = int(x + (w / 2))
+                center_y = int(y + (h / 2))
+                area = int(w * h)
+                if action_finish:
+                    start_greet = True
+```
+
+(3) Face detection
+
+If a face is detected, control the buzzer to beep.
+
+{lineno-start=80}
+
+```
+    while True:
+        if __isRunning:
+            if start_greet:
+                start_greet = False
+                action_finish = False
+                board.set_buzzer(1900, 0.1, 0.3, 2)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
+                time.sleep(0.9)
+                
+                action_finish = True
+```
+
+## 8. Face Recognition
+
+### 8.1 Program Description
+
+When no face is detected, the robotic arm rotates left and right to scan the area. Once a face is detected, the claw moves up and down as a greeting. 
+
+
+Face recognition is one of the most widely used applications in artificial intelligence, particularly in image recognition. Among these applications, face recognition is the most popular, often used in scenarios like smart locks and facial unlocking on mobile phones.  
+
+In this activity, we first train the face recognition model. The system then detects faces by scaling the image. After detection, the coordinates of the recognized face are converted back to the original scale, and the largest face is identified. The recognized face is then outlined with a frame.  
+
+Next, the pan-tilt servos are set to rotate left and right to locate the face. Finally, the robot executes the feedback action based on the recognition results.
+
+### 8.2 Start and Close the Game
+
+:::{Note}
+The input of commands must strictly distinguish between uppercase and lowercase letters.
+:::
+
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
+
+(2) Click the icon<img src="../_static/media/chapter_8/section_8/image2.png" style="width: in;height: in" />in the top left corner of the system desktop or press the shortcut "Ctrl+Alt+T " to open the LX terminal.
+
+(3) In the terminal, enter the command to navigate to the directory where the program is located, then press Enter:
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-4)  输入指令，然后按下回车键将玩法启动。
+(4) Enter the command and press Enter to start the program:
 
 ```commandline
 python3 face_recognition.py
 ```
 
-5)  如需关闭此玩法，只需要在LX终端界面中按下"**Ctrl+C**"。如果关闭失败，可多次按下。
+(5) To close the program, simply press "Ctrl+C" in the LX terminal. If it does not close, press it multiple times.
 
-### 8.3 实现效果
+### 8.3 Program Outcome
 
 :::{Note}
-本玩法请尽量避免在强光照射下进行，如太阳光、近距离白炽灯照射等，强光会影响人脸识别的效果，因此建议本玩法在室内进行，并且人脸距离摄像头范围以50cm-1m内为佳。
+For optimal performance, please avoid using this activity under strong lighting conditions, such as direct sunlight or close proximity to incandescent lights, as intense light can affect face recognition accuracy. It is recommended to conduct this activity indoors, with the face positioned within a range of 50 cm to 1 meter from the camera.
 :::
 
-玩法开启后，摄像头云台将进行左右转动。当识别到人脸后，云台会停止转动，此时机器人将执行招手动作。
+Once the activity begins, the camera's pan-tilt will rotate left and right. If no face is detected, the robotic arm will scan by rotating left and right. Upon detecting a face, the claw will move up and down to greet the user.
 
-### 8.4 程序简要分析
+### 8.4 Program Brief Analysis 
 
-该程序的源代码位于：**/home/pi/ArmPi_mini/functions/face_recgonition.py**
+The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_recgonition.py]()
 
-<img src="../_static/media/chapter_8/section_8/image14.png"  />
+{lineno-start=82}
 
-- #### 8.4.1 导入参数模块
+```
+    while True:
+        if __isRunning:
+            if start_greet:
+                start_greet = False
+                action_finish = False
+                board.pwm_servo_set_position(0.05, [[1, 1900]])
+                time.sleep(0.4)
+                board.pwm_servo_set_position(0.05, [[1, 1500]])
+                #LOCK_SERVOS={'21':x_pulse,'22':750, '23':33, '24':466}
+                #agc.run_action('wave',lock_servos=LOCK_SERVOS) # 识别到人脸时执行的动作(If the face is detected, execute the action)
+                #ak.setPitchRangeMoving((0, 12, 35), 30, -90, 100, 1)   
+                action_finish = True
+                time.sleep(0.5)
+            else:
+                if x_pulse >= 1900 or x_pulse <= 1100:
+                    d_pulse = -d_pulse
+            
+                x_pulse += d_pulse
+```
 
-| **导入模块** | **作用** |
-|----|----|
-| import sys | 导入了Python的sys模块，用于访问系统相关的功能和变量 |
-| import cv2 | 导入了OpenCV库，用于图像处理和计算机视觉相关的功能 |
-| import time | 导入了Python的time模块，用于时间相关的功能，例如延时操作 |
-| import numpy as np | numpy模块，为数组运算提供大量的数学函数库 |
-| import threading | 提供多线程运行的环境 |
-| import mediapipe as mp | 集成的机器学习视觉算法的工具库(包含人脸检测、人脸关键点、手势识别、头像分割和姿态识别等各种模型) |
-| Import yaml_handle | 包含一些与处理YAML格式文件相关的功能或工具 |
-| from common.ros_robot_controller_sdk import Board | 导入了board库，可以控制传感器，用于执行控制的操作 |
+8.4.1 Importing Parameter Modules
 
-- #### 8.4.2 功能逻辑
+| **Module Import**                 | **Purpose**                                                  |
+| --------------------------------- | ------------------------------------------------------------ |
+| import sys                        | Imports the Python sys module, which provides access to system-specific parameters and functions. |
+| import cv2                        | Imports the OpenCV library, which is used for image processing and computer vision tasks. |
+| import time                       | Imports the Python time module, which provides functions for handling time-related tasks, such as delays. |
+| import HiwonderSDK.Misc as Misc   | Imports the Misc module from the Hiwonder SDK for handling recognized rectangular data. |
+| import threading                  | Provides support for running tasks in multiple threads concurrently |
+| import yaml_handle                | Contains functions or tools for handling YAML format files   |
+| from ArmIK.Transform import *     | Imports functions for robotic arm posture transformations    |
+| from ArmIK.ArmMoveIK import *     | Provides functions for inverse kinematics solving and control for robotic arm movement |
+| import HiwonderSDK.Board as Board | Imports the Board module from the Hiwonder SDK, which is used to control sensors and execute related actions |
 
-根据实现效果，梳理该玩法的实现逻辑如下图所示：
+**8.4.2 Function Logic**
 
-<img src="../_static/media/chapter_8/section_8/image16.png"  />
+The camera captures image data, which is then processed by converting the image into a different color space to facilitate face detection.
+The Mediapipe face detection model is used to identify faces in the image. Once detected, the system triggers the appropriate action group to provide feedback based on the detected faces.
+This flow ensures that the system accurately detects and responds to faces.
 
-通过摄像头获取图像信息，再进行图像处理，即对图像进行颜色空间转化，方便进行人脸检测。
+**8.4.3 Program Logic and Related Code Analysis**
 
-接着使用mediapipe的人脸模型库对图像进行人脸检测，获取人脸检测结果并调用动作组进行反馈。
+(1) Import function library
 
-- #### 8.4.3 程序逻辑及对应的代码分析
+At this initialization step, necessary libraries are imported to facilitate future function calls within the program.
 
-从程序文件梳理得到程序逻辑流程图如下图所示。
+{lineno-start=3}
 
-<img src="../_static/media/chapter_8/section_8/image17.png"  />
+```
+import sys
+import cv2
+import time
+import sys
+import numpy as np
+import threading
+import mediapipe as mp
+from common import yaml_handle
+from common.ros_robot_controller_sdk import Board
+```
 
-从上图得到，程序的逻辑流程主要为图像处理与人脸识别，以下的文档内容将依照上述程序逻辑流程图进行编写。
+(2) Setting Initial State
 
-1. **初始化**
+{lineno-start=41}
 
-- **导入功能库**
+```
+def initMove():
+    board.pwm_servo_set_position(0.3, [[1, servo1]])
+    AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90,1500)
+```
 
-在初始化的这一步，首先就需要将功能库导入进来，方便后续程序的调用，关于导入进来的内容。可以前往4.1导入参数模块进行查看。
+{lineno-start=23}
 
-<img src="../_static/media/chapter_8/section_8/image18.png"  />
+```
+# 导入人脸识别模块(import facial recognition module)
+Face = mp.solutions.face_detection
+# 自定义人脸识别方法，最小的人脸检测置信度0.5(Customize face recognition method, and the minimum face detection confidence is 0.5)
+faceDetection = Face.FaceDetection(min_detection_confidence=0.8)
+```
 
-- **设定初始状态**
+(3)  Color Space Conversion
 
-设置初始状态，这里就包括了舵机的初始位置、人脸识别模块、最小人脸置信度等。
+The BGR image is converted to an RGB image.
 
-<img src="../_static/media/chapter_8/section_8/image21.png"  />
+{lineno-start=124}
 
-<img src="../_static/media/chapter_8/section_8/image23.png"  />
+```
+    imgRGB = cv2.cvtColor(img_copy, cv2.COLOR_BGR2RGB) # 将BGR图像转为RGB图像(convert BGR image to RGB image)
+```
 
-2. **图像处理**
+(4) Using Mediapipe Face Model for Recognition
 
-- **颜色空间转换**
+The system performs face detection and draws a rectangle around the detected face. Then, the position of the face is compared to the center of the image. If the face is centered, `start_greet` is set to `True` to trigger the action group.
 
-将BGR图像转换为RGB图像
+{lineno-start=125}
 
-<img src="../_static/media/chapter_8/section_8/image25.png"  />
+```
+    results = faceDetection.process(imgRGB) # 将每一帧图像传给人脸识别模块(transmit the image of each frame to facial recognition module)
 
-- **使用mediapipe人脸模型识别**
+    if results.detections:  # 如果检测不到人脸那就返回None(If no face is detected, return None)
 
-进行人脸检测，并在检测到的人脸位置绘制矩形框。然后，根据判断人脸中心的位置是否在画面中心，如果是则将start_greet设置为True,用来执行动作组。
+        for index, detection in enumerate(results.detections):  # 返回人脸索引index(第几张脸)，和关键点的坐标信息(Return the face index (which face) and the coordinate information of the keypoints)
+            scores = list(detection.score)
+            if scores and scores[0] > 0.7:
+                bboxC = detection.location_data.relative_bounding_box  # 设置一个边界框，接收所有的框的xywh及关键点信息(Set a bounding box to receive xywh and keypoint information for all received boxes)
+                
+                # 将边界框的坐标点,宽,高从比例坐标转换成像素坐标(Convert the coordinates' width and height of the bounding box from proportional coordinates to pixel coordinates)
+                bbox = (
+                    int(bboxC.xmin * img_w),
+                    int(bboxC.ymin * img_h),
+                    int(bboxC.width * img_w),
+                    int(bboxC.height * img_h)
+                )
+                
+                cv2.rectangle(img, bbox, (0, 255, 0), 2)  # 在每一帧图像上绘制矩形框(draw a rectangle on each frame of the image)
+                
+                # 获取识别框的信息, xy为左上角坐标点(Get information about the recognition box, where xy is the coordinates of the upper left corner)
+                x, y, w, h = bbox
+                center_x = int(x + (w / 2))
+                center_y = int(y + (h / 2))
+                area = int(w * h)
+                if action_finish:
+                    start_greet = True
+```
 
-<img src="../_static/media/chapter_8/section_8/image28.png"  />
+(5)  Face Recognition
 
-3. **人脸识别**
+If a face is detected, the `board.pwm_servo_set_position` function is used to control the servo motor by setting the PWM (Pulse Width Modulation) to perform the waving action.  
 
-如果识别到人脸，使用board.pwm_servo_set_position函数对伺服电机设置PWM（脉冲宽度调制）从而实现上下挥手动作组。
+{lineno-start=82}
 
-<img src="../_static/media/chapter_8/section_8/image31.png"  />
+```
+    while True:
+        if __isRunning:
+            if start_greet:
+                start_greet = False
+                action_finish = False
+                board.pwm_servo_set_position(0.05, [[1, 1900]])
+                time.sleep(0.4)
+                board.pwm_servo_set_position(0.05, [[1, 1500]])
+                #LOCK_SERVOS={'21':x_pulse,'22':750, '23':33, '24':466}
+                #agc.run_action('wave',lock_servos=LOCK_SERVOS) # 识别到人脸时执行的动作(If the face is detected, execute the action)
+                #ak.setPitchRangeMoving((0, 12, 35), 30, -90, 100, 1)   
+                action_finish = True
+                time.sleep(0.5)
+```
 
-如果没有识别到人脸，控制云台舵机左右转动来寻找人脸。
+If no face is detected, the system controls the pan-tilt servo to rotate left or right to search for a face.
 
-<img src="../_static/media/chapter_8/section_8/image34.png"  />
+{lineno-start=95}
+
+```
+            else:
+                if x_pulse >= 1900 or x_pulse <= 1100:
+                    d_pulse = -d_pulse
+            
+                x_pulse += d_pulse
+                
+                board.pwm_servo_set_position(0.05, [[6, x_pulse]])
+                #board.bus_servo_set_position(0.05, [[21,x_pulse]])    
+                time.sleep(0.05)
+```

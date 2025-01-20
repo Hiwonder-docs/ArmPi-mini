@@ -1,155 +1,98 @@
-# 上手试玩
-
-:::{Note}
-本节课为通用课程，演示一致适用于其他树莓派系列产品
-:::
+# 2.Quick User Experience
 
 <p id="anchor_1"></p>
 
-## 1. 手机APP的安装与连接
+## [1. APP Installation and Connection ]()
 
-用户可以使用手机APP"**WonderPi**"来控制ArmPi mini机械臂。本节课会讲解如何安装APP并用其连接机械臂。
+## 2. App Control
 
-### 1.1 APP安装
+User can use app “WonderPi” to control ArmPi mini. This lesson will introduce the specific operation methods of each game.
 
-:::{Note}
-1.  请对APP开放所有权限，以免影响APP的正常使用。
-2.  打开APP前，需开启手机的GPS定位和Wi-Fi功能。
-:::
+### 2.1 Getting Ready
 
-**[安卓系统](https://play.google.com/store/apps/details?id=com.Wonder.Pi)**： 需要注意，请务必在手机设置内为APP开启所有权限，否则可能会影响正常功能实现！
+(1) Firstly, calibrate the picking position of ArmPi mini.
 
-**[iOS系统](https://apps.apple.com/cn/app/wonderpi/id1477946178)**
+Please refer to the content in “[Getting Ready/7.Position Calibration]()” to learn about the specific operation steps.
 
-### 1.2 设备开机
+(2) Install app “WonderPi” and connect the robotic arm.
 
-打开树莓派扩展板电源开关，启动ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**[学前先看\3. 设备充电及首次开机](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#id5)**"下的文档。
+Please refer to the content in “[Quick User Experience/2. APP Control ]()” to learn about the specific operation steps.
 
-### 1.3 APP连接
+### 2.2 Start Game
 
-:::{Note}
-ArmPi mini机械臂启动成功后会进入AP直连模式并生成一个以"HW"为开头的热点。
-:::
-
-1)  打开手机APP"**WonderPi**"，依次点击"**初级套件**"、"**ArmPi Mini**"。
-
-<img src="../_static/media/chapter_2/section_1/image5.jpeg"  alt="loading" />
-
-2)  点击界面右下角的"**+**"按钮，选择"**直连模式**"。
-
-<img src="../_static/media/chapter_2/section_1/image6.jpeg"  alt="loading" />
-
-3)  点击"**去连接设备热点**"按键，前往设置界面，连接机械臂生成的热点。
-
-<img src="../_static/media/chapter_2/section_1/image7.jpeg"  alt="loading" />
-
-<img class="common_img" src="../_static/media/chapter_2/section_1/image8.jpeg" style="width:3.54331in;height:2.97513in" alt="loading" />
-
-:::{Note}
-iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则可能会搜索不到设备。若出现搜索不到设备的情况，可点击APP界面右上方的刷新图标<img src="../_static/media/chapter_2/section_1/image9.png" style="width:0.23622in;height:0.23622in" />。
-:::
-
-4)  连接热点后，返回手机APP，APP将自动连接设备。稍等片刻，当搜索到下图所示图标时，即为连接成功。
-
-<img src="../_static/media/chapter_2/section_1/image10.jpeg"  alt="loading" />
-
-:::{Note}
-若出现"网络不可用，是否继续连接"的提示弹窗，单击"保持连接"按键即可。
-:::
-
-5)  点击上图的机械臂图标即可进入玩法模式选择界面，如下图所示：
-
-<img src="../_static/media/chapter_2/section_1/image11.jpeg"  alt="loading" />
-
-如需了解各个玩法模式的具体使用方法，可查看目录"**第1章 学前先看\第3课 设备充电及首次开机**"下的文档。
-
-## 2. 手机APP试玩
-
-用户可以使用手机APP"**WonderPi**"来控制ArmPi mini机械臂。本节课会说明APP中各个玩法模式的具体使用方法。
-
-### 2.1 准备工作
-
-1.  完成ArmPi mini机械臂的位置校准，以免影响玩法的实现效果。
-
-如需了解具体操作步骤，可查看目录"**第1章 学前先看\第6课 位置校准**"下的文档。
-
-2.  安装手机APP"**WonderPi**"，并用其连接机械臂。
-
-如需了解具体操作步骤，可查看目录"**[1. 手机APP的安装与连接](#anchor_1)**"下的文档。
-
-### 2.2 开始试玩
-
-手机APP提供了5种玩法模式，分别是机体遥控、颜色识别、颜色追踪、目标追踪和智能码垛。
+There are five games in app including remote control, color recognition, color tracking, target tracking and intelligent stacking.
 
 <img src="../_static/media/chapter_2/section_2/image1.jpeg"  alt="loading" />
 
-下表是对各个玩法模式的简单说明：
+The following list briefly introduces each game mode.
 
-| **图标** | **玩法模式** | **说明** |
+| Icon | Game mode | Instruction |
 |:--:|:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image2.png" style="width:0.59055in;height:0.59233in" /> | 机体遥控 | 控制机械臂舵机的转动。 |
-| <img src="../_static/media/chapter_2/section_2/image3.png" style="width:0.59055in;height:0.59055in" /> | 颜色识别 | 可识别颜色有红、绿、蓝三种颜色。当识别到目标颜色，机械臂会执行对应的反馈动作。 |
-| <img src="../_static/media/chapter_2/section_2/image4.png" style="width:0.59055in;height:0.59227in" /> | 颜色分拣 | 可识别颜色有红、绿、蓝三种颜色。当识别到目标色块，将色块放置于机械臂的机械爪中间，机械臂会夹取色块，并将其放置到对应位置。 |
-| <img src="../_static/media/chapter_2/section_2/image5.png" style="width:0.59028in;height:0.63125in" /> | 目标追踪 | 可选择的识别颜色有红、绿、蓝三种颜色。当识别到目标颜色，机械臂会随着识别目标的移动而转动。 |
-| <img src="../_static/media/chapter_2/section_2/image6.png" style="width:0.59028in;height:0.58542in" /> | 智能码垛 | 当识别到检测区域内的目标色块，机械臂会夹取色块，并将其放置到码垛区域进行堆叠。 |
+| <img src="../_static/media/chapter_2/section_2/image2.png" style="width:0.59055in;height:0.59233in" /> |    Robot Control     | Control the movement of robot arm |
+| <img src="../_static/media/chapter_2/section_2/image3.png" style="width:0.59055in;height:0.59055in" /> | Color Recognition | It can recognize red, green and blue. When the target color is recognized, ArmPi mini will execute the corresponding action. |
+| <img src="../_static/media/chapter_2/section_2/image4.png" style="width:0.59055in;height:0.59227in" /> | Color Sorting | It can recognize red, green and blue. When the target color is recognized and place the block in the middle of the gripper, ArmPi mini will pick the object and place it to the corresponding position. |
+| <img src="../_static/media/chapter_2/section_2/image5.png" style="width:0.59028in;height:0.63125in" /> | Target Tracking | It can recognize red, green and blue. When the target color is recognized, ArmPi mini will pick the object and place it to the corresponding position. |
+| <img src="../_static/media/chapter_2/section_2/image6.png" style="width:0.59028in;height:0.58542in" /> | Intelligent Stacking | When the target block is recognized, robot arm will pick and stack the blocks in the stacking area. |
 
-下表是玩法模式选择界面中导航栏的功能说明：
+The following list introduces the functions of the navigation bar in game selection interface. 
 
-| **图标** | **功能说明** |
+| Icon | Instruction |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image7.png" style="width:0.39306in;height:0.39306in" /> | 返回连接界面。 |
-| <img src="../_static/media/chapter_2/section_2/image8.png" style="width:0.39306in;height:0.39306in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**4.开机试玩-\>第7课 颜色阈值调试**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image9.png" style="width:0.3937in;height:0.3937in" /> | 显示幻尔科技的信息窗口。 |
+| <img src="../_static/media/chapter_2/section_2/image7.png" style="width:0.39306in;height:0.39306in" /> | Back to the connection interface. |
+| <img src="../_static/media/chapter_2/section_2/image8.png" style="width:0.39306in;height:0.39306in" /> | Adjust color threshold. If want to learn about the specific adjustment method, please refer to the content in “Quick User Experience->3.Color Threshold Adjustment”. |
+| <img src="../_static/media/chapter_2/section_2/image9.png" style="width:0.3937in;height:0.3937in" /> | Display the window of Hiwonder information |
 
-- #### 2.2.1 机体遥控
+**2.2.1 Robot Control** 
 
 :::{Note}
-进入"机体遥控"玩法界面后，机械臂会笔直立起。因此，在进入此玩法界面前，请确保机械臂附近无遮挡物。
+After entering the game “Remote control”, ArmPi mini will stand straight up. Therefore, please make sure there is no obstacle in front of the robot before entering game.
 :::
 
-点击玩法模式选择界面的"**机体遥控**"按键，进入玩法界面。该界面分为两部分：
+Select “Robot Control” to enter this game. The interface is divided into two parts:
 
-1.  界面左侧是舵机控制区域；
+(1) The left side is servo control area.
 
-2.  界面右侧是摄像头回传画面显示区域。
+(2) The right side displays the image returned by camera.
 
 <img src="../_static/media/chapter_2/section_2/image10.jpeg"  />
 
-- **导航栏功能说明**
+**① Navigation Bar Icon Function**
 
-下表是导航栏按键的功能说明，此说明同样适用于其他玩法界面的导航栏，因此后续不再对此进行讲解说明。
+The button function of navigation bar is explained in following list which is also applicable to other games.
 
-<table class="docutils-nobg" border="1">
+<table  class="docutils-nobg" style="margin:0 auto" border="1">
 <colgroup>
 <col style="width: 21%" />
 <col style="width: 78%" />
 </colgroup>
 <tbody>
 <tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>功能说明</strong></td>
+<td style="text-align: center;"><strong>Icon</strong></td>
+<td style="text-align: center;"><strong>Function Instruction</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image7.png" style="width:0.39306in;height:0.39306in" /></td>
-<td style="text-align: left;">返回上一界面。</td>
+<td style="text-align: left;">Back to the previous interface.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image11.png" style="width:0.3937in;height:0.3937in" /></td>
-<td style="text-align: left;"><p>将摄像头当前回传画面保存至相册。</p>
-<p>点击机械臂连接界面的图标<img src="../_static/media/chapter_2/section_2/image12.png" style="width:0.47222in;height:0.47431in" />，即可进入相册进行查看。</p></td>
+<td style="text-align: left;"><p>Capture and save the returned image to photo.</p>
+<p>Click on <img src="../_static/media/chapter_2/section_2/image12.png" style="width:0.47222in;height:0.47431in" />to check the image.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image13.png" style="width:0.3937in;height:0.39685in" /></td>
-<td style="text-align: left;">隐藏导航栏。</td>
+<td style="text-align: left;">Hide the navigation bar.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image9.png" style="width:0.3937in;height:0.3937in" /></td>
-<td style="text-align: left;">显示幻尔科技的信息窗口。</td>
+<td style="text-align: left;">Display the window of Hiwonder information.</td>
 </tr>
 </tbody>
 </table>
 
-- **玩法界面功能说明**
+
+
+**② Game Interface Icon Function**
 
 <table class="docutils-nobg" border="1">
 <colgroup>
@@ -158,112 +101,122 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 </colgroup>
 <tbody>
 <tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>对应功能</strong></td>
+<td style="text-align: center;"><strong>Icon</strong></td>
+<td style="text-align: center;"><strong>Function instruction</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image14.jpeg" style="width:1.5748in;height:0.36557in" alt="loading" /></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>闭合</strong>"或"<strong>松开</strong>"端拖动，即可控制机械爪闭合或张开。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image14.png" style="width:1.5748in;height:0.36557in" alt="loading" /></td>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “close” or “Release” side to control the gripper to open or close.</p>
+<p>Click <img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
-<td style="text-align: center;"><p><img src="../_static/media/chapter_2/section_2/image18.jpeg" style="width:1.5748in;height:0.37811in" alt="loading" /></p>
-<p><img src="../_static/media/chapter_2/section_2/image19.jpeg" style="width:1.5748in;height:0.38034in" alt="loading" /></p>
-<p><img src="../_static/media/chapter_2/section_2/image20.jpeg" style="width:1.5748in;height:0.36684in" alt="loading" /></p></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>向后</strong>"或"<strong>向前</strong>"端拖动，即可控制对应ID编号的舵机向后或向前转动。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: center;"><p><img src="../_static/media/chapter_2/section_2/image18.png" style="width:in;height:in" alt="loading" /></p>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “Forward” or “Backward” side to control the corresponding servo to rotate forward or backward.</p>
+<p>Click<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image21.jpeg" style="width:1.5748in;height:0.38574in" alt="loading" /></td>
-<td style="text-align: left;"><p>将浮标<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />朝"<strong>左转</strong>"或"<strong>右转</strong>"端拖动，即可控制6号舵机左转或右转。</p>
-<p>单击两侧按键<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />和<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />，即可微调舵机转动幅度。</p></td>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “Left” or “Right” side to control ID6 servo to rotate to left or right.</p>
+<p>Click<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image22.jpeg" style="width:1.57431in;height:0.99236in" /></td>
-<td style="text-align: left;">显示摄像头回传的实时画面。</td>
+<td style="text-align: left;">Display the real-time returned image.</td>
 </tr>
 </tbody>
 </table>
 
-- #### 2.2.2 颜色识别
+
+
+**2.2.2 Color Recognition**
 
 :::{Note}
-1.  请在光照条件合适的环境下进行玩法体验，光照过暗或过亮都容易影响到识别效果。
-2.  开启玩法后，请确保摄像头的视野范围内不存在其他包含目标识别颜色的物体，以免影响玩法的实现效果。
-:::
 
-点击玩法模式选择界面的"**颜色识别**"按键，进入玩法界面。该界面分为两部分：
+* Please start this game under a moderate environment light, too bright or too dark light will influence the normal recognition affect.
 
-1.  界面左侧是玩法开关与颜色阈值设置区域；
+* After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
 
-2.  界面右侧是摄像头回传画面显示区域。
+  :::
+
+Firstly, click “Color Recognition” to enter game interface. The interface consists of two parts.
+
+(1) At the left side, you can start or stop game, and set color threshold.
+
+(2) The right side of interface displays the real-time returned image.
 
 <img src="../_static/media/chapter_2/section_2/image23.jpeg"  alt="loading" />
 
-- **界面功能说明**
+**① Icon Function**
 
-| **图标** | **功能说明** |
+| Icon | Function |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="loading" /> | 开启/关闭玩法。 |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="loading" /> | Start or stop game |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “4.Start ArmPi mini/ 3.Color Threshold Adjustment” to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
 
-- **操作说明与实现效果**
+**② Operation Instruction and Realization Outcome**
 
-1.  点击"**开始识别**"按钮，开启玩法。依次将红色、蓝色、绿色的物体单独放置于摄像头的视野范围内。
+(1) Click “Start Recognition” and position red, blue or green object in camera frame.
 
-2.  当识别到红色物体，机械臂会执行"**点头**"动作。当识别到蓝色或绿色物体，机械臂执行"**摇头**"动作。
+(2) When the red object is recognized, robot arm will nod. When the blue or green object is recognized, robot arm will shake its head.
 
-- #### 2.2.3 颜色分拣
+**2.2.3 Color Sorting**
 
 :::{Note}
-1.  请在光照条件合适的环境下进行玩法体验，光照过暗或过亮都容易影响到识别效果。
 
-2.  开启玩法后，请确保摄像头的视野范围内不存在其他包含目标识别颜色的物体，以免影响玩法的实现效果。
-:::
+* Before starting game, you need to firstly calibrate the gripping position of the robot to avoid influencing the game effect. 
 
-3.  开启玩法后，请确保摄像头的视野范围内不存在其他包含目标识别颜色的物体，以免影响玩法的实现效果。
+* Please start this game under a moderate environment light, too bright or too dark light will influence the normal recognition affect.
 
-点击玩法模式选择界面的"**颜色分拣**"按键，进入玩法界面。该界面分为两部分：
+* After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
 
-1.  界面左侧是玩法开关区域；
+  :::
 
-2.  界面右侧是摄像头回传画面显示区域。
+Firstly, click “Color Sorting” to enter game interface. The interface consists of two parts.
 
-<img src="../_static/media/chapter_2/section_2/image26.jpeg"  alt="loading" />
+(1) At the left side, you can start or stop game.
 
-- **界面功能说明**
+(2) The right side of interface displays the real-time returned image.
 
-| **图标** | **功能说明** |
+<img src="../_static/media/chapter_2/section_2/image1.png"  alt="loading" />
+
+**① Icon Function**
+
+| Icon | Function |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.1811in;height:0.28422in" alt="loading" /> | 开启/关闭玩法。 |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.5748in;height:0.98604in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image26.png" style="width:in;height:in" alt="loading" /> | Start or stop game |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “Quick User Experience/3.Color Threshold Adjustment” to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.5748in;height:0.98604in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
 
-- **操作说明与实现效果**
+**② Operation Instruction and Realization Outcome**
 
-1.  点击"**开始分拣**"按钮，开启玩法。将色块放置在摄像头的视野范围内。
+(1) Click “Start sorting”, and put the colored block in camera frame.
 
-2.  当识别到色块，机械爪会自动张开。
+(2) When the block is recognized, the gripper will open automatically.
 
-3.  将色块置于机械爪中间，机械爪会自动闭合以抓取色块。随后，机械臂会将色块放置到对应位置。
+(3) Position the block in the middle of the gripper, and then the gripper will pick the block and place it in the corresponding position.
 
-- #### 2.2.4 目标追踪
+
+
+**2.2.4 Target Tracking**
 
 :::{Note}
-1.  请在光照条件合适的环境下进行玩法体验，光照过暗或过亮都容易影响到识别效果。
-2.  开启玩法后，请确保摄像头的视野范围内不存在其他包含目标识别颜色的物体，以免影响玩法的实现效果。
-:::
 
-点击玩法模式选择界面的"**颜色分拣**"按键，进入玩法界面。该界面分为两部分：
+* Please start this game under a moderate environment light, too bright or too dark light will influence the normal recognition affect.
 
-1.  界面左侧是玩法开关与追踪颜色选择区域；
+* After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
 
-2.  界面右侧是摄像头回传画面显示区域。
+  :::
+
+Firstly, click “Target Tracking” to enter game interface. The interface consists of two parts.
+
+(1) At the left side, you can start or stop game.
+
+(2) The right side of interface displays the real-time returned image.
 
 <img src="../_static/media/chapter_2/section_2/image27.jpeg"  alt="loading" />
 
-- **界面功能说明**
+**① Icon Function**
 
 <table class="docutils-nobg" border="1">
 <colgroup>
@@ -272,180 +225,76 @@ iOS系统下，需等待手机状态栏显示Wi-Fi图标后再返回APP，否则
 </colgroup>
 <tbody>
 <tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>功能说明</strong></td>
+<td style="text-align: center;"><strong>Icon</strong></td>
+<td style="text-align: center;"><strong>Function</strong></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image28.jpeg" style="width:1.1811in;height:0.27587in" alt="loading" /></td>
-<td style="text-align: left;">开启/关闭玩法。</td>
+<td style="text-align: left;">Start or stop game</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image29.jpeg" style="width:0.7874in;height:1.10977in" alt="loading" /></td>
-<td style="text-align: left;"><p>选择目标追踪颜色。</p>
-<p>"R"为红色（Red），"G"为绿色（Green），"B"为蓝色（Blue）。</p></td>
+<td style="text-align: left;"><p>Select target color.</p>
+<p>“R” is red, “G” is green and “B” is blue.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image30.jpeg" style="width:0.7874in;height:0.71739in" alt="loading" /></td>
-<td style="text-align: left;">显示当前追踪的颜色。</td>
+<td style="text-align: left;">Display the current tracked color</td>
 </tr>
 <tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image27.jpeg" style="width:1.5748in;height:1.00459in" alt="loading" /></td>
-<td style="text-align: left;">显示摄像头回传的实时画面。</td>
+<td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image27.jpeg" style="width: in;height: in" alt="loading" /></td>
+<td style="text-align: left;">Display the real-time image returned by camera. </td>
 </tr>
 </tbody>
 </table>
 
-- **操作说明与实现效果**
 
-1.  在颜色选择区域选择所要追踪的颜色，此处以红色为例，点击"**R**"按键即可。
 
-2.  点击"**开始追踪**"按钮，开启玩法。将红色物体放置在摄像头的视野范围内。
+**② Operation Instruction and Realization Outcome**
 
-3.  当识别到物体，机械臂会随着物体的移动而转动。
+(1) Firstly, select the color to track in color selection area. Here take red for example, click “R”.
 
-2.5 智能码垛
+(2) Then click “Start tracking”, and position the red block in camera frame.
+
+(3) When the block is recognized, robot arm will move with the block.
+
+
+
+**2.2.5 Intelligent Stacking**
 
 :::{Note}
-1.  请在光照条件合适的环境下进行玩法体验，光照过暗或过亮都容易影响到识别效果。
 
-2.  开启玩法后，请确保摄像头的视野范围内不存在其他包含目标识别颜色的物体，以免影响玩法的实现效果。
-:::
+* Please start this game under a moderate environment light, too bright or too dark light will influence the normal recognition affect.
 
-点击玩法模式选择界面的"**智能码垛**"按键，进入玩法界面。该界面分为两部分：
+* After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
 
-1.  界面左侧是玩法开关与颜色阈值设置区域；
+  :::
 
-2.  界面中间是摄像头回传画面显示区域。
+Firstly, click “Intelligent Stacking” to enter game interface. The interface consists of two parts.
+
+(1) At the left side, you can start or stop game, and adjust color threshold.
+
+(2) The right side of interface displays the real-time returned image.
+
+
 
 <img src="../_static/media/chapter_2/section_2/image31.jpeg"  alt="loading" />
 
-- **界面功能说明**
+**① Icon Function**
 
-| **图标** | **功能说明** |
+| Icon | Function |
 |:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image32.jpeg" style="width:1.1811in;height:0.30725in" alt="loading" /> | 开启/关闭玩法。 |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | 调节颜色阈值，如需了解具体调节方法，可查看目录"**第2章 上手试玩\第3课 颜色阈值调节**"下的文档。 |
-| <img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:1.5748in;height:0.98365in" alt="loading" /> | 显示摄像头回传的实时画面，画面左下角会显示当前识别到的颜色。 |
+| <img src="../_static/media/chapter_2/section_2/image44.png" style="width:1.1811in;height:0.30725in" alt="loading" /> | Start or stop game |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “Quick User Experience/ 3.Color Threshold Adjustment” to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:in;height:in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
 
-- **操作说明与实现效果**
+**② Operation Instruction and Realization Outcome**
 
-1.  点击"**开始码垛**"按钮，开启玩法。将色块放置在检测区域内。
+(3) Click “Start stacking”, and place the colored block within detection area.
 
-2.  当识别到色块，机械臂会夹取色块，并将其放置到码垛区域。
+(4) When the block is recognized, robot arm will pick the block and place it in stacking area.
 
-3.  码垛区域最多可堆叠三个方块，当达到上限，请手动移除码垛区域的方块。
+(5) The stacking area can stack up to three blocks. When the upper limit is reached, please remove the blocks in the stacking area before the next black is stacked.
 
-## 3. 颜色阈值调试
+## [3. Adjust Color Threshold]()
 
-在不同光源下，物体颜色的呈现效果是不同的，而这一现象会对涉及颜色识别的功能玩法产生一定程度的影响。针对这一问题，本节课会学习如何使用手机APP"**WonderPi**"来调节颜色阈值。
-
-### 3.1 准备工作
-
-安装手机APP"**WonderPi**"，并用其连接ArmPi mini机械臂。如需了解具体操作步骤，可查看目录"**[1. 手机APP的安装与连接](#anchor_1)**"下的文档。
-
-### 3.2 界面介绍
-
-进入玩法模式选择界面后，点击下图所示按键，即可进入颜色阈值调节界面。
-
-<img src="../_static/media/chapter_2/section_3/image2.png"  />
-
-<img src="../_static/media/chapter_2/section_3/image3.png"  />
-
-下表是颜色阈值调节界面的功能说明：
-
-<table class="docutils-nobg" border="1">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 64%" />
-</colgroup>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>图标</strong></td>
-<td style="text-align: center;"><strong>功能说明</strong></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image4.png" style="width:1.5748in;height:0.85444in" /></td>
-<td style="text-align: left;"><p>摄像头回传画面的处理后图像。</p>
-<p>图像中，颜色物体区域表示为白色，其余部分表现为黑色。</p></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image4.png" style="width:1.5748in;height:1.17413in" /></td>
-<td style="text-align: left;">摄像头回传画面的原始图像。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image5.png" style="width:1.5748in;height:0.34065in" /></td>
-<td style="text-align: left;">选择当前调节的颜色。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image6.png" style="width:1.5748in;height:0.38593in" /><img src="../_static/media/chapter_2/section_3/image7.png" style="width:1.5748in;height:0.38385in" /></td>
-<td style="text-align: left;"><p>调节回传画面的L分量范围，"L_min"是范围下限，"L_max"是范围上限。</p>
-<p>点击按键<img src="../_static/media/chapter_2/section_3/image8.png" style="width:0.31458in;height:0.31458in" />可减小对应数值，点击按键<img src="../_static/media/chapter_2/section_3/image9.png" style="width:0.31458in;height:0.31458in" />可增大数值。</p></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image10.png" style="width:1.5748in;height:0.38669in" /><img src="../_static/media/chapter_2/section_3/image11.png" style="width:1.5748in;height:0.37892in" /></td>
-<td style="text-align: left;"><p>调节回传画面的A分量范围，"a_min"是范围下限，"a_max"是范围上限。</p>
-<p>点击按键<img src="../_static/media/chapter_2/section_3/image8.png" style="width:0.31458in;height:0.31458in" />可减小对应数值，点击按键<img src="../_static/media/chapter_2/section_3/image9.png" style="width:0.31458in;height:0.31458in" />可增大数值。</p></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image12.png" style="width:1.5748in;height:0.38044in" /><img src="../_static/media/chapter_2/section_3/image13.png" style="width:1.5748in;height:0.38536in" /></td>
-<td style="text-align: left;"><p>调节回传画面的B分量范围，"b_min"是范围下限，"b_max"是范围上限。</p>
-<p>点击按键<img src="../_static/media/chapter_2/section_3/image8.png" style="width:0.31458in;height:0.31458in" />可减小对应数值，点击按键<img src="../_static/media/chapter_2/section_3/image9.png" style="width:0.31458in;height:0.31458in" />可增大数值。</p></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image14.png" style="width:0.7874in;height:0.3851in" /></td>
-<td style="text-align: left;">打开操作说明窗口。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image15.png" style="width:0.7874in;height:0.38187in" /></td>
-<td style="text-align: left;">保存调节的阈值。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image16.png" style="width:0.39306in;height:0.39306in" /></td>
-<td style="text-align: left;">返回玩法模式选择界面。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image17.png" style="width:0.3937in;height:0.39685in" /></td>
-<td style="text-align: left;">隐藏导航栏。</td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="../_static/media/chapter_2/section_3/image18.png" style="width:0.3937in;height:0.3937in" /></td>
-<td style="text-align: left;">显示幻尔科技的信息窗口。</td>
-</tr>
-</tbody>
-</table>
-
-### 3.3 调节颜色阈值
-
-1.  进入颜色阈值调节界面，选择需要调节阈值的颜色，此处以红色为例。
-
-<img src="../_static/media/chapter_2/section_3/image19.png"  />
-
-2.  将红色物体放置在摄像头的视野范围内，将L、A、B分量的最小值都调为"**0**"，最大值都调为"**255**"。
-
-<img src="../_static/media/chapter_2/section_3/image20.png"  />
-
-3.  点击"**操作说明**"按键，查看颜色阈值的调节方法。
-
-<img src="../_static/media/chapter_2/section_3/image21.png"  />
-
-<img src="../_static/media/chapter_2/section_3/image22.png"  />
-
-:::{Note}
-如需关闭操作说明窗口，点击"好的"即可。
-:::
-
-4.  由LAB颜色空间分布图可知，红色靠近"**+a**"，即需要优先调整A分量。
-
-<img class="common_img" src="../_static/media/chapter_2/section_3/image23.png" style="width:3.93701in;height:3.43683in" />
-
-5.  "**a_max**"的数值保持不变，增大"**a_min**"的数值，直至处理后图像中的红色物体区域显示为白色，其余部分显示为黑色。
-
-<img src="../_static/media/chapter_2/section_3/image24.png"  />
-
-6.  根据所处环境来调整L分量和B分量。若红色物体在环境下颜色偏浅，增大亮度的最小值(**L_min**)；在环境下颜色偏深，则减小亮度的最大值(**L_max**)。若红色物体在环境下偏暖色调，增大色度的最小值(**b_min**)；在环境下偏冷色调，减小色度的最大值(**b_max**)。
-
-<img src="../_static/media/chapter_2/section_3/image25.png"  />
-
-7.  完成阈值调节后，点击"**保存**"按键，保存调节好的阈值范围。
-
-<img src="../_static/media/chapter_2/section_3/image26.png"  />

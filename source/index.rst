@@ -13,7 +13,6 @@
    docs/6_inverse_kinematics.md
    docs/8_ai_vision.md
    docs/9_upper_computer.md
-   docs/10_network_configuration.md
 
 
 
