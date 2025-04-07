@@ -23,7 +23,7 @@ If inverse kinematics only requires a position, it is easy to have multiple solu
 Geometric and algebraic solutions are usually used in inverse kinematics.
 The geometric solution is used here. Given the linkage length (the distance between two servos), set the end-effector coordinate (X, Y and Z) and the pitch angel, and then calculate the joint angle according to the trigonometric function.
 
-The code path of the detailed calculation process: [ArmPi_mini\ArmIK\ArmMoveIK.py]()
+The code path of the detailed calculation process: [/home/pi/ArmPi_mini/armpi_mini_sdk/kinematics_sdk/kinematics/arm_move_ik.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/arm_move_ik.zip)
 
 ## 3.2 Establish Robotic Arm Coordinate System
 
@@ -63,25 +63,25 @@ Inverse kinematics is mainly used to calculate the joint angle according to the 
 ### 3.3.2 Start and Close the Game
 
 :::{Note}
-The input command should be case sensitive, and “Tab” can be used to complement keywords.
+The input command should be case sensitive, and "**Tab**" can be used to complement keywords.
 :::
 
 (1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-(2) Click <img src="../_static/media/chapter_6/section_3/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
+(2) Click <img src="../_static/media/chapter_6/section_3/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
 
-(3) Enter command and press **“Enter”** to enter the directory of game programs.
+(3) Enter command and press **"Enter"** to enter the directory of game programs.
 
-```commandline
+```bash
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-(4) Enter command and press **“Enter”** to start game.
+(4) Enter command and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 arm_move_IK_demo.py
 ```
-(5) If want to exit the game, you can press “Ctrl+C”. If fail to close, please try multiple times.
+(5) If want to exit the game, you can press "**Ctrl+C**". If fail to close, please try multiple times.
 
 ### 3.3.3 Project Outcome
 
@@ -90,13 +90,13 @@ After starting the game, the end effector of robot arm will move up first, and t
 
 ### 3.3.4 Program Analysis
 
-The source code of the program is located in:[/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_demo.py]()
+The source code of the program is located in:[/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_demo.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/arm_move_IK_demo.zip)
 
 * **Import Library**
 
 {lineno-start=3}
 
-```py
+```python
 import sys
 import time
 from kinematics.arm_move_ik import *
@@ -108,12 +108,12 @@ If want to call a function in library, you can use this format `library name+fun
 
 {lineno-start=46}
 
-```
+```python
         time.sleep(1.2) # 延时1.2秒(delay for 1.2s)
 ```
 
 The code above is used to call `sleep()` in `time` library and this function is for delaying. 
-There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. In addition, you can also customize a new library like “ArmIK.ArmMoveIK” inverse kinematics library.
+There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. In addition, you can also customize a new library like "**ArmIK.ArmMoveIK**" inverse kinematics library.
 
 * **Instantiate Function Library**
 
@@ -121,7 +121,7 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=28}
 
-```py
+```python
 AK = ArmIK()
 ```
 
@@ -131,7 +131,7 @@ After instantiating, you can directly call the function when inputting the funct
 
 {lineno-start=41}
 
-```
+```python
     AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) # 设置机械臂初始位置(x:0, y:6, z:18),运行时间:1500毫秒(set the initial position of the robotic arm to (x:0, y:6, z:18) and the runtime to 1500ms)
     time.sleep(1.5) # 延时1.5秒(delay for 1.5s)
     
@@ -155,23 +155,23 @@ The fourth parameter `90` is the maximum range of the pitch angle.
 
 The fifth parameter `1500` is the running time and the unit us millisecond.
 
-### 3.3.5 **Function Extension**
+### 3.3.5 Function Extension
 
 * **Modify Movement Direction**
 
 The end effector can also be controlled to move along x and y axes. Here take x axis as example. The specific operation steps are as follow:
 
-(1) Click <img src="../_static/media/chapter_6/section_3/image2.png" style="width:0.31458in;height:0.27361in" /> icon and press **“Ctrl+Alt+T”** to open the LX terminal.
+(1) Click <img src="../_static/media/chapter_6/section_3/image2.png" style="width:0.31458in;height:0.27361in" /> icon and press **"Ctrl+Alt+T"** to open the LX terminal.
 
-(2) Enter command and press **“Enter”** to enter the directory of game programs.
+(2) Enter command and press **"Enter"** to enter the directory of game programs.
 
-```commandline
+```bash
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-(3) Enter command and press **“Enter”** to open the program file.
+(3) Enter command and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 vim arm_move_IK_demo.py
 ```
 
@@ -179,23 +179,23 @@ vim arm_move_IK_demo.py
 
 <img class="common_img" src="../_static/media/chapter_6/section_3/image6.png"  />
 
-(5) Press **“i”** key on the keyboard to enter the editing mode.
+(5) Press **"i"** key on the keyboard to enter the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_6/section_3/image7.png"  />
 
-(6) Change **“(0, 6, 22)”** to **“(4, 6 , 18)”**, as the figure shown below:
+(6) Change **"(0, 6, 22)"** to **"(4, 6 , 18)"**, as the figure shown below:
 
 <img class="common_img" src="../_static/media/chapter_6/section_3/image8.png"  />
 
-(7) After modification, press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+(7) After modification, press **"Esc"** and enter **":wq"**, and then press **"Enter"** to save and close the file.
 
-```py
+```bash
 :wq
 ```
 
-(8) Enter command and press **“Enter”** to start game and check the game effect after modification.
+(8) Enter command and press **"Enter"** to start game and check the game effect after modification.
 
-```commandline
+```bash
 python3 arm_move_IK_demo.py
 ```
 
@@ -209,53 +209,52 @@ Inverse kinematics is mainly used to calculate the joint angle according to the 
 ### 3.4.2 Start and Close the Game
 
 :::{Note}
-The input command should be case sensitive, and “Tab” can be used to complement keywords.
+The input command should be case sensitive, and "**Tab**" can be used to complement keywords.
 :::
 
 (1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-(2) Click<img src="../_static/media/chapter_6/section_4/image1.png" style="width:0.31458in;height:0.27361in" />in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
+(2) Click <img src="../_static/media/chapter_6/section_4/image1.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
 
-(3) Enter command and press **“Enter”** to enter the directory of game programs.
+(3) Enter command and press **"Enter"** to enter the directory of game programs.
 
-```commandline
+```bash
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-(4) Enter command and press **“Enter”** to start game.
+(4) Enter command and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 arm_move_IK_triaxial.py
 ```
 
-(5) If want to exit the game, you can press **“Ctrl+C”**. If fail to close, please try multiple times.
+(5) If want to exit the game, you can press **"Ctrl+C"**. If fail to close, please try multiple times.
 
 ### 3.4.3 Project Outcome
 
 After starting game, robot arm will draw square.
 
-
 ### 3.4.4 Program Analysis
 
-The path of the program source code：[/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_triaxial.py]()
+The path of the program source code：[/home/pi/ArmPi_mini/armpi_mini_demo/arm_move_IK_triaxial.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/arm_move_IK_triaxial.zip)
 
 * **Import Library**
 
 {lineno-start=3}
 
-```
+```python
 import sys
 import time
 from kinematics.arm_move_ik import *
 from common.ros_robot_controller_sdk import Board
 ```
 
-`sys` is the most commonly used library interacting strongly with the Python interpreter; “time” is the library for processing time; `ArmIK` is the library for processing inverse kinematics.
-If want to call a function in library, you can use this format “library name+function name (parameter, parameter)” to use the code. For example,
+`sys` is the most commonly used library interacting strongly with the Python interpreter; "**time**" is the library for processing time; `ArmIK` is the library for processing inverse kinematics.
+If want to call a function in library, you can use this format "**library name+function name (parameter, parameter)**" to use the code. For example,
 
 {lineno-start=43}
 
-```
+```python
     time.sleep(1.5) # 延时1.5秒(delay for 1.5s)
 ```
 
@@ -268,24 +267,22 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=27}
 
-```
+```python
 # 实例化逆运动学库(Instantiate inverse kinematics library)
 AK = ArmIK()
 ```
 
-The code above is used to call `sleep()` in “time” library and this function is for delaying. 
+The code above is used to call `sleep()` in "**time**" library and this function is for delaying. 
 There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. In addition, you can also customize a new library like `ArmIK.ArmMoveIK` inverse kinematics library.
 
 * **Control Robot Arm**
 
 {lineno-start=41}
 
-```
+```python
     # 设置机械臂初始位置(x:0, y:6, z:18),运行时间:1500毫秒(set the initial position of the robotic arm to (x:0, y:6, z:18) and the runtime to 1500ms)
     AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 1500) 
     time.sleep(1.5) # 延时1.5秒(delay for 1.5s)
-    
-
 
     AK.setPitchRangeMoving((5, 6, 18), 0,-90, 90, 1000)  # 设置机械臂X轴右移,运行时间:1000毫秒(set the robotic arm to move to the right along the X-axis with a runtime of 1000ms)
     time.sleep(1.2) # 延时1.2秒(delay for 1.2s)
@@ -317,41 +314,41 @@ The fifth parameter `1500` is the running time and the unit us millisecond.
 
 The movement speed of the end effector can be modified. The specific operation steps are as follow:
 
-(1) Click<img src="../_static/media/chapter_6/section_4/image1.png" style="width:0.31458in;height:0.27361in" />icon and press **“Ctrl+Alt+T”** to open the LX terminal.
+(1) Click <img src="../_static/media/chapter_6/section_4/image1.png" style="width:0.31458in;height:0.27361in" /> icon and press **"Ctrl+Alt+T"** to open the LX terminal.
 
-(2) Enter command and press **“Enter”** to enter the directory of game programs.
+(2) Enter command and press **"Enter"** to enter the directory of game programs.
 
-```commandline
+```bash
 cd ArmPi_mini/armpi_mini_demo
 ```
 
-(3) Enter command and press **“Enter”** to open the program file.
+(3) Enter command and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 vim arm_move_IK_triaxial.py
 ```
 
 (4) Find the following code:
 
-<img src="../_static/media/chapter_6/section_4/image5.png"  />
+<img src="../_static/media/chapter_6/section_4/image5.png" class="common_img"  />
 
-(5) Press **“i”** key on the keyboard to enter the editing mode.
+(5) Press **"i"** key on the keyboard to enter the editing mode.
 
-<img src="../_static/media/chapter_6/section_4/image6.png"  />
+<img src="../_static/media/chapter_6/section_4/image6.png" class="common_img" />
 
-(6) Change **“1000”** to **“1500”**, as the figure shown below:
+(6) Change **"1000"** to **"1500"**, as the figure shown below:
 
-<img src="../_static/media/chapter_6/section_4/image7.png"  />
+<img src="../_static/media/chapter_6/section_4/image7.png" class="common_img" />
 
-(7) After modification, press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+(7) After modification, press **"Esc"** and enter **":wq"**, and then press **"Enter"** to save and close the file.
 
-```commandline
+```bash
 :wq
 ```
 
-(8) Enter command and press **“Enter”** to start game and check the game effect after modification.
+(8) Enter command and press **"Enter"** to start game and check the game effect after modification.
 
-```commandline
+```bash
 python3 arm_move_IK_triaxial.py
 ```
 

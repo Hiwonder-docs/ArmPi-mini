@@ -679,7 +679,7 @@ the servo ID tag corresponds to the interface number of expansion board. The yel
 
 :::
 
-<img class="common_img" src="../_static/media/chapter_1/section_5/image19.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_1/section_5/image19.jpeg" style="width:600px;"  alt="loading" />
 
 (14) Then, repeat the operation steps of "[**1.8.3 Small Deviation Adjustment**](#anchor_1_8_3)" to adjust the small deviation. 
 
@@ -737,7 +737,7 @@ Before starting game, the picking position of gripper must be calibrated, otherw
 
 * **Whether the picking position needs to be calibrated?** 
 
-(1) Double click  <img class="common_img" src="../_static/media/chapter_1/section_6/image16.png"  />to open PC software.
+(1) Double click  <img style="width:50px" src="../_static/media/chapter_1/section_6/image16.png"  /> to open PC software.
 
 (2) Click **"Execute"** to enter the editing interface of PC software.
 

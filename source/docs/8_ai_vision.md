@@ -2,7 +2,7 @@
 
 ## 4.1 Single Color Recognition
 
-In this section, the camera detects colors. When a red ball is recognized, the buzzer will emit a beep, and the red ball will be highlighted in the transmitted image with "Color: red" displayed.
+In this section, the camera detects colors. When a red ball is recognized, the buzzer will emit a beep, and the red ball will be highlighted in the transmitted image with "**Color: red**" displayed.
 
 ### 4.1.1 Program Description
 
@@ -19,9 +19,9 @@ After performing morphological operations such as opening and closing on the obj
 **Closing:** The image undergoes dilation followed by erosion. This operation fills small holes within objects, connects nearby objects, closes broken contour lines, and smooths boundaries while preserving the area.
 
 After recognition, the servo and buzzer are set up to provide feedback based on the detected color. For example, when red is detected, the buzzer will emit a sound.
-For detailed feedback behavior, please refer to [4.1.3 Program Analysis]() of this document.
+For detailed feedback behavior, please refer to [4.1.3 Program Analysis](#anchor_4_1_3) of this document.
 
-<p id="anchor_1_2"></p>
+<p id="anchor_4_1_2"></p>
 
 ### 4.1.2 Start and Close the Game
 
@@ -33,43 +33,45 @@ The input command is case-sensitive, and keywords can be auto-completed using th
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image3.png"  />
 
-(2) Click the icon <img src="../_static/media/chapter_8/section_1/image5.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut " Ctrl+Alt+T" to open the LX terminal.
+(2) Click the icon <img src="../_static/media/chapter_8/section_1/image5.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut "**Ctrl+Alt+T**" to open the LX terminal.
 
 (3) Execute the command to navigate to the directory where the program is located, then press Enter: 
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
 (4) Enter the command and press Enter to start the program:
 
-```commandline
+```bash
 python3 color_recognition.py
 ```
 
 (5) To close the program, simply press **"Ctrl+C"** in the LX terminal. If it does not close, press it multiple times.
 
+<p id="anchor_4_1_3"></p>
+
 ### 4.1.3 Program Outcome
 
-After starting the game, the camera will be used to detect colors. When a red ball is recognized, the buzzer will emit a beep sound, and the ball will be circled in the transmitted image, with "Color: red" printed.
+After starting the game, the camera will be used to detect colors. When a red ball is recognized, the buzzer will emit a beep sound, and the ball will be circled in the transmitted image, with "**Color: red**" printed.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/1.png"  />
 
 :::{Note}
 
 * During the recognition process, ensure the environment is well-lit to avoid inaccurate recognition due to poor lighting conditions.
-* Ensure that no objects with similar or matching colors to the target are present in the background within the camera’s visual range, as this may cause misrecognition.
-  :::
+* Ensure that no objects with similar or matching colors to the target are present in the background within the camera's visual range, as this may cause misrecognition.
+:::
 
 ### 4.1.4 Program Analysis
 
-The source code of this program is saved in:[/home/pi/ArmPi_mini/functions/Color_recognition.py]()
+The source code of this program is saved in:[/home/pi/ArmPi_mini/functions/Color_recognition.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/color_recognition.zip)
 
 * **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -85,7 +87,7 @@ To use functions from a library, we can call them with the syntax:
 
 {lineno-start=179}
 
-```
+```python
             time.sleep(0.01)
 ```
 
@@ -99,19 +101,19 @@ In a Python program, `__name__ == '__main__'` indicates the main function of the
 
 {lineno-start=156}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
 ```
 
-**(1) Image Processing**
+(1) Image Processing
 
 Function `run()` for Image Processing
 
 {lineno-start=82}
 
-```
+```python
 def run(img):
     global interval_time
     global __isRunning, color_list
@@ -129,11 +131,11 @@ def run(img):
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ```
 
-**(2) Resizing the Image. The image size is resized to facilitate processing.**
+(2) Resizing the Image. The image size is resized to facilitate processing.
 
 {lineno-start=93}
 
-```
+```python
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
@@ -151,13 +153,13 @@ The third parameter  `interpolation=cv2.INTER_NEAREST` defines the interpolation
 
 `INTER_LANCZOS4`: Lanczos interpolation over an 8x8 pixel neighborhood.
 
-**(3) Gaussian Filtering**
+(3) Gaussian Filtering
 
 To remove noise from the image, Gaussian filtering is applied. This filter smooths the image to improve feature visibility.
 
 {lineno-start=94}
 
-```
+```python
         frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
@@ -169,7 +171,7 @@ The third argument  `3 ` is the standard deviation of the Gaussian kernel in the
 
 {lineno-start=96}
 
-````
+````python
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ````
 
@@ -177,13 +179,13 @@ The first parameter `"frame_gb"` is the image to be converted.
 
 The second parameter `cv2.COLOR_BGR2LAB` converts the image from BGR format to LAB format. To convert to RGB, use `cv2.COLOR_BGR2RGB`.
 
-**(4) Convert the Image to a Binary Image**
+(4) Convert the Image to a Binary Image
 
 The image is simplified by converting it to a binary image, containing only 0s and 1s, which reduces the data size and makes it easier to process. The `cv2.inRange()` function is used for thresholding.
 
 {lineno-start=103}
 
-```
+```python
                 frame_mask = cv2.inRange(frame_lab,
                                              (lab_data[i]['min'][0],
                                               lab_data[i]['min'][1],
@@ -199,13 +201,13 @@ The second parameter `(lab_data[i]['min'][0], lab_data[i]['min'][1], lab_data[i]
 
 The third parameter `(lab_data[i]['max'][0], lab_data[i]['max'][1], lab_data[i]['max'][2])` specifies the upper color threshold.
 
-**(5) Apply Morphological Operations (Opening and Closing)**
+(5) Apply Morphological Operations (Opening and Closing)
 
 To reduce interference and smooth the image, morphological operations are applied. Opening is erosion followed by dilation, and closing is dilation followed by erosion. The `cv2.morphologyEx()` function is used.
 
 {lineno-start=110}
 
-```
+```python
                 opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
                 closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -218,13 +220,13 @@ The third parameter `np.ones((6, 6))` specifies the convolution kernel.
 
 The fourth parameter `np.uint8` defines the number of iterations to apply.
 
-**(6) Find the Largest Contour**
+(6) Find the Largest Contour
 
 After completing the image processing, the largest contour is found using the `cv2.findContours()` function.
 
 {lineno-start=112}
 
-```
+```python
                 contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -238,7 +240,7 @@ The largest contour is selected, and a minimum area threshold is set to ensure t
 
 {lineno-start=114}
 
-```
+```python
                 if areaMaxContour is not None:
                     if area_max > max_area:  # 找最大面积(find the maximum area)
                         max_area = area_max
@@ -249,11 +251,11 @@ The largest contour is selected, and a minimum area threshold is set to ensure t
             box = np.intp(cv2.boxPoints(rect))
 ```
 
-**(7) Find the Largest Contour**
+(7) Find the Largest Contour
 
 {lineno-start=119}
 
-```
+```python
         if max_area > 2500:  # 有找到最大面积(the maximum area has been found)
             rect = cv2.minAreaRect(areaMaxContour_max)
             box = np.intp(cv2.boxPoints(rect))
@@ -290,11 +292,11 @@ The largest contour is selected, and a minimum area threshold is set to ensure t
         cv2.putText(img, "Color: " + detect_color, (10, img.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.65, draw_color, 2) # 把检测到的颜色打印在画面上(print the detected color on the image)
 ```
 
-**(8) Display the Transmitted Image**
+(8) Display the Transmitted Image
 
 {lineno-start=173}
 
-```
+```python
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -306,33 +308,35 @@ The function `cv2.imshow()` is used to display an image in a window. The first p
 It is important to include `cv2.waitKey()` after `cv2.imshow()`, as the image will not be displayed without it. 
 The function `cv2.waitKey()` waits for a key press, and the parameter `1` specifies the delay time in milliseconds.
 
+<p id="anchor_4_1_5"></p>
+
 ### 4.1.5 Function Extensions
 
 <p id="anchor_1_4_1"></p>
 
 * **Changing the Default Recognized Color**
 
-The color recognition program is pre-configured to recognize three colors: red, green, and blue. By default, the program identifies red, triggering the buzzer to emit a beep and drawing a circle around the red ball in the transmitted image, displaying “Color: red.”
+The color recognition program is pre-configured to recognize three colors: red, green, and blue. By default, the program identifies red, triggering the buzzer to emit a beep and drawing a circle around the red ball in the transmitted image, displaying "**Color: red**".
 
 **To change the recognized color to green, follow these steps:**
 
 (1) Enter the following command and press Enter to navigate to the source code directory:
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
 (2) Then, enter the following command and press Enter to open the program file:
 
-```commandline
+```bash
 sudo vim color_recognition.py
 ```
 
-(3) Press the “i” key on the keyboard to enter edit mode.
+(3) Press the "**i**" key on the keyboard to enter edit mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image13.png"  />
 
-(4) Replace **“red”** (highlighted in red in the image) with **“green”**, as shown in the image below:
+(4) Replace **"red"** (highlighted in red in the image) with **"green"**, as shown in the image below:
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image15.png"  />
 
@@ -340,33 +344,33 @@ sudo vim color_recognition.py
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image18.png"  />
 
-(6) To save your changes, press the **“Esc”**  key, then type **“:wq”** (note the colon before **"wq"**) and press Enter to save and exit.
+(6) To save your changes, press the **"Esc"**  key, then type **":wq"** (note the colon before **"wq"**) and press Enter to save and exit.
 
 (7) Enter the following command and press Enter to start the color recognition functionality: 
 
-```commandline
+```bash
 python3 color_recognition.py
 ```
 
-<p id="anchor_1_4_2"></p>
+<p id="1_add_new_recognition_color"></p>
 
 * **Add new recognition color**
 
 In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click<img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />and select **“Execute”** in the pop-up window.
+(1) Double click <img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" /> and select **"Execute"** in the pop-up window.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image23.png"  alt="loading" />
 
-(2) Then select **“Camera Tool”** and **“Connect”** in sequence.
+(2) Then select **"Camera Tool"** and **"Connect"** in sequence.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image24.png"  alt="loading" />
 
-(3) Click **“Add”** and name the new color. Take **“purple”** as example. Then click **“OK”**.
+(3) Click **"Add"** and name the new color. Take **"purple"** as example. Then click **"OK"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image25.png"  alt="loading" />
 
-(4) Select **“purple”** in the drop-down list of the color selection.
+(4) Select **"purple"** in the drop-down list of the color selection.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image26.png"  alt="loading" />
 
@@ -374,19 +378,19 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image27.png"  alt="loading" />
 
-(6) Finally, click **“Save”.**
+(6) Finally, click **"Save"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image28.png"  alt="loading" />
 
-(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
+(7) Check whether the modified value is written into program. Enter command and press "**Enter**" to access to the program directory.
 
-```commandline
+```bash
 cd ArmPi_mini/yaml/
 ```
 
-(8) Enter command and press “Enter” to open program file.
+(8) Enter command and press "**Enter**" to open program file.
 
-```commandline
+```bash
 sudo vim lab_config.yaml
 ```
 
@@ -398,9 +402,9 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image34.png"  />
 
-(11) Enter ` ‘purple’: (255, 255, 114)` and ` ‘purple’ `. The `(255, 255, 114)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
+(11) Enter ` 'purple': (255, 255, 114)` and ` 'purple' `. The `(255, 255, 114)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image36.png" style="width:5.76458in;height:2.39722in" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image36.png" />
 
 (12) Find the following code.
 
@@ -410,12 +414,11 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image42.png"  />
 
-(14) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press “Enter” to save and close the file.
+(14) Save the modified content. Press **"Esc"** and enter **":wq"**, and then press "**Enter**" to save and close the file.
 
-(15) Then refer to the steps in “[4.1.2 Start and Close the Game]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.1.5 Function Extension -> Change Default Recognition Color]()” to change the default color to purple. 
+(15) Then refer to the steps in "[**4.1.2 Start and Close the Game**](#anchor_4_1_2)" to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer "[**4.1.5 Function Extension -> Change Default Recognition Color**](#anchor_4_1_5)" to change the default color to purple. 
 
 (16) If you want to add other recognition colors, please refer to the operation steps above.
-
 
 ## 4.2 Color Recognition
 
@@ -423,7 +426,7 @@ sudo vim lab_config.yaml
 
 The robotic arm can be controlled to nod and shake its head after recognizing color through the camera. This process has two parts including color recognition and recognition feedback.
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “[OpenCV Basic Lesson/ 3.Color Space Learning]()” to learn about Lab color space.
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder "[**OpenCV Basic Lesson/ 3.Color Space Learning**]()" to learn about Lab color space.
 
 Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
 
@@ -433,9 +436,9 @@ The opening operation erodes an image and then dilates the eroded image. Opening
 The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
 
 After the color is recognized, set servo, buzzer and RGB light. Then robot arm will give different feedback according to the different recognized color. For example, if red is recognized, robot arm will nod, buzzer will make sound and RGB will emit red light.
-About the specific feedback effect, please refer to this part “[4.2.3 Project Outcome]()”.
+About the specific feedback effect, please refer to this part "[**4.2.3 Project Outcome**](#anchor_4_2_3)".
 
-<p id="anchor_2_2"></p>
+<p id="anchor_4_2_2"></p>
 
 ### 4.2.2 Start and Close the Game
 
@@ -449,17 +452,19 @@ The input command should be case sensitive.
 
 (2)  Enter the command to navigate to the directory where the demo program is located.
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
-(3) Enter the command of running the program , and press **“Enter”** to start the game.
+(3) Enter the command of running the program , and press **"Enter"** to start the game.
 
-```commandline
+```bash
 python3 color_detect.py
 ```
 
-(4) To close the program, press **“Ctrl+C”** in the LX terminal interface. If the program cannot be closed successfully, repeat this operation until it exits.
+(4) To close the program, press **"Ctrl+C"** in the LX terminal interface. If the program cannot be closed successfully, repeat this operation until it exits.
+
+<p id="anchor_4_2_3"></p>
 
 ### 4.2.3 Project Outcome
 
@@ -467,21 +472,21 @@ Firstly, start game. After recognition, robot arm will give corresponding feedba
 
 | **Object color** | Buzzer            | **RGB light** | **Action** | **Printed content** |
 | ---------------- | ----------------- | ------------- | ---------- | ------------------- |
-| Red              | Make a “Di” sound | Red           | Nod        | red                 |
-| Green            | Make a “Di” sound | Green         | Shake head | green               |
-| Blue             | Make a “Di” sound | Blue          | Shake head | blue                |
+| Red              | Make a "**Di**" sound | Red           | Nod        | red                 |
+| Green            | Make a "**Di**" sound | Green         | Shake head | green               |
+| Blue             | Make a "**Di**" sound | Blue          | Shake head | blue                |
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/1.gif"  />
 
 ### 4.2.4 Program Analysis
 
-The source code of program is located in：[/home/pi/ArmPi_mini/functions/color_detect.py]()
+The source code of program is located in：[/home/pi/ArmPi_mini/functions/color_detect.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/color_detect.zip)
 
 * **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -496,7 +501,7 @@ import common.yaml_handle as yaml_handle
 
 {lineno-start=276}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -510,13 +515,13 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
 
 {lineno-start=178}
 
-```
+```python
                 time.sleep(1.5)  
 ```
 
 Call  `sleep`  function in `time`  library. The function `sleep()` is used to delay.
 
-There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `common.yaml_handle` and “common.yaml_handle”.
+There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `common.yaml_handle` and "**common.yaml_handle**".
 
 * **Instantiate Function Library**
 
@@ -524,7 +529,7 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=280}
 
-```
+```python
     # 实例化逆运动学库(instantiate the inverse kinematics library)
     AK = ArmIK()
 ```
@@ -533,11 +538,11 @@ After instantiating, you can directly input and call the function `AK.function n
 
 * **Main Function Analysis**
 
-The python program  `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function  `init() ` is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program  `__name__ ==  '__main__:'` is the main function of program. Firstly, the function  `init() ` is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=276}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -550,11 +555,11 @@ if __name__ == '__main__':
     start()
 ```
 
-**(1) Read the Captured Image** 
+(1) Read the Captured Image 
 
 {lineno-start=157}
 
-```
+```python
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
 ```
 
@@ -568,26 +573,26 @@ False: The value of image 'ret' was not read.
 
 `img` is a frame of the camera that was read.
 
-**(2) Enter Image Processing**
+(2) Enter Image Processing
 
 When the captured image is read, `ret` value is True.
 
 {lineno-start=290}
 
-```
+```python
         if ret:
             frame = img.copy()
             Frame = run(frame)  
 ```
 
 The function `img.copy()` is used to copy the content of `img` to `frame`.
-The function `run()` is used to process image. In “[4.2.4 Program Analysis -> Image Processing Analysis]()” to check the detailed content.
+The function `run()` is used to process image. In "[**4.2.4 Program Analysis -> Image Processing Analysis**](#2_image_processing_analysis)" to check the detailed content.
 
-**(3) Window Displays Image**
+(3) Window Displays Image
 
 {lineno-start=293}
 
-```
+```python
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -601,13 +606,13 @@ The function `cv2.imshow()` is used to displa y the image in window. `frame` is 
 
 The function `cv2.waitKey()` is used to wait for inputting key and the parameter `1` refers to the delay time.
 
-<span id="anchor_2_5_4"></span>
+<span id="2_image_processing_analysis"></span>
 
 * **Image Processing Analysis**
 
 {lineno-start=190}
 
-```
+```python
 # 图像处理(image processing)
 def run(img):
     global roi
@@ -658,13 +663,13 @@ def run(img):
                 cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
 ```
 
-**(1) Image Resizing Process**
+(1) Image Resizing Process
 
 It is easy to zoom in and out the image.
 
 {lineno-start=205}
 
-```
+```python
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
@@ -676,11 +681,11 @@ The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method.
 
 `INTER_NEAREST` is the earest Neighbour Interpolation.
 
-`INTER_LINEAR` is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
+`INTER_LINEAR` is the Bilinear Interpolation. If the last parameter is not modified, this method "**INTER_LINEAR**" will be used by default. 
 
 `INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-**(2) Gaussian filter**
+(2) Gaussian filter
 
 Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 
@@ -688,7 +693,7 @@ Gaussian filter is a linear filter hat also smooths an image and reduces noise, 
 
 {lineno-start=206}
 
-```
+```python
         frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
@@ -698,13 +703,13 @@ The second parameter  `(3, 3)` is the kernel size.
 
 The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-**(3) Covert to Color Space**
+(3) Covert to Color Space
 
 Use function  `cv2.cvtColor()`  to convert image to LAB space.
 
 {lineno-start=208}
 
-```
+```python
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ```
 
@@ -712,7 +717,7 @@ The first parameter `frame_gb` is the input image.
 
 The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
 
-**(4) Thresholding Processing**
+(4) Thresholding Processing
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 
@@ -720,7 +725,7 @@ Use `inRange()` function in cv2 library is used to process image with thresholdi
 
 {lineno-start=216}
 
-```
+```python
                     frame_mask = cv2.inRange(frame_lab,
                                                  (lab_data[i]['min'][0],
                                                   lab_data[i]['min'][1],
@@ -736,13 +741,13 @@ The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['
 
 The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-**(5) Opening and Closing**
+(5) Opening and Closing
 
 To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function `cv2.morphologyEx()` is the morphology function.
 
 {lineno-start=223}
 
-```
+```python
                     opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
                     closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -755,13 +760,13 @@ The third parameter `np.ones((3, 3)` is the convolution kernel.
 
 The fourth parameter `np.uint8` is the application times.
 
-**(6) Find the Largest Contour** 
+(6) Find the Largest Contour 
 
 Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=226}
 
-```
+```python
                     contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -775,7 +780,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 {lineno-start=227}
 
-```
+```python
                     if areaMaxContour is not None:
                         if area_max > max_area:  # 找最大面积(find the maximum area)
                             max_area = area_max
@@ -783,13 +788,13 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
                             areaMaxContour_max = areaMaxContour
 ```
 
-**(7) Obtain Position Information**
+(7) Obtain Position Information
 
 Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=232}
 
-```
+```python
             if max_area > 500:  # 有找到最大面积(the maximum area has been found)
                 (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
                 center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
@@ -798,13 +803,13 @@ Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosi
                 cv2.circle(img, (int(center_x), int(center_y)), int(radius), range_rgb[color_area_max], 2)
 ```
 
-**(8) Determine Maximum Color** 
+(8) Determine Maximum Color 
 
 Use judgement statement to get the maximum color in a image.
 
 {lineno-start=239}
 
-```
+```python
                 if not start_pick_up:
                     if color_area_max == 'red':  # 红色最大(red is the maximum)
                         color = 1
@@ -844,7 +849,7 @@ The robot arm movement function `move()` is executed as a child thread. When col
 
 {lineno-start=129}
 
-```
+```python
 # 机械臂移动函数(function for the robotic arm's movement)
 def move():
     global _stop
@@ -902,7 +907,7 @@ def move():
 
 {lineno-start=68}
 
-```
+```python
 #设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
 def set_rgb(color):
     if color == "red":
@@ -919,7 +924,7 @@ def set_rgb(color):
 
 {lineno-start=141}
 
-```
+```python
                 board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
 ```
 
@@ -931,7 +936,7 @@ Determine whether the recognized color is the same as the set color, and then pe
 
 {lineno-start=143}
 
-```
+```python
                 if detect_color == 'red' : # 识别到红色，机械臂点头(if red is detected, the robotic arm nods its head)
                     for i in range(0,3):
                         board.pwm_servo_set_position(0.2, [[3, 800]])
@@ -985,9 +990,9 @@ The fourth parameter `90` is the maximum pitch angel.
 
 The fifth parameter `500` is the running time and the unit is mm/s.
 
-### 4.2.5 Function Extension
+<p id="anchor_4_2_5"></p>
 
-<span id="anchor_2_4_1" class="anchor"></span>
+### 4.2.5 Function Extension
 
 * **Change default recognition color**
 
@@ -995,15 +1000,15 @@ There are three built-in recognition colors in program including red, green and 
 
 Here take changing the default recognition color to green for example. The specific operation steps are as follow.
 
-(1) Enter command and press **“Enter”** to enter the source code directory.
+(1) Enter command and press **"Enter"** to enter the source code directory.
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
-(2) Then enter command and and press **“Enter”** to open the program file.
+(2) Then enter command and and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 sudo vim color_detect.py
 ```
 
@@ -1012,28 +1017,28 @@ sudo vim color_detect.py
 <img class="common_img" src="../_static/media/chapter_8/section_2/image8.png"  />
 
 :::{Note}
-After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
+After entering the line number of the code, press **"Shift+G"** to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
 :::
 
-(4) Press **“i”** to enter the editing mode.
+(4) Press **"i"** to enter the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image9.png"  />
 
-(5)  Change **“red”** to **“green”** in `detect_color == 'red'`, as the figure shown below.
+(5)  Change **"red"** to **"green"** in `detect_color == 'red'`, as the figure shown below.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image10.png"  />
 
-(6) Then save the modified content. Press **“Esc”** and enter **“:wq”**, and press **“Enter”** to save and close the program file.
+(6) Then save the modified content. Press **"Esc"** and enter **":wq"**, and press **"Enter"** to save and close the program file.
 
-```commandline
+```bash
 :wq
 ```
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image11.png"  />
 
-(7) Enter command again, and press **“Enter”** to start game.
+(7) Enter command again, and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 color_detect.py
 ```
 
@@ -1043,9 +1048,9 @@ python3 color_detect.py
 
 In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click <img src="../_static/media/chapter_8/section_2/image13.png" style="width:in;height:in" />and select “Execute” in the pop-up window.
+(1) Double click <img src="../_static/media/chapter_8/section_2/image13.png" style="width:in;height:in" />and select "**Execute**" in the pop-up window.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image14.png" />
 
 (2) Then select `Camera Tool` and `Connect` in sequence.
 
@@ -1055,7 +1060,7 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image16.png"  alt="loading" />
 
-(4) Select **“purple”** in the drop-down list of the color selection.
+(4) Select **"purple"** in the drop-down list of the color selection.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image17.png"  alt="loading" />
 
@@ -1063,19 +1068,19 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image18.png"  alt="loading" />
 
-(6) Finally, click **“Save”**.
+(6) Finally, click **"Save"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image19.png"  alt="loading" />
 
-(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
+(7) Check whether the modified value is written into program. Enter command and press "**Enter**" to access to the program directory.
 
-```commandline
+```bash
 cd ArmPi_mini/yaml/
 ```
 
-(8) Enter command and press “Enter” to open program file.
+(8) Enter command and press "**Enter**" to open program file.
 
-```commandline
+```bash
 sudo vim lab_config.yaml
 ```
 
@@ -1083,11 +1088,11 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
 
-(10) Refer to the steps 1-2 in “[4.2.5 Function Extension -> Change default recognition color]()” to open the program file, and press **“i”** to enter the editing mode.
+(10) Refer to the steps 1-2 in "[**4.2.5 Function Extension -> Change default recognition color**](#anchor_4_2_5)" to open the program file, and press **"i"** to enter the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image24.png"  />
 
-(12) Enter ` ‘purple’: (128, 0, 128)` and ` ‘purple’ `. The `(128, 0, 128)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
+(12) Enter ` 'purple': (128, 0, 128)` and ` 'purple' `. The `(128, 0, 128)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image25.png"  />
 
@@ -1117,13 +1122,13 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image32.png"  />
 
-(19) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+(19) Save the modified content. Press **"Esc"** and enter **":wq"**, and then press **"Enter"** to save and close the file.
 
-```commandline
+```bash
 :wq
 ```
 
-(20) Then refer to the steps in “[4.2.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.2.5 Function Extension -> Change Default Recognition Color]()” to change the default color to purple. 
+(20) Then refer to the steps in "[**4.2.2 Start and Close the Game**](#anchor_4_2_2)" to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer "[**4.2.5 Function Extension -> Change Default Recognition Color**](#anchor_4_2_5)" to change the default color to purple. 
 
 (21) If you want to add other recognition colors, please refer to the operation steps above.
 
@@ -1133,7 +1138,7 @@ sudo vim lab_config.yaml
 
 The logic of color sorting is to locate block and print the location coordinate in terminal. This process includes color recognition and target position detection.
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “  [OpenCV Basic Lesson/3. Color Space Learning]()” to learn about Lab color space
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder "[**OpenCV Basic Lesson/3. Color Space Learning**]()" to learn about Lab color space
 
 Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
 
@@ -1147,7 +1152,7 @@ The second part is to detect the object position. According to the minimum enclo
 ### 4.3.2 Start and Close the Game
 
 :::{Note}
-The input command should be case sensitive, and “Tab” can be used to complement keywords.
+The input command should be case sensitive, and "**Tab**" can be used to complement keywords.
 :::
 
 (1) Power on the robot and use VNC Viewer to connect to the remote desktop.
@@ -1156,17 +1161,17 @@ The input command should be case sensitive, and “Tab” can be used to complem
 
 (2) Enter command to navigate to the directory where the demo program is located.
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
-(3) Enter command and press “Enter” to start game.
+(3) Enter command and press "Enter" to start game.
 
-```commandline
+```bash
 python3 position_detection.py
 ```
 
-(4) If want to exit the game, press “Ctrl+C”. If fail to close, please try a few more times.
+(4) If want to exit the game, press "**Ctrl+C**". If fail to close, please try a few more times.
 
 ### 4.3.3 Project Outcome
 
@@ -1174,16 +1179,15 @@ Circle the red object in the returned image, and print the values of x-axis and 
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image7.png"  />
 
-
 ### 4.3.4 Program Analysis
 
-The source code of program is located in: [/home/pi/ArmPi_mini/functions/position_detection.py]()
+The source code of program is located in: [/home/pi/ArmPi_mini/functions/position_detection.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/position_detection.zip)
 
 * **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -1198,7 +1202,7 @@ import common.yaml_handle as yaml_handle
 
 {lineno-start=106}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -1208,16 +1212,16 @@ if __name__ == '__main__':
     AK.board = board
 ```
 
-Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If you want to call a function in the library, you can use “library name+function name (parameter, parameter)”. For example,
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If you want to call a function in the library, you can use "**library name+function name (parameter, parameter)**". For example,
 
 {lineno-start=131}
 
-```
+```python
             time.sleep(0.01)
 ```
 
-The `sleep` function in `time” library is called. The function “sleep ()” is used to delay.
-There are some built-in libraries in Python, so they can be called directly. For example, “time”, “cv2” and “math”. You can also write a new library like “yaml_handle” and “ArmIK.ArmMoveIK”.
+The `sleep` function in `time` library is called. The function "**sleep()**" is used to delay.
+There are some built-in libraries in Python, so they can be called directly. For example, "**time**", "**cv2**" and "**math**". You can also write a new library like "**yaml_handle**" and "**ArmIK.ArmMoveIK**".
 
 * **Instantiate Function Library**
 
@@ -1225,21 +1229,21 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=110}
 
-```
+```python
     # 实例化逆运动学库(instantiate the inverse kinematics library)
     AK = ArmIK()
     AK.board = board
 ```
 
-After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
+After instantiating, you can directly input and call the function "**AK.function name (parameter, parameter)**".
 
 * **Main Function Analysis**
 
-The python program `__name__ == ’__main__:’`  is the main function of program. Firstly, the function “init()” is called to initialize. The initialization in this program includes: return the robot arm to the initial position and read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ == '__main__:'`  is the main function of program. Firstly, the function "**init()**" is called to initialize. The initialization in this program includes: return the robot arm to the initial position and read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=106}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -1251,11 +1255,11 @@ if __name__ == '__main__':
     initMove()
 ```
 
-**(1) Read Captured Image** 
+(1) Read Captured Image 
 
 {lineno-start=118}
 
-```
+```python
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
     #cap = cv2.VideoCapture(0)
     while True:
@@ -1264,30 +1268,30 @@ if __name__ == '__main__':
 
 Capture the camera image and save it to `cap`.
 
-The function `cap.read()` is to read the captured image. True: the “ret” value of image is read. False: The value of image `ret` was not read.
+The function `cap.read()` is to read the captured image. True: the "**ret**" value of image is read. False: The value of image `ret` was not read.
 
 `img`  is a frame of the camera that was read.
 
-**(2) Enter Image Processing**
+(2) Enter Image Processing
 
 When the capture image is read, `ret` value is True.
 
 {lineno-start=122}
 
-```
+```python
         if ret:
             frame = img.copy()
             Frame = run(frame)
 ```
 
 The function `img.copy()` is used to copy the content of `img` to `frame`.
-The function `run()`  is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
+The function `run()`  is used to process image. In "[**4.3.4 Program Analysis -> Image Processing Analysis**](3_image_processing_analysis)" to check the detailed content.
 
-**(3) Window Displays Image**
+(3) Window Displays Image
 
 {lineno-start=}
 
-```
+```python
             frame_resize = cv2.resize(Frame, size)
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -1297,17 +1301,17 @@ The function `run()`  is used to process image. In “[Image Processing Analysis
 
 The function  `cv2.resize()`  is used to scale the processed image to the appropriate size.
 
-The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. “frame_resize” is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
+The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. "**frame_resize**" is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
 
-The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter "**1**" refers to the delay time.
 
-<p id="anchor_5_4"></p>
+<p id="3_image_processing_analysis"></p>
 
-**3.4.4 Image Processing Analysis**
+* **Image Processing Analysis**
 
 {lineno-start=64}
 
-```
+```python
 # 图像处理及追踪控制(image processing and tracking control)
 def run(img):
     global lab_data
@@ -1351,13 +1355,13 @@ def run(img):
     return img
 ```
 
-**(1) Image Resizing Process**
+(1) Image Resizing Process
 
 It is easy to zoom in and out the image.
 
 {lineno-start=77}
 
-```
+```python
     frame_resize = cv2.resize(img_copy, size)
 ```
 
@@ -1365,14 +1369,14 @@ The first parameter `img_copy` is the input image.
 
 The second parameter `size` is the size of the output image.
 
-**(2) Gaussian filter**
+(2) Gaussian filter
 
 Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 Gaussian filter is a linear filter smoothing an image and reducing noise, which is widely used in processing image to eliminate noise.
 
 {lineno-start=78}
 
-```
+```python
     frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
@@ -1388,7 +1392,7 @@ Use function `cv2.cvtColor()` to convert image to LAB space.
 
 {lineno-start=79}
 
-```
+```python
     frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ```
 
@@ -1404,7 +1408,7 @@ The `inRange()` function in cv2 library is used to process image with thresholdi
 
 {lineno-start=84}
 
-```
+```python
             frame_mask = cv2.inRange(frame_lab,
                                          (lab_data[detect_color]['min'][0],
                                           lab_data[detect_color]['min'][1],
@@ -1425,7 +1429,7 @@ To lower interference and make image smoother, opening and closing operations ne
 
 {lineno-start=91}
 
-```
+```python
             opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
             closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -1444,7 +1448,7 @@ After completing the above processing, use the function `findContours()` in cv2 
 
 {lineno-start=93}
 
-```
+```python
             contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -1458,7 +1462,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 {lineno-start=94}
 
-```
+```python
             areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
     if area_max > 300:  # 有找到最大面积(the maximum area has been found)
 ```
@@ -1470,7 +1474,7 @@ The image was scaled, and now the center coordinates and radius are mapped to th
 
 {lineno-start=95}
 
-```
+```python
     if area_max > 300:  # 有找到最大面积(the maximum area has been found)
         (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour)  # 获取最小外接圆中心坐标和半径(get the center coordinate and radius of the minimum circumscribed circle)
         center_x = int(Misc.map(center_x, 0, size[0], 0, img_w)) # 坐标和半径映射到实际显示大小(map the coordinate and the radius to actual size for displaying)
@@ -1489,15 +1493,15 @@ Finally, the center coordinates are displayed in terminal and image.
 
 The default tracking color is red. Here the default color will be changed to blue for example.
 
-(1) If you want to change the tracking color, enter command and press **“Enter”** to enter the source code directory.
+(1) If you want to change the tracking color, enter command and press **"Enter"** to enter the source code directory.
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
-(2) Then enter command and press **“Enter”** to open the program file.
+(2) Then enter command and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 sudo vim position_detection.py
 ```
 
@@ -1508,35 +1512,34 @@ sudo vim position_detection.py
 <img class="common_img" src="../_static/media/chapter_8/section_3/image10.png"  />
 
 :::{Note}
-After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
+After entering the line number of the code, press **"Shift+G"** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
 :::
 
-(4) Press **“i”**. When the word **“Insert”** appears, it means the program has entered the editing mode.
+(4) Press **"i"**. When the word **"Insert"** appears, it means the program has entered the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image11.png"  />
 
-(5) Change **“red”** to **“blue”** in `__target_color = ('red',)`, as the figure shown below.
+(5) Change **"red"** to **"blue"** in `__target_color = ('red',)`, as the figure shown below.
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image12.png"  />
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image13.png"  />
 
 :::{Note}
-Then save the modified content. Press **“Esc”** and enter **“:wq”** (Do not miss the “:” before “wq”.), and press **“Enter”** to save and close the program file.
+Then save the modified content. Press **"Esc"** and enter **":wq"** (Do not miss the "**:**" before "**wq**".), and press **"Enter"** to save and close the program file.
 :::
 
-(6) Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
+(6) Then save the modified content. Press "**Esc**" and enter "**:wq**" (Do not miss the "**:**" before "**wq**".), and press "**Enter**" to save and close the program file.
 
-```commandline
+```bash
 :wq
 ```
 
-(7)  Enter command “python3 position_detection.py” again, and press “Enter” to start game.
+(7)  Enter command again, and press "**Enter**" to start game.
 
-```commandline
+```bash
 python3 position_detection.py
 ```
-
 
 ## 4.4 Target Tracking
 
@@ -1544,7 +1547,7 @@ python3 position_detection.py
 
 The logic of target tracking is to recognized color and read the target position, and then control robot arm to move with the target. This process includes color recognition and tracking.
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder [OpenCV Basic Lesson]()” to learn about Lab color space
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder "[**OpenCV Basic Lesson**]()" to learn about Lab color space
 
 Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
 
@@ -1556,31 +1559,33 @@ The tracking part uses PID algorithm to reduce the distance between two coordina
 
 The PID algorithm is one of the most widely used automatic controllers. In this process, the control is carried out in proportional (P), integral (I) and differential (D) of the error.
 
-<p id="anchor_4_2"></p>
+<p id="anchor_4_4_2"></p>
 
 ### 4.4.2 Start and Close the Game
 
 :::{Note}
- input command should be case sensitive, and “Tab” can be used to complement keywords.
+ input command should be case sensitive, and "**Tab**" can be used to complement keywords.
 :::
 
-(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press "**Ctrl+Alt+T**" to open LX terminal.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image4.png"  />
 
 (2) Enter command to access to the directory of game program.
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
-(3) Enter command and press “Enter” to start game.
+(3) Enter command and press "**Enter**" to start game.
 
-```commandline
+```bash
 python3 color_tracking.py
 ```
 
-(4) If you want to exit the game, press “Ctrl+C”. If it fails to close, please try a few more times.
+(4) If you want to exit the game, press "**Ctrl+C**". If it fails to close, please try a few more times.
+
+<p id="anchor_4_4_3"></p>
 
 ### 4.4.3 Project Outcome
 
@@ -1588,16 +1593,15 @@ The default tracking color is red in program. After starting game, ArmPi mini wi
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/1.gif"  />
 
-
 ### 4.4.4 Program Analysis
 
-The source code of program is located in :[/home/pi/ArmPi_Mini/functions/color_tracking.py]()
+The source code of program is located in :[/home/pi/ArmPi_Mini/functions/color_tracking.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/color_tracking.zip)
 
 * **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -1613,7 +1617,7 @@ import common.yaml_handle as yaml_handle
 
 {lineno-start=246}
 
-```
+```python
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
     board = Board()
@@ -1622,11 +1626,11 @@ import common.yaml_handle as yaml_handle
     AK.board = board
 ```
 
-Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use "**library name+function name (parameter, parameter)**". For example,
 
 {lineno-start=270}
 
-```
+```python
             time.sleep(0.01)
 ```
 
@@ -1640,7 +1644,7 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=249}
 
-```
+```python
     # 实例化逆运动学库(instantiate the inverse kinematics library)
     AK = ArmIK()
     AK.board = board
@@ -1650,11 +1654,11 @@ After instantiating, you can directly call function when inputting the function 
 
 * **Main Function Analysis**
 
-The python program `__name__ ==  ’__main__:’`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ ==  '__main__:'`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=245}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -1666,11 +1670,11 @@ if __name__ == '__main__':
     init()
 ```
 
-**(1) Read Captured Image** 
+(1) Read Captured Image 
 
 {lineno-start=258}
 
-```
+```python
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
     while True:
         ret,img = cap.read()
@@ -1678,31 +1682,31 @@ if __name__ == '__main__':
 
 Capture the camera image and save it to `cap`.
 
-The function cap.read is to read the captured image. True: the “ret” value of image is read. False: The value of image “ret” was not read.
+The function cap.read is to read the captured image. True: the "**ret**" value of image is read. False: The value of image "**ret**" was not read.
 
 `img` is a frame of the camera that was read.
 
-**(2) Enter Image Processing**
+(2) Enter Image Processing
 
-When the capture image is read, “ret” value is True.
+When the capture image is read, "**ret**" value is True.
 
 {lineno-start=261}
 
-```
+```python
         if ret:
             frame = img.copy()
             Frame = run(frame)  
 ```
 
-The function “img.copy()” is used to copy the content of “img” to “frame”.
+The function "**img.copy()**" is used to copy the content of "**img**" to "**frame**".
 
-The function “run()” is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
+The function "**run()**" is used to process image. In "[**4.4.4 Program Analysis -> Image Processing Analysis**](#4_image_processing_analysis)" to check the detailed content.
 
-**(3) Window Displays Image**
+(3) Window Displays Image
 
 {lineno-start=264}
 
-```
+```python
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -1712,19 +1716,19 @@ The function “run()” is used to process image. In “[Image Processing Analy
 
 The function`cv2.resize()` is used to scale the processed image to the appropriate size.
 
-The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. `frame_resize`is the displayed content and must be followed by “cv2.waitKey()”. Otherwise, the content can not be displayed.
+The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. `frame_resize`is the displayed content and must be followed by "**cv2.waitKey()**". Otherwise, the content can not be displayed.
 
-The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter "**1**" refers to the delay time.
 
 The main function will firstly call function `init()` to initialize. Then read and process the captured image. 
 
-<span id="anchor_4_5_4" class="anchor"></span>
+<span id="4_image_processing_analysis"></span>
 
 * **Image Processing Analysis**
 
 {lineno-start=145}
 
-```
+```python
 # 图像处理及追踪控制(image processing and tracking control)
 def run(img):
     global roi
@@ -1770,13 +1774,13 @@ def run(img):
                 areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
 ```
 
-**(1) Image Resizing Process**
+(1) Image Resizing Process
 
 It is easy to zoom in and out the image.
 
 {lineno-start=162}
 
-```
+```python
     frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
@@ -1790,14 +1794,14 @@ The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. `
 
 `INTER_LANCZOS4`: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-**(2) Gaussian filter**
+(2) Gaussian filter
 
 Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 Gaussian filter is a linear filter hat also smooths an image and reduces noise, which is widely used in processing image to eliminate noise.
 
 {lineno-start=163}
 
-```
+```python
     frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)  
 ```
 
@@ -1807,9 +1811,9 @@ The second parameter `(3, 3)` is the kernel size.
 
 The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-**(3) Covert to Color Space**
+(3) Covert to Color Space
 
-Use function “cv2.cvtColor()” to convert image to LAB space.
+Use function "**cv2.cvtColor()**" to convert image to LAB space.
 
 {lineno-start=169}
 
@@ -1821,14 +1825,14 @@ The first parameter `frame_gb` is the input image.
 
 The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is `cv2.COLOR_BGR2RGB`, BGR is converted to RGB.
 
-**(4) Thresholding Processing**
+(4) Thresholding Processing
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
-Use “inRange()” function in cv2 library is used to process image with thresholding method. 
+Use "**inRange()**" function in cv2 library is used to process image with thresholding method. 
 
 {lineno-start=177}
 
-```
+```python
                 frame_mask = cv2.inRange(frame_lab,
                                              (lab_data[detect_color]['min'][0],
                                               lab_data[detect_color]['min'][1],
@@ -1844,13 +1848,13 @@ The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i]['
 
 The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['max'][2])` is the upper limit of color threshold.
 
-**(5) Opening and Closing** 
+(5) Opening and Closing 
 
-To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “cv2.morphologyEx()” is the morphology function.
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function "**cv2.morphologyEx()**" is the morphology function.
 
 {lineno-start=}
 
-```
+```python
                 opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
                 closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -1863,13 +1867,13 @@ The third parameter`np.ones((3, 3)` is the convolution kernel.
 
 The fourth parameter`np.uint8` is the application times. 
 
-**(6) Find the Largest Contour**
+(6) Find the Largest Contour
 
-After completing the above processing, use the function “findContours()” in cv2 library to obtain the contour of the recognized target.
+After completing the above processing, use the function "**findContours()**" in cv2 library to obtain the contour of the recognized target.
 
 {lineno-start=186}
 
-```
+```python
                 contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -1880,13 +1884,13 @@ The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
 The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
 Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
 
-**(7)  Obtain Position Information**
+(7)  Obtain Position Information
 
 Use function `cv2.minEnclosingCircle` in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=189}
 
-```
+```python
             (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour)  # 获取最小外接圆(get the minimum circumscribed circle)
             center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
             center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
@@ -1901,7 +1905,7 @@ The PID algorithm is one of the most widely used automatic controllers. In this 
 
 {lineno-start=199}
 
-```
+```python
             if __isRunning:
                 # 通过PID算法进行X轴追踪,根据目标的画面像素坐标与画面中心坐标比较进行追踪(Track the X-axis using PID algorithm, based on the comparison of the target's pixel coordinates with the center coordinates of the image.)
                 x_pid.SetPoint = img_w / 2.0  # 设定(set)
@@ -1925,7 +1929,7 @@ Using inverse kinematics, if there is a solution, the robotic arm will be contro
 
 {lineno-start=236}
 
-```
+```python
                 target = AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90) # 逆运动学求解(inverse kinematics solution)
                 if target: # 如果有解，则按照求出的解驱动舵机(if there is a solution, the servo will be driven based on the calculated solution)
                     servo_data = target[0]                  
@@ -1937,7 +1941,7 @@ Using inverse kinematics, if there is a solution, the robotic arm will be contro
 
 The function `AK.setPitchRange()` uses the inverse kinematics to get solution.Take `AK.setPitchRange((0, round(y_dis, 2), round(z_dis, 2)), -90, 90)` for example.
 
-The first parameter `(0, round(y_dis, 2), round(z_dis, 2))` is the center coordinates of the target. “0” is the x-axis coordinate. “round(y_dis, 2)” is the y-axis coordinate, and “round(z_dis, 2)” is the z-axis coordinate.
+The first parameter `(0, round(y_dis, 2), round(z_dis, 2))` is the center coordinates of the target. "**0**" is the x-axis coordinate. "**round(y_dis, 2)**" is the y-axis coordinate, and "**round(z_dis, 2)**" is the z-axis coordinate.
 
 The second parameter `-90` is the minimum pitch angle.
 
@@ -1949,7 +1953,7 @@ The first parameter `0.02` is the runtime.
 
 The third parameter `3`is the servo ID and the following `4`, `5` and `6` are all the servo ID numbers.
 
-The fourth parameter `servo_data['servo3']` is the servo pulse, and the following `servo_data['servo4']`, `servo_data['se rvo5']`, “and servo_data['servo6']” are all the servo pulses.
+The fourth parameter `servo_data['servo3']` is the servo pulse, and the following `servo_data['servo4']`, `servo_data['se rvo5']`, "**and servo_data['servo6']**" are all the servo pulses.
 
 ### 4.4.5 Function Extension
 
@@ -1957,9 +1961,9 @@ The fourth parameter `servo_data['servo3']` is the servo pulse, and the followin
 
 If the effect of color recognition is not good enough, you need to adjust the color threshold. Take adjusting red for example and other colors are set based on the same method. The operation steps are as follow:
 
-(1) Double click<img src="../_static/media/chapter_8/section_4/image7.png" style="width: in;height: in" />icon and select **“Execute”** in the pop-up window.
+(1) Double click <img src="../_static/media/chapter_8/section_4/image7.png" style="width: in;height: in" /> icon and select **"Execute"** in the pop-up window.
 
-(2) After entering the interface, click **“Camera Tool”**.
+(2) After entering the interface, click **"Camera Tool"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
 
@@ -1972,25 +1976,25 @@ If the effect of color recognition is not good enough, you need to adjust the co
 <img class="common_img" src="../_static/media/chapter_8/section_4/image10.png"  alt="loading" />
 
 (4) If the returned image does not appear in interface, it means the camera fails to connect. At this time, check the camera whether is connected.
-The right side of the interface is the real-time returned image and the left side is the color to be recognized. Aim camera at the red block, and then drag the sliders until the red at the left side turns white and other colors turn black. Finally, click “Save”.
+The right side of the interface is the real-time returned image and the left side is the color to be recognized. Aim camera at the red block, and then drag the sliders until the red at the left side turns white and other colors turn black. Finally, click "**Save**".
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image11.png"  alt="loading" />
 
-<span id="anchor_4_4_2" class="anchor"></span>
+<span id="4_modify_tracking_color"></span>
 
 * **Modify Tracking Color**
 
 The default tracking color is red. Here the default color will be changed to blue for example.
 
-(1) If want to change the tracking color, enter command **“cd MasterPi/functions/”** and press **“Enter”** to enter the source code directory.
+(1) If want to change the tracking color, enter command **"cd MasterPi/functions/"** and press **"Enter"** to enter the source code directory.
 
-```commandline
+```bash
 cd MasterPi/functions/
 ```
 
-(2) Then enter command **“sudo vim color_tracking.py”** and press **“Enter”** to open the program file.
+(2) Then enter command **"sudo vim color_tracking.py"** and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 sudo vim color_tracking.py
 ```
 
@@ -2001,36 +2005,36 @@ sudo vim color_tracking.py
 <img class="common_img" src="../_static/media/chapter_8/section_4/image14.png"  />
 
 :::{Note}
-After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
+After entering the line number of the code, press **"Shift+G"** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
 :::
 
-(4) Press **“i”**. When the word **“Insert”** appears, it means the program has entered the editing mode.
+(4) Press **"i"**. When the word **"Insert"** appears, it means the program has entered the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image15.png"  />
 
-(5) Change **“red”** to **“blue”** in **“__target_color = ('red',)”**, as the figure shown below.
+(5) Change **"red"** to **"blue"** in **"__target_color = ('red',)"**, as the figure shown below.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image16.png"  />
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image17.png"  />
 
 :::{Note}
-The color after modification must be one of the colors in color selection bar. If want to change to other colors, please refer to “[Add Recognition Color]()” to add new recognition color.
+The color after modification must be one of the colors in color selection bar. If want to change to other colors, please refer to "[**4.4.5 Function Extension -> Add Recognition Color**](#4_add_recognition_color)" to add new recognition color.
 :::
 
-(6) After modifying, press **“Esc”**. Then input **“:wq”** and press **“Enter”** to save and close the file.
+(6) After modifying, press **"Esc"**. Then input **":wq"** and press **"Enter"** to save and close the file.
 
-```commandline
+```bash
 :wq
 ```
 
-<span id="anchor_4_4_3" class="anchor"></span>
+<span id="4_add_recognition_color" class="anchor"></span>
 
 * **Add Recognition Color**
 
 In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click<img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />and select **Execute** in the pop-up window.
+(1) Double click <img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" /> and select **Execute** in the pop-up window.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
 
@@ -2038,11 +2042,11 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image20.png"  alt="loading" />
 
-(3) Click **“Add”** and name the new color as **“purple”**. Then click **“OK”**.
+(3) Click **"Add"** and name the new color as **"purple"**. Then click **"OK"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image21.png"  alt="loading" />
 
-(4) Select **“purple”** in the drop-down list of the color selection bar.
+(4) Select **"purple"** in the drop-down list of the color selection bar.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image22.png"  alt="loading" />
 
@@ -2050,19 +2054,19 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image23.png"  alt="loading" />
 
-(6) Finally, click **“Save”**.
+(6) Finally, click **"Save"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image24.png"  alt="loading" />
 
-(7) Check whether the modified value is written into program. Enter command **“cd ArmPi_mini/yaml/”** and press **“Enter”** to access to the program directory.
+(7) Check whether the modified value is written into program. Enter command **"cd ArmPi_mini/yaml/"** and press **"Enter"** to access to the program directory.
 
-```commandline
+```bash
 cd ArmPi_mini/yaml/
 ```
 
-(8) Enter command **“sudo vim lab_config.yaml”** and press **“Enter”** to open program file.
+(8) Enter command **"sudo vim lab_config.yaml"** and press **"Enter"** to open program file.
 
-```commandline
+```bash
 sudo vim lab_config.yaml
 ```
 
@@ -2070,13 +2074,13 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
 
-(10) Refer to the steps 1-2 in “[Change Tracking Color]()” to open the program file, and press “i” to enter the editing mode.
+(10) Refer to the steps 1-2 in "[**4.4.5 Function Extension -> Modify Tracking Color**](#4_modify_tracking_color)" to open the program file, and press "**i**" to enter the editing mode.
 
 (11) Find the following code.
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image29.png"  />
 
-(12) Enter **‘purple’: (255, 255, 114)**, and change “red” to “purple”, as the figure shown below:
+(12) Enter **'purple': (255, 255, 114)**, and change "**red**" to "**purple**", as the figure shown below:
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image30.png"  />
 
@@ -2094,30 +2098,30 @@ The parameter `(255, 255, 114)` is the maximum value of purple threshold paramet
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image33.png"  />
 
-(16)  Change **“red”** to **“purple”**, as the figure shown below:
+(16)  Change **"red"** to **"purple"**, as the figure shown below:
 
 <img class="common_img" src="../_static/media/chapter_8/section_4/image34.png"  />
 
-(17) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+(17) Save the modified content. Press **"Esc"** and enter **":wq"**, and then press **"Enter"** to save and close the file.
 
-```commandline
+```bash
 :wq
 ```
 
-(18) Then refer to the steps in “[4.4.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will track and move with the target. If you want to add other recognition colors, you can refer “[4.4.3 Add Recognition Color]()” to add new recognition color.
+(18) Then refer to the steps in "[**4.4.2 Start and Close the Game**](#anchor_4_4_2)" to start game. Position a purple object in camera frame, and then robot arm will track and move with the target. If you want to add other recognition colors, you can refer "[**4.4.3 Add Recognition Color**](#anchor_4_4_3)" to add new recognition color.
 
 
 ## 4.5 Color Sorting
 
 :::{Note}
-Before starting color sorting, please make sure that ArmPi mini has been completely configured according to the content in “[1.Getting ready -> 1.8 Deviation Adjustment]()” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
+Before starting color sorting, please make sure that ArmPi mini has been completely configured according to the content in "[**1.Getting ready -> 1.8 Deviation Adjustment**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#deviation-adjustment)" to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
 :::
 
 ### 4.5.1 Project Description
 
 The logic of color sorting is to recognize and distinguish color, and then control robot arm to sort the colored blocks. This realization process includes color recognition and color sorting.
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. (You can refer to the content in folder “[OpenCV Basic Lesson/7.Color Space Learning]()” to learn about Lab color space)
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. (You can refer to the content in folder "[**OpenCV Basic Lesson/7.Color Space Learning**]()" to learn about Lab color space)
 
 Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
 
@@ -2128,7 +2132,7 @@ The opening operation erodes an image and then dilates the eroded image. Opening
 The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
 
 The second part is color sorting. Firstly, robot arm uses the AK.setPitchRangeMoving() fucntion to calculate the servo angle at the target position. Next, control the gripper. Then pick the target color based on the recognized the recognized color and move them to the corresponding area one by one.
-Regarding the inverse kinematics, please refer to “[3. Basic Motion Lesson -> 3.1 What is Inverse Kinematics]()”.
+Regarding the inverse kinematics, please refer to "[**3. Basic Motion Lesson -> 3.1 What is Inverse Kinematics**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/6_inverse_kinematics.html#what-is-inverse-kinematics)".
 
 ### 4.5.2 Start and Close the Game
 
@@ -2140,17 +2144,17 @@ The input command should be case sensitive.
 
 <img class="common_img" src="../_static/media/chapter_8/section_5/image4.png"  />
 
-(2) Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
+(2) Click in the upper left corner (as the figure shown below), or press "**Ctrl+Alt+T**" to open LX terminal.
 
-(3) Enter command and press “Enter” to access to the directory of game program.
+(3) Enter command and press "**Enter**" to access to the directory of game program.
 
-```
+```bash
 cd ArmPi_mini/functions
 ```
 
-(4) Enter command and press “Enter” to start game.
+(4) Enter command and press "**Enter**" to start game.
 
-```
+```bash
 python3 color_sorting.py
 ```
 
@@ -2162,13 +2166,13 @@ Place red, green and blue blocks on a flat and smooth surface. When the block is
 
 ### 4.5.4 Program Analysis
 
-The source code of program is located in: [/home/pi/ArmPi_mini/functions/color_sorting.py]()
+The source code of program is located in: [/home/pi/ArmPi_mini/functions/color_sorting.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/color_sorting.zip)
 
 * **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -2183,7 +2187,7 @@ import common.yaml_handle as yaml_handle
 
 {lineno-start=332}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -2193,11 +2197,11 @@ if __name__ == '__main__':
     AK.board = board
 ```
 
-Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use "**library name+function name (parameter, parameter)**". For example,
 
 {lineno-start=171}
 
-```
+```python
                 time.sleep(1) # 延时1秒(delay for 1s)
 ```
 
@@ -2210,7 +2214,7 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=336}
 
-```
+```python
     # 实例化逆运动学库(instantiate the inverse kinematics library)
     AK = ArmIK()
 ```
@@ -2219,11 +2223,11 @@ After instantiating, you can directly input and call the function `AK.function n
 
 * **Main Function Analysis**
 
-The python program  `__name__ ==  ’__main__:’`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program  `__name__ ==  '__main__:'`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=332}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -2236,11 +2240,11 @@ if __name__ == '__main__':
     start()
 ```
 
-**(1)  Read Captured Image** 
+(1)  Read Captured Image 
 
 {lineno-start=343}
 
-```
+```python
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
     #cap = cv2.VideoCapture(0)
     while True:
@@ -2251,32 +2255,32 @@ Capture the camera image and save it to `cap`.
 
 The function cap.read is to read the captured image. 
 
-True: the “rat” value of image is read. 
+True: the "**rat**" value of image is read. 
 
 False: The value of image`ret` was not read.
 
 `img` is a frame of the camera that was read.
 
-**(2)  Window Displays Image**
+(2)  Window Displays Image
 
 When the capture image is read, `ret` value is True.
 
 {lineno-start=346}
 
-```
+```python
         if ret:
             frame = img.copy()
             Frame = run(frame) 
 ```
 
 The function `img.copy()` is used to copy the content of `img` to `frame`.
-The function run() is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
+The function run() is used to process image. In "[**4.5.4 Program Analysis -> Image Processing Analysis**](#5_image_processing_analysis)" to check the detailed content.
 
-**(3) Window Displays Image**
+(3) Window Displays Image
 
 {lineno-start=350}
 
-```
+```python
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -2289,17 +2293,17 @@ The function run() is used to process image. In “[Image Processing Analysis]()
 
 The function `cv2.resize()` is used to scale the processed image to the appropriate size.
 
-The function `cv2.imshow()` is used to displa y the image in window. `’frame’` is the window name. `frame_resize` is the displayed content and must be followed by cv2.waitKey(). Otherwise, the content can not be displayed.
+The function `cv2.imshow()` is used to displa y the image in window. `'frame'` is the window name. `frame_resize` is the displayed content and must be followed by cv2.waitKey(). Otherwise, the content can not be displayed.
 
-The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
+The function `cv2.waitKey()` is used to wait for inputting key and the parameter "**1**" refers to the delay time.
 
-<p id="anchor_5_5_4"></p>
+<p id="5_image_processing_analysis"></p>
 
-**5.4.4 Image Process Analysis**
+* **Image Process Analysis**
 
 {lineno-start=244}
 
-```
+```python
 # 图像处理(image processing)
 def run(img):
     global unreachable
@@ -2358,13 +2362,13 @@ def run(img):
                         color = 3
 ```
 
-**(1) Image Resizing Process**
+(1) Image Resizing Process
 
 It is easy to zoom in and out the image.
 
 {lineno-start=257}
 
-```
+```python
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
@@ -2374,11 +2378,11 @@ The second parameter `size` is the size of the output image.
 
 The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. 
 
-`INTER_NEAREST` is the earest Neighbour Interpolation. INTER_LINEAR is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
+`INTER_NEAREST` is the earest Neighbour Interpolation. INTER_LINEAR is the Bilinear Interpolation. If the last parameter is not modified, this method "**INTER_LINEAR**" will be used by default. 
 
 `INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
 
-**(2) Gaussian filter**
+(2) Gaussian filter
 
 Noise is always present in image to influence the image quality to weaken the features. Select the filter methods according to the different noises and the command method includes Gaussian filter, Median filtering, Mean filter, etc.
 
@@ -2386,7 +2390,7 @@ Gaussian filter is a linear filter hat also smooths an image and reduces noise, 
 
 {lineno-start=257}
 
-```
+```python
         frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
@@ -2396,27 +2400,27 @@ The second parameter `(3, 3)` is the kernel size.
 
 The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
-**(3) Covert to Color Space**
+(3) Covert to Color Space
 
 Use function `cv2.cvtColor()` to convert image to LAB space.
 
 {lineno-start=259}
 
-```
+```python
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ```
 
 The first parameter `frame_gb` is the input image.
 The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is `cv2.COLOR_BGR2RGB` , BGR is converted to RGB.
 
-**(4) Thresholding Processing**
+(4) Thresholding Processing
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 Use `inRange()` function in cv2 library is used to process image with thresholding method. 
 
 {lineno-start=267}
 
-```
+```python
                     frame_mask = cv2.inRange(frame_lab,
                                                  (lab_data[i]['min'][0],
                                                   lab_data[i]['min'][1],
@@ -2438,7 +2442,7 @@ To lower interference and make image smoother, opening and closing operations ne
 
 {lineno-start=274}
 
-```
+```python
                     opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
                     closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -2455,7 +2459,7 @@ After completing the above processing, use fucntion `findContours()` in cv2 libr
 
 {lineno-start=278}
 
-```
+```python
                     contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -2469,7 +2473,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 {lineno-start=279}
 
-```
+```python
                     areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
                     if areaMaxContour is not None:
                         if area_max > max_area:  # 找最大面积(find the maximum area)
@@ -2484,7 +2488,7 @@ Use function `cv2.minEnclosingCircle` in cv2 library to obtain the minimum enclo
 
 {lineno-start=285}
 
-```
+```python
             if max_area > 500:  # 有找到最大面积(the maximum area has been found)
                 (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
                 center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
@@ -2499,7 +2503,7 @@ Use judgement statement to get the maximum color in a image.
 
 {lineno-start=292}
 
-```
+```python
                 if not start_pick_up:
                 
                     if color_area_max == 'red':  # 红色最大(red is the maximum)
@@ -2543,7 +2547,7 @@ The robot arm movement function  `move()` is executed as a child thread. When co
 
 {lineno-start=138}
 
-```
+```python
 # 机械臂移动函数(function for the robotic arm's movement)
 def move():
     global rect
@@ -2607,7 +2611,7 @@ The RGB color is consistent with the recognized color.
 
 {lineno-start=71}
 
-```
+```python
 #设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
 def set_rgb(color):
     if color == "red":
@@ -2624,7 +2628,7 @@ def set_rgb(color):
 
 {lineno-start=164}
 
-```
+```python
                 board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
 ```
 
@@ -2636,7 +2640,7 @@ Determine the recognized color and move it to the corresponding position.
 
 {lineno-start=158}
 
-```
+```python
     while True:
         if __isRunning:        
             if detect_color != 'None' and start_pick_up: 
@@ -2672,7 +2676,7 @@ The second parameter `[[1,1500]]` is the servo ID1 and `1500` is the pulse width
 
 The function `AK.setPitchRangeMoving()` is the inverse kinematics control of the robotic arm. Take `AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)` as an example:
 
-The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. “0” is the X-axis coordinate, “6” is the Y-axis coordinate, and “18” is the Z-axis coordinate.
+The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. "**0**" is the X-axis coordinate, "**6**" is the Y-axis coordinate, and "**18**" is the Z-axis coordinate.
 
 The second parameter `0` is the pitch angle.
 
@@ -2681,7 +2685,6 @@ The third parameter `-90` is the minimum pitch angle range.
 The fourth parameter `90` is the maximum pitch angle range.
 
 The fifth parameter `500` is runtime in the unit of milliseconds.
-
 
 ### 4.5.5 Function Extension
 
@@ -2707,15 +2710,15 @@ The parameter z must be greater than 0.
 
 Here the program will be changed to place the block in front of robot arm. The method is applicable to change other color. The specific operation steps are as follow:
 
-(1) Enter command and press “Enter” to enter the source code directory.
+(1) Enter command and press "**Enter**" to enter the source code directory.
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
-(2) Then enter command  and press “Enter” to open the program file.
+(2) Then enter command  and press "**Enter**" to open the program file.
 
-```commandline
+```bash
 sudo vim color_sorting.py
 ```
 
@@ -2724,10 +2727,10 @@ sudo vim color_sorting.py
 <img class="common_img" src="../_static/media/chapter_8/section_5/image9.png"  />
 
 :::{Note}
- After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
+ After entering the line number of the code, press "**Shift+G**" to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
 :::
 
-(4) Press “i” to enter the editing mode.
+(4) Press "**i**" to enter the editing mode.
 
 <img class="common_img" src="../_static/media/chapter_8/section_5/image10.png"  />
 
@@ -2735,33 +2738,33 @@ sudo vim color_sorting.py
 
 <img class="common_img" src="../_static/media/chapter_8/section_5/image11.png"  />
 
-(6) Then find and comment the following code. (Add “#” in front of the code.)
+(6) Then find and comment the following code. (Add "**#**" in front of the code.)
 
 <img class="common_img" src="../_static/media/chapter_8/section_5/image12.png"  />
 
-(7) Then save the modified content. Press **“Esc”** and enter **“:wq”**, and press **“Enter”** to save and close the program file.
+(7) Then save the modified content. Press **"Esc"** and enter **":wq"**, and press **"Enter"** to save and close the program file.
 
-```commandline
+```bash
 :wq
 ```
 
-(8) Enter command **“python3 color_sorting.py”** again, and press **“Enter”** to start game.
+(8) Enter command again, and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 color_sorting.py
 ```
 
 ## 4.6 Intelligent Stacking
 
 :::{Note}
-Before starting intelligent stacking, please make sure that ArmPi mini has been completely configured according to the content in “Getting Ready/ Lesson 4 Deviation Adjustment/ Lesson 5 Position Adjustment” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
+Before starting intelligent stacking, please make sure that ArmPi mini has been completely configured according to the content in "**[1. Getting Ready/ 1.8 Deviation Adjustment](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#deviation-adjustment)**" to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
 :::
 
 ### 4.6.1 Program Description
 
 The logic of intelligent stacking is to recognize color first, and control robot arm to grip the block and stack it in the specific area. This process has three parts including recognition, gripping, and stacking.
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “OpenCV Basic Lesson” to learn about Lab color space.
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder "**[OpenCV Basic Lesson]()**" to learn about Lab color space.
 
 Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
 
@@ -2775,50 +2778,50 @@ Then, determine the movement status of the placed block. If it detects that the 
 Finally, the block is placed in the stacking area and robot arm will stack it on the previous block. When all the blocks are stacked, the robot arm returns to its initial position.
 
 Both gripping and stacking use inverse kinematics function `AK.setPitchRangeMoving()` to calculate the servo angle at the target position, and then control robot arm to move to the target position.
-About inverse kinematics, please refer to the content in “3.Basic Motion Lesson/3.1 What is Inverse Kinematics?” 
+About inverse kinematics, please refer to the content in "**[3. Basic Motion Lesson/3.1 What is Inverse Kinematics?](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/6_inverse_kinematics.html#what-is-inverse-kinematics)**" 
 
-<p id="anchor_6_2"></p>
+<p id="anchor_4_6_2"></p>
 
 ### 4.6.2 Start and Close the Game
 
 :::{Note}
-The input command should be case sensitive, and “Tab” can be used to complement keywords.
+The input command should be case sensitive, and "**Tab**" can be used to complement keywords.
 :::
 
-(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer. Click in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image4.png"  />
 
 (2) Enter command to access to the directory of game program.
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
-(3) Enter command and press **“Enter”** to start game.
+(3) Enter command and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 color_palletizing.py
 ```
 
-(4) If you want to exit the game, press **“Ctrl+C”**. If it fails to close, please try a few more times.
+(4) If you want to exit the game, press **"Ctrl+C"**. If it fails to close, please try a few more times.
 
 ### 4.6.3 Project Outcome
 
-When the game is started and the block is recognized, the buzzer will make a “Di” sound and the robot arm will pick up the block, and then stack it in the stacking area. 
+When the game is started and the block is recognized, the buzzer will make a "**Di**" sound and the robot arm will pick up the block, and then stack it in the stacking area. 
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/1.gif"  />
 
 
 ### 4.6.4 Program Analysis
 
-The source code of program is located in:[/home/pi/ArmPi_mini/functions/color_palletizing.py]()
+The source code of program is located in: [/home/pi/ArmPi_mini/functions/color_palletizing.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/color_palletizing.zip)
 
-6.4.1 Import Function Library
+* **Import Function Library**
 
 {lineno-start=1}
 
-```
+```python
 #!/usr/bin/python3
 # coding=utf8
 import sys
@@ -2833,7 +2836,7 @@ import common.yaml_handle as yaml_handle
 
 {lineno-start=333}
 
-```
+```python
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
     board = Board()
@@ -2842,16 +2845,16 @@ import common.yaml_handle as yaml_handle
     AK.board = board
 ```
 
-Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use “library name+function name (parameter, parameter)”. For example,
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use "**library name+function name (parameter, parameter)**". For example,
 
 {lineno-start=167}
 
-```
+```python
                 time.sleep(1) # 延时1秒(delay for 1s)
 ```
 
 Call `sleep` function in `time` library. The function `sleep ()` is used to delay.
-There are some built-in libraries in Python, so they can be called directly. For example, “time”, `cv2`and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
+There are some built-in libraries in Python, so they can be called directly. For example, "**time**", `cv2`and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
 * **Instantiate Function Library**
 
@@ -2859,7 +2862,7 @@ The name of function library is too long to memorize. For calling function easil
 
 {lineno-start=336}
 
-```
+```python
     # 实例化逆运动学库(instantiate the inverse kinematics library)
     AK = ArmIK()
     AK.board = board
@@ -2869,11 +2872,11 @@ After instantiating, you can directly input and call the function `AK.function n
 
 * **Main Function Analysis**
 
-The python program `__name__ ==  ’__main__:’`is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ ==  '__main__:'`is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=332}
 
-```
+```python
 if __name__ == '__main__':
     from kinematics.arm_move_ik import *
     from common.ros_robot_controller_sdk import Board
@@ -2889,7 +2892,7 @@ if __name__ == '__main__':
 
 {lineno-start=343}
 
-```
+```python
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
     #cap = cv2.VideoCapture(0)
     while True:
@@ -2900,7 +2903,7 @@ Capture the camera image and save it to  `cap`.
 
 The function `cap.read()` is to read the captured image.
 
-True: the “ret” value of image is read. 
+True: the "**ret**" value of image is read. 
 
 False: The value of image 'ret' was not read.
 
@@ -2908,24 +2911,24 @@ False: The value of image 'ret' was not read.
 
 (2) Enter Image Processing
 
-When the captured image is read, “ret” value is True.
+When the captured image is read, "**ret**" value is True.
 
 {lineno-start=347}
 
-```
+```python
         if ret:
             frame = img.copy()
             Frame = run(frame)  
 ```
 
 The function `img.copy()` is used to copy the content of `img` to `frame`.
-The function `run()` is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
+The function `run()` is used to process image. In "[**4.6.4 Program Analysis -> Image Processing Analysis**](#6_image_processing_analysis)" to check the detailed content.
 
 (3) Window Displays Image
 
 {lineno-start=350}
 
-```
+```python
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)
             key = cv2.waitKey(1)
@@ -2935,15 +2938,17 @@ The function `run()` is used to process image. In “[Image Processing Analysis]
 
 The function `cv2.resize()` is used to scale the processed image to the appropriate size.
 
-The function `cv2.imshow()` is used to display the image in window. `’frame’` is the window name. `frame_resize` is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
+The function `cv2.imshow()` is used to display the image in window. `'frame'` is the window name. `frame_resize` is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
 
 The function `cv2.waitKey()` is used to wait for inputting key and the parameter `1` refers to the delay time.
+
+<p id="6_image_processing_analysis"></p>
 
 * **Image Processing Analysis**
 
 {lineno-start=240}
 
-```
+```python
 # 图像处理(image processing)
 def run(img):
     global roi
@@ -3003,7 +3008,7 @@ It is easy to zoom in and out the image.
 
 {lineno-start=}
 
-```
+```python
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
@@ -3026,7 +3031,7 @@ Gaussian filter is a linear filter hat also smooths an image and reduces noise, 
 
 {lineno-start=257}
 
-```
+```python
         frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
@@ -3042,7 +3047,7 @@ Use function `cv2.cvtColor()` to convert image to LAB space.
 
 {lineno-start=259}
 
-```
+```python
         frame_lab = cv2.cvtColor(frame_gb, cv2.COLOR_BGR2LAB)  # 将图像转换到LAB空间(convert the image to LAB space)
 ```
 
@@ -3053,11 +3058,11 @@ The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BG
 (4) Threshold Processing
 
 Threshold can be used to create binary images, only 0 and 1. The image can be small size for better processing.
-Use “inRange()” function in cv2 library is used to process image with threshold method. 
+Use "**inRange()**" function in cv2 library is used to process image with threshold method. 
 
 {lineno-start=267}
 
-```
+```python
                     frame_mask = cv2.inRange(frame_lab,
                                                  (lab_data[i]['min'][0],
                                                   lab_data[i]['min'][1],
@@ -3079,7 +3084,7 @@ To lower interference and make image smoother, opening and closing operations ne
 
 {lineno-start=274}
 
-```
+```python
                     opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
                     closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
@@ -3098,7 +3103,7 @@ After completing the above processing, use function `findContours()`in cv2 libra
 
 {lineno-start=278}
 
-```
+```python
                     contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
@@ -3112,7 +3117,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 {lineno-start=279}
 
-```
+```python
                     areaMaxContour, area_max = getAreaMaxContour(contours)  # 找出最大轮廓(find the largest contour)
                     if areaMaxContour is not None:
                         if area_max > max_area:  # 找最大面积(find the maximum area)
@@ -3124,11 +3129,11 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 (7) Obtain Position Information
 
-Use function “cv2.minEnclosingCircle” in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+Use function "**cv2.minEnclosingCircle**" in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=286}
 
-```
+```python
                 (center_x, center_y), radius = cv2.minEnclosingCircle(areaMaxContour_max)  # 获取最小外接圆(get the minimum circumscribed circle)
                 center_x = int(Misc.map(center_x, 0, size[0], 0, img_w))
                 center_y = int(Misc.map(center_y, 0, size[1], 0, img_h))
@@ -3142,7 +3147,7 @@ Use judgement statement to get the maximum color in a image.
 
 {lineno-start=292}
 
-```
+```python
                 if not start_pick_up:
                     if color_area_max == 'red':  # 红色最大(red is the maximum)
                         color = 1
@@ -3182,7 +3187,7 @@ The robot arm movement function `move()` is executed as a child thread. When col
 
 {lineno-start=138}
 
-```
+```python
 # 机械臂移动函数(function for the robotic arm's movement)
 def move():
     global _stop
@@ -3241,7 +3246,7 @@ The RGB color is consistent with the recognized color.
 
 {lineno-start=71}
 
-```
+```python
 #设置扩展板的RGB灯颜色使其跟要追踪的颜色一致(set the color of the RGB light on the expansion board to match the color to be tracked)
 def set_rgb(color):
     if color == "red":
@@ -3258,7 +3263,7 @@ def set_rgb(color):
 
 {lineno-start=160}
 
-```
+```python
                 board.set_buzzer(1900, 0.1, 0.9, 1)# 设置蜂鸣器响0.1秒(set the buzzer to sound for 0.1s)
 ```
 
@@ -3270,7 +3275,7 @@ Determine the recognized color to stack the block in the corresponding place.
 
 {lineno-start=162}
 
-```
+```python
                 board.pwm_servo_set_position(0.5, [[1, 2000]])# 张开爪子(open gripper)
                 time.sleep(0.6)
                 if not __isRunning: # 检测是否停止玩法(detect if the game is stopped)
@@ -3339,23 +3344,25 @@ The fourth parameter `90` is the maximum pitch angle range.
 
 The fifth parameter  `500` is runtime in the unit of milliseconds.
 
+<p id="anchor_4_6_5"></p>
+
 ### 4.6.5 Function Extension
 
 In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click<img src="../_static/media/chapter_8/section_6/image7.png" style="width: in;height: in" />icon and select **“Execute”** in the pop-up window.
+(1) Double click <img src="../_static/media/chapter_8/section_6/image7.png" style="width: in;height: in" /> icon and select **"Execute"** in the pop-up window.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image8.png"  />
 
-(2) Then select **“Camera Tool”** and **“Connect”** in sequence.
+(2) Then select **"Camera Tool"** and **"Connect"** in sequence.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image9.png"  alt="loading" />
 
-(3) Click **“Add”** and name the new color as **“purple”**. Then click **“OK”**.
+(3) Click **"Add"** and name the new color as **"purple"**. Then click **"OK"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image10.png"  alt="loading" />
 
-(4) Select **“purple”** in the drop-down list of the color selection bar.
+(4) Select **"purple"** in the drop-down list of the color selection bar.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image11.png"  alt="loading" />
 
@@ -3363,19 +3370,19 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image12.png"  alt="loading" />
 
-(6) Finally, click **“Save”**.
+(6) Finally, click **"Save"**.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image13.png"  alt="loading" />
 
-(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
+(7) Check whether the modified value is written into program. Enter command and press "**Enter**" to access to the program directory.
 
-```commandline
+```bash
 cd ArmPi_mini/yaml/
 ```
 
-(8) Enter command and press **“Enter”** to open program file.
+(8) Enter command and press **"Enter"** to open program file.
 
-```commandline
+```bash
 sudo vim lab_config.yaml
 ```
 
@@ -3383,15 +3390,15 @@ sudo vim lab_config.yaml
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image16.png"  />
 
-(10) Enter command and press **“Enter”** to enter the source code directory.
+(10) Enter command and press **"Enter"** to enter the source code directory.
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
-(11) Then enter command and press **“Enter”** to open the program file.
+(11) Then enter command and press **"Enter"** to open the program file.
 
-```commandline
+```bash
 sudo vim color_palletizing.py
 ```
 
@@ -3399,7 +3406,7 @@ sudo vim color_palletizing.py
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image19.png"  />
 
-(13) Input ` ‘purple’:(255, 255, 114) ` and `'purple'`, as the figure shown below:
+(13) Input ` 'purple':(255, 255, 114) ` and `'purple'`, as the figure shown below:
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image21.png"  />
 
@@ -3437,13 +3444,13 @@ The parameter `(255, 255, 144)`  is the maximum value of purple threshold parame
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image29.png"  />
 
-(22) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+(22) Save the modified content. Press **"Esc"** and enter **":wq"**, and then press **"Enter"** to save and close the file.
 
-```commandline
+```bash
 :wq
 ```
 
-(23) Then refer to the steps in “[4.6.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.6.5 Change default recognition color]()” to change the default color to purple. 
+(23) Then refer to the steps in "[**4.6.2 Start and Close the Game**](#anchor_4_6_2)" to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer "[**4.6.5 Change default recognition color**](#anchor_4_6_5)" to change the default color to purple. 
 
 (24) If you want to add other recognition colors, please refer to the operation steps above.
 
@@ -3458,46 +3465,48 @@ In this section, the trained face model is first zoomed to detect the face. Then
 ### 4.7.2 Operation Steps
 
 :::{Note}
-The input command should be case sensitive, and **“Tab”** can be used to complement keywords.
+The input command should be case sensitive, and **"Tab"** can be used to complement keywords.
 :::
 
 (1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-(2) Click <img class="common_img" src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
+(2) Click <img src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
 
-(3) Enter command **“cd ArmPi_mini/functions”** to navigate to the directory where the demo program is located.
+(3) Enter command **"cd ArmPi_mini/functions"** to navigate to the directory where the demo program is located.
 
-```commandline
+```bash
 cd ArmPi_mini/functions
 ```
 
-(4) Enter command **“python3 face_detect.py”**, and press **“Enter”** to start game.
+(4) Enter command, and press **"Enter"** to start game.
 
-```commandline
+```bash
 python3 face_detect.py
 ```
 
-(5) If want to exit the game, press **“Ctrl+C”**. If fail to close, please try a few more times.
+(5) If want to exit the game, press **"Ctrl+C"**. If fail to close, please try a few more times.
 
 ### 4.7.3 Project Outcome
 
 :::{Note}
-Please do not try the Facial Recognition game under strong light, such as sunlight. Strong light will affect the recognition performance, so it is recommended to play this game indoors. It’s better to set the distance between face and camera with 50-100cm.
+Please do not try the Facial Recognition game under strong light, such as sunlight. Strong light will affect the recognition performance, so it is recommended to play this game indoors. It's better to set the distance between face and camera with 50-100cm.
 :::
 
-After starting the facial recognition function, ArmPi mini’s pan-tilt camera will rotate left and right to detect face. It will stop when the face is recognized, and run the greeting action.
+After starting the facial recognition function, ArmPi mini's pan-tilt camera will rotate left and right to detect face. It will stop when the face is recognized, and run the greeting action.
 
 ### 4.7.4 Program Analysis
 
-The source code of program is located in ：[/home/pi/ArmPi_mini/functions/face_detect.py]()
+The source code of program is located in ：[/home/pi/ArmPi_mini/functions/face_detect.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/face_detect.zip)
+
+<p id="7_import_parameter_module"></p>
 
 * **Import Parameter Module**
 
 | **Import Module**                                 | **Function**                                                 |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| import sys                                        | The Python “sys” module has been imported for accessing system-related functions and variables. |
+| import sys                                        | The Python "**sys**" module has been imported for accessing system-related functions and variables. |
 | import cv2                                        | The OpenCV library has been imported for image processing and computer vision-related functionalities. |
-| import time                                       | The Python “time” module has been imported for time-related functionalities, such as delay operations. |
+| import time                                       | The Python "**time**" module has been imported for time-related functionalities, such as delay operations. |
 | import numpy as np                                | The numpy library has been imported. It offers a wide range of mathematical Functions for array operations. |
 | import threading                                  | Provides an environment for running multiple threads concurrently. |
 | import mediapipe as mp                            | The integrated tool library includes machine learning vision algorithms such as face detection, facial landmarks, gesture recognition, face segmentation, and posture recognition models. |
@@ -3511,13 +3520,13 @@ Next, use mediapipe face model library to perform face detection, get face detec
 
 * **Program Logic and Related Code Analysis**
 
-(1)  Import function library
+(1) Import function library
 
-In this step for initialization, the first task is to import the required libraries for subsequent program calls. For details on the imports, please refer to “[4.7.4 Program Analysis -> Import Parameter Module]()”.
+In this step for initialization, the first task is to import the required libraries for subsequent program calls. For details on the imports, please refer to "[**4.7.4 Program Analysis -> Import Parameter Module**](#7_import_parameter_module)".
 
 {lineno-start=3}
 
-```
+```python
 import sys
 import cv2
 import time
@@ -3535,7 +3544,7 @@ Set initial state, including the initial position of servo, face recognition mod
 
 {lineno-start=40}
 
-```
+```python
 # 初始位置(initial position)
 def initMove():
     board.pwm_servo_set_position(0.3, [[1, servo1]])
@@ -3544,7 +3553,7 @@ def initMove():
 
 {lineno-start=23}
 
-```
+```python
 # 导入人脸识别模块(import facial recognition module)
 Face = mp.solutions.face_detection
 # 自定义人脸识别方法，最小的人脸检测置信度0.5(Customize face recognition method, and the minimum face detection confidence is 0.5)
@@ -3557,17 +3566,17 @@ Convert the BGR image to RGB image.
 
 {lineno-start=113}
 
-```
+```python
     imgRGB = cv2.cvtColor(img_copy, cv2.COLOR_BGR2RGB) # 将BGR图像转为RGB图像(convert BGR image to RGB image)
 ```
 
 (4)  Use mediapipe Face Model 
 
-Perform face detection. After the face is detected, highlight the detected face with a rectangle. Then, determine whether the center of the face is located at the center of the frame. If it is, set the variable "start_greet" to True. This enables the execution of the action group.
+Perform face detection. After the face is detected, highlight the detected face with a rectangle. Then, determine whether the center of the face is located at the center of the frame. If it is, set the variable "**start_greet**" to True. This enables the execution of the action group.
 
 {lineno-start=116}
 
-```
+```python
     if results.detections:  # 如果检测不到人脸那就返回None(If no face is detected, return None)
 
         for index, detection in enumerate(results.detections):  # 返回人脸索引index(第几张脸)，和关键点的坐标信息(Return the face index (which face) and the coordinate information of the keypoints)
@@ -3600,7 +3609,7 @@ If a face is detected, control the buzzer to beep.
 
 {lineno-start=80}
 
-```
+```python
     while True:
         if __isRunning:
             if start_greet:
@@ -3633,17 +3642,17 @@ The input of commands must strictly distinguish between uppercase and lowercase 
 
 (1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-(2) Click the icon<img src="../_static/media/chapter_8/section_8/image2.png" style="width: in;height: in" />in the top left corner of the system desktop or press the shortcut "Ctrl+Alt+T " to open the LX terminal.
+(2) Click the icon <img src="../_static/media/chapter_8/section_8/image2.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut "**Ctrl+Alt+T**" to open the LX terminal.
 
 (3) In the terminal, enter the command to navigate to the directory where the program is located, then press Enter:
 
-```commandline
+```bash
 cd ArmPi_mini/functions/
 ```
 
 (4) Enter the command and press Enter to start the program:
 
-```commandline
+```bash
 python3 face_recognition.py
 ```
 
@@ -3659,11 +3668,11 @@ Once the activity begins, the camera's pan-tilt will rotate left and right. If n
 
 ### 4.8.4 Program Brief Analysis 
 
-The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_recgonition.py]()
+The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_recgonition.py](https://store.hiwonder.com.cn/docs/armpi_mini/source_code/face_recognition.zip)
 
 {lineno-start=82}
 
-```
+```python
     while True:
         if __isRunning:
             if start_greet:
@@ -3712,7 +3721,7 @@ At this initialization step, necessary libraries are imported to facilitate futu
 
 {lineno-start=3}
 
-```
+```python
 import sys
 import cv2
 import time
@@ -3728,7 +3737,7 @@ from common.ros_robot_controller_sdk import Board
 
 {lineno-start=41}
 
-```
+```python
 def initMove():
     board.pwm_servo_set_position(0.3, [[1, servo1]])
     AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90,1500)
@@ -3736,7 +3745,7 @@ def initMove():
 
 {lineno-start=23}
 
-```
+```python
 # 导入人脸识别模块(import facial recognition module)
 Face = mp.solutions.face_detection
 # 自定义人脸识别方法，最小的人脸检测置信度0.5(Customize face recognition method, and the minimum face detection confidence is 0.5)
@@ -3749,7 +3758,7 @@ The BGR image is converted to an RGB image.
 
 {lineno-start=124}
 
-```
+```python
     imgRGB = cv2.cvtColor(img_copy, cv2.COLOR_BGR2RGB) # 将BGR图像转为RGB图像(convert BGR image to RGB image)
 ```
 
@@ -3759,7 +3768,7 @@ The system performs face detection and draws a rectangle around the detected fac
 
 {lineno-start=125}
 
-```
+```python
     results = faceDetection.process(imgRGB) # 将每一帧图像传给人脸识别模块(transmit the image of each frame to facial recognition module)
 
     if results.detections:  # 如果检测不到人脸那就返回None(If no face is detected, return None)
@@ -3794,7 +3803,7 @@ If a face is detected, the `board.pwm_servo_set_position` function is used to co
 
 {lineno-start=82}
 
-```
+```python
     while True:
         if __isRunning:
             if start_greet:
@@ -3814,7 +3823,7 @@ If no face is detected, the system controls the pan-tilt servo to rotate left or
 
 {lineno-start=95}
 
-```
+```python
             else:
                 if x_pulse >= 1900 or x_pulse <= 1100:
                     d_pulse = -d_pulse
