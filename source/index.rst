@@ -16,6 +16,7 @@ ArmPi mini
    docs/6_inverse_kinematics.md
    docs/8_ai_vision.md
    docs/9_upper_computer.md
+   docs/11_network_configuration.md
    docs/resources_download.md
 
 

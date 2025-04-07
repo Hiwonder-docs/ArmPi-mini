@@ -1,6 +1,7 @@
 # 2. Quick User Experience
 
-<p id="anchor_1"></p>
+<p id="anchor_2_1"></p>
+
 ## 2.1 APP Installation and Connection 
 
 The following instructions use TurboPi as an example and apply to other Hiwonder Raspberry Pi series products as well.
@@ -26,12 +27,11 @@ In this section, you will learn how to use APP "**WonderPi**" to control TurboPi
 - Make sure all APP permissions are turned on in settings, otherwise APP functions will be limited!
 
 - Turn on Location and WiFi before operation.
-
 :::
 
 ### 2.1.2 APP Connection
 
-(1) Start robot. (The switch is on Raspberry Pi expansion board). For detailed instruction, please refer to the file in "[Getting Ready -> 1.6 Charging and Power-On Status Explanation]()".
+(1) Start robot. (The switch is on Raspberry Pi expansion board). For detailed instruction, please refer to the file in "[**Getting Ready -> 1.6 Charging and Power-On Status Explanation**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#charging-and-power-on-status-explanation)".
 
 (2) After TurboPi boots up successfully, it enters AP direct connection mode, and generates a WiFi starting with **"HW"**. Join this WiFi, and then you can experience robot games
 
@@ -76,14 +76,14 @@ After TurboPi boots up successfully, it enters AP direct connection mode, and ge
 <img src="../_static/media/chapter_2/section_1/image9.jpeg"   />
 
 :::{Note}
-If you are informed of "No Internet. Whether to keep connection", just select "**keep connected**".
+If you are informed of "**No Internet. Whether to keep connection**", just select "**keep connected**".
 :::
 
 (6) Tap robot icon to enter mode selection interface.
 
 <img src="../_static/media/chapter_2/section_1/image10.jpeg"   />
 
-For detailed introduction to robot games, please refer to the file in "**[2.2 APP Control](#anchor_2)**".
+For detailed introduction to robot games, please refer to the file in "**[2.2 APP Control](#anchor_2_2)**".
 
 * **LAN Connection Mode**
 
@@ -129,22 +129,23 @@ For detailed introduction to robot games, please refer to the file in "**[2.2 AP
 
 <img src="../_static/media/chapter_2/section_1/image21.jpeg"   />
 
-For detailed introduction to robot games, please refer to the file in"**[2.2 APP Control](#anchor_2)**".
+For detailed introduction to robot games, please refer to the file in"**[2.2 APP Control](#anchor_2_2)**".
 
+<p id="anchor_2_2"></p>
 
 ## 2.2 App Control
 
-User can use app “WonderPi” to control ArmPi mini. This lesson will introduce the specific operation methods of each game.
+User can use app "WonderPi" to control ArmPi mini. This lesson will introduce the specific operation methods of each game.
 
 ### 2.2.1 Getting Ready
 
 (1) Firstly, calibrate the picking position of ArmPi mini.
 
-Please refer to the content in “[Getting Ready ->1.8 Position Calibration]()” to learn about the specific operation steps.
+Please refer to the content in "[Getting Ready ->1.8 Position Calibration](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/1_read_before_studying.html#deviation-adjustment)" to learn about the specific operation steps.
 
-(2) Install app **“WonderPi”** and connect the robotic arm.
+(2) Install app **"WonderPi"** and connect the robotic arm.
 
-Please refer to the content in “[Quick User Experience- >2.2 APP Control ]()” to learn about the specific operation steps.
+Please refer to the content in "[2.2 APP Control ](#anchor_2_2)" to learn about the specific operation steps.
 
 ### 2.2.2 Start Game
 
@@ -167,16 +168,16 @@ The following list introduces the functions of the navigation bar in game select
 | Icon | Instruction |
 |:--:|:--:|
 | <img src="../_static/media/chapter_2/section_2/image7.png" style="width:0.39306in;height:0.39306in" /> | Back to the connection interface. |
-| <img src="../_static/media/chapter_2/section_2/image8.png" style="width:0.39306in;height:0.39306in" /> | Adjust color threshold. If want to learn about the specific adjustment method, please refer to the content in “Quick User Experience->3.Color Threshold Adjustment”. |
+| <img src="../_static/media/chapter_2/section_2/image8.png" style="width:0.39306in;height:0.39306in" /> | Adjust color threshold. If want to learn about the specific adjustment method, please refer to the content in "Quick User Experience->3.Color Threshold Adjustment". |
 | <img src="../_static/media/chapter_2/section_2/image9.png" style="width:0.3937in;height:0.3937in" /> | Display the window of Hiwonder information |
 
 * **Robot Control** 
 
 :::{Note}
-After entering the game “Remote control”, ArmPi mini will stand straight up. Therefore, please make sure there is no obstacle in front of the robot before entering game.
+After entering the game "Remote control", ArmPi mini will stand straight up. Therefore, please make sure there is no obstacle in front of the robot before entering game.
 :::
 
-Select **“Robot Control”** to enter this game. The interface is divided into two parts:
+Select **"Robot Control"** to enter this game. The interface is divided into two parts:
 
 (1) The left side is servo control area.
 
@@ -218,8 +219,6 @@ The button function of navigation bar is explained in following list which is al
 </tbody>
 </table>
 
-
-
 **② Game Interface Icon Function**
 
 <table class="docutils-nobg" border="1">
@@ -234,17 +233,17 @@ The button function of navigation bar is explained in following list which is al
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image14.png" style="width:1.5748in;height:0.36557in" alt="loading" /></td>
-<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “close” or “Release” side to control the gripper to open or close.</p>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to "close" or "Release" side to control the gripper to open or close.</p>
 <p>Click <img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><p><img src="../_static/media/chapter_2/section_2/image18.png" style="width:in;height:in" alt="loading" /></p>
-<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “Forward” or “Backward” side to control the corresponding servo to rotate forward or backward.</p>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to "Forward" or "Backward" side to control the corresponding servo to rotate forward or backward.</p>
 <p>Click<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image21.jpeg" style="width:1.5748in;height:0.38574in" alt="loading" /></td>
-<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to “Left” or “Right” side to control ID6 servo to rotate to left or right.</p>
+<td style="text-align: left;"><p>Drag<img src="../_static/media/chapter_2/section_2/image15.jpeg" style="width:0.29375in;height:0.31181in" alt="loading" />icon to "Left" or "Right" side to control ID6 servo to rotate to left or right.</p>
 <p>Click<img src="../_static/media/chapter_2/section_2/image16.jpeg" style="width:0.33056in;height:0.32708in" alt="loading" />and<img src="../_static/media/chapter_2/section_2/image17.jpeg" style="width:0.33681in;height:0.34028in" alt="loading" />to slightly adjust the servo rotation.</p></td>
 </tr>
 <tr>
@@ -254,18 +253,15 @@ The button function of navigation bar is explained in following list which is al
 </tbody>
 </table>
 
-
 * **Color Recognition**
 
 :::{Note}
-
 * Please start this game under a moderate environment light, too bright or too dark light will influence the normal recognition affect.
 
 * After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
+:::
 
-  :::
-
-Firstly, click **“Color Recognition”** to enter game interface. The interface consists of two parts.
+Firstly, click **"Color Recognition"** to enter game interface. The interface consists of two parts.
 
 (1) At the left side, you can start or stop game, and set color threshold.
 
@@ -275,15 +271,15 @@ Firstly, click **“Color Recognition”** to enter game interface. The interfac
 
 **① Icon Function**
 
-| Icon | Function |
-|:--:|:--:|
-| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="loading" /> | Start or stop game |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “[2. Quick User Experience -> 2.3 Adjust Color Threhold]()” to learn about the specific adjustment method. |
-| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
+| Icon |                                                                         Function                                                                          |
+|:--:|:---------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="../_static/media/chapter_2/section_2/image24.jpeg" style="width:1.1811in;height:0.33292in" alt="loading" /> |                                                                    Start or stop game                                                                     |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to "[2. Quick User Experience -> 2.3 Adjust Color Threhold](#anchor_2_3)" to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image23.jpeg" style="width:1.5748in;height:0.99512in" alt="loading" /> |                    Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner.                    |
 
 **② Operation Instruction and Realization Outcome**
 
-(1) Click “**Start Recognition”** and position red, blue or green object in camera frame.
+(1) Click "**Start Recognition"** and position red, blue or green object in camera frame.
 
 (2) When the red object is recognized, robot arm will nod. When the blue or green object is recognized, robot arm will shake its head.
 
@@ -299,7 +295,7 @@ Firstly, click **“Color Recognition”** to enter game interface. The interfac
 
   :::
 
-Firstly, click **“Color Sorting”** to enter game interface. The interface consists of two parts.
+Firstly, click **"Color Sorting"** to enter game interface. The interface consists of two parts.
 
 (1) At the left side, you can start or stop game.
 
@@ -312,18 +308,16 @@ Firstly, click **“Color Sorting”** to enter game interface. The interface co
 | Icon | Function |
 |:--:|:--:|
 | <img src="../_static/media/chapter_2/section_2/image26.png" style="width:in;height:in" alt="loading" /> | Start or stop game |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “Quick User Experience/3.Color Threshold Adjustment” to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to "Quick User Experience/3.Color Threshold Adjustment" to learn about the specific adjustment method. |
 | <img src="../_static/media/chapter_2/section_2/image26.jpeg" style="width:1.5748in;height:0.98604in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
 
 **② Operation Instruction and Realization Outcome**
 
-(1) Click **“Start sorting”**, and put the colored block in camera frame.
+(1) Click **"Start sorting"**, and put the colored block in camera frame.
 
 (2) When the block is recognized, the gripper will open automatically.
 
 (3) Position the block in the middle of the gripper, and then the gripper will pick the block and place it in the corresponding position.
-
-
 
 * **Target Tracking**
 
@@ -333,9 +327,9 @@ Firstly, click **“Color Sorting”** to enter game interface. The interface co
 
 * After starting game, please ensure there is no other object containing the recognition color except the target object within the camera frame, otherwise the recognition result will be affected.
 
-  :::
+:::
 
-Firstly, click **“Target Tracking”** to enter game interface. The interface consists of two parts.
+Firstly, click **"Target Tracking"** to enter game interface. The interface consists of two parts.
 
 (1) At the left side, you can start or stop game.
 
@@ -362,7 +356,7 @@ Firstly, click **“Target Tracking”** to enter game interface. The interface 
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image29.jpeg" style="width:0.7874in;height:1.10977in" alt="loading" /></td>
 <td style="text-align: left;"><p>Select target color.</p>
-<p>“R” is red, “G” is green and “B” is blue.</p></td>
+<p>"R" is red, "G" is green and "B" is blue.</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_2/section_2/image30.jpeg" style="width:0.7874in;height:0.71739in" alt="loading" /></td>
@@ -375,17 +369,13 @@ Firstly, click **“Target Tracking”** to enter game interface. The interface 
 </tbody>
 </table>
 
-
-
 **② Operation Instruction and Realization Outcome**
 
-(1) Firstly, select the color to track in color selection area. Here take red for example, click **“R”**.
+(1) Firstly, select the color to track in color selection area. Here take red for example, click **"R"**.
 
-(2) Then click **“Start tracking”**, and position the red block in camera frame.
+(2) Then click **"Start tracking"**, and position the red block in camera frame.
 
 (3) When the block is recognized, robot arm will move with the block.
-
-
 
 * **Intelligent Stacking**
 
@@ -397,7 +387,7 @@ Firstly, click **“Target Tracking”** to enter game interface. The interface 
 
   :::
 
-Firstly, click **“Intelligent Stacking”** to enter game interface. The interface consists of two parts.
+Firstly, click **"Intelligent Stacking"** to enter game interface. The interface consists of two parts.
 
 (1) At the left side, you can start or stop game, and adjust color threshold.
 
@@ -410,16 +400,18 @@ Firstly, click **“Intelligent Stacking”** to enter game interface. The inter
 | Icon | Function |
 |:--:|:--:|
 | <img src="../_static/media/chapter_2/section_2/image44.png" style="width:1.1811in;height:0.30725in" alt="loading" /> | Start or stop game |
-| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to “Quick User Experience/ 3.Color Threshold Adjustment” to learn about the specific adjustment method. |
+| <img src="../_static/media/chapter_2/section_2/image25.png" style="width:1.1811in;height:0.48474in" /> | Adjust color threshold. <br/>You can refer to "Quick User Experience/ 3.Color Threshold Adjustment" to learn about the specific adjustment method. |
 | <img src="../_static/media/chapter_2/section_2/image31.jpeg" style="width:in;height:in" alt="loading" /> | Display the real-time image returned by camera. The current recognized color is displayed in the lower left corner. |
 
 **② Operation Instruction and Realization Outcome**
 
-(3) Click **“Start stacking”**, and place the colored block within detection area.
+(3) Click **"Start stacking"**, and place the colored block within detection area.
 
 (4) When the block is recognized, robot arm will pick the block and place it in stacking area.
 
 (5) The stacking area can stack up to three blocks. When the upper limit is reached, please remove the blocks in the stacking area before the next black is stacked.
+
+<p id="anchor_2_3"></p>
 
 ## 2.3 Adjust Color Threshold
 
@@ -427,7 +419,7 @@ Different light source will have different influence on the colors, which will r
 
 ### 2.3.1 Preparation
 
-Start TurboPi. Open "WonderPi" APP, and connect it to TurboPi. For how to connect robot to APP, operate referring to "**[2.1 APP Installation and Connection ](#anchor_1)**".
+Start TurboPi. Open "**WonderPi**" APP, and connect it to TurboPi. For how to connect robot to APP, operate referring to "**[2.1 APP Installation and Connection ](#anchor_2_1)**".
 
 ### 2.3.2 Interface Layout
 
@@ -464,15 +456,15 @@ The table below list function of specific icon.
 </tr>
 <tr>
 <td ><img src="../_static/media/chapter_2/section_3/image6.png"style="width:200px"  /><img src="../_static/media/chapter_2/section_3/image7.png" style="width:200px" /></td>
-<td ><p>Adjust L component of camera returned image. "L_min" is lower limit and "L_max" is upper limit.</p>
+<td ><p>Adjust L component of camera returned image. "**L_min**" is lower limit and "**L_max**" is upper limit.</p>
 </tr>
 <tr>
 <td ><img src="../_static/media/chapter_2/section_3/image10.png" style="width:200px" /><img src="../_static/media/chapter_2/section_3/image11.png" style="width:200px" /></td>
-<td ><p>Adjust A component of camera returned image. "a_min" is lower limit and "a_max" is upper limit.</p>
+<td ><p>Adjust A component of camera returned image. "**a_min**" is lower limit and "**a_max**" is upper limit.</p>
 </tr>
 <tr>
 <td ><img src="../_static/media/chapter_2/section_3/image12.png" style="width:200px" /><img src="../_static/media/chapter_2/section_3/image13.png" style="width:200px" /></td>
-<td ><p>Adjust B component of camera returned image. "b_min" is lower limit and "b_max" is upper limit.</p>
+<td ><p>Adjust B component of camera returned image. "**b_min**" is lower limit and "**b_max**" is upper limit.</p>
 </tr>
 <tr>
 <td ><img src="../_static/media/chapter_2/section_3/image14.png" style="width:200px" /></td>
@@ -496,7 +488,6 @@ The table below list function of specific icon.
 </tr>
 </tbody>
 </table>
-
 
 ### 2.3.3 Adjust Color Threshold
 

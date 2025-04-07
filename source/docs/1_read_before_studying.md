@@ -53,91 +53,91 @@ Furthermore, unless explicitly stated by Hiwonder, we are not responsible for an
     <td>1</td>
     <td>Robotic arm (assembled)</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image1.0.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image1.0.png" alt="loading" style="width:150px;" /></td>
   </tr>
   <tr>
     <td>2</td>
     <td>Base bracket set<br>(Base plate*1<br>Base top cover * 1<br>Base side cover *4)</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image2.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image2.png" alt="loading" style="width:300px;" /></td>
   </tr>
   <tr>
     <td>3</td>
     <td>Raspberry Pi 5</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image3.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image3.png" alt="loading" style="width:200px;" /></td>
   </tr>
       <tr>
     <td>4</td>
     <td>Raspberry Pi 5 expansion board</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image4.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image4.png" alt="loading" style="width:150px;" /></td>
   </tr>
   <tr>
     <td>5</td>
     <td>Active heatsink Thermal silicone pads</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image5.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image5.png" alt="loading" style="width:180px;" /></td>
   </tr>
   <tr>
     <td>6</td>
     <td>Card reader</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image6.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image6.png" alt="loading" style="width:50px;" /></td>
   </tr>
   <tr>
     <td>7</td>
     <td>32GB SD card</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image7.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image7.png" alt="loading" style="width:45px;" /></td>
   </tr>
   <tr>
     <td>8</td>
     <td>Lithium battery</td>
     <td>2</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image8.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image8.png" alt="loading" style="width:100px;" /></td>
   </tr>
   <tr>
     <td>9</td>
     <td>Battery holder box</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image9.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image9.png" alt="loading" style="width:180px;" /></td>
   </tr>
   <tr>
     <td>10</td>
     <td>Battery charger</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image10.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image10.png" alt="loading" style="width:120px;" /></td>
   </tr>
   <tr>
     <td>11</td>
     <td>USB cable</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image11.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image11.png" alt="loading" style="width:120px;"/></td>
   </tr>
   <tr>
     <td>12</td>
     <td>Suction cups</td>
     <td>4</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image12.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image12.png" alt="loading" style="width:120px;" /></td>
   </tr>
   <tr>
     <td>13</td>
     <td>Paper Map</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image13.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image13.png" alt="loading" style="width:300px;" /></td>
   </tr>
   <tr>
     <td>14</td>
     <td>3*3cm Blocks</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image14.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image14.png" alt="loading" style="width:150px;" /></td>
   </tr>
   <tr>
     <td>15</td>
     <td>Screwdriver</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image15.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image15.png" alt="loading" style="width:180px;" /></td>
   </tr>
   <tr>
     <td>16</td>
@@ -150,7 +150,7 @@ Furthermore, unless explicitly stated by Hiwonder, we are not responsible for an
       M2.5*5+6 Single-pass nylon column * 5<br>
       M2.5*6 Double-pass Copper Column * 10)</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image16.png" alt="loading" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image16.png" alt="loading" style="width:300px;" /></td>
   </tr>
 </table>
 
@@ -321,7 +321,7 @@ If you are asked to whether to format partition after writing image, just ignore
 
 :::
 
-<p id="anchor_2"></p>
+<p id="anchor_1_5"></p>
 
 ## 1.5 Assembly
 
@@ -359,11 +359,11 @@ If you are asked to whether to format partition after writing image, just ignore
 
 <img class="common_img" src="../_static/media/chapter_1/section_2/image13.png"  alt="loading" />
 
-<p id="anchor_3"></p>
+<p id="anchor_1_6"></p>
 
 ##  1.6 Charging and Power-On Status Explanation
 
-Before starting this lesson, ArmPi mini needs to be assembled according to [1.5 Assembly](#anchor_2).
+Before starting this lesson, ArmPi mini needs to be assembled according to [1.5 Assembly](#anchor_1_5).
 
 **1.6.1 Charging Battery**
 
@@ -412,7 +412,7 @@ The Raspberry Pi is a small minicomputer. It usually takes about 1 minute to boo
 
 <img class="common_img" src="../_static/media/chapter_1/section_3/image5.jpeg"  alt="loading" style="width:50%" />
 
-(4) After turning on ArmPi mini successfully, please refer to "[**8.Position Calibration**]()" to calibrate gripping position (Do not skip this step!)
+(4) After turning on ArmPi mini successfully, please refer to "[**1.9.3 Position Calibration**](#anchor_1_9_3)" to calibrate gripping position (Do not skip this step!)
 
 **1.6.5 Start Self-check Service**
 
@@ -420,7 +420,7 @@ After successfully powering on the robot, you can press the KEY1 button on the e
 
 <img class="common_img" src="../_static/media/chapter_1/section_3/image6.png"  alt="loading" />
 
-If the servos fail to run as described below after starting the self-check service, please refer to "[**1.Getting Ready -> 1.5 Assembly**]()" to rewire them.
+If the servos fail to run as described below after starting the self-check service, please refer to "[**1.5 Assembly**](#anchor_1_5)" to rewire them.
 
 The servos should rotate in the following sequence: 1->3->4->5->6.
 
@@ -436,7 +436,7 @@ The servos should rotate in the following sequence: 1->3->4->5->6.
 
 <img class="common_img" src="../_static/media/chapter_1/section_3/image9.png"  alt="loading" style="width:70%" />
 
-<p id="anchor_4"></p>
+<p id="anchor_1_7"></p>
 
 ## 1.7 Remote Desktop Installation and Connection
 
@@ -470,7 +470,7 @@ VNC is a graphical remote desktop control software. Through connecting your comp
 
 <img src="../_static/media/chapter_1/section_4/image5.png" class="common_img" />
 
-(6) Click<img src="../_static/media/chapter_1/section_4/image6.png"  />to open VNC.
+(6) Click <img src="../_static/media/chapter_1/section_4/image6.png" style="width:45px;" /> to open VNC.
 
 * **Start Robot**
 
@@ -559,7 +559,7 @@ The following table demonstrates common functions:
 </tbody>
 </table>
 
-<p id="anchor_5"></p>
+<p id="anchor_1_8"></p>
 
 ## 1.8 Deviation Adjustment
 
@@ -567,9 +567,9 @@ If the deviation of the servo main shaft is caused by the fall of the robot arm 
 
 **1.8.1 Preparation**
 
-(1) Turn on ArmPi mini according to the tutorial in "[**1. Getting Ready->1.6 Charging and Power-On Status Explanation**]()".
+(1) Turn on ArmPi mini according to the tutorial in "[**1.6 Charging and Power-On Status Explanation**](#anchor_1_6)".
 
-(2) Connect the robot via VNC remote tool according to "[**1. Getting Ready->1.7 Remote Desktop Installation and Connection**]()".
+(2) Connect the robot via VNC remote tool according to "[**1.7 Remote Desktop Installation and Connection**](#anchor_1_7)".
 
 **1.8.2 Deviation Judgment**
 
@@ -593,17 +593,15 @@ If the deviation of the servo main shaft is caused by the fall of the robot arm 
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image6.jpeg"  alt="loading" />
 
-(6) If the angle between centerline and servo is less than 13 degrees, it is classified as small deviation and can be adjusted by PC software. You can follow the operation instruction in "[**1.8.3 Small Deviation Adjustment**]()" to adjust the small deviation. Here i will take ID3 servo as example, as the figure shown below. 
+(6) If the angle between centerline and servo is less than 13 degrees, it is classified as small deviation and can be adjusted by PC software. You can follow the operation instruction in "[**1.8.3 Small Deviation Adjustment**](#anchor_1_8_3)" to adjust the small deviation. Here i will take ID3 servo as example, as the figure shown below. 
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image7.jpeg"  alt="loading" />
 
-
-
-(7) If the angle between center line and servo is larger than 13 degree, it is classified as large deviation and can not be adjusted by PC software which the extreme adjustment value is between -150 and +150. Under this situation, you can follow the operation instruction in "[**1.8.4 Large Deviation Adjustment**]()" to adjust large deviation.
+(7) If the angle between center line and servo is larger than 13 degree, it is classified as large deviation and can not be adjusted by PC software which the extreme adjustment value is between -150 and +150. Under this situation, you can follow the operation instruction in "[**1.8.4 Large Deviation Adjustment**](#anchor_1_8_4)" to adjust large deviation.
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image8.jpeg"  alt="loading" />
 
-<p id="anchor_5_3"></p>
+<p id="anchor_1_8_3"></p>
 
 1.8.3 Small Deviation Adjustment
 
@@ -613,15 +611,13 @@ If the deviation of the servo main shaft is caused by the fall of the robot arm 
 
 (2) Drag the slider of ID3 servo to make robot arm stretch straight. (the values in following figure is just for reference, you need to adjust your own robot according to the actual situation.)
 
-
-
 <img class="common_img" src="../_static/media/chapter_1/section_5/image10.png"  alt="loading" />
 
 (3) Then click **"Save deviation"** to save the deviation value into the robot arm.
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image11.png"  alt="loading" />
 
-<p id="anchor_5_4"></p>
+<p id="anchor_1_8_4"></p>
 
 **1.8.4 Large Deviation Adjustment**
 
@@ -657,8 +653,6 @@ If the deviation of the servo main shaft is caused by the fall of the robot arm 
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image2.png"  alt="loading" />
 
-
-
 (10) Turn off robot arm. Then assemble the servo horn back to servo in cross shape. 
 
 :::{Note}
@@ -687,11 +681,11 @@ the servo ID tag corresponds to the interface number of expansion board. The yel
 
 <img class="common_img" src="../_static/media/chapter_1/section_5/image19.jpeg"  alt="loading" />
 
-(14) Then, repeat the operation steps of "[**1.8.3 Small Deviation Adjustment**]()" to adjust the small deviation. 
+(14) Then, repeat the operation steps of "[**1.8.3 Small Deviation Adjustment**](#anchor_1_8_3)" to adjust the small deviation. 
 
 <p id="anchor_6"></p>
 
-## 1.9 **MAP Placement**
+## 1.9 MAP Placement
 
 <p id="anchor_6_1"></p>
 
@@ -704,10 +698,8 @@ From the image below, we can know that map consists of four areas, which are rob
 <img class="common_img" src="../_static/media/chapter_1/section_6/image2.png"  alt="loading" />
 
 Place ArmPi mini in the placement area, and place colored blocks in the picking area.
-After the color sorting is started, robot arm will pick the blocks in robot placement area, and place them in color sorting area. (About color sorting, please go to folder "[**Quick User Experience ->2.2 App Control**]()" and "[**AI Vision Learning -> 4.5 Color Sorting**]()")
-After the intelligent stacking is started, robot arm will pick the colored blocks in picking area and place them in stacking area. (About intelligent stacking, please go to folder "[**Quick User Experience ->2.2 APP Control**]()" and "[**AI Vision Learning->4.6 Intelligent Stacking**]()")
-
-
+After the color sorting is started, robot arm will pick the blocks in robot placement area, and place them in color sorting area. (About color sorting, please go to folder "[**Quick User Experience ->2.2 App Control**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/2_play_first_hand.html#app-control)" and "[**AI Vision Learning -> 4.5 Color Sorting**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#color-sorting)")
+After the intelligent stacking is started, robot arm will pick the colored blocks in picking area and place them in stacking area. (About intelligent stacking, please go to folder "[**Quick User Experience ->2.2 APP Control**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/2_play_first_hand.html#app-control)" and "[**AI Vision Learning->4.6 Intelligent Stacking**](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#intelligent-stacking)")
 
 **1.9.2 Map Placement**
 
@@ -727,25 +719,25 @@ After the intelligent stacking is started, robot arm will pick the colored block
 When starting color sorting and intelligent stacking, do not have similar color object within the frame to avoid interference.
 :::
 
+<p id="anchor_1_9_3"></p>
+
 **1.9.3 Position Calibration**
 
 Before starting game, the picking position of gripper must be calibrated, otherwise the robot may fail to pick object and affect the normal use.
 
 * **Preparation**
 
-(1) Turn on ArmPi mini according to the tutorial "[**Getting Ready -> 1.6 Charging and Power-On Status Explanation**]()".
+(1) Turn on ArmPi mini according to the tutorial "[**1.6 Charging and Power-On Status Explanation**](#anchor_1_6)".
 
-(2) Connect robot via VNC remote tool according to the tutorial "[**Getting Ready -> 1.7 Remote Desktop Installation and Connection**]()".
+(2) Connect robot via VNC remote tool according to the tutorial "[**1.7 Remote Desktop Installation and Connection**](#anchor_1_7)".
 
-(3) Adjust deviation according to the tutorial "[**Getting Ready -> 1.8 Deviation Adjustment**]()".
+(3) Adjust deviation according to the tutorial "[**1.8 Deviation Adjustment**](#anchor_1_8)".
 
-(4) Place the robot on map according to the tutorial "[**Getting Ready -> 1.9.3 Position Calibration**]()".
+(4) Place the robot on map according to the tutorial "[**1.9.3 Position Calibration**](#anchor_1_9_3)".
 
 * **Whether the picking position needs to be calibrated?** 
 
 (1) Double click  <img class="common_img" src="../_static/media/chapter_1/section_6/image16.png"  />to open PC software.
-
-
 
 (2) Click **"Execute"** to enter the editing interface of PC software.
 
