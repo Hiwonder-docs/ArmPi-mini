@@ -362,7 +362,7 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 (2) Then select **"Camera Tool"** and **"Connect"** in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image24.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image24.png" style="width:556px;"  alt="loading" />
 
 (3) Click **"Add"** and name the new color. Take **"purple"** as example. Then click **"OK"**.
 
@@ -394,7 +394,7 @@ sudo vim lab_config.yaml
 
 (9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img class="common_img" src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image33.jpeg" style="width:740px;"  alt="loading" />
 
 (10) Find the following code.
 
@@ -1054,7 +1054,7 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 (2) Then select `Camera Tool` and `Connect` in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image15.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image15.png" style="width:556px;"  alt="loading" />
 
 (3) Click **Add** and name the new color. Take  **purple** as example. Then click **OK**.
 
@@ -1086,7 +1086,7 @@ sudo vim lab_config.yaml
 
 (9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg" style="width:740px;"  alt="loading" />
 
 (10) Refer to the steps 1-2 in "[**4.2.5 Function Extension -> Change default recognition color**](#anchor_4_2_5)" to open the program file, and press **"i"** to enter the editing mode.
 
@@ -2040,7 +2040,7 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 (2) Then select  Camera Tool and Connect in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_4/image20.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image20.png" style="width:556px;" alt="loading" />
 
 (3) Click **"Add"** and name the new color as **"purple"**. Then click **"OK"**.
 
@@ -2072,7 +2072,7 @@ sudo vim lab_config.yaml
 
 (9) After opening the color threshold program file, you can check the threshold parameter of purple.
 
-<img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg" style="width:740px;"  alt="loading" />
 
 (10) Refer to the steps 1-2 in "[**4.4.5 Function Extension -> Modify Tracking Color**](#4_modify_tracking_color)" to open the program file, and press "**i**" to enter the editing mode.
 
@@ -3356,7 +3356,7 @@ In addition to the built-in color, you can add new recognition color. For exampl
 
 (2) Then select **"Camera Tool"** and **"Connect"** in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_6/image9.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_6/image9.png" style="width:556px;" alt="loading" />
 
 (3) Click **"Add"** and name the new color as **"purple"**. Then click **"OK"**.
 

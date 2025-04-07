@@ -603,7 +603,7 @@ If the deviation of the servo main shaft is caused by the fall of the robot arm 
 
 <p id="anchor_1_8_3"></p>
 
-1.8.3 Small Deviation Adjustment
+**1.8.3 Small Deviation Adjustment**
 
 (1) Small deviation can be adjusted by dragging the deviation adjustment slider of PC software. Note: the short slider bar below is for adjusting deviation.
 

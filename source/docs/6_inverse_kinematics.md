@@ -6,7 +6,7 @@
 
 The robot kinematics can be divided into forward kinematics and inverse kinematics. Forward kinematics refers to the position information of end effector can be obtained when then joint angle and linkages parameters are known. For inverse kinematics, given the robot’s end-effector positions, the joint position can be calculated. The end-effector refers to the top part of the gripper framed in the below red box.）
 
-<img src="../_static/media/chapter_6/section_1/image1.png"  />
+<img src="../_static/media/chapter_6/section_1/image1.png" class="common_img" style="width:700px;" />
 
 In practical, the desired position where the end effector will reach to can not be known if using forward kinematics to control robot arm. Therefore, inverse kinematics is usually used to control robot arm because it can calculate the joint angle, given the robot’s end-effector positions.
 

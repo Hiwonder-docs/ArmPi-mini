@@ -321,7 +321,7 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 (1) Connect to ArmPi mini system desktop via VNC tool.
 
-(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:50px;" />icon, and click **"Execute"** to open PC software.
+(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:50px;" /> icon, and click **"Execute"** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image3.png"  />
 
@@ -435,7 +435,7 @@ This lesson will integrate action group **"1.d6a"** and **"3.d6a"** to explain h
 
 (1) Connect to ArmPi mini system desktop via VNC.
 
-(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width:50px;" />icon, and click **"Execute"** to open PC software.
+(2) Double click <img src="../_static/media/chapter_9/section_4/image1.png" style="width:50px;" /> icon, and click **"Execute"** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image2.png"  />
 
