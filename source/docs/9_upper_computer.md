@@ -1,22 +1,22 @@
-# 6.PC Software Learning
+# 5. PC Software Learning
 
-## 1. PC Software Interface Introduction
+## 5.1 PC Software Interface Introduction
 
 PC software is a system built-in software for programming robot action. You can use it to control the servo movement, adjust servo deviation and color threshold.
 
 This lesson will introduction the layout and function of PC software.
 
-### 1.1 Start PC Software
+### 5.1.1 Start PC Software
 
-**1.1.1 Use Desktop Icon (for beginner)**
+* **Use Desktop Icon (for beginner)**
 
 (1) Double click<img src="../_static/media/chapter_9/section_1/image2.png" style="width: n;height: in" />to open PC software.
 
-(2) Click “Execute” in the pop-up window and open PC software.
+(2) Click **“Execute”** in the pop-up window and open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_1/image3.png"  />
 
-**1.1.2 Use Command Line**
+* **Use Command Line**
 
 (1) Click on <img src="../_static/media/chapter_9/section_1/image4.png" style="width:0.31458in;height:0.27361in" /> to open command line terminal.
 
@@ -26,11 +26,11 @@ This lesson will introduction the layout and function of PC software.
 python3 ArmPi_mini/armpi_mini_software/ArmPi_mini.py
 ```
 
-### 1.2 Software Interface Layout
+### 5.1.2 Software Interface Layout
 
 PC software has two function interfaces including normal mode and camera tool.
 
-**1.2.1 Normal Mode**
+* **Normal Mode**
 
 Under normal mode, you can control servo, adjust deviation and calibrate position. The interface is shown below:
 
@@ -224,15 +224,15 @@ The action data list will display the running time of each action and the value 
 | <img src="../_static/media/chapter_9/section_1/image46.png" style="width:1.37795in;height:0.48874in" alt="loading" /> | After clicking, the deviation adjusted by PC software can be saved to the robot arm |
 | <img src="../_static/media/chapter_9/section_1/image47.png" style="width:1.37795in;height:0.4806in" alt="loading" /> | Click it to restore all servos in servo control area to 1500 |
 
-**1.2.2 Camera Tool**
+* **Camera Tool**
 
 The camera tool is used to adjust the threshold of the recognized color, as the figure shown below.
 
 <img src="../_static/media/chapter_9/section_1/image48.png"  />
 
-Please refer to the contentin [AI Vision Learning\2.Color Recognition\Add Recognition Color]()
+Please refer to the contentin [AI Vision Learning -> 4.2 Color Recognition ->Add Recognition Color]().
 
-## 2. Import and Call Action
+## 5.2 Import and Call Action
 
 ArmPi mini has built in action group files before shipping and the path of the files is “/home/pi/ArmPi_mini/action_groups”. The action group you edit can also be saved in this directory.
 
@@ -240,15 +240,15 @@ ArmPi mini has built in action group files before shipping and the path of the f
 
 This lesson will tell you how to call action group and how to import it into the system of ArmPi mini.
 
-### 2.1 Call Action Group by PC Software
+### 5.2.1 Call Action Group by PC Software
 
 (1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-(2) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />and click “Execute” in the pop-up window to open PC software.
+(2) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />and click **“Execute”** in the pop-up window to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
-(3) Click “Open action file” button to select the action group to be executed, and click “Open”.
+(3) Click **“Open action file”** button to select the action group to be executed, and click **“Open”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image4.png"  />
 
@@ -258,11 +258,11 @@ This lesson will tell you how to call action group and how to import it into the
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image6.png"  />
 
-(5) Click “Run” to run all the actions in action data list. You can click “Loop” to cyclically run this action group. 
+(5) Click **“Run”** to run all the actions in action data list. You can click **“Loop”** to cyclically run this action group. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image7.png"  />
 
-### 2.2 Import Action Group 
+### 5.2.2 Import Action Group 
 
 :::{Note}
 * The action group must be named in English or with numbers, and the file format is “d6a”.
@@ -273,7 +273,7 @@ This lesson will tell you how to call action group and how to import it into the
 
 There are two ways to import the external action group file to ArmPi mini. You can transfer action file to ArmPi mini system with a U disk, or use transfer tool to import action file to system desktop. This lesson will take “3.6a” action as example.
 
-**2.2.1 Use a U Disk**
+* **Use a U Disk**
 
 (1) Connect to ArmPi mini system desktop via VNC tool.
 
@@ -281,7 +281,7 @@ There are two ways to import the external action group file to ArmPi mini. You c
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image8.png"  alt="loading" />
 
-(3) When the following pop-up window shows in VNC viewer, click “OK”.
+(3) When the following pop-up window shows in VNC viewer, click **“OK”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image10.png" style="width:3.14961in;height:3.22012in" />
 
@@ -289,17 +289,17 @@ There are two ways to import the external action group file to ArmPi mini. You c
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image11.png" style="width:1.52083in;height:2.4375in" />
 
-(5) Click on<img src="../_static/media/chapter_9/section_2/image12.png" style="width:0.31458in;height:0.275in" />icon to open file manger.
+(5) Click on <img src="../_static/media/chapter_9/section_2/image12.png" style="width:0.31458in;height:0.275in" /> icon to open file manger.
 
 (6) Enter the directory “/home/pi/ArmPi_mini/action_groups”, and import the action file to this directory.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image13.png"  />
 
-(7) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />icon and click “Execute” to open PC software.
+(7) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />icon and click **“Execute”** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
-(8) Click “Open action group” button to select the imported action group file, and click “Open”.
+(8) Click **“Open action group”** button to select the imported action group file, and click **“Open”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image4.png"  />
 
@@ -309,7 +309,7 @@ There are two ways to import the external action group file to ArmPi mini. You c
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image15.png"  />
 
-## 3. Action Programming
+## 5.3 Action Programming
 
 :::{Note}
 All action parameters in this lesson is only for reference, please operate according to the actual situation.
@@ -317,15 +317,15 @@ All action parameters in this lesson is only for reference, please operate accor
 
 This lesson will use PC software to edit an action group. Robot Arm will grip down the block and place it on the right side for example. 
 
-### 3.1 Edit Action
+### 5.3.1 Edit Action
 
 (1) Connect to ArmPi mini system desktop via VNC tool.
 
-(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:in;height:in" />icon, and click “Execute” to open PC software.
+(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:in;height:in" />icon, and click **“Execute”** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image3.png"  />
 
-(3) Click “Open action file” and select “start” action group, and then click “Open” to set this action as the first action group.
+(3) Click **“Open action file”** and select **“start”** action group, and then click **“Open”** to set this action as the first action group.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image4.png"  />
 
@@ -335,11 +335,11 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image6.png"  />
 
-(5) Set the running time to 800ms and click “Add action” to get No.2 action. 
+(5) Set the running time to 800ms and click **“Add action”** to get No.2 action. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image8.png"  />
 
-(6) To make the action group run smoother. After setting an action, we need to add a transition action and change the running time to 200ms. Then click “Add action” again to get No.3 action.
+(6) To make the action group run smoother. After setting an action, we need to add a transition action and change the running time to 200ms. Then click **“Add action”** again to get No.3 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image9.png"  alt="loading" />
 
@@ -347,11 +347,11 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image10.png"  alt="loading" />
 
-(8) Set the running time to 800ms and click “Add action” to get No.4 action.
+(8) Set the running time to 800ms and click **“Add action”** to get No.4 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image11.png"  alt="loading" />
 
-(9) Add a transition action and set the running time to 100ms. Then click “Add action” to get No.5 action. 
+(9) Add a transition action and set the running time to 100ms. Then click **“Add action”** to get No.5 action. 
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image12.png"  alt="loading" />
 
@@ -359,7 +359,7 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image13.png"  alt="loading" />
 
-(11) Set the running time to 200ms and click “Add action” to get No.6 action.
+(11) Set the running time to 200ms and click **“Add action”** to get No.6 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image14.png"  alt="loading" />
 
@@ -367,11 +367,11 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image15.png"  alt="loading" />
 
-(13) Set the running time to 1000ms and click “Add action” to get No.7 action.
+(13) Set the running time to 1000ms and click **“Add action”** to get No.7 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image16.png"  alt="loading" />
 
-(14) Set the running time to 100ms and click “Add action” to add a transition action.
+(14) Set the running time to 100ms and click **“Add action”** to add a transition action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image17.png"  alt="loading" />
 
@@ -379,11 +379,11 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image18.png"  alt="loading" />
 
-(16) Set the running time to 800ms and click “Add action” to get No.9 action.
+(16) Set the running time to 800ms and click **“Add action”** to get No.9 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image19.png"  alt="loading" />
 
-(17) Add a transition action. Set the running time to 300ms and click “Add action” to get No.10 action.
+(17) Add a transition action. Set the running time to 300ms and click **“Add action”** to get No.10 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image20.png"  alt="loading" />
 
@@ -391,7 +391,7 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image21.png"  alt="loading" />
 
-(19) Set the running time to 1000ms and click “add action” to get No.11 action.
+(19) Set the running time to 1000ms and click **“add action”** to get No.11 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image22.png"  alt="loading" />
 
@@ -399,7 +399,7 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image23.png"  alt="loading" />
 
-(21) Set the running time to 300ms and click “Add action” to get No.12 action.
+(21) Set the running time to 300ms and click **“Add action”** to get No.12 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image24.png"  alt="loading" />
 
@@ -407,11 +407,13 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image25.png"  alt="loading" />
 
-(23) Set the running time to 400ms and click “Add action” to get No.13 action.
+(23) Set the running time to 400ms and click **“Add action”** to get No.13 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image26.png"  alt="loading" />
 
-(24) Finally, robot arm is controlled to return to the initial position. Click “ ” in front of No.1 action to run it and set the running time to 1000ms. Then click “Add action” to get No.14 action.<img class="common_img" src="../_static/media/chapter_9/section_3/image27.png"  />
+(24) Finally, robot arm is controlled to return to the initial position. Click “ <img src="../_static/media/chapter_9/section_3/image1.png"  /> ” in front of No.1 action to run it and set the running time to 1000ms. Then click “Add action” to get No.14 action.
+
+<img class="common_img" src="../_static/media/chapter_9/section_3/image27.png"  />
 
 ### 3.2 Save Action
 
@@ -419,55 +421,55 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
  It is recommended to use English or numbers to name action group , and use underscore “_” instead of the space bar to avoid failure saving.
 :::
 
-To facilitate later debugging and management, it is recommended to save the action. Click "Save Action File", name the file and click “Save”.
+To facilitate later debugging and management, it is recommended to save the action. Click **"Save Action File"**, name the file and click **“Save”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image28.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image29.png"  />
 
-## 4. Integrate Action Files
+## 5.4 Integrate Action Files
 
-This lesson will integrate action group “1.d6a” and “3.d6a” to explain how to integrate action files.
+This lesson will integrate action group **“1.d6a”** and **“3.d6a”** to explain how to integrate action files.
 
-### 4.1 Integrate Action Groups
+### 5.4.1 Integrate Action Groups
 
 (1) Connect to ArmPi mini system desktop via VNC.
 
-(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width: in;height: in" />icon, and click “Execute” to open PC software.
+(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width: in;height: in" />icon, and click **“Execute”** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image2.png"  />
 
-(3) Click “Integrate action file”.
+(3) Click **“Integrate action file”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image3.png"  />
 
-(4) Select action group “1.d6a” and click “Open”.
+(4) Select action group **“1.d6a”** and click **“Open”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image4.png"  />
 
-At this time, the parameters of action group “1.d6a” are displayed in action data list.
+At this time, the parameters of action group **“1.d6a”** are displayed in action data list.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image5.png"  />
 
-(5) Then click “Integrate action file” and select “3.d6a” action group. Then click “Open”.
+(5) Then click **“Integrate action file”** and select **“3.d6a”** action group. Then click **“Open”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image3.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image6.png"  />
 
-Now, the parameters of action group “1.d6a” is followed by that of action group “3.d6a”.
+Now, the parameters of action group **“1.d6a”** is followed by that of action group **“3.d6a”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image7.png"  />
 
-(6) Select the first action in action data list, and click “run” to execute the integrated action group once.
+(6) Select the first action in action data list, and click **“run”** to execute the integrated action group once.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image8.png"  />
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image9.png"  />
 
-### 4.2 Save Integrated Action Group
+### 5.4.2 Save Integrated Action Group
 
-Click “Save action file” to save the integrated action group for later debugging. The new action group is named as “Hiwonder”.
+Click **“Save action file”** to save the integrated action group for later debugging. The new action group is named as  **“Hiwonder”**.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image10.png"  />
 

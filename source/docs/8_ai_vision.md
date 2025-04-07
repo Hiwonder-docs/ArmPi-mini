@@ -1,10 +1,10 @@
-# 5.AI Vision Learning
+# 4. AI Vision Learning
 
-## 1. Single Color Recognition
+## 4.1 Single Color Recognition
 
 In this section, the camera detects colors. When a red ball is recognized, the buzzer will emit a beep, and the red ball will be highlighted in the transmitted image with "Color: red" displayed.
 
-### 1.1 Program Description
+### 4.1.1 Program Description
 
 The implementation of color recognition consists of two parts: color detection and execution feedback after recognition.
 
@@ -13,21 +13,23 @@ First, for the color detection part, Gaussian filtering is applied to the image 
 Next, the object's color within the circle is recognized using color thresholding, followed by masking (masking involves using selected images, shapes, or objects to globally or locally obscure the image being processed). 
 
 After performing morphological operations such as opening and closing on the object image, the object with the largest contour is circled. 
-Opening: The image undergoes erosion followed by dilation. This operation removes small objects, smooths shape boundaries, and preserves the area. It can eliminate small noise particles and separate connected objects.  
 
-Closing: The image undergoes dilation followed by erosion. This operation fills small holes within objects, connects nearby objects, closes broken contour lines, and smooths boundaries while preserving the area.
+**Opening:** The image undergoes erosion followed by dilation. This operation removes small objects, smooths shape boundaries, and preserves the area. It can eliminate small noise particles and separate connected objects.  
+
+**Closing:** The image undergoes dilation followed by erosion. This operation fills small holes within objects, connects nearby objects, closes broken contour lines, and smooths boundaries while preserving the area.
+
 After recognition, the servo and buzzer are set up to provide feedback based on the detected color. For example, when red is detected, the buzzer will emit a sound.
-For detailed feedback behavior, please refer to section 3. Function Implementation of this document.
+For detailed feedback behavior, please refer to [4.1.3 Program Analysis]() of this document.
 
 <p id="anchor_1_2"></p>
 
-### 1.2 Start and Close the Game
+### 4.1.2 Start and Close the Game
 
 :::{Note}
 The input command is case-sensitive, and keywords can be auto-completed using the Tab key.
 :::
 
-(1) The input command is case-sensitive, and keywords can be auto-completed using the Tab key.
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
 <img class="common_img" src="../_static/media/chapter_8/section_1/image3.png"  />
 
@@ -45,11 +47,13 @@ cd ArmPi_mini/functions
 python3 color_recognition.py
 ```
 
-(5) To close the program, simply press "Ctrl+C" in the LX terminal. If it does not close, press it multiple times.
+(5) To close the program, simply press **"Ctrl+C"** in the LX terminal. If it does not close, press it multiple times.
 
-### 1.3 Program Outcome
+### 4.1.3 Program Outcome
 
 After starting the game, the camera will be used to detect colors. When a red ball is recognized, the buzzer will emit a beep sound, and the ball will be circled in the transmitted image, with "Color: red" printed.
+
+<img class="common_img" src="../_static/media/chapter_8/section_1/1.png"  />
 
 :::{Note}
 
@@ -57,121 +61,11 @@ After starting the game, the camera will be used to detect colors. When a red ba
 * Ensure that no objects with similar or matching colors to the target are present in the background within the camera’s visual range, as this may cause misrecognition.
   :::
 
-### 1.4 Function Extensions
-
-<p id="anchor_1_4_1"></p>
-
-**1.4.1 Changing the Default Recognized Color**
-
-The color recognition program is pre-configured to recognize three colors: red, green, and blue. By default, the program identifies red, triggering the buzzer to emit a beep and drawing a circle around the red ball in the transmitted image, displaying “Color: red.”
-
-**To change the recognized color to green, follow these steps:**
-
-(1) Enter the following command and press Enter to navigate to the source code directory:
-
-```commandline
-cd ArmPi_mini/functions/
-```
-
-(2) Then, enter the following command and press Enter to open the program file:
-
-```commandline
-sudo vim color_recognition.py
-```
-
-(3) Press the “i” key on the keyboard to enter edit mode.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image13.png"  />
-
-(4) Replace “red” (highlighted in red in the image) with “green,” as shown in the image below:
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image15.png"  />
-
-(5) Modify the color parameters as shown in the following figure:
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image18.png"  />
-
-(6) To save your changes, press the “Esc” key, then type “:wq” (note the colon before "wq") and press Enter to save and exit.
-
-(7) Enter the following command and press Enter to start the color recognition functionality: 
-
-```commandline
-python3 color_recognition.py
-```
-
-<p id="anchor_1_4_2"></p>
-
-**1.4.2 Add new recognition color**
-
-In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
-
-(1) Double click<img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />and select “Execute” in the pop-up window.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image23.png"  alt="loading" />
-
-(2) Then select “Camera Tool” and “Connect” in sequence.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image24.png"  alt="loading" />
-
-(3) Click “Add” and name the new color. Take “purple” as example. Then click “OK”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image25.png"  alt="loading" />
-
-(4) Select “purple” in the drop-down list of the color selection.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image26.png"  alt="loading" />
-
-(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side. 
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image27.png"  alt="loading" />
-
-(6) Finally, click “Save”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image28.png"  alt="loading" />
-
-(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
-
-```commandline
-cd ArmPi_mini/yaml/
-```
-
-(8) Enter command and press “Enter” to open program file.
-
-```commandline
-sudo vim lab_config.yaml
-```
-
-(9) After opening the color threshold program, you can check the threshold parameter of purple.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
-
-(10) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image34.png"  />
-
-(11) Enter “ ‘purple’: (255, 255, 114)” and “ ‘purple’ ”. The “(255, 255, 114)” is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image36.png" style="width:5.76458in;height:2.39722in" />
-
-(12) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image40.png"  />
-
-(13) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_1/image42.png"  />
-
-(14) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
-
-(15) Then refer to the steps in “[1.2 Start and Close the Game]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[1.4.1 Change Default Recognition Color]()” to change the default color to purple. 
-
-(16) If you want to add other recognition colors, please refer to the operation steps above.
-
-### 1.5 Program Analysis
+### 4.1.4 Program Analysis
 
 The source code of this program is saved in:[/home/pi/ArmPi_mini/functions/Color_recognition.py]()
 
-**1.5.1 Import Function Library**
+* **Import Function Library**
 
 {lineno-start=1}
 
@@ -197,9 +91,9 @@ To use functions from a library, we can call them with the syntax:
 
 For example, to call the `sleep` function from the `time` library, we use: 
 
-In Python, several libraries like `time`, `cv2`, and `math` are built-in and can be directly imported and used. You can also create your own libraries, like the "yaml_handle" file-reading library mentioned above.
+In Python, several libraries like `time`, `cv2`, and `math` are built-in and can be directly imported and used. You can also create your own libraries, like the `yaml_handle`  file-reading library mentioned above.
 
-**1.5.2 Main Function Analysis**
+* **Main Function Analysis**
 
 In a Python program, `__name__ == '__main__'` indicates the main function of the program, where the program starts by reading an image.
 
@@ -213,7 +107,7 @@ if __name__ == '__main__':
 
 **(1) Image Processing**
 
-Function run() for Image Processing]
+Function `run()` for Image Processing
 
 {lineno-start=82}
 
@@ -243,11 +137,11 @@ def run(img):
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
 ```
 
-The first parameter `"img"` is the input image.
+The first parameter  `"img"`  is the input image.
 
 The second parameter `(320, 240)` specifies the output image size, which can be customized.
 
-The third parameter `interpolation=cv2.INTER_NEAREST` defines the interpolation method.  
+The third parameter  `interpolation=cv2.INTER_NEAREST` defines the interpolation method.  
 
 `INTER_NEAREST`: Nearest-neighbor interpolation.  
 
@@ -271,7 +165,7 @@ The first argument `frame_resize` is the input image.
 
 The second argument `(3, 3)` specifies the size of the Gaussian kernel.
 
-The third argument `3` is the standard deviation of the Gaussian kernel in the X direction.
+The third argument  `3 ` is the standard deviation of the Gaussian kernel in the X direction.
 
 {lineno-start=96}
 
@@ -412,141 +306,77 @@ The function `cv2.imshow()` is used to display an image in a window. The first p
 It is important to include `cv2.waitKey()` after `cv2.imshow()`, as the image will not be displayed without it. 
 The function `cv2.waitKey()` waits for a key press, and the parameter `1` specifies the delay time in milliseconds.
 
-## 2. Color Recognition
+### 4.1.5 Function Extensions
 
-### 2.1 Program Description
+<p id="anchor_1_4_1"></p>
 
-The robotic arm can be controlled to nod and shake its head after recognizing color through the camera. This process has two parts including color recognition and recognition feedback.
+* **Changing the Default Recognized Color**
 
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “[OpenCV Basic Lesson/ 3.Color Space Learning]()” to learn about Lab color space.
+The color recognition program is pre-configured to recognize three colors: red, green, and blue. By default, the program identifies red, triggering the buzzer to emit a beep and drawing a circle around the red ball in the transmitted image, displaying “Color: red.”
 
-Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
+**To change the recognized color to green, follow these steps:**
 
-Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
-The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
-
-The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
-
-After the color is recognized, set servo, buzzer and RGB light. Then robot arm will give different feedback according to the different recognized color. For example, if red is recognized, robot arm will nod, buzzer will make sound and RGB will emit red light.
-About the specific feedback effect, please refer to this part “[2.3 Project Outcome]()”.
-
-<p id="anchor_2_2"></p>
-
-### 2.2 Start and Close the Game
-
-:::{Note}
-The input command should be case sensitive.
-:::
-
-(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
-
-<img class="common_img" src="../_static/media/chapter_8/section_2/image4.png"  />
-
-(2)  Enter the command to navigate to the directory where the demo program is located.
-
-```commandline
-cd ArmPi_mini/functions
-```
-
-(3) Enter the command of running the program , and press “Enter” to start the game.
-
-```commandline
-python3 color_detect.py
-```
-
-(4) To close the program, press “Ctrl+C” in the LX terminal interface. If the program cannot be closed successfully, repeat this operation until it exits.
-
-### 2.3 Project Outcome
-
-Firstly, start game. After recognition, robot arm will give corresponding feedback according to the recognized color. The effect is shown in the following list.
-
-| **Object color** | Buzzer            | **RGB light** | **Action** | **Printed content** |
-| ---------------- | ----------------- | ------------- | ---------- | ------------------- |
-| Red              | Make a “Di” sound | Red           | Nod        | red                 |
-| Green            | Make a “Di” sound | Green         | Shake head | green               |
-| Blue             | Make a “Di” sound | Blue          | Shake head | blue                |
-
-### 2.4 Function Extension
-
-<span id="anchor_2_4_1" class="anchor"></span>
-
-**2.4.1 Change default recognition color**
-
-There are three built-in recognition colors in program including red, green and blue. When recognizing red, the robot arm will nod.
-
-Here take changing the default recognition color to green for example. The specific operation steps are as follow.
-
-(1) Enter command and press “Enter” to enter the source code directory.
+(1) Enter the following command and press Enter to navigate to the source code directory:
 
 ```commandline
 cd ArmPi_mini/functions/
 ```
 
-(2) Then enter command and and press “Enter” to open the program file.
+(2) Then, enter the following command and press Enter to open the program file:
 
 ```commandline
-sudo vim color_detect.py
+sudo vim color_recognition.py
 ```
 
-(3) Find the following code:
+(3) Press the “i” key on the keyboard to enter edit mode.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image8.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image13.png"  />
 
-:::{Note}
-After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
-:::
+(4) Replace **“red”** (highlighted in red in the image) with **“green”**, as shown in the image below:
 
-(4) Press “i” to enter the editing mode.
+<img class="common_img" src="../_static/media/chapter_8/section_1/image15.png"  />
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image9.png"  />
+(5) Modify the color parameters as shown in the following figure:
 
-(5)  Change “red” to “green” in “detect_color == 'red'”, as the figure shown below.
+<img class="common_img" src="../_static/media/chapter_8/section_1/image18.png"  />
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image10.png"  />
+(6) To save your changes, press the **“Esc”**  key, then type **“:wq”** (note the colon before **"wq"**) and press Enter to save and exit.
 
-(6) Then save the modified content. Press “Esc” and enter “:wq”, and press “Enter” to save and close the program file.
+(7) Enter the following command and press Enter to start the color recognition functionality: 
 
 ```commandline
-:wq
+python3 color_recognition.py
 ```
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image11.png"  />
+<p id="anchor_1_4_2"></p>
 
-(7) Enter command again, and press “Enter” to start game.
-
-```commandline
-python3 color_detect.py
-```
-
-<img class="common_img" src="../_static/media/chapter_8/section_2/image12.png"  />
-
-**2.4.2 Add new recognition color**
+* **Add new recognition color**
 
 In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click <img src="../_static/media/chapter_8/section_2/image13.png" style="width:in;height:in" />and select “Execute” in the pop-up window.
+(1) Double click<img src="../_static/media/chapter_8/section_1/image22.jpeg" style="width:0.63542in;height:0.76042in" alt="loading" />and select **“Execute”** in the pop-up window.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image23.png"  alt="loading" />
 
-(2) Then select “Camera Tool” and “Connect” in sequence.
+(2) Then select **“Camera Tool”** and **“Connect”** in sequence.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image15.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image24.png"  alt="loading" />
 
-(3) Click “Add” and name the new color. Take “purple” as example. Then click “OK”.
+(3) Click **“Add”** and name the new color. Take **“purple”** as example. Then click **“OK”**.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image16.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image25.png"  alt="loading" />
 
-(4) Select “purple” in the drop-down list of the color selection.
+(4) Select **“purple”** in the drop-down list of the color selection.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image17.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image26.png"  alt="loading" />
 
 (5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side. 
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image18.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image27.png"  alt="loading" />
 
-(6) Finally, click “Save”.
+(6) Finally, click **“Save”.**
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image19.png"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image28.png"  alt="loading" />
 
 (7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
 
@@ -562,57 +392,92 @@ sudo vim lab_config.yaml
 
 (9) After opening the color threshold program, you can check the threshold parameter of purple.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image33.jpeg"  alt="loading" />
 
-(10) Refer to the steps 1-2 in “4.1 Change default recognition color” to open the program file, and press “i” to enter the editing mode.
+(10) Find the following code.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image24.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image34.png"  />
 
-(12) Enter ` ‘purple’: (128, 0, 128)` and ` ‘purple’ `. The `(128, 0, 128)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
+(11) Enter ` ‘purple’: (255, 255, 114)` and ` ‘purple’ `. The `(255, 255, 114)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image25.png"  />
+<img class="common_img" src="../_static/media/chapter_8/section_1/image36.png" style="width:5.76458in;height:2.39722in" />
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image26.png"  />
+(12) Find the following code.
 
-(13) Find the following code.
+<img class="common_img" src="../_static/media/chapter_8/section_1/image40.png"  />
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image27.png"  />
+(13) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
 
-(14) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
+<img class="common_img" src="../_static/media/chapter_8/section_1/image42.png"  />
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image28.png"  />
+(14) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press “Enter” to save and close the file.
 
-(15) Find the following code.
+(15) Then refer to the steps in “[4.1.2 Start and Close the Game]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.1.5 Function Extension -> Change Default Recognition Color]()” to change the default color to purple. 
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image29.png"  />
+(16) If you want to add other recognition colors, please refer to the operation steps above.
 
-(16) Enter the content of the following red frame, as the figure shown below.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image30.png"  />
+## 4.2 Color Recognition
 
-(17) Find the following code.
+### 4.2.1 Program Description
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image31.png"  />
+The robotic arm can be controlled to nod and shake its head after recognizing color through the camera. This process has two parts including color recognition and recognition feedback.
 
-(18) Enter the content of the following red frame, as the figure shown below.
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “[OpenCV Basic Lesson/ 3.Color Space Learning]()” to learn about Lab color space.
 
-<img class="common_img" src="../_static/media/chapter_8/section_2/image32.png"  />
+Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
 
-(19) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+
+After the color is recognized, set servo, buzzer and RGB light. Then robot arm will give different feedback according to the different recognized color. For example, if red is recognized, robot arm will nod, buzzer will make sound and RGB will emit red light.
+About the specific feedback effect, please refer to this part “[4.2.3 Project Outcome]()”.
+
+<p id="anchor_2_2"></p>
+
+### 4.2.2 Start and Close the Game
+
+:::{Note}
+The input command should be case sensitive.
+:::
+
+(1) Power on the robot and use VNC Viewer to connect to the remote desktop.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image4.png"  />
+
+(2)  Enter the command to navigate to the directory where the demo program is located.
 
 ```commandline
-:wq
+cd ArmPi_mini/functions
 ```
 
-(20) Then refer to the steps in “[2.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[2.4.1 Change Default Recognition Color]()” to change the default color to purple. 
+(3) Enter the command of running the program , and press **“Enter”** to start the game.
 
-(21) If you want to add other recognition colors, please refer to the operation steps above.
+```commandline
+python3 color_detect.py
+```
 
-### 2.5 Program Analysis
+(4) To close the program, press **“Ctrl+C”** in the LX terminal interface. If the program cannot be closed successfully, repeat this operation until it exits.
+
+### 4.2.3 Project Outcome
+
+Firstly, start game. After recognition, robot arm will give corresponding feedback according to the recognized color. The effect is shown in the following list.
+
+| **Object color** | Buzzer            | **RGB light** | **Action** | **Printed content** |
+| ---------------- | ----------------- | ------------- | ---------- | ------------------- |
+| Red              | Make a “Di” sound | Red           | Nod        | red                 |
+| Green            | Make a “Di” sound | Green         | Shake head | green               |
+| Blue             | Make a “Di” sound | Blue          | Shake head | blue                |
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/1.gif"  />
+
+### 4.2.4 Program Analysis
 
 The source code of program is located in：[/home/pi/ArmPi_mini/functions/color_detect.py]()
 
-**2.5.1 Import Function Library**
+* **Import Function Library**
 
 {lineno-start=1}
 
@@ -641,7 +506,7 @@ if __name__ == '__main__':
     AK.board = board
 ```
 
-Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use`library name+function name (parameter, parameter)`. For example,
+Import the libraries related to OpenCV, time, math, threads and inverse kinematics. If want to call a function in library, you can use `library name+function name (parameter, parameter)`. For example,
 
 {lineno-start=178}
 
@@ -649,11 +514,11 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
                 time.sleep(1.5)  
 ```
 
-Call `sleep` function in “time” library. The function “sleep ()” is used to delay.
+Call  `sleep`  function in `time`  library. The function `sleep()` is used to delay.
 
 There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `common.yaml_handle` and “common.yaml_handle”.
 
-**2.5.2 Instantiate Function Library**
+* **Instantiate Function Library**
 
 The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
@@ -664,11 +529,11 @@ The name of function library is too long to memorize. For calling function easil
     AK = ArmIK()
 ```
 
-After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
+After instantiating, you can directly input and call the function `AK.function name (parameter, parameter)`.
 
-**2.5.3 Main Function Analysis**
+* **Main Function Analysis**
 
-The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program  `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function  `init() ` is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=276}
 
@@ -693,15 +558,19 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture('http://127.0.0.1:8080?action=stream')
 ```
 
-Capture the camera image and save it to `cap`.
+Capture the camera image and save it to  `cap` .
 
-The function `cap.read` is to read the captured image. True: the `ret` value of image is read. False: The value of image 'ret' was not read.
+The function  `cap.read`  is to read the captured image. 
+
+True: the `ret` value of image is read. 
+
+False: The value of image 'ret' was not read.
 
 `img` is a frame of the camera that was read.
 
 **(2) Enter Image Processing**
 
-When the captured image is read, “ret” value is True.
+When the captured image is read, `ret` value is True.
 
 {lineno-start=290}
 
@@ -711,8 +580,8 @@ When the captured image is read, “ret” value is True.
             Frame = run(frame)  
 ```
 
-The function img.copy() is used to copy the content of “img” to “frame”.
-The function run() is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
+The function `img.copy()` is used to copy the content of `img` to `frame`.
+The function `run()` is used to process image. In “[4.2.4 Program Analysis -> Image Processing Analysis]()” to check the detailed content.
 
 **(3) Window Displays Image**
 
@@ -734,7 +603,7 @@ The function `cv2.waitKey()` is used to wait for inputting key and the parameter
 
 <span id="anchor_2_5_4"></span>
 
-**2.5.4 Image Processing Analysis**
+* **Image Processing Analysis**
 
 {lineno-start=190}
 
@@ -803,9 +672,13 @@ The first parameter `img_copy` is the input image.
 
 The second parameter `size` is the size of the output image.
 
-The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. `INTER_NEAREST` is the earest Neighbour Interpolation. INTER_LINEAR is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
+The third parameter `interpolation=cv2.INTER_NEAREST` is interpolation method. 
 
-INTER_CUBIC: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
+`INTER_NEAREST` is the earest Neighbour Interpolation.
+
+`INTER_LINEAR` is the Bilinear Interpolation. If the last parameter is not modified, this method “INTER_LINEAR” will be used by default. 
+
+`INTER_CUBIC`: Bicubic interpolation within a 4x4 pixel neighborhood. INTER_LANCZOS4: Lanczos interpolation within an 8x8 pixel neighborhood.
 
 **(2) Gaussian filter**
 
@@ -819,15 +692,15 @@ Gaussian filter is a linear filter hat also smooths an image and reduces noise, 
         frame_gb = cv2.GaussianBlur(frame_resize, (3, 3), 3)
 ```
 
-The first parameter `frame_resize` is the input image.
+The first parameter  `frame_resize` is the input image.
 
-The second parameter `(3, 3)` is the kernel size.
+The second parameter  `(3, 3)` is the kernel size.
 
-The third parameter`3` is the Gaussian kernel sigma value on x direction.
+The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
 **(3) Covert to Color Space**
 
-Use function `cv2.cvtColor()` to convert image to LAB space.
+Use function  `cv2.cvtColor()`  to convert image to LAB space.
 
 {lineno-start=208}
 
@@ -843,7 +716,7 @@ The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BG
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 
-Use inRange() function in cv2 library is used to process image with thresholding method. 
+Use `inRange()` function in cv2 library is used to process image with thresholding method. 
 
 {lineno-start=216}
 
@@ -965,9 +838,9 @@ Use judgement statement to get the maximum color in a image.
                     detect_color = "None"
 ```
 
-**2.5.5 Execute Feedback**
+* **Execute Feedback**
 
-The robot arm movement function move() is executed as a child thread. When color is recognized, the move() function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
+The robot arm movement function `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
 
 {lineno-start=129}
 
@@ -1092,7 +965,7 @@ Determine whether the recognized color is the same as the set color, and then pe
                 time.sleep(0.01)
 ```
 
-The Board.setPWMServoPulse() function is used to control a single servo. Take `Board.setPWMServoPulse(3, 800, 200)` for example.
+The `Board.setPWMServoPulse()` function is used to control a single servo. Take `Board.setPWMServoPulse(3, 800, 200)` for example.
 
 The first parameter `3` is the servo ID.
 
@@ -1112,9 +985,151 @@ The fourth parameter `90` is the maximum pitch angel.
 
 The fifth parameter `500` is the running time and the unit is mm/s.
 
-## 3. Position Detection
+### 4.2.5 Function Extension
 
-### 3.1 Program Description
+<span id="anchor_2_4_1" class="anchor"></span>
+
+* **Change default recognition color**
+
+There are three built-in recognition colors in program including red, green and blue. When recognizing red, the robot arm will nod.
+
+Here take changing the default recognition color to green for example. The specific operation steps are as follow.
+
+(1) Enter command and press **“Enter”** to enter the source code directory.
+
+```commandline
+cd ArmPi_mini/functions/
+```
+
+(2) Then enter command and and press **“Enter”** to open the program file.
+
+```commandline
+sudo vim color_detect.py
+```
+
+(3) Find the following code:
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image8.png"  />
+
+:::{Note}
+After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
+:::
+
+(4) Press **“i”** to enter the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image9.png"  />
+
+(5)  Change **“red”** to **“green”** in `detect_color == 'red'`, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image10.png"  />
+
+(6) Then save the modified content. Press **“Esc”** and enter **“:wq”**, and press **“Enter”** to save and close the program file.
+
+```commandline
+:wq
+```
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image11.png"  />
+
+(7) Enter command again, and press **“Enter”** to start game.
+
+```commandline
+python3 color_detect.py
+```
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image12.png"  />
+
+* **Add new recognition color**
+
+In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
+
+(1) Double click <img src="../_static/media/chapter_8/section_2/image13.png" style="width:in;height:in" />and select “Execute” in the pop-up window.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image14.png" class="common_img"  />
+
+(2) Then select `Camera Tool` and `Connect` in sequence.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image15.png"  alt="loading" />
+
+(3) Click **Add** and name the new color. Take  **purple** as example. Then click **OK**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image16.png"  alt="loading" />
+
+(4) Select **“purple”** in the drop-down list of the color selection.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image17.png"  alt="loading" />
+
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side. 
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image18.png"  alt="loading" />
+
+(6) Finally, click **“Save”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image19.png"  alt="loading" />
+
+(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
+
+```commandline
+cd ArmPi_mini/yaml/
+```
+
+(8) Enter command and press “Enter” to open program file.
+
+```commandline
+sudo vim lab_config.yaml
+```
+
+(9) After opening the color threshold program, you can check the threshold parameter of purple.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image22.jpeg"  alt="loading" />
+
+(10) Refer to the steps 1-2 in “[4.2.5 Function Extension -> Change default recognition color]()” to open the program file, and press **“i”** to enter the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image24.png"  />
+
+(12) Enter ` ‘purple’: (128, 0, 128)` and ` ‘purple’ `. The `(128, 0, 128)` is the RGB value of the purple. The sequence of RGB needs to be swapped to BGR. Therefore, the value of purple does not change. Please use RGB color reader to check it.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image25.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image26.png"  />
+
+(13) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image27.png"  />
+
+(14) Enter the content of the following red frame to set the RGB light on the expansion board to purple, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image28.png"  />
+
+(15) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image29.png"  />
+
+(16) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image30.png"  />
+
+(17) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image31.png"  />
+
+(18) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_2/image32.png"  />
+
+(19) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+
+```commandline
+:wq
+```
+
+(20) Then refer to the steps in “[4.2.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.2.5 Function Extension -> Change Default Recognition Color]()” to change the default color to purple. 
+
+(21) If you want to add other recognition colors, please refer to the operation steps above.
+
+## 4.3 Position Detection
+
+### 4.3.1 Program Description
 
 The logic of color sorting is to locate block and print the location coordinate in terminal. This process includes color recognition and target position detection.
 
@@ -1129,7 +1144,7 @@ The closing operation dilates an image and then erodes the dilated image. Closin
 
 The second part is to detect the object position. According to the minimum enclosing circle of object, obtain its origin coordinate, e,i., the position of rge target color.
 
-### 3.2 Start and Close the Game
+### 4.3.2 Start and Close the Game
 
 :::{Note}
 The input command should be case sensitive, and “Tab” can be used to complement keywords.
@@ -1153,69 +1168,18 @@ python3 position_detection.py
 
 (4) If want to exit the game, press “Ctrl+C”. If fail to close, please try a few more times.
 
-### 3.3 Project Outcome
+### 4.3.3 Project Outcome
 
 Circle the red object in the returned image, and print the values of x-axis and y-axis on terminal.
 
 <img class="common_img" src="../_static/media/chapter_8/section_3/image7.png"  />
 
-### 3.4 Function Extension
 
-The default tracking color is red. Here the default color will be changed to blue for example.
-
-(1) If you want to change the tracking color, enter command and press “Enter” to enter the source code directory.
-
-```commandline
-cd ArmPi_mini/functions/
-```
-
-(2) Then enter command and press “Enter” to open the program file.
-
-```commandline
-sudo vim position_detection.py
-```
-
-(3) Find the following code:
-
-<img class="common_img" src="../_static/media/chapter_8/section_3/image9.png"  />
-
-<img class="common_img" src="../_static/media/chapter_8/section_3/image10.png"  />
-
-:::{Note}
-After entering the line number of the code, press “Shift+G” to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
-:::
-
-(4) Press “i”. When the word “Insert” appears, it means the program has entered the editing mode.
-
-<img class="common_img" src="../_static/media/chapter_8/section_3/image11.png"  />
-
-(5) Change “red” to “blue” in “__target_color = ('red',)”, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_3/image12.png"  />
-
-<img class="common_img" src="../_static/media/chapter_8/section_3/image13.png"  />
-
-:::{Note}
-Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
-:::
-
-(6) Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
-
-```commandline
-:wq
-```
-
-(7)  Enter command “python3 position_detection.py” again, and press “Enter” to start game.
-
-```commandline
-python3 position_detection.py
-```
-
-### 3.5 Program Analysis
+### 4.3.4 Program Analysis
 
 The source code of program is located in: [/home/pi/ArmPi_mini/functions/position_detection.py]()
 
-**3.5.1 Import Function Library**
+* **Import Function Library**
 
 {lineno-start=1}
 
@@ -1255,7 +1219,7 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
 The `sleep` function in `time” library is called. The function “sleep ()” is used to delay.
 There are some built-in libraries in Python, so they can be called directly. For example, “time”, “cv2” and “math”. You can also write a new library like “yaml_handle” and “ArmIK.ArmMoveIK”.
 
-**3.5.2 Instantiate Function Library**
+* **Instantiate Function Library**
 
 The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
@@ -1269,9 +1233,9 @@ The name of function library is too long to memorize. For calling function easil
 
 After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
 
-**3.5.3 Main Function Analysis**
+* **Main Function Analysis**
 
-The python program `__name__ == ’__main__:’` is the main function of program. Firstly, the function “init()” is called to initialize. The initialization in this program includes: return the robot arm to the initial position and read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ == ’__main__:’`  is the main function of program. Firstly, the function “init()” is called to initialize. The initialization in this program includes: return the robot arm to the initial position and read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=106}
 
@@ -1302,11 +1266,11 @@ Capture the camera image and save it to `cap`.
 
 The function `cap.read()` is to read the captured image. True: the “ret” value of image is read. False: The value of image `ret` was not read.
 
-`img` is a frame of the camera that was read.
+`img`  is a frame of the camera that was read.
 
 **(2) Enter Image Processing**
 
-When the capture image is read, “ret” value is True.
+When the capture image is read, `ret` value is True.
 
 {lineno-start=122}
 
@@ -1316,8 +1280,8 @@ When the capture image is read, “ret” value is True.
             Frame = run(frame)
 ```
 
-The function `img.copy()` is used to copy the content of “img” to “frame”.
-The function `run()` is used to process image. In “3.5.4 Image Processing Analysis” to check the detailed content.
+The function `img.copy()` is used to copy the content of `img` to `frame`.
+The function `run()`  is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
 
 **(3) Window Displays Image**
 
@@ -1331,15 +1295,15 @@ The function `run()` is used to process image. In “3.5.4 Image Processing Anal
                 break
 ```
 
-The function `cv2.resize()` is used to scale the processed image to the appropriate size.
+The function  `cv2.resize()`  is used to scale the processed image to the appropriate size.
 
-The function`cv2.imshow()` is used to display the image in window. `'’'frame` is the window name. “frame_resize” is the displayed content and must be followed by “cv2.waitKey()”. Otherwise, the content can not be displayed.
+The function `cv2.imshow()` is used to display the image in window. `frame` is the window name. “frame_resize” is the displayed content and must be followed by `cv2.waitKey()`. Otherwise, the content can not be displayed.
 
 The function `cv2.waitKey()` is used to wait for inputting key and the parameter “1” refers to the delay time.
 
 <p id="anchor_5_4"></p>
 
-**3.5.4 Image Processing Analysis**
+**3.4.4 Image Processing Analysis**
 
 {lineno-start=64}
 
@@ -1420,7 +1384,7 @@ The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
 (3) Covert to Color Space
 
-Use function cv2.cvtColor() to convert image to LAB space.
+Use function `cv2.cvtColor()` to convert image to LAB space.
 
 {lineno-start=79}
 
@@ -1429,13 +1393,14 @@ Use function cv2.cvtColor() to convert image to LAB space.
 ```
 
 The first parameter `frame_gb` is the input image.
+
 The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
 
 (4) Thresholding Processing
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
 
-The “inRange()” function in cv2 library is used to process image with thresholding method. 
+The `inRange()` function in cv2 library is used to process image with thresholding method. 
 
 {lineno-start=84}
 
@@ -1456,7 +1421,7 @@ The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['m
 
 (5) Opening and Closing Operations
 
-To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “v2.morphologyEx()” is the morphology function.
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function `cv2.morphologyEx()` is the morphology function.
 
 {lineno-start=91}
 
@@ -1475,7 +1440,7 @@ The fourth parameter `np.uint8` is the application times.
 
 (6) Find the Largest Contour 
 
-After completing the above processing, use the function “findContours()” in cv2 library to obtain the contour of the recognized target.
+After completing the above processing, use the function `findContours()` in cv2 library to obtain the contour of the recognized target.
 
 {lineno-start=93}
 
@@ -1483,11 +1448,11 @@ After completing the above processing, use the function “findContours()” in 
             contours = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[-2]  # 找出轮廓(find contours)
 ```
 
-The first parameter `closed` is the input image.
+The first parameter  `closed`  is the input image.
 
 The second parameter `cv2.RETR_EXTERNAL` is the contour retrieval method.
 
-The third parameter `cv2.CHAIN_APPROX_NONE)[-2]` is the contour approximation method.
+The third parameter `cv2.CHAIN_APPROX_NONE)[-2]`  is the contour approximation method.
 
 Find the largest contour in obtained contours. To avoid interference, set a minimum value and the target contour is effective when the area is greater than the set value.
 
@@ -1501,7 +1466,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 (7) Obtain Position Information
 
 Use function `cv2.minEnclosingCircle()` in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
-The image was scaled, and now the center coordinates and radius are mapped to the actual size using `Misc.map()`.
+The image was scaled, and now the center coordinates and radius are mapped to the actual size using  `Misc.map()`.
 
 {lineno-start=95}
 
@@ -1520,9 +1485,62 @@ The image was scaled, and now the center coordinates and radius are mapped to th
 
 Finally, the center coordinates are displayed in terminal and image.
 
-## 4. Target Tracking
+### 4.3.5 Function Extension
 
-### 4.1 Program Description
+The default tracking color is red. Here the default color will be changed to blue for example.
+
+(1) If you want to change the tracking color, enter command and press **“Enter”** to enter the source code directory.
+
+```commandline
+cd ArmPi_mini/functions/
+```
+
+(2) Then enter command and press **“Enter”** to open the program file.
+
+```commandline
+sudo vim position_detection.py
+```
+
+(3) Find the following code:
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image9.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image10.png"  />
+
+:::{Note}
+After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
+:::
+
+(4) Press **“i”**. When the word **“Insert”** appears, it means the program has entered the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image11.png"  />
+
+(5) Change **“red”** to **“blue”** in `__target_color = ('red',)`, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image12.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_3/image13.png"  />
+
+:::{Note}
+Then save the modified content. Press **“Esc”** and enter **“:wq”** (Do not miss the “:” before “wq”.), and press **“Enter”** to save and close the program file.
+:::
+
+(6) Then save the modified content. Press “Esc” and enter “:wq” (Do not miss the “:” before “wq”.), and press “Enter” to save and close the program file.
+
+```commandline
+:wq
+```
+
+(7)  Enter command “python3 position_detection.py” again, and press “Enter” to start game.
+
+```commandline
+python3 position_detection.py
+```
+
+
+## 4.4 Target Tracking
+
+### 4.4.1 Program Description
 
 The logic of target tracking is to recognized color and read the target position, and then control robot arm to move with the target. This process includes color recognition and tracking.
 
@@ -1540,7 +1558,7 @@ The PID algorithm is one of the most widely used automatic controllers. In this 
 
 <p id="anchor_4_2"></p>
 
-### 4.2 Start and Close the Game
+### 4.4.2 Start and Close the Game
 
 :::{Note}
  input command should be case sensitive, and “Tab” can be used to complement keywords.
@@ -1564,170 +1582,18 @@ python3 color_tracking.py
 
 (4) If you want to exit the game, press “Ctrl+C”. If it fails to close, please try a few more times.
 
-### 4.3 Project Outcome
+### 4.4.3 Project Outcome
 
 The default tracking color is red in program. After starting game, ArmPi mini will move with the red block. 
 
-### 4.4 Function Extension
+<img class="common_img" src="../_static/media/chapter_8/section_4/1.gif"  />
 
-**4.4.1 Adjust Color Threshold**
 
-If the effect of color recognition is not good enough, you need to adjust the color threshold. Take adjusting red for example and other colors are set based on the same method. The operation steps are as follow:
-
-(1) Double click<img src="../_static/media/chapter_8/section_4/image7.png" style="width: in;height: in" />icon and select “Execute” in the pop-up window.
-
-(2) After entering the interface, click “Camera Tool”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
-
-(3) Then click “Connect”, and then select “red” in the lower right corner. 
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image9.png"  alt="loading" />
-
-(3) Then click “Connect”, and then select “red” in the lower right corner. 
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image10.png"  alt="loading" />
-
-(4) If the returned image does not appear in interface, it means the camera fails to connect. At this time, check the camera whether is connected.
-The right side of the interface is the real-time returned image and the left side is the color to be recognized. Aim camera at the red block, and then drag the sliders until the red at the left side turns white and other colors turn black. Finally, click “Save”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image11.png"  alt="loading" />
-
-<span id="anchor_4_4_2" class="anchor"></span>
-
-**4.4.2 Modify Tracking Color**
-
-The default tracking color is red. Here the default color will be changed to blue for example.
-
-(1) If want to change the tracking color, enter command “cd MasterPi/functions/” and press “Enter” to enter the source code directory.
-
-```commandline
-cd MasterPi/functions/
-```
-
-(2) Then enter command “sudo vim color_tracking.py” and press “Enter” to open the program file.
-
-```commandline
-sudo vim color_tracking.py
-```
-
-(3) Find the following code:
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image13.png"  />
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image14.png"  />
-
-:::{Note}
-After entering the line number of the code, press “Shift+G” to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
-:::
-
-(4) Press “i”. When the word “Insert” appears, it means the program has entered the editing mode.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image15.png"  />
-
-(5) Change “red” to “blue” in “__target_color = ('red',)”, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image16.png"  />
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image17.png"  />
-
-:::{Note}
-The color after modification must be one of the colors in color selection bar. If want to change to other colors, please refer to “4.3 Add Recognition Color” to add new recognition color.
-:::
-
-(6) After modifying, press “Esc”. Then input “:wq” and press “Enter” to save and close the file.
-
-```commandline
-:wq
-```
-
-<span id="anchor_4_4_3" class="anchor"></span>
-
-**4.4.3 Add Recognition Color**
-
-In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
-
-(1) Double click<img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />and select “Execute” in the pop-up window.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
-
-(2) Then select “Camera Tool” and “Connect” in sequence.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image20.png"  alt="loading" />
-
-(3) Click “Add” and name the new color as “purple”. Then click “OK”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image21.png"  alt="loading" />
-
-(4) Select “purple” in the drop-down list of the color selection bar.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image22.png"  alt="loading" />
-
-(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image23.png"  alt="loading" />
-
-(6) Finally, click “Save”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image24.png"  alt="loading" />
-
-(7) Check whether the modified value is written into program. Enter command “cd ArmPi_mini/yaml/” and press “Enter” to access to the program directory.
-
-```commandline
-cd ArmPi_mini/yaml/
-```
-
-(8) Enter command “sudo vim lab_config.yaml” and press “Enter” to open program file.
-
-```commandline
-sudo vim lab_config.yaml
-```
-
-(9) After opening the color threshold program file, you can check the threshold parameter of purple.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
-
-(10) Refer to the steps 1-2 in “[4.4.2 Change Tracking Color]()” to open the program file, and press “i” to enter the editing mode.
-
-(11) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image29.png"  />
-
-(12) Enter ` ‘purple’: (255, 255, 114)`, and change “red” to “purple”, as the figure shown below:
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image30.png"  />
-
-The parameter (255, 255, 114) is the maximum value of purple threshold parameter checked in step 9.
-
-(13) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image31.png"  />
-
-(14) Add the content in red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image32.png"  />
-
-(15) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image33.png"  />
-
-(16)  Change “red” to “purple”, as the figure shown below:
-
-<img class="common_img" src="../_static/media/chapter_8/section_4/image34.png"  />
-
-(17) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
-
-```commandline
-:wq
-```
-
-(18) Then refer to the steps in “[4.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will track and move with the target. If you want to add other recognition colors, you can refer “[4.4.3 Add Recognition Color]()” to add new recognition color.
-
-### 4.5 Program Analysis
+### 4.4.4 Program Analysis
 
 The source code of program is located in :[/home/pi/ArmPi_Mini/functions/color_tracking.py]()
 
-**4.5.1 Import Function Library**
+* **Import Function Library**
 
 {lineno-start=1}
 
@@ -1764,11 +1630,11 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
             time.sleep(0.01)
 ```
 
-Call `sleep` function in `time` library. The function `sleep ()` is used to delay.
+Call  `sleep` function in `time` library. The function `sleep ()` is used to delay.
 
 There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
-**4.5.2 Instantiate Function Library**
+* **Instantiate Function Library**
 
 The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
@@ -1782,9 +1648,9 @@ The name of function library is too long to memorize. For calling function easil
 
 After instantiating, you can directly call function when inputting the function like `AK.function name (parameter, parameter)`.
 
-**4.5.2 Main Function Analysis**
+* **Main Function Analysis**
 
-The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ ==  ’__main__:’`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=245}
 
@@ -1830,7 +1696,7 @@ When the capture image is read, “ret” value is True.
 
 The function “img.copy()” is used to copy the content of “img” to “frame”.
 
-The function “run()” is used to process image. In “[4.5.4 Image Processing Analysis]()” to check the detailed content.
+The function “run()” is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
 
 **(3) Window Displays Image**
 
@@ -1854,7 +1720,7 @@ The main function will firstly call function `init()` to initialize. Then read a
 
 <span id="anchor_4_5_4" class="anchor"></span>
 
-**4.5.4 Image Processing Analysis**
+* **Image Processing Analysis**
 
 {lineno-start=145}
 
@@ -2016,7 +1882,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 **(7)  Obtain Position Information**
 
-Use function “cv2.minEnclosingCircle” in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+Use function `cv2.minEnclosingCircle` in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=189}
 
@@ -2027,7 +1893,7 @@ Use function “cv2.minEnclosingCircle” in cv2 library to obtain the minimum e
             radius = int(Misc.map(radius, 0, size[0], 0, img_w))   
 ```
 
-**4.5.5 Robot Arm Tracking**
+* **Robot Arm Tracking**
 
 Robot arm uses PID algorithm to make camera close to the center coordinates of target. 
 
@@ -2085,24 +1951,186 @@ The third parameter `3`is the servo ID and the following `4`, `5` and `6` are al
 
 The fourth parameter `servo_data['servo3']` is the servo pulse, and the following `servo_data['servo4']`, `servo_data['se rvo5']`, “and servo_data['servo6']” are all the servo pulses.
 
-## 5. Color Sorting
+### 4.4.5 Function Extension
+
+* **Adjust Color Threshold**
+
+If the effect of color recognition is not good enough, you need to adjust the color threshold. Take adjusting red for example and other colors are set based on the same method. The operation steps are as follow:
+
+(1) Double click<img src="../_static/media/chapter_8/section_4/image7.png" style="width: in;height: in" />icon and select **“Execute”** in the pop-up window.
+
+(2) After entering the interface, click **“Camera Tool”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
+
+(3) Then click  `Connect` , and then select `red` in the lower right corner. 
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image9.png"  alt="loading" />
+
+(3) Then click  **Connect** , and then select  **red**  in the lower right corner. 
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image10.png"  alt="loading" />
+
+(4) If the returned image does not appear in interface, it means the camera fails to connect. At this time, check the camera whether is connected.
+The right side of the interface is the real-time returned image and the left side is the color to be recognized. Aim camera at the red block, and then drag the sliders until the red at the left side turns white and other colors turn black. Finally, click “Save”.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image11.png"  alt="loading" />
+
+<span id="anchor_4_4_2" class="anchor"></span>
+
+* **Modify Tracking Color**
+
+The default tracking color is red. Here the default color will be changed to blue for example.
+
+(1) If want to change the tracking color, enter command **“cd MasterPi/functions/”** and press **“Enter”** to enter the source code directory.
+
+```commandline
+cd MasterPi/functions/
+```
+
+(2) Then enter command **“sudo vim color_tracking.py”** and press **“Enter”** to open the program file.
+
+```commandline
+sudo vim color_tracking.py
+```
+
+(3) Find the following code:
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image13.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image14.png"  />
 
 :::{Note}
-Before starting color sorting, please make sure that ArmPi mini has been completely configured according to the content in “[Getting ready/Position Adjustment]()” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
+After entering the line number of the code, press **“Shift+G”** to go to the corresponding position. The line number of the code shown in the figure is for reference only, please refer to the actual situation.
 :::
 
-### 5.1 Project Description
+(4) Press **“i”**. When the word **“Insert”** appears, it means the program has entered the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image15.png"  />
+
+(5) Change **“red”** to **“blue”** in **“__target_color = ('red',)”**, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image16.png"  />
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image17.png"  />
+
+:::{Note}
+The color after modification must be one of the colors in color selection bar. If want to change to other colors, please refer to “[Add Recognition Color]()” to add new recognition color.
+:::
+
+(6) After modifying, press **“Esc”**. Then input **“:wq”** and press **“Enter”** to save and close the file.
+
+```commandline
+:wq
+```
+
+<span id="anchor_4_4_3" class="anchor"></span>
+
+* **Add Recognition Color**
+
+In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
+
+(1) Double click<img src="../_static/media/chapter_8/section_4/image19.png" style="width:0.83333in;height:0.73958in" />and select **Execute** in the pop-up window.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image8.png"  />
+
+(2) Then select  Camera Tool and Connect in sequence.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image20.png"  alt="loading" />
+
+(3) Click **“Add”** and name the new color as **“purple”**. Then click **“OK”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image21.png"  alt="loading" />
+
+(4) Select **“purple”** in the drop-down list of the color selection bar.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image22.png"  alt="loading" />
+
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns block in the left side.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image23.png"  alt="loading" />
+
+(6) Finally, click **“Save”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image24.png"  alt="loading" />
+
+(7) Check whether the modified value is written into program. Enter command **“cd ArmPi_mini/yaml/”** and press **“Enter”** to access to the program directory.
+
+```commandline
+cd ArmPi_mini/yaml/
+```
+
+(8) Enter command **“sudo vim lab_config.yaml”** and press **“Enter”** to open program file.
+
+```commandline
+sudo vim lab_config.yaml
+```
+
+(9) After opening the color threshold program file, you can check the threshold parameter of purple.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image27.jpeg"  alt="loading" />
+
+(10) Refer to the steps 1-2 in “[Change Tracking Color]()” to open the program file, and press “i” to enter the editing mode.
+
+(11) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image29.png"  />
+
+(12) Enter **‘purple’: (255, 255, 114)**, and change “red” to “purple”, as the figure shown below:
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image30.png"  />
+
+The parameter `(255, 255, 114)` is the maximum value of purple threshold parameter checked in step 9.
+
+(13) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image31.png"  />
+
+(14) Add the content in red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image32.png"  />
+
+(15) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image33.png"  />
+
+(16)  Change **“red”** to **“purple”**, as the figure shown below:
+
+<img class="common_img" src="../_static/media/chapter_8/section_4/image34.png"  />
+
+(17) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+
+```commandline
+:wq
+```
+
+(18) Then refer to the steps in “[4.4.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will track and move with the target. If you want to add other recognition colors, you can refer “[4.4.3 Add Recognition Color]()” to add new recognition color.
+
+
+## 4.5 Color Sorting
+
+:::{Note}
+Before starting color sorting, please make sure that ArmPi mini has been completely configured according to the content in “[1.Getting ready -> 1.8 Deviation Adjustment]()” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
+:::
+
+### 4.5.1 Project Description
 
 The logic of color sorting is to recognize and distinguish color, and then control robot arm to sort the colored blocks. This realization process includes color recognition and color sorting.
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. (You can refer to the content in folder “[OpenCV Basic Lesson/7.Color Space Learning]()” to learn about Lab color space)
-Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
-Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
-The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
-The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
-The second part is color sorting. Firstly, robot arm uses the AK.setPitchRangeMoving() fucntion to calculate the servo angle at the target position. Next, control the gripper. Then pick the target color based on the recognized the recognized color and move them to the corresponding area one by one.
-Regarding the inverse kinematics, please refer to “5. Basic Motion Lesson/ Lesson 1 What is Inverse Kinematics”.
 
-### 5.2 Start and Close the Game
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. (You can refer to the content in folder “[OpenCV Basic Lesson/7.Color Space Learning]()” to learn about Lab color space)
+
+Recognize the color of the object in circle through color threshold. Then perform masking on image. (Mask is to hide the whole or part of the processing image with the designated image, figure or object.) 
+
+Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+
+The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
+
+The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+
+The second part is color sorting. Firstly, robot arm uses the AK.setPitchRangeMoving() fucntion to calculate the servo angle at the target position. Next, control the gripper. Then pick the target color based on the recognized the recognized color and move them to the corresponding area one by one.
+Regarding the inverse kinematics, please refer to “[3. Basic Motion Lesson -> 3.1 What is Inverse Kinematics]()”.
+
+### 4.5.2 Start and Close the Game
 
 :::{Note}
 The input command should be case sensitive.
@@ -2126,85 +2154,17 @@ cd ArmPi_mini/functions
 python3 color_sorting.py
 ```
 
-
-
-### 5.3 Project Outcome
+### 4.5.3 Project Outcome
 
 Place red, green and blue blocks on a flat and smooth surface. When the block is recognized, ArmPi mini will beep. Then position the recognized block in front of the gripper, and robot arm will grip the block and move it to the corresponding position in the left side.
 
-### 5.4 Function Extension
+<img class="common_img" src="../_static/media/chapter_8/section_5/1.gif"  />
 
-The effect of color sorting in program defaults to recognize red, green and three blocks, and then pick and transport it to the corresponding position in the left side. If want to change the block placement position, you need to learn about the coordinate of robot arm. 
-The coordinate of robot arm is shown below (take robot arm as the first person view):
-
-<img class="common_img" src="../_static/media/chapter_8/section_5/image7.png"  alt="loading" />
-
-The corresponding relationship between placement position and coordinate parameter:
-
-| Coordinate **Parameter** | **Block Position**                         |
-| ------------------------ | ------------------------------------------ |
-| x increases              | The block moves to the right along x axis. |
-| x decreases              | The block moves to the left along x axis.  |
-| y increases              | The block moves forward along y axis.      |
-| y decreases              | The block moves backward along y axis.     |
-| z increases              | The block moves up along y axis.           |
-| z decreases              | The block moves down along y axis.         |
-
-:::{Note}
-The parameter z must be greater than 0.
-:::
-
-Here the program will be changed to place the block in front of robot arm. The method is applicable to change other color. The specific operation steps are as follow:
-
-(1) Enter command and press “Enter” to enter the source code directory.
-
-```commandline
-cd ArmPi_mini/functions/
-```
-
-(2) Then enter command  and press “Enter” to open the program file.
-
-```commandline
-sudo vim color_sorting.py
-```
-
-(3) Find the following code:
-
-<img class="common_img" src="../_static/media/chapter_8/section_5/image9.png"  />
-
-:::{Note}
- After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
-:::
-
-(4) Press “i” to enter the editing mode.
-
-<img class="common_img" src="../_static/media/chapter_8/section_5/image10.png"  />
-
-(5) In `'red': (-11,16,2)`, `-11` is the x-axis parameter, `16` is the y-axis parameter, and `2` is the z-axis parameter. Here change `-12` to `0` and keep the y-axis and z-axis parameters unchanged to make the block place in front of the robot, as the figure shown below:
-
-<img class="common_img" src="../_static/media/chapter_8/section_5/image11.png"  />
-
-(6) Then find and comment the following code. (Add “#” in front of the code.)
-
-<img class="common_img" src="../_static/media/chapter_8/section_5/image12.png"  />
-
-(7) Then save the modified content. Press “Esc” and enter “:wq”, and press “Enter” to save and close the program file.
-
-```commandline
-:wq
-```
-
-(8) Enter command “python3 color_sorting.py” again, and press “Enter” to start game.
-
-```commandline
-python3 color_sorting.py
-```
-
-### 5.5 Program Analysis
+### 4.5.4 Program Analysis
 
 The source code of program is located in: [/home/pi/ArmPi_mini/functions/color_sorting.py]()
 
-**5.5.1 Import Function Library**
+* **Import Function Library**
 
 {lineno-start=1}
 
@@ -2242,9 +2202,9 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
 ```
 
 The `sleep` function in `time` library is called. The function `sleep ()` is used to delay.
-There are some built-in libraries in Python, so they can be called directly. For example, “time”, “cv2” and “math”. You can also write a new library like “yaml_handle” and “ArmIK.ArmMoveIK”.
+There are some built-in libraries in Python, so they can be called directly. For example, `time`, `cv2` and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
- **5.5.2 Instantiate Function Library**
+* **Instantiate Function Library**
 
 The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
@@ -2255,11 +2215,11 @@ The name of function library is too long to memorize. For calling function easil
     AK = ArmIK()
 ```
 
-After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
+After instantiating, you can directly input and call the function `AK.function name (parameter, parameter)`.
 
- **5.5.3 Main Function Analysis**
+* **Main Function Analysis**
 
-The python program `__name__ ==  ’__main__:’` is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program  `__name__ ==  ’__main__:’`  is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=332}
 
@@ -2289,13 +2249,17 @@ if __name__ == '__main__':
 
 Capture the camera image and save it to `cap`.
 
-The function cap.read is to read the captured image. True: the “rat” value of image is read. False: The value of image`ret` was not read.
+The function cap.read is to read the captured image. 
+
+True: the “rat” value of image is read. 
+
+False: The value of image`ret` was not read.
 
 `img` is a frame of the camera that was read.
 
 **(2)  Window Displays Image**
 
-When the capture image is read, “ret” value is True.
+When the capture image is read, `ret` value is True.
 
 {lineno-start=346}
 
@@ -2305,8 +2269,8 @@ When the capture image is read, “ret” value is True.
             Frame = run(frame) 
 ```
 
-The function img.copy() is used to copy the content of “img” to “frame”.
-The function run() is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
+The function `img.copy()` is used to copy the content of `img` to `frame`.
+The function run() is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
 
 **(3) Window Displays Image**
 
@@ -2331,7 +2295,7 @@ The function `cv2.waitKey()` is used to wait for inputting key and the parameter
 
 <p id="anchor_5_5_4"></p>
 
-**5.5.4 Image Process Analysis**
+**5.4.4 Image Process Analysis**
 
 {lineno-start=244}
 
@@ -2434,7 +2398,7 @@ The third parameter `3` is the Gaussian kernel sigma value on x direction.
 
 **(3) Covert to Color Space**
 
-Use function cv2.cvtColor() to convert image to LAB space.
+Use function `cv2.cvtColor()` to convert image to LAB space.
 
 {lineno-start=259}
 
@@ -2443,12 +2407,12 @@ Use function cv2.cvtColor() to convert image to LAB space.
 ```
 
 The first parameter `frame_gb` is the input image.
-The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. “cv2.COLOR_BGR2LAB” can be used to convert used to change the BGR color space to LAB color space. When code is cv2.COLOR_BGR2RGB , BGR is converted to RGB.
+The second parameter `cv2.COLOR_BGR2LAB` is the conversion format. `cv2.COLOR_BGR2LAB` can be used to convert used to change the BGR color space to LAB color space. When code is `cv2.COLOR_BGR2RGB` , BGR is converted to RGB.
 
 **(4) Thresholding Processing**
 
 Thresholding can be used to create binary images, only 0 and 1. The image can be small size for better processing.
-Use inRange() function in cv2 library is used to process image with thresholding method. 
+Use `inRange()` function in cv2 library is used to process image with thresholding method. 
 
 {lineno-start=267}
 
@@ -2479,15 +2443,15 @@ To lower interference and make image smoother, opening and closing operations ne
                     closed = cv2.morphologyEx(opened, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))  # 闭运算(closing operation)
 ```
 
-The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. cv2.MORPH_ERODE (Erosion), cv2.MORPH_DILATE(Dilation), cv2.MORPH_OPEN (Opening), cv2.MORPH_CLOSE (Closing).
+The second parameter `cv2.MORPH_OPEN` is the type of morphological operation. `cv2.MORPH_ERODE (Erosion)`, `cv2.MORPH_DILATE(Dilation)`, `cv2.MORPH_OPEN (Opening)`, `cv2.MORPH_CLOSE (Closing)`.
 
 The third parameter `np.ones((3, 3)` is the convolution kernel.
 
-The fourth parameter `np.uint8` is the application times.
+The fourth parameter `np.uint8`  is the application times.
 
 (6) Find the Largest Contour 
 
-After completing the above processing, use fucntion findContours() in cv2 librart to obtain the contour of the recognized target.
+After completing the above processing, use fucntion `findContours()` in cv2 librart to obtain the contour of the recognized target.
 
 {lineno-start=278}
 
@@ -2516,7 +2480,7 @@ Find the largest contour in obtained contours. To avoid interference, set a mini
 
 (7) Obtain Position Information
 
-Use function cv2.minEnclosingCircle in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
+Use function `cv2.minEnclosingCircle` in cv2 library to obtain the minimum enclosing circle of the target contour, and the origin coordinate and the radium of the minimum enclosing circle.
 
 {lineno-start=285}
 
@@ -2573,9 +2537,9 @@ Use judgement statement to get the maximum color in a image.
                     detect_color = "None" 
 ```
 
-**5.5.5 Execute Feedback**
+* **Execute Feedback**
 
-The robot arm movement function `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
+The robot arm movement function  `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determine the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
 
 {lineno-start=138}
 
@@ -2718,34 +2682,110 @@ The fourth parameter `90` is the maximum pitch angle range.
 
 The fifth parameter `500` is runtime in the unit of milliseconds.
 
-## 6.  Intelligent Stacking
+
+### 4.5.5 Function Extension
+
+The effect of color sorting in program defaults to recognize red, green and three blocks, and then pick and transport it to the corresponding position in the left side. If want to change the block placement position, you need to learn about the coordinate of robot arm. 
+The coordinate of robot arm is shown below (take robot arm as the first person view):
+
+<img class="common_img" src="../_static/media/chapter_8/section_5/image7.png"  alt="loading" />
+
+The corresponding relationship between placement position and coordinate parameter:
+
+| Coordinate **Parameter** | **Block Position**                         |
+| ------------------------ | ------------------------------------------ |
+| x increases              | The block moves to the right along x axis. |
+| x decreases              | The block moves to the left along x axis.  |
+| y increases              | The block moves forward along y axis.      |
+| y decreases              | The block moves backward along y axis.     |
+| z increases              | The block moves up along y axis.           |
+| z decreases              | The block moves down along y axis.         |
+
+:::{Note}
+The parameter z must be greater than 0.
+:::
+
+Here the program will be changed to place the block in front of robot arm. The method is applicable to change other color. The specific operation steps are as follow:
+
+(1) Enter command and press “Enter” to enter the source code directory.
+
+```commandline
+cd ArmPi_mini/functions/
+```
+
+(2) Then enter command  and press “Enter” to open the program file.
+
+```commandline
+sudo vim color_sorting.py
+```
+
+(3) Find the following code:
+
+<img class="common_img" src="../_static/media/chapter_8/section_5/image9.png"  />
+
+:::{Note}
+ After entering the line number of the code, press “Shift+G” to go to the corresponding position. (The line number of the code shown in the figure is for reference only, please refer to the actual situation.)
+:::
+
+(4) Press “i” to enter the editing mode.
+
+<img class="common_img" src="../_static/media/chapter_8/section_5/image10.png"  />
+
+(5) In `'red': (-11,16,2)`, `-11` is the x-axis parameter, `16` is the y-axis parameter, and  `2` is the z-axis parameter. Here change `-12` to `0` and keep the y-axis and z-axis parameters unchanged to make the block place in front of the robot, as the figure shown below:
+
+<img class="common_img" src="../_static/media/chapter_8/section_5/image11.png"  />
+
+(6) Then find and comment the following code. (Add “#” in front of the code.)
+
+<img class="common_img" src="../_static/media/chapter_8/section_5/image12.png"  />
+
+(7) Then save the modified content. Press **“Esc”** and enter **“:wq”**, and press **“Enter”** to save and close the program file.
+
+```commandline
+:wq
+```
+
+(8) Enter command **“python3 color_sorting.py”** again, and press **“Enter”** to start game.
+
+```commandline
+python3 color_sorting.py
+```
+
+## 4.6 Intelligent Stacking
 
 :::{Note}
 Before starting intelligent stacking, please make sure that ArmPi mini has been completely configured according to the content in “Getting Ready/ Lesson 4 Deviation Adjustment/ Lesson 5 Position Adjustment” to adjust deviation and calibrate position and place map, otherwise it may influence the game effect.
 :::
 
-### 6.1 Program Description
+### 4.6.1 Program Description
 
 The logic of intelligent stacking is to recognize color first, and control robot arm to grip the block and stack it in the specific area. This process has three parts including recognition, gripping, and stacking.
-The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “7.OpenCV Basic Lesson” to learn about Lab color space.
+
+The first part is color recognition. Perform Gaussian filter first to reduce noises of image. Convert the object color through Lab color space. You can refer to the content in folder “OpenCV Basic Lesson” to learn about Lab color space.
+
 Recognize the color of the object in circle through color threshold. Then perform masking on image. Mask is to hide the whole or part of the processing image with the designated image, figure or object.
+
 Next, process the image of the object with opening and closing operations. Find and circle the maximum contour, and then recognize the object in circle by the color threshold.
+
 The opening operation erodes an image and then dilates the eroded image. Opening is useful for removing small objects and thin lines from an image while preserving the shape and size of larger objects in the image. It can remove small particles of noise and break the adhesion between objects.
 The closing operation dilates an image and then erodes the dilated image. Closing is useful for filling small holes in an image while preserving the shape and size of large holes and objects in the image.
+
 Then, determine the movement status of the placed block. If it detects that the block has stopped moving for a period of time, the robot arm starts gripping.
+
 Finally, the block is placed in the stacking area and robot arm will stack it on the previous block. When all the blocks are stacked, the robot arm returns to its initial position.
-Both gripping and stacking use inverse kinematics function “AK.setPitchRangeMoving()” to calculate the servo angle at the target position, and then control robot arm to move to the target position.
-About inverse kinematics, please refer to the content in “6.Basic Motion Lesson/ 6.1 What is Inverse Kinematics?” 
+
+Both gripping and stacking use inverse kinematics function `AK.setPitchRangeMoving()` to calculate the servo angle at the target position, and then control robot arm to move to the target position.
+About inverse kinematics, please refer to the content in “3.Basic Motion Lesson/3.1 What is Inverse Kinematics?” 
 
 <p id="anchor_6_2"></p>
 
-### 6.2 Start and Close the Game
+### 4.6.2 Start and Close the Game
 
 :::{Note}
 The input command should be case sensitive, and “Tab” can be used to complement keywords.
 :::
 
-(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
+(1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.Click in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
 
 <img class="common_img" src="../_static/media/chapter_8/section_6/image4.png"  />
 
@@ -2755,131 +2795,26 @@ The input command should be case sensitive, and “Tab” can be used to complem
 cd ArmPi_mini/functions
 ```
 
-(3) Enter command and press “Enter” to start game.
+(3) Enter command and press **“Enter”** to start game.
 
 ```commandline
 python3 color_palletizing.py
 ```
 
-(4) If you want to exit the game, press “Ctrl+C”. If it fails to close, please try a few more times.
+(4) If you want to exit the game, press **“Ctrl+C”**. If it fails to close, please try a few more times.
 
-### 6.3 Project Outcome
+### 4.6.3 Project Outcome
 
 When the game is started and the block is recognized, the buzzer will make a “Di” sound and the robot arm will pick up the block, and then stack it in the stacking area. 
 
-### 6.4 Function Extension
+<img class="common_img" src="../_static/media/chapter_8/section_6/1.gif"  />
 
-In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
 
-(1) Double click<img src="../_static/media/chapter_8/section_6/image7.png" style="width: in;height: in" />icon and select “Execute” in the pop-up window.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image8.png"  />
-
-(2) Then select “Camera Tool” and “Connect” in sequence.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image9.png"  alt="loading" />
-
-(3) Click “Add” and name the new color as “purple”. Then click “OK”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image10.png"  alt="loading" />
-
-(4) Select “purple” in the drop-down list of the color selection bar.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image11.png"  alt="loading" />
-
-(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns black in the left side. 
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image12.png"  alt="loading" />
-
-(6) Finally, click “Save”.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image13.png"  alt="loading" />
-
-(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
-
-```commandline
-cd ArmPi_mini/yaml/
-```
-
-(8) Enter command and press “Enter” to open program file.
-
-```commandline
-sudo vim lab_config.yaml
-```
-
-(9) After opening the color threshold program, you can check the threshold parameter of purple.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image16.png"  />
-
-(10) Enter command and press “Enter” to enter the source code directory.
-
-```commandline
-cd ArmPi_mini/functions/
-```
-
-(11) Then enter command and press “Enter” to open the program file.
-
-```commandline
-sudo vim color_palletizing.py
-```
-
-(12) Find the following code:
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image19.png"  />
-
-(13) Input ` ‘purple’:(255, 255, 114) ` and `'purple'`, as the figure shown below:
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image21.png"  />
-
-The parameter (255, 255, 144) is the maximum value of purple threshold parameter 
-
-(14) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image22.png"  />
-
-(15) Enter the content of the following red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image23.png"  />
-
-(16) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image24.png"  />
-
-(17) Enter the content of the following red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image25.png"  />
-
-(18) Enter the content of the following red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image26.png"  />
-
-(19) Find the following code.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image27.png"  />
-
-(20) Enter the content of the following red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image28.png"  />
-
-(21) Enter the content of the following red frame, as the figure shown below.
-
-<img class="common_img" src="../_static/media/chapter_8/section_6/image29.png"  />
-
-(22) Save the modified content. Press “Esc” and enter “:wq”, and then press “Enter” to save and close the file.
-
-```commandline
-:wq
-```
-
-(23) Then refer to the steps in “[6.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “4.1 Change default recognition color” to change the default color to purple. 
-
-(24) If you want to add other recognition colors, please refer to the operation steps above.
-
-### 6.5 Program Analysis
+### 4.6.4 Program Analysis
 
 The source code of program is located in:[/home/pi/ArmPi_mini/functions/color_palletizing.py]()
 
-6.5.1 Import Function Library
+6.4.1 Import Function Library
 
 {lineno-start=1}
 
@@ -2918,7 +2853,7 @@ Import the libraries related to OpenCV, time, math, threads and inverse kinemati
 Call `sleep` function in `time` library. The function `sleep ()` is used to delay.
 There are some built-in libraries in Python, so they can be called directly. For example, “time”, `cv2`and `math`. You can also write a new library like `yaml_handle` and `ArmIK.ArmMoveIK`.
 
-6.5.2 Instantiate Function Library
+* **Instantiate Function Library**
 
 The name of function library is too long to memorize. For calling function easily, the library can be instantiated. For example,
 
@@ -2930,11 +2865,11 @@ The name of function library is too long to memorize. For calling function easil
     AK.board = board
 ```
 
-After instantiating, you can directly input and call the function “AK.function name (parameter, parameter)”.
+After instantiating, you can directly input and call the function `AK.function name (parameter, parameter)`.
 
-6.5.3 Main Function Analysis
+* **Main Function Analysis**
 
-The python program`__name__ ==  ’__main__:’`is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
+The python program `__name__ ==  ’__main__:’`is the main function of program. Firstly, the function init() is called to initialize. The initialization in this program includes: return the robot arm to the initial position, read the color threshold file. Generally there are also configurations for ports, peripherals, timing interrupts, etc., which are all done in the process of initialization.
 
 {lineno-start=332}
 
@@ -2961,11 +2896,15 @@ if __name__ == '__main__':
         ret,img = cap.read()
 ```
 
-Capture the camera image and save it to `cap`.
+Capture the camera image and save it to  `cap`.
 
-The function `cap.read()` is to read the captured image. True: the “ret” value of image is read. False: The value of image 'ret' was not read.
+The function `cap.read()` is to read the captured image.
 
-“img” is a frame of the camera that was read.
+True: the “ret” value of image is read. 
+
+False: The value of image 'ret' was not read.
+
+`img` is a frame of the camera that was read.
 
 (2) Enter Image Processing
 
@@ -2980,7 +2919,7 @@ When the captured image is read, “ret” value is True.
 ```
 
 The function `img.copy()` is used to copy the content of `img` to `frame`.
-The function `run()` is used to process image. In “5.4 Image Processing Analysis” to check the detailed content.
+The function `run()` is used to process image. In “[Image Processing Analysis]()” to check the detailed content.
 
 (3) Window Displays Image
 
@@ -3000,7 +2939,7 @@ The function `cv2.imshow()` is used to display the image in window. `’frame’
 
 The function `cv2.waitKey()` is used to wait for inputting key and the parameter `1` refers to the delay time.
 
-6.5.4  Image Processing Analysis
+* **Image Processing Analysis**
 
 {lineno-start=240}
 
@@ -3129,12 +3068,14 @@ Use “inRange()” function in cv2 library is used to process image with thresh
 ```
 
 The first parameter `frame_lab` is the input image.
+
 The second parameter `(lab_data[i]['min'][0],lab_data[i]['min'][1],lab_data[i] ['min'][2])` is the lower limit of color threshold.
+
 The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i] ['max'][2])` is the upper limit of color threshold.
 
 (5) Opening and Closing
 
-To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function “cv2.morphologyEx()” is the morphology function.
+To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function `cv2.morphologyEx()` is the morphology function.
 
 {lineno-start=274}
 
@@ -3235,7 +3176,7 @@ Use judgement statement to get the maximum color in a image.
                             draw_color = range_rgb["black"]
 ```
 
-6.5.5 Execute Feedback
+* **Execute Feedback**
 
 The robot arm movement function `move()` is executed as a child thread. When color is recognized, the `move()` function is executed. It mainly determines the image processing result, and then execute the feedback including RGB light, buzzer, a single servo and multiple servos control.
 
@@ -3388,9 +3329,9 @@ The function `AK.setPitchRangeMoving()` is the inverse kinematics control of the
 
 Take `AK.setPitchRangeMoving((0, 6, 18), 0,-90, 90, 500)` as an example:
 
-The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. “0” is the X-axis coordinate, “6” is the Y-axis coordinate, and “18” is the Z-axis coordinate.
+The first parameter `(0, 6, 18)` is the coordinate of the end effector of the robotic arm. `0` is the X-axis coordinate, `6` is the Y-axis coordinate, and `18` is the Z-axis coordinate.
 
-The second parameter `0` is the pitch angle.
+The second parameter  `0`  is the pitch angle.
 
 The third parameter `-90` is the minimum pitch angle range.
 
@@ -3398,39 +3339,147 @@ The fourth parameter `90` is the maximum pitch angle range.
 
 The fifth parameter  `500` is runtime in the unit of milliseconds.
 
-## 7. Face Detection
+### 4.6.5 Function Extension
 
-### 7.1 Project Principle
+In addition to the built-in color, you can add new recognition color. For example, add purple as a new recognition color. The specific operation steps are as follow.
+
+(1) Double click<img src="../_static/media/chapter_8/section_6/image7.png" style="width: in;height: in" />icon and select **“Execute”** in the pop-up window.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image8.png"  />
+
+(2) Then select **“Camera Tool”** and **“Connect”** in sequence.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image9.png"  alt="loading" />
+
+(3) Click **“Add”** and name the new color as **“purple”**. Then click **“OK”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image10.png"  alt="loading" />
+
+(4) Select **“purple”** in the drop-down list of the color selection bar.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image11.png"  alt="loading" />
+
+(5) Point camera at the purple object, and drag L, A and B slider to adjust value until the recognized color turns white and other area colors turns black in the left side. 
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image12.png"  alt="loading" />
+
+(6) Finally, click **“Save”**.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image13.png"  alt="loading" />
+
+(7) Check whether the modified value is written into program. Enter command and press “Enter” to access to the program directory.
+
+```commandline
+cd ArmPi_mini/yaml/
+```
+
+(8) Enter command and press **“Enter”** to open program file.
+
+```commandline
+sudo vim lab_config.yaml
+```
+
+(9) After opening the color threshold program, you can check the threshold parameter of purple.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image16.png"  />
+
+(10) Enter command and press **“Enter”** to enter the source code directory.
+
+```commandline
+cd ArmPi_mini/functions/
+```
+
+(11) Then enter command and press **“Enter”** to open the program file.
+
+```commandline
+sudo vim color_palletizing.py
+```
+
+(12) Find the following code:
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image19.png"  />
+
+(13) Input ` ‘purple’:(255, 255, 114) ` and `'purple'`, as the figure shown below:
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image21.png"  />
+
+The parameter `(255, 255, 144)`  is the maximum value of purple threshold parameter.
+
+(14) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image22.png"  />
+
+(15) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image23.png"  />
+
+(16) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image24.png"  />
+
+(17) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image25.png"  />
+
+(18) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image26.png"  />
+
+(19) Find the following code.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image27.png"  />
+
+(20) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image28.png"  />
+
+(21) Enter the content of the following red frame, as the figure shown below.
+
+<img class="common_img" src="../_static/media/chapter_8/section_6/image29.png"  />
+
+(22) Save the modified content. Press **“Esc”** and enter **“:wq”**, and then press **“Enter”** to save and close the file.
+
+```commandline
+:wq
+```
+
+(23) Then refer to the steps in “[4.6.2 Operation Steps]()” to start game. Position a purple object in camera frame, and then robot arm will shake its head. If want to control the robot to nod when recognizing purple, you can refer “[4.6.5 Change default recognition color]()” to change the default color to purple. 
+
+(24) If you want to add other recognition colors, please refer to the operation steps above.
+
+## 4.7 Face Detection
+
+### 4.7.1 Project Principle
 
 Upon detecting a face, the buzzer will beep to alarm. The detected face will be circled in the live camera feed.
 In artificial intelligence, one of the most widespread applications is image recognition, with facial recognition being the hottest application. It is commonly used in scenarios like door locks and phone facial unlocking.
 In this section, the trained face model is first zoomed to detect the face. Then the recognized face coordinates are converted to the coordinates before scaling. Judge whether it is the largest face, and frame the recognized face. Then, the buzzer beeps.
 
-### 7.2 Operation Steps
+### 4.7.2 Operation Steps
 
 :::{Note}
-The input command should be case sensitive, and “Tab” can be used to complement keywords.
+The input command should be case sensitive, and **“Tab”** can be used to complement keywords.
 :::
 
 (1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-(2) Click <img class="common_img" src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press “Ctrl+Alt+T” to open LX terminal.
+(2) Click <img class="common_img" src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **“Ctrl+Alt+T”** to open LX terminal.
 
-(3) Enter command “cd ArmPi_mini/functions” to navigate to the directory where the demo program is located.
+(3) Enter command **“cd ArmPi_mini/functions”** to navigate to the directory where the demo program is located.
 
 ```commandline
 cd ArmPi_mini/functions
 ```
 
-(4) Enter command “python3 face_detect.py”, and press “Enter” to start game.
+(4) Enter command **“python3 face_detect.py”**, and press **“Enter”** to start game.
 
 ```commandline
 python3 face_detect.py
 ```
 
-(5) If want to exit the game, press “Ctrl+C”. If fail to close, please try a few more times.
+(5) If want to exit the game, press **“Ctrl+C”**. If fail to close, please try a few more times.
 
-### 7.3 Project Outcome
+### 4.7.3 Project Outcome
 
 :::{Note}
 Please do not try the Facial Recognition game under strong light, such as sunlight. Strong light will affect the recognition performance, so it is recommended to play this game indoors. It’s better to set the distance between face and camera with 50-100cm.
@@ -3438,11 +3487,11 @@ Please do not try the Facial Recognition game under strong light, such as sunlig
 
 After starting the facial recognition function, ArmPi mini’s pan-tilt camera will rotate left and right to detect face. It will stop when the face is recognized, and run the greeting action.
 
-### 7.4 Program Analysis
+### 4.7.4 Program Analysis
 
 The source code of program is located in ：[/home/pi/ArmPi_mini/functions/face_detect.py]()
 
-**7.4.1 Import Parameter Module**
+* **Import Parameter Module**
 
 | **Import Module**                                 | **Function**                                                 |
 | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -3455,16 +3504,16 @@ The source code of program is located in ：[/home/pi/ArmPi_mini/functions/face_
 | Import yaml_handle                                | Contains functionalities or tools related to processing YAML format files. |
 | from common.ros_robot_controller_sdk import Board | Import the board library to controlsensors and perform control operations. |
 
-**7.4.2 Function Logic**
+* **Function Logic**
 
 Capture image information through the camera, then process the image, specifically by performing color space conversion. That facilitates the face detection.
 Next, use mediapipe face model library to perform face detection, get face detection result, and call action group to perform feedback.
 
-**7.4.3 Program Logic and Related Code Analysis**
+* **Program Logic and Related Code Analysis**
 
 (1)  Import function library
 
-In this step for initialization, the first task is to import the required libraries for subsequent program calls. For details on the imports, please refer to “[7.4.1 Import Parameter Module]()”.
+In this step for initialization, the first task is to import the required libraries for subsequent program calls. For details on the imports, please refer to “[4.7.4 Program Analysis -> Import Parameter Module]()”.
 
 {lineno-start=3}
 
@@ -3563,9 +3612,9 @@ If a face is detected, control the buzzer to beep.
                 action_finish = True
 ```
 
-## 8. Face Recognition
+## 4.8 Face Recognition
 
-### 8.1 Program Description
+### 4.8.1 Program Description
 
 When no face is detected, the robotic arm rotates left and right to scan the area. Once a face is detected, the claw moves up and down as a greeting. 
 
@@ -3576,7 +3625,7 @@ In this activity, we first train the face recognition model. The system then det
 
 Next, the pan-tilt servos are set to rotate left and right to locate the face. Finally, the robot executes the feedback action based on the recognition results.
 
-### 8.2 Start and Close the Game
+### 4.8.2 Start and Close the Game
 
 :::{Note}
 The input of commands must strictly distinguish between uppercase and lowercase letters.
@@ -3598,9 +3647,9 @@ cd ArmPi_mini/functions/
 python3 face_recognition.py
 ```
 
-(5) To close the program, simply press "Ctrl+C" in the LX terminal. If it does not close, press it multiple times.
+(5) To close the program, simply press **"Ctrl+C"** in the LX terminal. If it does not close, press it multiple times.
 
-### 8.3 Program Outcome
+### 4.8.3 Program Outcome
 
 :::{Note}
 For optimal performance, please avoid using this activity under strong lighting conditions, such as direct sunlight or close proximity to incandescent lights, as intense light can affect face recognition accuracy. It is recommended to conduct this activity indoors, with the face positioned within a range of 50 cm to 1 meter from the camera.
@@ -3608,7 +3657,7 @@ For optimal performance, please avoid using this activity under strong lighting 
 
 Once the activity begins, the camera's pan-tilt will rotate left and right. If no face is detected, the robotic arm will scan by rotating left and right. Upon detecting a face, the claw will move up and down to greet the user.
 
-### 8.4 Program Brief Analysis 
+### 4.8.4 Program Brief Analysis 
 
 The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_recgonition.py]()
 
@@ -3635,7 +3684,7 @@ The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_
                 x_pulse += d_pulse
 ```
 
-8.4.1 Importing Parameter Modules
+* **Importing Parameter Modules**
 
 | **Module Import**                 | **Purpose**                                                  |
 | --------------------------------- | ------------------------------------------------------------ |
@@ -3649,13 +3698,13 @@ The source code of the program is saved in: [/home/pi/ArmPi_mini/functions/face_
 | from ArmIK.ArmMoveIK import *     | Provides functions for inverse kinematics solving and control for robotic arm movement |
 | import HiwonderSDK.Board as Board | Imports the Board module from the Hiwonder SDK, which is used to control sensors and execute related actions |
 
-**8.4.2 Function Logic**
+* **Function Logic**
 
 The camera captures image data, which is then processed by converting the image into a different color space to facilitate face detection.
 The Mediapipe face detection model is used to identify faces in the image. Once detected, the system triggers the appropriate action group to provide feedback based on the detected faces.
 This flow ensures that the system accurately detects and responds to faces.
 
-**8.4.3 Program Logic and Related Code Analysis**
+* **Program Logic and Related Code Analysis**
 
 (1) Import function library
 
