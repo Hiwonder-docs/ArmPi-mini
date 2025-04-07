@@ -14,7 +14,7 @@ By default, the robot operates in AP (direct connection) mode. The features and 
 
 ## 6.2 AP Direct Connection Mode
 
-**6.2.1 Mode Switching through Phone**
+### 6.2.1 Mode Switching through Phone
 
 Using **the Android system** as an example, these instructions also apply to iOS.
 
@@ -27,7 +27,7 @@ Using **the Android system** as an example, these instructions also apply to iOS
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image2.png" style="width:700px"/>
 
 :::{Note}
-If you prefer to connect in LAN mode, refer to [6.3 Connecting in LAN Mode (optional)]().
+If you prefer to connect in LAN mode, refer to [6.3 Connecting in LAN Mode (optional)](#anchor_6_3).
 :::
 
 (3) Tap **"Connect to Device Hotspot"**. This will take you to your phone's settings to connect to the hotspot created by the robot.
@@ -39,7 +39,7 @@ If you prefer to connect in LAN mode, refer to [6.3 Connecting in LAN Mode (opti
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image4.png" style="width:350px" />
 
 :::{Note}
-For iOS: Wait until the Wi-Fi icon<img src="../_static/media/11.network_configuration/section_1/image5.png" style="width:40px" />appears in your phone's status bar before returning to the app. If you don't see the device listed, you can refresh by tapping the refresh icon<img src="../_static/media/11.network_configuration/section_1/image6.png" style="width:50px" />in the upper-right corner of the app.
+For iOS: Wait until the Wi-Fi icon <img src="../_static/media/11.network_configuration/section_1/image5.png" style="width:40px" /> appears in your phone's status bar before returning to the app. If you don't see the device listed, you can refresh by tapping the refresh icon <img src="../_static/media/11.network_configuration/section_1/image6.png" style="width:50px" /> in the upper-right corner of the app.
 :::
 
 (5) Return to the app, and tap the robot icon to enter the mode selection screen.
@@ -47,10 +47,10 @@ For iOS: Wait until the Wi-Fi icon<img src="../_static/media/11.network_configur
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image7.png" style="width:700px" />
 
 :::{Note}
-If a pop-up message appears saying "Network Unavailable, Continue Connection?", simply tap "Keep Connection".
+If a pop-up message appears saying "**Network Unavailable, Continue Connection?**", simply tap "**Keep Connection**".
 :::
 
-(6) If you see a prompt asking **"Switch to and Enter Found Device Screen?",** it indicates that an incorrect product version was selected in Step 1. Tap "OK" to switch directly to the correct version's mode selection screen.
+(6) If you see a prompt asking **"Switch to and Enter Found Device Screen?",** it indicates that an incorrect product version was selected in Step 1. Tap "**OK**" to switch directly to the correct version's mode selection screen.
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image8.png" style="width:350px" />
 
@@ -62,7 +62,7 @@ For details on each mode, refer to the documentation provided earlier.
 
 <p id="anchor_1_2_2"></p>
 
-**6.2.2 Switching via Network Configuration File**
+### 6.2.2 Switching via Network Configuration File
 
 (1) Power on the robot and connect it to the remote control software, VNC.
 
@@ -98,7 +98,7 @@ The configuration file defaults to AP Direct Connection Mode. If all code lines 
 vim wifi.py
 ```
 
-(8) After confirming the entries, press the ESC key, then type ":wq" to save and exit the file.
+(8) After confirming the entries, press the ESC key, then type "**:wq**" to save and exit the file.
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image17.png" style="width:700px" />
 
@@ -114,13 +114,13 @@ sudo systemctl restart hw_wifi.service
 
 <img src="../_static/media/11.network_configuration/section_1/image20.png" style="width:200px" class="common_img" />
 
-(12) To connect using VNC, enter the new IP address in the search bar, and click on the connection icon that appears. Log in with the username "pi" and password "raspberry", then click"OK"to access the system desktop. (For the Pi5 version, the username is the same as the 4B version, but the password is **"raspberrypi"**.)
+(12) To connect using VNC, enter the new IP address in the search bar, and click on the connection icon that appears. Log in with the username "**pi**" and password "**raspberry**", then click"**OK**"to access the system desktop. (For the Pi5 version, the username is the same as the 4B version, but the password is **"raspberrypi"**.)
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image21.png" style="width:500px" />
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image22.png" style="width:700px" />
 
-<p id="anchor_1_3"></p>
+<p id="anchor_6_3"></p>
 
 ## 6.3 Connecting in LAN Mode (optional)
 
@@ -128,10 +128,10 @@ sudo systemctl restart hw_wifi.service
 
 * To configure the LAN mode using a smartphone, you must first enable the phone's location services.
 
-* Switching to LAN mode cannot be done directly through the system's network settings, as the Wi-Fi has custom configurations. Please follow the instructions in [6.3.2 Switching via Network Configuration]() File to switch modes using the network configuration file.
+* Switching to LAN mode cannot be done directly through the system's network settings, as the Wi-Fi has custom configurations. Please follow the instructions in [6.3.2 Switching via Network Configuration](#anchor_6_3_2) File to switch modes using the network configuration file.
   :::
 
-**6.3.1 Switching via the Mobile App**
+### 6.3.1 Switching via the Mobile App
 
 :::{Note}
 For LAN mode, please enable location services on your smartphone.
@@ -149,7 +149,7 @@ For LAN mode, please enable location services on your smartphone.
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image24.png" style="width:700px" />
 
-(4) The app will prompt you to enter the password for the connected Wi-Fi network. (Please ensure the password is correct, as an incorrect password will result in connection failure.) After entering the password, tap "OK".
+(4) The app will prompt you to enter the password for the connected Wi-Fi network. (Please ensure the password is correct, as an incorrect password will result in connection failure.) After entering the password, tap "**OK**".
 
 <img class="common_img" src="../_static/media/11.network_configuration/section_1/image25.png" style="width:700px" />
 
@@ -177,7 +177,7 @@ For LAN mode, please enable location services on your smartphone.
 
 (11) To switch back to direct connection mode from LAN mode, press and hold the KEY1 button on the expansion board until the blue LED flashes, indicating that the switch is complete.
 
-**6.3.2 Switching via Network Configuration File**
+### 6.3.2 Switching via Network Configuration File
 
 (1) Power on the robot and connect it to the remote control software, NoMachine.
 
@@ -203,7 +203,7 @@ vim wifi_conf.py
 
 ③ 3 represents Direct Sharing Mode
 
-```py
+```python
 HW_WIFI_MODE = 2    #wifi的工作模式，1为AP模式，2为STA模式
 ```
 

@@ -352,8 +352,6 @@ sudo vim color_recognition.py
 python3 color_recognition.py
 ```
 
-<p id="1_add_new_recognition_color"></p>
-
 * **Add new recognition color**
 
 In addition to the built-in color, you can add new recognition color. For example, add yellow as a new recognition color. The specific operation steps are as follow.
@@ -1043,6 +1041,8 @@ python3 color_detect.py
 ```
 
 <img class="common_img" src="../_static/media/chapter_8/section_2/image12.png"  />
+
+<p id="2_add_new_recognition_color"></p>
 
 * **Add new recognition color**
 

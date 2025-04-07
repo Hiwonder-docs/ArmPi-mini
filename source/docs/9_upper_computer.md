@@ -230,7 +230,7 @@ The camera tool is used to adjust the threshold of the recognized color, as the 
 
 <img src="../_static/media/chapter_9/section_1/image48.png"  />
 
-Please refer to the contentin [AI Vision Learning -> 4.2 Color Recognition ->Add Recognition Color]().
+Please refer to the contentin [4. AI Vision Learning -> 4.2 Color Recognition ->Add Recognition Color](https://docs.hiwonder.com/projects/ArmPi_mini/en/latest/docs/8_ai_vision.html#2_add_new_recognition_color).
 
 ## 5.2 Import and Call Action
 
@@ -244,7 +244,7 @@ This lesson will tell you how to call action group and how to import it into the
 
 (1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-(2) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />and click **"Execute"** in the pop-up window to open PC software.
+(2) Double click <img src="../_static/media/chapter_9/section_2/image2.png" style="width:50px;" /> and click **"Execute"** in the pop-up window to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
@@ -265,13 +265,13 @@ This lesson will tell you how to call action group and how to import it into the
 ### 5.2.2 Import Action Group 
 
 :::{Note}
-* The action group must be named in English or with numbers, and the file format is "d6a".
+* The action group must be named in English or with numbers, and the file format is "**d6a**".
 
 * If want to export action group, you can a insert U disk into one of USB interfaces of Raspberry Pi and paste the action group file to the U disk.
 
   :::
 
-There are two ways to import the external action group file to ArmPi mini. You can transfer action file to ArmPi mini system with a U disk, or use transfer tool to import action file to system desktop. This lesson will take "3.6a" action as example.
+There are two ways to import the external action group file to ArmPi mini. You can transfer action file to ArmPi mini system with a U disk, or use transfer tool to import action file to system desktop. This lesson will take "**3.6a**" action as example.
 
 * **Use a U Disk**
 
@@ -295,7 +295,7 @@ There are two ways to import the external action group file to ArmPi mini. You c
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image13.png"  />
 
-(7) Double click<img src="../_static/media/chapter_9/section_2/image2.png" style="width:in;height:in" />icon and click **"Execute"** to open PC software.
+(7) Double click <img src="../_static/media/chapter_9/section_2/image2.png" style="width:50px;" /> icon and click **"Execute"** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_2/image3.png"  />
 
@@ -321,7 +321,7 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 (1) Connect to ArmPi mini system desktop via VNC tool.
 
-(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:in;height:in" />icon, and click **"Execute"** to open PC software.
+(2) Double click on <img src="../_static/media/chapter_9/section_3/image2.png" style="width:50px;" />icon, and click **"Execute"** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image3.png"  />
 
@@ -411,14 +411,14 @@ This lesson will use PC software to edit an action group. Robot Arm will grip do
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image26.png"  alt="loading" />
 
-(24) Finally, robot arm is controlled to return to the initial position. Click " <img src="../_static/media/chapter_9/section_3/image1.png"  /> " in front of No.1 action to run it and set the running time to 1000ms. Then click "Add action" to get No.14 action.
+(24) Finally, robot arm is controlled to return to the initial position. Click <img src="../_static/media/chapter_9/section_3/image1.png" /> in front of No.1 action to run it and set the running time to 1000ms. Then click "**Add action**" to get No.14 action.
 
 <img class="common_img" src="../_static/media/chapter_9/section_3/image27.png"  />
 
 ### 3.2 Save Action
 
 :::{Note}
- It is recommended to use English or numbers to name action group , and use underscore "_" instead of the space bar to avoid failure saving.
+ It is recommended to use English or numbers to name action group , and use underscore "**\_**" instead of the space bar to avoid failure saving.
 :::
 
 To facilitate later debugging and management, it is recommended to save the action. Click **"Save Action File"**, name the file and click **"Save"**.
@@ -435,7 +435,7 @@ This lesson will integrate action group **"1.d6a"** and **"3.d6a"** to explain h
 
 (1) Connect to ArmPi mini system desktop via VNC.
 
-(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width: in;height: in" />icon, and click **"Execute"** to open PC software.
+(2) Double click<img src="../_static/media/chapter_9/section_4/image1.png" style="width:50px;" />icon, and click **"Execute"** to open PC software.
 
 <img class="common_img" src="../_static/media/chapter_9/section_4/image2.png"  />
 
@@ -476,5 +476,5 @@ Click **"Save action file"** to save the integrated action group for later debug
 <img class="common_img" src="../_static/media/chapter_9/section_4/image11.png"  />
 
 :::{Note}
- It is recommended to use English or numbers to name action group , and use underscore "_" instead of the space bar to avoid failure saving.
+ It is recommended to use English or numbers to name action group , and use underscore "**\_**" instead of the space bar to avoid failure saving.
 :::
