@@ -83,37 +83,37 @@ Furthermore, unless explicitly stated by Hiwonder, we are not responsible for an
     <td>6</td>
     <td>Card reader</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image6.png" alt="loading" style="width:50px;" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image6.png" alt="loading" style="width:40px;" /></td>
   </tr>
   <tr>
     <td>7</td>
     <td>32GB SD card</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image7.png" alt="loading" style="width:45px;" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image7.png" alt="loading" style="width:35px;" /></td>
   </tr>
   <tr>
     <td>8</td>
     <td>Lithium battery</td>
     <td>2</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image8.png" alt="loading" style="width:100px;" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image8.png" alt="loading" style="width:120px;" /></td>
   </tr>
   <tr>
     <td>9</td>
     <td>Battery holder box</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image9.png" alt="loading" style="width:180px;" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image9.png" alt="loading" style="width:200px;" /></td>
   </tr>
   <tr>
     <td>10</td>
     <td>Battery charger</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image10.png" alt="loading" style="width:120px;" /></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image10.png" alt="loading" style="width:180px;" /></td>
   </tr>
   <tr>
     <td>11</td>
     <td>USB cable</td>
     <td>1</td>
-    <td><img  src="../_static/media/chapter_1/section_1/image11.png" alt="loading" style="width:120px;"/></td>
+    <td><img  src="../_static/media/chapter_1/section_1/image11.png" alt="loading" style="width:150px;"/></td>
   </tr>
   <tr>
     <td>12</td>
