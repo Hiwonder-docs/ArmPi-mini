@@ -1289,7 +1289,7 @@ The function `run()`  is used to process image. In "[**4.3.4 Program Analysis ->
 
 (3) Window Displays Image
 
-{lineno-start=}
+{lineno-start=125}
 
 ```python
             frame_resize = cv2.resize(Frame, size)
@@ -1852,7 +1852,7 @@ The third parameter `(lab_data[i]['max'][0],lab_data[i]['max'][1],lab_data[i]['m
 
 To lower interference and make image smoother, opening and closing operations need to be used in image processing. The opening operation erodes an image and then dilates the eroded image. The closing operation dilates an image and then erodes the dilated image. The function "**cv2.morphologyEx()**" is the morphology function.
 
-{lineno-start=}
+{lineno-start=184}
 
 ```python
                 opened = cv2.morphologyEx(frame_mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))  # 开运算(opening operation)
@@ -3006,7 +3006,7 @@ def run(img):
 
 It is easy to zoom in and out the image.
 
-{lineno-start=}
+{lineno-start=254}
 
 ```python
         frame_resize = cv2.resize(img_copy, size, interpolation=cv2.INTER_NEAREST)
@@ -3470,7 +3470,7 @@ The input command should be case sensitive, and **"Tab"** can be used to complem
 
 (1) Turn on ArmPi mini, and connect it to Raspberry Pi system desktop via VNC viewer.
 
-(2) Click <img src="../_static/media/chapter_8/section_7/image2.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
+(2) Click <img src="../_static/media/chapter_8/section_1/image5.png" style="width:0.31458in;height:0.27361in" /> in the upper left corner (as the figure shown below), or press **"Ctrl+Alt+T"** to open LX terminal.
 
 (3) Enter command **"cd ArmPi_mini/functions"** to navigate to the directory where the demo program is located.
 
@@ -3642,7 +3642,7 @@ The input of commands must strictly distinguish between uppercase and lowercase 
 
 (1) Power on the robot and use VNC Viewer to connect to the remote desktop.
 
-(2) Click the icon <img src="../_static/media/chapter_8/section_8/image2.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut "**Ctrl+Alt+T**" to open the LX terminal.
+(2) Click the icon <img src="../_static/media/chapter_8/section_1/image5.png" style="width: in;height: in" /> in the top left corner of the system desktop or press the shortcut "**Ctrl+Alt+T**" to open the LX terminal.
 
 (3) In the terminal, enter the command to navigate to the directory where the program is located, then press Enter:
 

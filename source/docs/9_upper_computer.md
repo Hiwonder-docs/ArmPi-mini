@@ -168,18 +168,17 @@ The action data list will display the running time of each action and the value 
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image34.png" style="width:0.59055in;height:1.01417in" alt="loading" /></td>
-<td style="text-align: left;"><p>Click on "**Run**" button to run the action group in action data list once.</p>
-<p>（If check "**loop**" robot arm will cyclically execute the action.）</p></td>
+<td style="text-align: left;">Click on "<b>Run</b>" button to run the action group in action data list once. (If check "<b>loop</b>" robot arm will cyclically execute the action.)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image35.png" style="width:1.1811in;height:0.50609in" alt="loading" /></td>
 <td style="text-align: left;"><p>Click it to select and open the action group to load it to action data list.</p>
-<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups）</p></td>
+<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups)</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image36.png" style="width:1.1811in;height:0.52113in" alt="loading" /></td>
 <td style="text-align: left;"><p>Save the action group in action data list to the specific position.</p>
-<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups）</p></td>
+<p>（The path of the action group file：/home/pi/ArmPi_mini/action_groups)</p></td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image37.png" style="width:1.1811in;height:0.51694in" alt="loading" /></td>
@@ -199,7 +198,7 @@ The action data list will display the running time of each action and the value 
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image41.png" style="width:1.1811in;height:0.46641in" alt="loading" /></td>
-<td style="text-align: left;">（<strong>Caution</strong>）Delete all action group files</td>
+<td style="text-align: left;">（<strong>Caution</strong>)Delete all action group files</td>
 </tr>
 <tr>
 <td style="text-align: center;"><img src="../_static/media/chapter_9/section_1/image42.png" style="width:1.1811in;height:0.38845in" alt="loading" /></td>
