@@ -18,5 +18,7 @@ ArmPi mini
    docs/9_upper_computer.md
    docs/11_network_configuration.md
    docs/resources_download.md
+   Download <https://drive.google.com/drive/folders/1cuRu297Q7qKWgyJtUvaosX84Y1zRqYiK?usp=sharing>
+
 
 
